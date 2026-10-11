@@ -1,0 +1,164 @@
+{
+  "monsters": [
+    {
+      "name": "Chuột Cống Biến Dị",
+      "zoneSession": "Zone 1 - Session 1",
+      "difficulty": "★☆☆☆☆",
+      "hp": 15,
+      "atk": 3,
+      "skill": "Cắn gây chảy máu nhẹ theo thời gian.",
+      "weakness": "Dễ hạ bằng 1-2 đòn cận chiến cơ bản.",
+      "drops": "Vải Rách (40%)"
+    },
+    {
+      "name": "Chó Săn Ma",
+      "zoneSession": "Zone 1 - Session 2A",
+      "difficulty": "★★☆☆☆",
+      "hp": 28,
+      "atk": 6,
+      "skill": "Đánh hơi mùi máu, tăng tốc 50% khi người chơi <30% HP.",
+      "weakness": "Dùng đòn Đỡ Đòn (Lv3) để bẻ gãy đà lao tới.",
+      "drops": "Vải Băng Bó (35%), Nanh Chó Ma (20%)"
+    },
+    {
+      "name": "Nhện Bóng Tối",
+      "zoneSession": "Zone 1 - Session 2B",
+      "difficulty": "★★☆☆☆",
+      "hp": 22,
+      "atk": 5,
+      "skill": "Ẩn nấp trong bóng tối, chỉ hiện hình gần nguồn sáng.",
+      "weakness": "Mang theo đuốc/đèn để buộc nó lộ diện trước khi tấn công.",
+      "drops": "Tơ Nhện Độc (30%)"
+    },
+    {
+      "name": "Quạ Đen Dị Dạng",
+      "zoneSession": "Zone 1 - Session 3",
+      "difficulty": "★★☆☆☆",
+      "hp": 18,
+      "atk": 4,
+      "skill": "Bay thành đàn, gây choáng ngắn 1s khi trúng đòn liên tiếp.",
+      "weakness": "Vũ khí có tầm quét rộng xử lý đàn hiệu quả hơn đơn đánh.",
+      "drops": "Lông Quạ Dị (25%)"
+    },
+    {
+      "name": "Bóng Gương",
+      "zoneSession": "Zone 2 - Session 4A",
+      "difficulty": "★★★☆☆",
+      "hp": 35,
+      "atk": 9,
+      "skill": "Sao chép đòn cận chiến cuối cùng người chơi vừa dùng.",
+      "weakness": "Đổi liên tục kiểu đòn đánh để nó không bắt kịp pattern.",
+      "drops": "Mảnh Gương Vỡ (35%)"
+    },
+    {
+      "name": "Dơi Máu",
+      "zoneSession": "Zone 2 - Session 4B",
+      "difficulty": "★★☆☆☆",
+      "hp": 24,
+      "atk": 6,
+      "skill": "Hút máu hồi HP cho bản thân mỗi lần cắn trúng.",
+      "weakness": "Ưu tiên tiêu diệt nhanh trước khi nó hồi đầy máu.",
+      "drops": "Cánh Dơi (20%), Máu Đóng Băng (15%)"
+    },
+    {
+      "name": "Xác Sống Thị Dân",
+      "zoneSession": "Zone 2 - Session 5",
+      "difficulty": "★★☆☆☆",
+      "hp": 20,
+      "atk": 5,
+      "skill": "Số lượng đông, tấn công bao vây theo nhóm.",
+      "weakness": "Dùng combo diện rộng (Lv5) để dọn nhanh cả đám.",
+      "drops": "Vải Vụn (50%), Đồng Xu Cũ (30%)"
+    },
+    {
+      "name": "Quạ Xác Thối",
+      "zoneSession": "Zone 2 - Session 5",
+      "difficulty": "★★☆☆☆",
+      "hp": 20,
+      "atk": 5,
+      "skill": "Gây độc nhẹ khi mổ trúng, tích dồn theo thời gian.",
+      "weakness": "Kháng độc ở Lv10 giảm hẳn phiền toái từ loại này.",
+      "drops": "Lông Thối (20%)"
+    },
+    {
+      "name": "Bóng Đêm Rình Rập",
+      "zoneSession": "Zone 2 - Session 6A",
+      "difficulty": "★★★☆☆",
+      "hp": 40,
+      "atk": 11,
+      "skill": "Tàng hình một phần ban đêm, gây sát thương ngầm không báo trước.",
+      "weakness": "Đứng gần nguồn sáng để giảm thời gian tàng hình của nó.",
+      "drops": "Tinh Chất Bóng Tối (25%)"
+    },
+    {
+      "name": "Sói Sương Đơn Độc",
+      "zoneSession": "Zone 2 - Session 6B",
+      "difficulty": "★★★☆☆",
+      "hp": 38,
+      "atk": 10,
+      "skill": "Chuyên tách lẻ mục tiêu ra khỏi đồng minh trước khi dồn sát thương.",
+      "weakness": "Không nên đi lạc quá xa NPC hộ tống trong session này.",
+      "drops": "Da Sói Sương (30%)"
+    },
+    {
+      "name": "Rễ Cây Quỷ Ám",
+      "zoneSession": "Zone 3 - Session 8A",
+      "difficulty": "★★★★☆",
+      "hp": 55,
+      "atk": 13,
+      "skill": "Gai độc diện rộng, di chuyển chậm nhưng khó bị knock-back.",
+      "weakness": "Tấn công từ xa bằng đạn hiếm hiệu quả hơn áp sát cận chiến.",
+      "drops": "Rễ Cây Độc (30%), Nhựa Cổ Thụ (15%)"
+    },
+    {
+      "name": "Thú Cháy Rừng",
+      "zoneSession": "Zone 3 - Session 8B",
+      "difficulty": "★★★★☆",
+      "hp": 58,
+      "atk": 15,
+      "skill": "Tấn công điên cuồng, tốc độ đòn đánh tăng dần theo thời gian trận.",
+      "weakness": "Kết thúc trận nhanh trước khi tốc độ nó vượt ngưỡng.",
+      "drops": "Da Cháy Xém (25%)"
+    },
+    {
+      "name": "Tinh Thể Quỷ Ám",
+      "zoneSession": "Zone 3 - Session 9A",
+      "difficulty": "★★★★☆",
+      "hp": 45,
+      "atk": 0,
+      "skill": "Tự nổ tung gây sát thương diện rộng khi bị hạ bằng cận chiến.",
+      "weakness": "Ưu tiên bắn hạ bằng vũ khí tầm xa hoặc né ra xa trước khi nó nổ.",
+      "drops": "Mảnh Tinh Thể (40%)"
+    },
+    {
+      "name": "Quỷ Lùn Lò Rèn",
+      "zoneSession": "Zone 3 - Session 9B",
+      "difficulty": "★★★★☆",
+      "hp": 50,
+      "atk": 14,
+      "skill": "Kháng 50% sát thương từ vũ khí cận chiến thường (chưa nung/chưa khắc chế).",
+      "weakness": "Chỉ hiệu quả cao với vũ khí vừa rèn nóng hoặc đạn bạc.",
+      "drops": "Quặng Quỷ (20%)"
+    },
+    {
+      "name": "Tay Sai Vô Diện",
+      "zoneSession": "Zone 4 - Session 12 (Boss Fight)",
+      "difficulty": "★★★★☆",
+      "hp": 48,
+      "atk": 13,
+      "skill": "Được Vô Diện triệu hồi liên tục trong suốt trận đấu chính.",
+      "weakness": "Ưu tiên dọn nhanh bằng combo diện rộng để tập trung vào boss.",
+      "drops": "— (không rơi item, chỉ hồi EXP nhỏ)"
+    },
+    {
+      "name": "Hồn Ma Nạn Nhân Cũ",
+      "zoneSession": "Zone 5 - Session 15 (Secret)",
+      "difficulty": "★★☆☆☆ (phi chiến đấu)",
+      "hp": 0,
+      "atk": 0,
+      "skill": "Không tấn công, chỉ cản đường và gây hiệu ứng giảm tốc nhẹ khi chạm.",
+      "weakness": "Không thể tiêu diệt — chỉ có thể né tránh hoặc đi vòng.",
+      "drops": "— (không rơi item)"
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "skills": [
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T1",
+      "name": "Chém cơ bản",
+      "unlockCondition": "Mặc định từ đầu game",
+      "requires": "—",
+      "effect": "Đòn cận chiến đơn, sát thương cơ bản, không hồi chiêu, dùng được với mọi vũ khí cận chiến."
+    },
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T2",
+      "name": "Combo 2 đòn",
+      "unlockCondition": "Đạt Lv3",
+      "requires": "Chém cơ bản",
+      "effect": "Cho phép nối liên tiếp 2 đòn cận chiến trong 1 lần bấm, tăng tổng sát thương ~20% so với đánh rời rạc."
+    },
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T3",
+      "name": "Đòn xuyên giáp",
+      "unlockCondition": "Đạt Lv5",
+      "requires": "Combo 2 đòn",
+      "effect": "Đòn đặc biệt phá 30% giáp/khiên quái thường, không có tác dụng phá khiên boss (cần đạn bạc)."
+    },
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T4",
+      "name": "Phản đòn hoàn hảo",
+      "unlockCondition": "Đạt Lv8",
+      "requires": "Đòn xuyên giáp",
+      "effect": "Nếu bấm đỡ đòn (parry) đúng khung hình, phản lại gây sát thương gấp đôi đòn thường."
+    },
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T5",
+      "name": "Bộc phát 5 đòn",
+      "unlockCondition": "Đạt Lv12",
+      "requires": "Phản đòn hoàn hảo",
+      "effect": "Combo 5 đòn liên tiếp không ngắt quãng nếu mỗi đòn đều trúng mục tiêu, đòn cuối gây choáng nhẹ."
+    },
+    {
+      "branch": "Cận Chiến (Công)",
+      "tier": "T6 (Ultimate)",
+      "name": "Song đao hợp bích",
+      "unlockCondition": "Đạt Lv16 và đã rèn Kiếm Khắc Quỷ ở Session 9B",
+      "requires": "Bộc phát 5 đòn",
+      "effect": "Dùng đồng thời 2 vũ khí cận chiến, tăng tốc độ đòn đánh 25% nhưng giảm 15% khả năng phòng thủ khi thi triển."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T1",
+      "name": "Né tránh nhanh",
+      "unlockCondition": "Đạt Lv2",
+      "requires": "—",
+      "effect": "Dodge roll ngắn né được hầu hết đòn đánh thường, có 1 giây hồi chiêu."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T2",
+      "name": "Đỡ đòn (parry)",
+      "unlockCondition": "Đạt Lv3",
+      "requires": "Né tránh nhanh",
+      "effect": "Đỡ được đòn cận chiến của quái/boss nếu bấm đúng thời điểm, mở khóa tiềm năng Phản đòn hoàn hảo."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T3",
+      "name": "Kháng choáng",
+      "unlockCondition": "Đạt Lv6",
+      "requires": "Đỡ đòn (parry)",
+      "effect": "Giảm 20% thời lượng hiệu ứng choáng từ mọi nguồn (kể cả Nện Đất của Vệ Binh Đá Cổ)."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T4",
+      "name": "Kháng độc/máu",
+      "unlockCondition": "Đạt Lv9",
+      "requires": "Kháng choáng",
+      "effect": "Giảm 30% sát thương theo thời gian từ hiệu ứng độc và chảy máu."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T5",
+      "name": "Tĩnh tâm",
+      "unlockCondition": "Đạt Lv13",
+      "requires": "Kháng độc/máu",
+      "effect": "Đứng yên trong tư thế phòng thủ hồi nhẹ chỉ số Lý Trí theo thời gian, hữu ích trước các trận boss lớn."
+    },
+    {
+      "branch": "Sinh Tồn (Thủ)",
+      "tier": "T6 (Ultimate)",
+      "name": "Ý chí sắt đá",
+      "unlockCondition": "Đạt Lv17 và duy trì Lý Trí ở mức cao xuyên suốt game",
+      "requires": "Tĩnh tâm",
+      "effect": "Miễn nhiễm hoàn toàn 1 lần với hiệu ứng 'Đồng Hóa' của Vô Diện ở Phase 3 trận cuối."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T1",
+      "name": "Nộ khí",
+      "unlockCondition": "Đạt Lv7",
+      "requires": "—",
+      "effect": "Tích lũy đòn đánh trúng liên tục để kích hoạt buff tạm thời tăng 20% sát thương trong 8 giây."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T2",
+      "name": "Ném vũ khí phụ",
+      "unlockCondition": "Đạt Lv8",
+      "requires": "Nộ khí",
+      "effect": "Tấn công tầm ngắn không tốn đạn hiếm, sát thương thấp nhưng có thể spam liên tục."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T3",
+      "name": "Sức mạnh vay mượn",
+      "unlockCondition": "Chọn lựa chọn A ở Session 7B (chấp nhận hợp đồng với Vô Diện)",
+      "requires": "Ném vũ khí phụ",
+      "effect": "Tăng 15% sát thương cận chiến vĩnh viễn, nhưng Quỷ Tính tự động +1 sau mỗi 3 trận đánh."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T4",
+      "name": "Móng vuốt quỷ",
+      "unlockCondition": "Chọn lựa chọn B ở Session 8B (dùng sức mạnh để trả thù)",
+      "requires": "Sức mạnh vay mượn",
+      "effect": "Mở khóa vũ khí hắc ám 'Móng Vuốt Quỷ', sát thương rất cao nhưng tự gây 5% sát thương lên bản thân mỗi đòn."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T5",
+      "name": "Đồng hóa ngược",
+      "unlockCondition": "Đạt Lv14 và Quỷ Tính vượt ngưỡng cao",
+      "requires": "Móng vuốt quỷ",
+      "effect": "Chủ động mượn tạm sức mạnh Vô Diện trong 10 giây (tăng mạnh ATK/tốc độ) nhưng mất kiểm soát một phần thao tác né tránh."
+    },
+    {
+      "branch": "Quỷ Tính (Rủi Ro)",
+      "tier": "T6 (Ultimate)",
+      "name": "Cộng sinh",
+      "unlockCondition": "Chỉ dùng được nếu đi vào Ending Cộng Sinh (Session 11-A)",
+      "requires": "Đồng hóa ngược",
+      "effect": "Hợp nhất hoàn toàn kỹ năng cận chiến và Quỷ Tính, mở khóa riêng cho New Game+ ở vai trò 'Khải Cộng Sinh'."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "zones": [
+    {
+      "zone": "Zone 1 - Rừng Thông & Làng Ven Sông",
+      "place": "Nhà Hoang",
+      "description": "Điểm xuất phát, căn nhà gỗ bỏ hoang giữa rừng thông nơi Khải tỉnh dậy.",
+      "sessions": "Session 1, 2B",
+      "connections": "→ Làng Ven Sông",
+      "residents": "Chuột Cống Biến Dị, Nhện Bóng Tối"
+    },
+    {
+      "zone": "Zone 1 - Rừng Thông & Làng Ven Sông",
+      "place": "Làng Ven Sông",
+      "description": "Ngôi làng nhỏ sương mù dày đặc, cổng làng có dân quân canh gác.",
+      "sessions": "Session 2A",
+      "connections": "← Nhà Hoang · → Đồi Cao (Am Thờ)",
+      "residents": "Chó Săn Ma · Trưởng Làng Tứ"
+    },
+    {
+      "zone": "Zone 1 - Rừng Thông & Làng Ven Sông",
+      "place": "Đồi Cao (Am Thờ)",
+      "description": "Am thờ nhỏ phủ dây leo trên đỉnh đồi, nơi thầy Hạo tu luyện.",
+      "sessions": "Session 3",
+      "connections": "← Làng Ven Sông · → Nhà Kho Đá (Zone 2)",
+      "residents": "Quạ Đen Dị Dạng · Thầy Hạo"
+    },
+    {
+      "zone": "Zone 2 - Thị Trấn Rệu Rã & Vùng Lân Cận",
+      "place": "Nhà Kho Đá",
+      "description": "Kho đá bỏ hoang ngoài rìa làng dùng để tự giam giữ ban đêm.",
+      "sessions": "Session 4B",
+      "connections": "← Đồi Cao (Zone 1) · → Quảng Trường Trung Tâm",
+      "residents": "Dơi Máu · Én (nếu nhờ canh giữ)"
+    },
+    {
+      "zone": "Zone 2 - Thị Trấn Rệu Rã & Vùng Lân Cận",
+      "place": "Quảng Trường Trung Tâm",
+      "description": "Trung tâm thị trấn cổ, ban ngày họp chợ, ban đêm thành chiến trường.",
+      "sessions": "Session 5, 6A",
+      "connections": "← Nhà Kho Đá · → Quán Trọ Ven Sông · → Con Đường Rừng Sương",
+      "residents": "Xác Sống Thị Dân, Quạ Xác Thối, Đàn Sói Sương Mù (Boss) · Bà Tư Bán Thuốc · Nhi"
+    },
+    {
+      "zone": "Zone 2 - Thị Trấn Rệu Rã & Vùng Lân Cận",
+      "place": "Quán Trọ Ven Sông",
+      "description": "Quán trọ nhỏ ấm áp bên sông, nơi Khải và Nhi xây dựng lòng tin.",
+      "sessions": "Session 7A",
+      "connections": "← Quảng Trường Trung Tâm",
+      "residents": "Không có quái · Nhi"
+    },
+    {
+      "zone": "Zone 2 - Thị Trấn Rệu Rã & Vùng Lân Cận",
+      "place": "Con Đường Rừng Sương",
+      "description": "Đường mòn sương mù dày đặc nối thị trấn với vùng đền cổ.",
+      "sessions": "Session 6B",
+      "connections": "← Quảng Trường Trung Tâm · → Ngôi Đền Cổ (Zone 3)",
+      "residents": "Sói Sương Đơn Độc · Bé Tí"
+    },
+    {
+      "zone": "Zone 3 - Ngôi Đền Cổ & Xưởng Rèn",
+      "place": "Ngôi Đền Cổ",
+      "description": "Đền đá cổ chìm dưới rễ cây khổng lồ, trung tâm của Zone 3.",
+      "sessions": "Session 8A",
+      "connections": "← Con Đường Rừng Sương (Zone 2) · → Hang Động Ngầm · → Xưởng Rèn · → Bìa Rừng Cháy",
+      "residents": "Rễ Cây Quỷ Ám, Vệ Binh Đá Cổ (Boss) · Bóng Ma Nạn Nhân Đầu Tiên"
+    },
+    {
+      "zone": "Zone 3 - Ngôi Đền Cổ & Xưởng Rèn",
+      "place": "Hang Động Ngầm",
+      "description": "Hang động bên dưới ngôi đền, nơi thực hiện nghi lễ giải thoát.",
+      "sessions": "Session 9A",
+      "connections": "← Ngôi Đền Cổ",
+      "residents": "Tinh Thể Quỷ Ám, Người Gác Hang (Boss) · Ẩn Sĩ Mù"
+    },
+    {
+      "zone": "Zone 3 - Ngôi Đền Cổ & Xưởng Rèn",
+      "place": "Xưởng Rèn Sườn Núi",
+      "description": "Xưởng rèn bỏ hoang trên sườn núi kế bên đền, nơi chế vũ khí khắc quỷ.",
+      "sessions": "Session 9B",
+      "connections": "← Ngôi Đền Cổ",
+      "residents": "Quỷ Lùn Lò Rèn · Lão Rèn Cốc"
+    },
+    {
+      "zone": "Zone 3 - Ngôi Đền Cổ & Xưởng Rèn",
+      "place": "Bìa Rừng Cháy",
+      "description": "Khu rừng cháy xém sau cơn giận dữ mất kiểm soát của Khải.",
+      "sessions": "Session 8B",
+      "connections": "← Ngôi Đền Cổ",
+      "residents": "Thú Cháy Rừng · Thầy Hạo (xuất hiện lại)"
+    },
+    {
+      "zone": "Zone 4 - Đỉnh Đồi & Đại Sảnh Nghi Lễ",
+      "place": "Đỉnh Đồi",
+      "description": "Đỉnh đồi nhìn xuống đền cổ, nơi chuẩn bị lần cuối trước trận chiến.",
+      "sessions": "Session 10",
+      "connections": "← Ngôi Đền Cổ (Zone 3) · → Đại Sảnh Nghi Lễ",
+      "residents": "Không có quái · Nhi (nếu còn tin tưởng)"
+    },
+    {
+      "zone": "Zone 4 - Đỉnh Đồi & Đại Sảnh Nghi Lễ",
+      "place": "Không Gian Tiềm Thức",
+      "description": "Căn phòng trắng vô tận chứa ký ức vỡ vụn của Khải (chỉ vào được qua giấc ngủ).",
+      "sessions": "Session 11 (ẩn)",
+      "connections": "↔ Đỉnh Đồi (nhánh phụ, không bắt buộc)",
+      "residents": "Không có quái · Vô Diện (dạng tiềm thức)"
+    },
+    {
+      "zone": "Zone 4 - Đỉnh Đồi & Đại Sảnh Nghi Lễ",
+      "place": "Đại Sảnh Nghi Lễ",
+      "description": "Đại sảnh trung tâm ngôi đền, đấu trường boss cuối và nơi diễn ra nghi lễ.",
+      "sessions": "Session 12, 13A/13B/13C",
+      "connections": "← Đỉnh Đồi",
+      "residents": "Tay Sai Vô Diện · VÔ DIỆN (Boss Chính) · Ẩn Sĩ Mù/Thầy Hạo (hỗ trợ)"
+    },
+    {
+      "zone": "Zone 5 - Hầm Mộ Bí Mật (Secret)",
+      "place": "Quảng Trường Hậu Chiến",
+      "description": "Quảng trường thị trấn hồi sinh sau đêm cuối cùng, nơi diễn ra epilogue.",
+      "sessions": "Session 14",
+      "connections": "← Đại Sảnh Nghi Lễ (Zone 4) · → Hầm Mộ Bí Mật",
+      "residents": "Không có quái · Dân Làng (tổng hợp)"
+    },
+    {
+      "zone": "Zone 5 - Hầm Mộ Bí Mật (Secret)",
+      "place": "Hầm Mộ Bí Mật",
+      "description": "Hầm mộ ẩn dưới am thờ thầy Hạo, khắc tên hàng chục nạn nhân qua nhiều thế kỷ.",
+      "sessions": "Session 15A/15B (ẩn)",
+      "connections": "← Quảng Trường Hậu Chiến · (liên kết ngầm với Đồi Cao - Zone 1)",
+      "residents": "Hồn Ma Nạn Nhân Cũ · Thầy Hạo - Thật Diện Mạo (Boss Bí Mật)"
+    }
+  ]
+}

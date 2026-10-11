@@ -1,0 +1,604 @@
+{
+  "sessions": [
+    {
+      "id": "1",
+      "name": "Tỉnh Dậy Trong Máu",
+      "scenery": "Căn nhà gỗ hoang bỏ hoang giữa rừng thông, cửa sổ vỡ, ánh trăng lạnh chiếu qua khe ván. Sàn nhà loang vết máu khô, đồ đạc đổ vỡ như vừa có án mạng.",
+      "mission": "Khám phá căn nhà, tìm hiểu chuyện gì đã xảy ra đêm qua trước khi quyết định giấu xác hay điều tra.",
+      "monsters": "Chuột Cống Biến Dị x3 (HP thấp, cắn gây chảy máu nhẹ) — quái mở màn dạy cơ chế cận chiến cơ bản.",
+      "boss": "— (chưa có boss)",
+      "npc": "Không có NPC — chỉ có giọng nói thì thầm vô danh (Vô Diện) vang lên trong đầu Khải khi anh nhìn vào gương vỡ.",
+      "drops": "Dao Găm Gỉ (100%, vũ khí cận chiến khởi đầu) · Băng Đạn Cũ x2 (15%, đạn hiếm đầu game)",
+      "suggestedLevel": "Lv 1",
+      "effectText": "A: Chôn xác → QT +1 | B: Điều tra → LT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Chôn xác → QT +1",
+          "lt": 0,
+          "qt": 1
+        },
+        {
+          "id": "B",
+          "text": "Điều tra → LT +1",
+          "lt": 1,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "2A",
+      "name": "Kẻ Trốn Chạy",
+      "scenery": "Con đường đất dẫn vào một ngôi làng nhỏ ven sông, sương mù dày đặc, dân làng cầm đuốc đứng thành hàng rào cảnh giác nhìn người lạ.",
+      "mission": "Thuyết phục hoặc lẩn tránh nhóm dân quân đang truy hỏi về vụ án mạng trong rừng.",
+      "monsters": "Chó Săn Ma (theo dõi mùi máu, tốc độ cao, dễ dồn ép người chơi vào góc).",
+      "boss": "— (chưa có boss)",
+      "npc": "Trưởng Làng Tứ — đứng giữa cổng làng, tay cầm đuốc: \"Máu trên áo ngươi là của ai? Nói thật, ta sẽ tha.\"",
+      "drops": "Bùa Hộ Mệnh Rách (30%, giảm nhẹ tốc độ tăng QT) · Vải Băng Bó (60%, hồi HP nhỏ)",
+      "suggestedLevel": "Lv 2",
+      "effectText": "A1: Nói dối → QT +1 | A2: Thú nhận → LT +1",
+      "choices": [
+        {
+          "id": "A1",
+          "text": "Nói dối → QT +1",
+          "lt": 0,
+          "qt": 1
+        },
+        {
+          "id": "A2",
+          "text": "Thú nhận → LT +1",
+          "lt": 1,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "2B",
+      "name": "Người Điều Tra",
+      "scenery": "Gác mái căn nhà hoang, đầy mạng nhện và rương gỗ mục, ánh nến le lói từ cây đèn dầu Khải tự thắp.",
+      "mission": "Lục soát căn phòng, đọc cuốn nhật ký cũ ghi chép về Lời Nguyền Song Miên.",
+      "monsters": "Nhện Bóng Tối x4 (ẩn trong góc tối, chỉ lộ diện khi lại gần nguồn sáng).",
+      "boss": "— (chưa có boss)",
+      "npc": "Không có NPC trực tiếp — chỉ có nét chữ nguệch ngoạc của nạn nhân trước đó trong nhật ký.",
+      "drops": "Nhật Ký Nạn Nhân (100%, vật phẩm cốt truyện) · Rìu Cầm Tay (40%, vũ khí cận chiến tier 2)",
+      "suggestedLevel": "Lv 2",
+      "effectText": "B1: Đọc hết → LT +1 (mở info ẩn) | B2: Đốt đi → QT +1",
+      "choices": [
+        {
+          "id": "B1",
+          "text": "Đọc hết → LT +1 (mở info ẩn)",
+          "lt": 1,
+          "qt": 0
+        },
+        {
+          "id": "B2",
+          "text": "Đốt đi → QT +1",
+          "lt": 0,
+          "qt": 1
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Gặp Thầy Trừ Tà Hạo",
+      "scenery": "Một am thờ nhỏ trên đồi cao phủ đầy dây leo, chuông gió kêu leng keng dù không có gió, khói nhang nghi ngút không tan.",
+      "mission": "Nói chuyện với thầy Hạo, quyết định có chấp nhận dùng bùa khóa quỷ (đổi lấy một mảnh ký ức) hay không.",
+      "monsters": "Quạ Đen Dị Dạng x5 (bay thành đàn, gây choáng ngắn khi trúng đòn).",
+      "boss": "— (chưa có boss)",
+      "npc": "Thầy Hạo — ngồi khoanh chân trước bàn thờ giữa am: \"Ta có thể khóa nó lại mỗi đêm, nhưng cái giá là một mảnh ký ức của con. Con chịu không?\"",
+      "drops": "Bùa Khóa Quỷ (100% nếu chọn A, vật phẩm cốt truyện) · Đá Mài Vũ Khí (50%, nâng cấp sát thương cận chiến)",
+      "suggestedLevel": "Lv 3",
+      "effectText": "A: Dùng bùa → LT +2, QT -1 | B: Từ chối → QT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Dùng bùa → LT +2, QT -1",
+          "lt": 2,
+          "qt": -1
+        },
+        {
+          "id": "B",
+          "text": "Từ chối → QT +1",
+          "lt": 0,
+          "qt": 1
+        }
+      ]
+    },
+    {
+      "id": "4A",
+      "name": "Đêm Bị Khóa",
+      "scenery": "Không gian mộng mị méo mó: hành lang vô tận với gương treo hai bên, mỗi tấm gương phản chiếu một Khải khác đang cười.",
+      "mission": "Vượt qua 'hành lang gương' trong giấc mơ, lắng nghe hoặc chống lại giọng nói của Vô Diện.",
+      "monsters": "Bóng Gương x6 (bản sao của chính người chơi, sao chép đòn đánh cận chiến cuối cùng đã dùng).",
+      "boss": "— (mini-boss nhẹ: Bóng Gương Thủ Lĩnh — HP trung bình, phản đòn cận chiến 20%).",
+      "npc": "Giọng Vô Diện (không hiện hình, chỉ là âm thanh vọng khắp hành lang): \"Ngươi nghĩ khóa được ta sao? Ta chỉ đang... nghỉ ngơi.\"",
+      "drops": "Mảnh Gương Vỡ (35%, nguyên liệu chế vũ khí đặc biệt sau này)",
+      "suggestedLevel": "Lv 4",
+      "effectText": "A: Lắng nghe → QT +1 | B: Chống lại → LT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Lắng nghe → QT +1",
+          "lt": 0,
+          "qt": 1
+        },
+        {
+          "id": "B",
+          "text": "Chống lại → LT +1",
+          "lt": 1,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "4B",
+      "name": "Tự Lực Cánh Sinh",
+      "scenery": "Một nhà kho đá bỏ hoang ngoài rìa làng, xích sắt cũ treo trên tường, ánh đuốc bập bùng phản chiếu bóng Khải tự trói mình.",
+      "mission": "Chuẩn bị nơi tự giam giữ bản thân mỗi đêm; quyết định làm một mình hay nhờ người bạn canh giữ.",
+      "monsters": "Dơi Máu x4 (hút máu hồi phục cho chính nó, ưu tiên tiêu diệt nhanh bằng cận chiến).",
+      "boss": "— (chưa có boss)",
+      "npc": "Én (nếu chọn nhờ giúp) — đứng ngoài cửa kho đá ôm ngọn đuốc: \"Tôi sẽ canh cho tới sáng. Dù có chuyện gì, tôi cũng không mở cửa đâu.\"",
+      "drops": "Xích Sắt Gia Cố (100%, vật phẩm phòng thủ ban đêm) · Dầu Đèn (70%)",
+      "suggestedLevel": "Lv 4",
+      "effectText": "A: Tự trói một mình → không đổi | B: Nhờ Én canh → LT +1 (rủi ro nhân vật phụ)",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Tự trói một mình → không đổi",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Nhờ Én canh → LT +1 (rủi ro nhân vật phụ)",
+          "lt": 1,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Thị Trấn Rệu Rã",
+      "scenery": "Thị trấn cổ với những căn nhà gạch nứt nẻ, cổng thành gỗ mục nát, tiếng gào thét quái vật vọng lại mỗi khi hoàng hôn buông xuống.",
+      "mission": "Quyết định có công khai giúp thị trấn chống quái đêm hay âm thầm rời đi để tránh gây họa.",
+      "monsters": "Xác Sống Thị Dân x8 (số lượng đông, yếu nhưng bao vây), Quạ Xác Thối x4.",
+      "boss": "Đàn Sói Sương Mù — Boss nhỏ đầu game: HP trung bình-thấp, Skill 'Tru Gọi Bầy' (triệu hồi 2 sói con mỗi 20s), 'Cắn Xé Liên Hoàn' (3 đòn liên tiếp nếu bị dồn góc).",
+      "npc": "Bà Tư Bán Thuốc — đứng trước sạp thuốc gần cổng chợ: \"Cậu mà đánh lui được lũ quái đêm nay, cả thị trấn này mang ơn cậu suốt đời.\"",
+      "drops": "Thuốc Hồi Phục Cấp 1 (60%) · Băng Đạn Đồng x3 (20%, đạn hiếm) · Rương Kho Vũ Khí (mở khóa cửa hàng cận chiến tier 2)",
+      "suggestedLevel": "Lv 5-6",
+      "effectText": "A: Nhận lời giúp → LT +1 | B: Âm thầm rời đi → QT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Nhận lời giúp → LT +1",
+          "lt": 1,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Âm thầm rời đi → QT +1",
+          "lt": 0,
+          "qt": 1
+        }
+      ]
+    },
+    {
+      "id": "6A",
+      "name": "Anh Hùng Ban Ngày",
+      "scenery": "Quảng trường trung tâm thị trấn được trang hoàng cờ hoa cảm tạ ban ngày, nhưng ban đêm biến thành bãi chiến trường đẫm máu không ai hay biết.",
+      "mission": "Phát hiện Vô Diện đang lén giết dân làng ban đêm để 'trả giá' cho sức mạnh cho mượn ban ngày; quyết định giam mình lại hay che giấu tiếp tục.",
+      "monsters": "Bóng Đêm Rình Rập x5 (chỉ xuất hiện khi trời tối, tàng hình một phần, gây sát thương ngầm).",
+      "boss": "— (chưa có boss, sự kiện điều tra)",
+      "npc": "Nhi — đứng bên giếng nước cuối quảng trường, ánh mắt nghi ngờ: \"Sao mỗi sáng lại có người mất tích ngay sau khi anh 'chiến đấu' đêm qua?\"",
+      "drops": "Nhật Ký Tội Ác (100%, bằng chứng cốt truyện) · Thảo Dược An Thần (45%, giảm QT khi dùng)",
+      "suggestedLevel": "Lv 7",
+      "effectText": "A: Tự giam mình lại → LT +2 | B: Che giấu tiếp → QT +2",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Tự giam mình lại → LT +2",
+          "lt": 2,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Che giấu tiếp → QT +2",
+          "lt": 0,
+          "qt": 2
+        }
+      ]
+    },
+    {
+      "id": "6B",
+      "name": "Kẻ Lang Thang Cô Độc",
+      "scenery": "Con đường mòn xuyên rừng sương giữa hai thị trấn, sương mù dày tới mức chỉ thấy được vài bước chân, tiếng trẻ con khóc vọng lại từ xa.",
+      "mission": "Gặp một đứa trẻ lạc đường giữa rừng nguy hiểm; chọn cứu hay tự bảo toàn bản thân mà đi tiếp.",
+      "monsters": "Sói Sương Đơn Độc x3 (nhanh nhẹn, chuyên tách lẻ mục tiêu).",
+      "boss": "— (chưa có boss)",
+      "npc": "Bé Tí — đứa trẻ lạc, ngồi co ro dưới gốc cây: \"Chị con... chị con biến mất rồi... chú cứu chị con được không?\"",
+      "drops": "Bùa Bình An Trẻ Em (nếu cứu, 100%, vật phẩm hỗ trợ tăng LT thụ động) · Dây Thừng Cũ (50%)",
+      "suggestedLevel": "Lv 7",
+      "effectText": "A: Cứu đứa trẻ → LT +1 | B: Phớt lờ đi tiếp → QT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Cứu đứa trẻ → LT +1",
+          "lt": 1,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Phớt lờ đi tiếp → QT +1",
+          "lt": 0,
+          "qt": 1
+        }
+      ]
+    },
+    {
+      "id": "7A",
+      "name": "Ranh Giới Mong Manh",
+      "scenery": "Quán trọ nhỏ ven sông, ánh đèn dầu vàng ấm áp đối lập với những cơn ác mộng Khải vẫn thấy mỗi đêm.",
+      "mission": "Xây dựng lòng tin với Nhi — người duy nhất không sợ hãi Khải; quyết định kể thật hay giữ khoảng cách.",
+      "monsters": "Không có quái trong session này (session hội thoại/khám phá).",
+      "boss": "— (không có boss)",
+      "npc": "Nhi — ngồi đối diện bàn gỗ trong quán trọ, tay siết chặt tách trà: \"Tôi không sợ anh. Tôi chỉ sợ anh sẽ tự hủy hoại mình trước khi để tôi giúp.\"",
+      "drops": "Trâm Cài Kỷ Vật (100% nếu tin tưởng, vật phẩm cảm xúc — mở khóa hội thoại đặc biệt sau này)",
+      "suggestedLevel": "Lv 8",
+      "effectText": "A: Kể hết sự thật → LT +2 | B: Giữ khoảng cách → không đổi",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Kể hết sự thật → LT +2",
+          "lt": 2,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Giữ khoảng cách → không đổi",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "7B",
+      "name": "Thỏa Hiệp Với Bóng Tối",
+      "scenery": "Không gian tiềm thức tối tăm với những sợi xích đen quấn quanh một cái bóng người không mặt — hình ảnh Vô Diện lần đầu hiện rõ.",
+      "mission": "Vô Diện đề nghị hợp đồng: không giết người vô tội nếu Khải để nó ra tay lúc nguy cấp ban ngày.",
+      "monsters": "Không có quái — đối thoại với Vô Diện.",
+      "boss": "— (không có boss, chỉ là đối thoại)",
+      "npc": "Vô Diện — hiện hình lờ mờ giữa bóng tối tiềm thức: \"Ta không muốn giết ai cả. Ta chỉ muốn được sống. Để ta giúp ngươi, và không ai phải chết oan nữa.\"",
+      "drops": "Dấu Ấn Hợp Đồng (nếu chọn A, 100%, tăng sát thương cận chiến +15% nhưng tăng QT theo thời gian)",
+      "suggestedLevel": "Lv 8",
+      "effectText": "A: Chấp nhận hợp đồng → QT +2 | B: Từ chối → LT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Chấp nhận hợp đồng → QT +2",
+          "lt": 0,
+          "qt": 2
+        },
+        {
+          "id": "B",
+          "text": "Từ chối → LT +1",
+          "lt": 1,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "8A",
+      "name": "Sự Thật Về Vô Diện",
+      "scenery": "Ngôi đền cổ chìm dưới rễ cây khổng lồ, tường đá khắc đầy hình vẽ mô tả một người đàn ông bị quỷ nhập từ hàng trăm năm trước.",
+      "mission": "Khám phá nguồn gốc Vô Diện — từng là nạn nhân đầu tiên của lời nguyền; quyết định thương xót hay nghi ngờ đây là bẫy.",
+      "monsters": "Rễ Cây Quỷ Ám x6 (tấn công bằng gai độc, di chuyển chậm nhưng sát thương diện rộng).",
+      "boss": "Vệ Binh Đá Cổ — Boss vừa: HP cao, Skill 'Nện Đất' (gây choáng diện rộng), 'Giáp Đá' (miễn sát thương cận chiến 5s theo chu kỳ — buộc người chơi dùng đạn hiếm để phá giáp).",
+      "npc": "Bóng Ma Nạn Nhân Đầu Tiên — hiện lên từ bích họa cổ, giọng vọng yếu ớt: \"Ta chỉ muốn ngủ yên... nhưng nó không cho ta ngủ...\"",
+      "drops": "Đá Nguyền Cổ (100%, 1 trong 3 vật phẩm nghi lễ) · Băng Đạn Bạc x1 (10%, đạn hiếm cấp cao)",
+      "suggestedLevel": "Lv 9-10",
+      "effectText": "A: Thương xót → LT +2 | B: Nghi ngờ, chuẩn bị tiêu diệt → QT +1",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Thương xót → LT +2",
+          "lt": 2,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Nghi ngờ, chuẩn bị tiêu diệt → QT +1",
+          "lt": 0,
+          "qt": 1
+        }
+      ]
+    },
+    {
+      "id": "8B",
+      "name": "Sức Mạnh Mượn Từ Bóng Tối",
+      "scenery": "Bìa rừng cháy xém sau một cơn giận dữ mất kiểm soát của Khải, cây cối gãy đổ, vết móng vuốt cào sâu trên đất.",
+      "mission": "Đối mặt hậu quả của việc dùng sức mạnh quỷ ban ngày; quyết định nhờ thầy Hạo kiềm chế hay dùng nó để trả thù.",
+      "monsters": "Thú Cháy Rừng x5 (bị Khải làm bị thương từ trước, tấn công điên cuồng).",
+      "boss": "— (chưa có boss)",
+      "npc": "Thầy Hạo — đứng giữa đám cháy đã tàn, lắc đầu: \"Con đang biến thành thứ mà con từng sợ hãi nhất đấy.\"",
+      "drops": "Bùa Ổn Định Tâm Trí (nếu chọn A, 100%) · Móng Vuốt Quỷ (nếu chọn B, 100%, nguyên liệu vũ khí hắc ám)",
+      "suggestedLevel": "Lv 9-10",
+      "effectText": "A: Nhờ thầy Hạo → LT +1 | B: Trả thù → QT +2",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Nhờ thầy Hạo → LT +1",
+          "lt": 1,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Trả thù → QT +2",
+          "lt": 0,
+          "qt": 2
+        }
+      ]
+    },
+    {
+      "id": "9A",
+      "name": "Nghi Lễ Giải Thoát (Chuẩn Bị)",
+      "scenery": "Hang động ngầm dưới ngôi đền cổ, thạch nhũ phát sáng yếu ớt, không khí lạnh buốt như báo hiệu điều gì đó thiêng liêng sắp diễn ra.",
+      "mission": "Thu thập đủ 3 vật phẩm nghi lễ: máu người vô tội tự nguyện hiến, Đá Nguyền Cổ, Băng Đạn Bạc.",
+      "monsters": "Tinh Thể Quỷ Ám x4 (nổ tung khi bị hạ bằng cận chiến — nên ưu tiên đạn tầm xa hoặc né).",
+      "boss": "Người Gác Hang — Boss vừa: HP trung bình, Skill 'Phân Thân' (tách làm 2 bản HP thấp hơn), 'Hú Gọi Bóng Tối' (giảm tầm nhìn người chơi 5s).",
+      "npc": "Ẩn Sĩ Mù — ngồi thiền giữa hang động, không mở mắt: \"Máu tự nguyện khác máu cưỡng ép. Nghi lễ sẽ biết sự khác biệt đó, con trai à.\"",
+      "drops": "Máu Tự Nguyện (nếu có NPC hiến, 100%) · Băng Đạn Bạc x2 (25%)",
+      "suggestedLevel": "Lv 11-12",
+      "effectText": "A: Tìm đủ 3 vật phẩm sạch → LT +2 | B: Cưỡng ép lấy máu → QT +2",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Tìm đủ 3 vật phẩm sạch → LT +2",
+          "lt": 2,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Cưỡng ép lấy máu → QT +2",
+          "lt": 0,
+          "qt": 2
+        }
+      ]
+    },
+    {
+      "id": "9B",
+      "name": "Con Đường Hủy Diệt",
+      "scenery": "Xưởng rèn bỏ hoang bên sườn núi, lò lửa được nhóm lại lần đầu sau nhiều năm, tia lửa bắn tung tóe trong bóng tối.",
+      "mission": "Rèn vũ khí cận chiến đặc biệt khắc chế quỷ, hoặc lùng sục toàn vùng để gom nốt số đạn bạc còn sót lại.",
+      "monsters": "Quỷ Lùn Lò Rèn x5 (kháng sát thương cận chiến thường, chỉ yếu trước vũ khí vừa nung).",
+      "boss": "— (chưa có boss, session chế tạo)",
+      "npc": "Lão Rèn Cốc — đứng bên lò lửa, tay đầy sẹo bỏng: \"Thứ thép này sẽ cắn vào thịt quỷ như cắn vào thịt người. Nhưng ta không đảm bảo cậu sống sót khi rèn nó.\"",
+      "drops": "Kiếm Khắc Quỷ (nếu chọn A, 100%, vũ khí cận chiến tier cao khắc chế Vô Diện) · Băng Đạn Bạc x2 (nếu chọn B, 40%)",
+      "suggestedLevel": "Lv 11-12",
+      "effectText": "A: Rèn vũ khí khắc chế → tăng ATK cận chiến | B: Săn đạn bạc → tăng dự trữ tầm xa",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Rèn vũ khí khắc chế → tăng ATK cận chiến",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Săn đạn bạc → tăng dự trữ tầm xa",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Đêm Trước Trận Chiến",
+      "scenery": "Đỉnh đồi nhìn xuống toàn cảnh ngôi đền cổ dưới ánh trăng máu, gió rít qua từng kẽ đá, không khí nặng nề như báo trước điều gì đó không thể quay đầu.",
+      "mission": "Chuẩn bị lần cuối trước trận chiến quyết định: ngủ một đêm để đối thoại tiềm thức với Vô Diện, hoặc thức trắng chuẩn bị vũ khí.",
+      "monsters": "Không có quái random — chỉ có Điềm Báo (hiệu ứng hình ảnh, không chiến đấu).",
+      "boss": "— (session chuyển tiếp)",
+      "npc": "Nhi (nếu còn tin tưởng) — đứng cạnh Khải trên đồi, nắm tay anh: \"Dù ngày mai có chuyện gì, tôi vẫn ở đây. Anh không phải một mình đâu.\"",
+      "drops": "Bữa Ăn Cuối Cùng (buff tạm thời +HP tối đa cho trận Boss chính)",
+      "suggestedLevel": "Lv 13",
+      "effectText": "A: Ngủ, đối thoại → mở Session 11 | B: Thức trắng chuẩn bị → thẳng Session 12",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Ngủ, đối thoại → mở Session 11",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Thức trắng chuẩn bị → thẳng Session 12",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Đối Thoại Nội Tâm (Ẩn)",
+      "scenery": "Không gian tiềm thức trừu tượng: một căn phòng trắng vô tận treo đầy những mảnh ký ức vỡ vụn của Khải, trôi lơ lửng như thủy tinh.",
+      "mission": "Đối thoại trực tiếp với Vô Diện bằng ký ức thay vì vũ lực — chọn thấu hiểu để đề nghị cộng sinh, hoặc cự tuyệt khẳng định ý chí.",
+      "monsters": "Không có quái — hoàn toàn là đối thoại tâm lý.",
+      "boss": "Vô Diện (dạng Tiềm Thức) — không phải trận đánh, mà là 'trận đấu ký ức': mỗi lựa chọn hội thoại giống một đòn tấn công/phòng thủ tâm lý.",
+      "npc": "Vô Diện — không còn là bóng đen vô diện nữa mà mang gương mặt mờ nhạt giống Khải thời trẻ: \"Ngươi và ta... vốn dĩ đâu khác nhau là mấy.\"",
+      "drops": "Ký Ức Hoàn Chỉnh (nếu chọn A, 100%, mở khóa Kết thúc Cộng Sinh)",
+      "suggestedLevel": "Lv 13",
+      "effectText": "A: Thấu hiểu, đề nghị cộng sinh → mở Ending Cộng Sinh | B: Cự tuyệt → LT +3",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Thấu hiểu, đề nghị cộng sinh → mở Ending Cộng Sinh",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Cự tuyệt → LT +3",
+          "lt": 3,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "name": "Trận Chiến Cuối Cùng",
+      "scenery": "Đại sảnh trung tâm ngôi đền cổ, các cột đá khắc bùa chú phát sáng đỏ rực, bàn thờ nghi lễ đặt giữa phòng chờ được kích hoạt.",
+      "mission": "Boss fight chính: đánh bại hoặc thực hiện nghi lễ với Vô Diện, dựa trên vật phẩm và chỉ số đã tích lũy.",
+      "monsters": "Tay Sai Vô Diện x6 (triệu hồi liên tục trong suốt trận, ưu tiên dọn dẹp nhanh bằng cận chiến để tập trung vào boss).",
+      "boss": "VÔ DIỆN (Boss Chính, 3 Phase):\nPhase 1 'Thức Tỉnh' — HP cao, Skill 'Vuốt Bóng Tối' (combo cận chiến 3 đòn), 'Nuốt Ánh Sáng' (tối màn hình, giảm tầm nhìn).\nPhase 2 'Phẫn Nộ' — tốc độ tăng 30%, thêm Skill 'Nhân Bản Bóng' (tạo 2 bản sao yếu để đánh lạc hướng).\nPhase 3 'Tuyệt Vọng' — chỉ kích hoạt nếu QT người chơi cao suốt game: Skill 'Đồng Hóa' (cố gắng chiếm luôn thân xác Khải giữa trận, cần bấm nhanh QTE để kháng lại).",
+      "npc": "Ẩn Sĩ Mù / Thầy Hạo (nếu còn sống) — đứng ngoài rìa đại sảnh trì tụng chú thuật hỗ trợ: \"Giữ vững tâm trí! Đừng để nó len vào từng khoảnh khắc con lơ là!\"",
+      "drops": "— (không rơi item thường, kết quả trận quyết định nhánh 13A/13B/13C)",
+      "suggestedLevel": "Lv 14-15",
+      "effectText": "Kết quả tùy tổ hợp LT/QT + vật phẩm nghi lễ + vũ khí đã chuẩn bị",
+      "choices": [
+        {
+          "id": "",
+          "text": "Kết quả tùy tổ hợp LT/QT + vật phẩm nghi lễ + vũ khí đã chuẩn bị",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "13A",
+      "name": "Nghi Lễ Thành Công",
+      "scenery": "Đại sảnh rung chuyển, ánh sáng trắng tỏa ra từ bàn thờ nghi lễ nuốt chửng bóng tối của Vô Diện đang tan rã dần.",
+      "mission": "Quyết định ai sẽ giữ chỗ Vô Diện trong nghi thức để nó tan biến an toàn: Khải tự hy sinh, hay để Nhi/đồng minh gánh một phần.",
+      "monsters": "Không có quái — session kết thúc nghi lễ.",
+      "boss": "— (không có boss, hậu chiến với Vô Diện)",
+      "npc": "Nhi (nếu còn sống) — nắm chặt tay Khải giữa ánh sáng nghi lễ: \"Để tôi cùng gánh với anh. Anh không cần phải biến mất một mình.\"",
+      "drops": "— (dẫn thẳng Ending Hy Sinh hoặc Ending Cứu Rỗi)",
+      "suggestedLevel": "Lv 15+",
+      "effectText": "A: Khải tự hy sinh → Ending Hy Sinh | B: Nhi/đồng minh cùng gánh → Ending Cứu Rỗi",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Khải tự hy sinh → Ending Hy Sinh",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Nhi/đồng minh cùng gánh → Ending Cứu Rỗi",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "13B",
+      "name": "Chiến Thắng Đẫm Máu",
+      "scenery": "Đại sảnh ngập trong khói đen và tro tàn, Vô Diện gục xuống nhưng ranh giới giữa nó và Khải đã mờ nhạt đến mức khó phân biệt.",
+      "mission": "Quyết định cắt đứt hoàn toàn sức mạnh quỷ dù yếu đi vĩnh viễn, hay giữ lại một phần để tồn tại.",
+      "monsters": "Không có quái — session kết thúc trận đánh.",
+      "boss": "— (Vô Diện đã bị hạ, chỉ còn dư âm)",
+      "npc": "Giọng Vô Diện (yếu ớt, gần như biến mất): \"Ngươi thắng rồi đấy... nhưng ngươi có chắc phần 'ngươi' còn thắng không?\"",
+      "drops": "— (dẫn thẳng Ending Cứu Rỗi khiếm khuyết hoặc Ending Sa Ngã)",
+      "suggestedLevel": "Lv 15+",
+      "effectText": "A: Cắt đứt hoàn toàn → Ending Cứu Rỗi (khiếm khuyết) | B: Giữ lại sức mạnh → Ending Sa Ngã",
+      "choices": [
+        {
+          "id": "A",
+          "text": "Cắt đứt hoàn toàn → Ending Cứu Rỗi (khiếm khuyết)",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "B",
+          "text": "Giữ lại sức mạnh → Ending Sa Ngã",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "13C",
+      "name": "Sụp Đổ",
+      "scenery": "Đại sảnh chìm trong bóng tối tuyệt đối, tiếng thét cuối cùng của Khải vang vọng rồi tắt lịm, thay vào đó là tiếng cười lạnh của Vô Diện.",
+      "mission": "Không có lựa chọn — chuẩn bị không đủ khiến Khải mất quyền kiểm soát hoàn toàn ngay giữa trận.",
+      "monsters": "Không có quái — cắt cảnh kết thúc.",
+      "boss": "— (Vô Diện thắng tuyệt đối)",
+      "npc": "Vô Diện (giọng đã hoàn toàn thay thế Khải): \"Cảm ơn vì đã cho ta mượn thân xác này lâu đến vậy.\"",
+      "drops": "— (dẫn thẳng Ending Sa Ngã toàn phần)",
+      "suggestedLevel": "—",
+      "effectText": "Không đủ chuẩn bị (LT & QT đều thấp) → Ending Sa Ngã toàn phần",
+      "choices": [
+        {
+          "id": "",
+          "text": "Không đủ chuẩn bị (LT & QT đều thấp) → Ending Sa Ngã toàn phần",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "name": "Hậu Chiến",
+      "scenery": "Quảng trường thị trấn hồi sinh sau đêm cuối cùng, ánh nắng sớm chiếu qua đống đổ nát đang được dọn dẹp, dân làng tụ tập bàn tán.",
+      "mission": "Chứng kiến phản ứng của thị trấn/Nhi với toàn bộ hành trình của Khải, dựa trên lịch sử lựa chọn từ Session 1-9.",
+      "monsters": "Không có quái — session kết đóng vai trò epilogue.",
+      "boss": "— (không có boss)",
+      "npc": "Dân Làng (tổng hợp) — tụ tập trước quảng trường, phản ứng thay đổi theo LT/QT tích lũy: \"Cậu ấy đã cứu chúng ta...\" hoặc \"Đuổi nó đi, nó không phải người nữa!\"",
+      "drops": "— (không rơi item, chỉ ảnh hưởng đoạn kết narrative)",
+      "suggestedLevel": "Lv 15+ (final)",
+      "effectText": "LT cao → củng cố Ending Cứu Rỗi | QT cao → đẩy về Ending Cộng Sinh/Sa Ngã",
+      "choices": [
+        {
+          "id": "",
+          "text": "LT cao → củng cố Ending Cứu Rỗi",
+          "lt": 0,
+          "qt": 0
+        },
+        {
+          "id": "",
+          "text": "QT cao → đẩy về Ending Cộng Sinh/Sa Ngã",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "15A",
+      "name": "Vòng Lặp — Người Phá Vòng (Bí Mật)",
+      "scenery": "Hầm mộ ẩn dưới am thờ thầy Hạo, tường đá khắc chi chít tên của hàng chục nạn nhân trước đó qua nhiều thế kỷ.",
+      "mission": "Vạch trần sự thật thầy Hạo là người đã sống sót qua hàng chục vòng lặp bằng cách chuyển lời nguyền sang người mới; chọn phá vỡ vòng lặp vĩnh viễn.",
+      "monsters": "Hồn Ma Nạn Nhân Cũ x8 (linh hồn các nạn nhân trước, không thù địch nhưng cản đường, cần né tránh thay vì tiêu diệt).",
+      "boss": "THẦY HẠO — THẬT DIỆN MẠO (Boss Bí Mật): HP rất cao, Skill 'Chuyển Nguyền' (cố ép buộc chuyển lời nguyền ngược lại người chơi giữa trận), 'Ký Ức Vay Mượn' (sao chép một skill Khải đã dùng trong Session 12).",
+      "npc": "Thầy Hạo (khi bị vạch trần) — quỳ giữa hầm mộ, giọng run rẩy: \"Ta chỉ muốn sống thêm... một lần nữa thôi... con hiểu không?\"",
+      "drops": "Lõi Vòng Lặp (100%, vật phẩm phá vỡ lời nguyền vĩnh viễn — cần hy sinh lớn khi dùng)",
+      "suggestedLevel": "Lv 16+ (secret)",
+      "effectText": "Điều kiện ẩn: đọc hết nhật ký (2B) + giữ Nhi tin tưởng (7A) + LT rất cao xuyên suốt → Ending Bí Mật: Người Phá Vòng",
+      "choices": [
+        {
+          "id": "",
+          "text": "Điều kiện ẩn: đọc hết nhật ký (2B) + giữ Nhi tin tưởng (7A) + LT rất cao xuyên suốt → Ending Bí Mật: Người Phá Vòng",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    },
+    {
+      "id": "15B",
+      "name": "Vòng Lặp — Kẻ Kế Thừa (Bí Mật)",
+      "scenery": "Cùng hầm mộ như 15A nhưng Khải chọn lặng lẽ rời đi, ánh đuốc dần tắt sau lưng khi cánh cửa hầm mộ đóng lại.",
+      "mission": "Im lặng bỏ đi, để vòng lặp tiếp diễn với nạn nhân tiếp theo mà không can thiệp.",
+      "monsters": "Không có quái — session rời đi trong im lặng.",
+      "boss": "— (không đối đầu boss)",
+      "npc": "Thầy Hạo (nhìn theo bóng Khải rời đi, thì thầm): \"Vòng lặp sẽ luôn tìm được người kế tiếp thôi...\"",
+      "drops": "— (không rơi item, mở New Game+ trong vai nạn nhân tiếp theo)",
+      "suggestedLevel": "Lv 16+ (secret)",
+      "effectText": "→ Ending Bí Mật: Kẻ Kế Thừa (mở New Game+)",
+      "choices": [
+        {
+          "id": "",
+          "text": "→ Ending Bí Mật: Kẻ Kế Thừa (mở New Game+)",
+          "lt": 0,
+          "qt": 0
+        }
+      ]
+    }
+  ]
+}

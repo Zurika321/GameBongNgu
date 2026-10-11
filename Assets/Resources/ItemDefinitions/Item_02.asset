@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2251b49ef2e2c9469d3d7e3ed4ba330, type: 3}
+  m_Name: Item_02
+  m_EditorClassIdentifier: Assembly-CSharp::ItemDefinition
+  itemName: "R\xECu C\u1EA7m Tay"
+  description: "R\xECu g\u1ECDn nh\u1EB9, t\u0103ng s\u1EE9c t\u1EA5n c\xF4ng."
+  category: 0
+  icon: {fileID: 21300000, guid: 5b9870614ee21af48af630074a6b7cb2, type: 3}
+  maxStack: 99
+  attackBonus: 4
+  defenseBonus: 0
+  maxHealthBonus: 0
+  healAmount: 0
+  isReadable: 0
+  canBeBurned: 0
+  readingText: 
+  rarity: "Hi\u1EBFm"
+  dropSource: Connected Zone 1-2 / story through Session 5. Edit icon and stats in
+    the Inspector.

@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: Dialogue_Session_7A
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 7A
+  npcName: Nhi
+  nodes:
+  - text: "T\xF4i kh\xF4ng s\u1EE3 anh. T\xF4i ch\u1EC9 s\u1EE3 anh s\u1EBD t\u1EF1
+      h\u1EE7y ho\u1EA1i m\xECnh tr\u01B0\u1EDBc khi \u0111\u1EC3 t\xF4i gi\xFAp."
+    nextNodeIndex: -1
+    choices:
+    - sessionId: 7A
+      choiceId: 7A1
+      label: "K\u1EC3 cho Nhi to\xE0n b\u1ED9 s\u1EF1 th\u1EADt"
+      requiredFlag: 
+      resultText: "Nhi l\u1EAFng nghe m\xE0 kh\xF4ng ng\u1EAFt l\u1EDDi. C\xF4 h\u1EE9a
+        s\u1EBD c\xF9ng Kh\u1EA3i t\xECm c\xE1ch ch\u1EA5m d\u1EE9t chuy\u1EC7n n\xE0y."
+      nextNodeIndex: -1
+      ltDelta: 2
+      qtDelta: 0
+    - sessionId: 7A
+      choiceId: 7A2
+      label: "Gi\u1EEF kho\u1EA3ng c\xE1ch"
+      requiredFlag: 
+      resultText: "Kh\u1EA3i \u0111\u1ED5i ch\u1EE7 \u0111\u1EC1. Nhi kh\xF4ng \xE9p
+        anh n\xF3i, nh\u01B0ng cu\u1ED9c tr\xF2 chuy\u1EC7n kh\xE9p l\u1EA1i s\u1EDBm."
+      nextNodeIndex: -1
+      ltDelta: 0
+      qtDelta: 0

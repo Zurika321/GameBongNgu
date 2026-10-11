@@ -1,0 +1,156 @@
+{
+  "items": [
+    {
+      "name": "Dao Găm Gỉ",
+      "type": "Vũ khí cận chiến",
+      "rarity": "Thường",
+      "dropRate": "100%",
+      "source": "Nhặt được cố định ở Session 1",
+      "description": "Vũ khí khởi đầu, sát thương thấp nhưng tốc độ nhanh."
+    },
+    {
+      "name": "Rìu Cầm Tay",
+      "type": "Vũ khí cận chiến (Tier 2)",
+      "rarity": "Thường",
+      "dropRate": "40%",
+      "source": "Rương gác mái - Session 2B",
+      "description": "Sát thương cao hơn dao găm, tốc độ chậm hơn."
+    },
+    {
+      "name": "Kiếm Khắc Quỷ",
+      "type": "Vũ khí cận chiến (Tier cao)",
+      "rarity": "Hiếm",
+      "dropRate": "Chế tạo (không random)",
+      "source": "Nhiệm vụ rèn vũ khí - Session 9B (lựa chọn A)",
+      "description": "Sát thương thường + bonus riêng khi đánh Vô Diện và tay sai của nó."
+    },
+    {
+      "name": "Băng Đạn Cũ",
+      "type": "Đạn tầm xa (Tier 1)",
+      "rarity": "Hiếm",
+      "dropRate": "15%",
+      "source": "Rơi ngẫu nhiên - Session 1, khu vực đầu game",
+      "description": "Dùng cho vũ khí tầm xa cấp thấp, sát thương vừa phải."
+    },
+    {
+      "name": "Băng Đạn Đồng",
+      "type": "Đạn tầm xa (Tier 2)",
+      "rarity": "Hiếm",
+      "dropRate": "20%",
+      "source": "Rơi ngẫu nhiên - Session 5 (Zone 2)",
+      "description": "Sát thương tầm xa khá, hiệu quả với quái có giáp nhẹ."
+    },
+    {
+      "name": "Băng Đạn Bạc",
+      "type": "Đạn tầm xa (Tier cao)",
+      "rarity": "Rất hiếm",
+      "dropRate": "10% (quái thường) / 25% (boss)",
+      "source": "Rơi từ Vệ Binh Đá Cổ, Người Gác Hang - Session 8A/9A",
+      "description": "Đạn duy nhất phá được khiên 'Giáp Đá' và gây thêm sát thương lên boss/Vô Diện."
+    },
+    {
+      "name": "Bùa Hộ Mệnh Rách",
+      "type": "Vật phẩm hỗ trợ",
+      "rarity": "Thường",
+      "dropRate": "30%",
+      "source": "Rơi từ Chó Săn Ma - Session 2A",
+      "description": "Giảm nhẹ tốc độ tăng chỉ số Quỷ Tính khi mang theo."
+    },
+    {
+      "name": "Bùa Khóa Quỷ",
+      "type": "Vật phẩm cốt truyện",
+      "rarity": "Duy nhất",
+      "dropRate": "100% (nếu chọn A)",
+      "source": "Nhiệm vụ - Session 3",
+      "description": "Kìm hãm một phần Vô Diện vào ban đêm, đổi lấy một mảnh ký ức."
+    },
+    {
+      "name": "Nhật Ký Nạn Nhân",
+      "type": "Vật phẩm cốt truyện",
+      "rarity": "Duy nhất",
+      "dropRate": "100%",
+      "source": "Nhiệm vụ - Session 2B",
+      "description": "Mở khóa thông tin nền về Lời Nguyền Song Miên."
+    },
+    {
+      "name": "Nhật Ký Tội Ác",
+      "type": "Vật phẩm cốt truyện / bằng chứng",
+      "rarity": "Duy nhất",
+      "dropRate": "100%",
+      "source": "Nhiệm vụ - Session 6A",
+      "description": "Bằng chứng Vô Diện giết người ban đêm, ảnh hưởng Session 14."
+    },
+    {
+      "name": "Trâm Cài Kỷ Vật",
+      "type": "Vật phẩm cảm xúc",
+      "rarity": "Duy nhất",
+      "dropRate": "100% (nếu tin tưởng Nhi)",
+      "source": "Nhiệm vụ - Session 7A",
+      "description": "Mở khóa hội thoại đặc biệt và một lựa chọn thêm ở Session 13A."
+    },
+    {
+      "name": "Dấu Ấn Hợp Đồng",
+      "type": "Vật phẩm cốt truyện / buff",
+      "rarity": "Duy nhất",
+      "dropRate": "100% (nếu chọn A)",
+      "source": "Nhiệm vụ - Session 7B",
+      "description": "Tăng 15% sát thương cận chiến nhưng tăng dần Quỷ Tính theo thời gian."
+    },
+    {
+      "name": "Đá Nguyền Cổ",
+      "type": "Vật phẩm nghi lễ (1/3)",
+      "rarity": "Duy nhất",
+      "dropRate": "100% (nhiệm vụ) / rơi từ Vệ Binh Đá Cổ nếu bỏ lỡ",
+      "source": "Session 8A",
+      "description": "Một trong 3 vật phẩm bắt buộc để thực hiện nghi lễ giải thoát ở Session 9A/13A."
+    },
+    {
+      "name": "Máu Tự Nguyện",
+      "type": "Vật phẩm nghi lễ (2/3)",
+      "rarity": "Duy nhất",
+      "dropRate": "Tùy thuộc NPC hiến tặng",
+      "source": "Nhiệm vụ - Session 9A",
+      "description": "Vật phẩm nghi lễ 'sạch', ảnh hưởng trực tiếp đến khả năng mở Ending Cứu Rỗi trọn vẹn."
+    },
+    {
+      "name": "Móng Vuốt Quỷ",
+      "type": "Nguyên liệu chế tạo",
+      "rarity": "Hiếm",
+      "dropRate": "100% (nếu chọn B ở Session 8B)",
+      "source": "Session 8B",
+      "description": "Nguyên liệu chế vũ khí hắc ám, tăng sát thương nhưng đẩy nhanh Quỷ Tính."
+    },
+    {
+      "name": "Mảnh Gương Vỡ",
+      "type": "Nguyên liệu chế tạo",
+      "rarity": "Hiếm",
+      "dropRate": "35%",
+      "source": "Rơi từ Bóng Gương - Session 4A",
+      "description": "Dùng để chế vũ khí đặc biệt phản chiếu sát thương ở giai đoạn giữa game."
+    },
+    {
+      "name": "Thảo Dược An Thần",
+      "type": "Tiêu hao",
+      "rarity": "Thường",
+      "dropRate": "45%",
+      "source": "Rơi ngẫu nhiên - Session 6A",
+      "description": "Giảm nhẹ chỉ số Quỷ Tính khi sử dụng, không giới hạn số lần mang theo."
+    },
+    {
+      "name": "Lõi Vòng Lặp",
+      "type": "Vật phẩm cốt truyện (Secret)",
+      "rarity": "Duy nhất",
+      "dropRate": "100%",
+      "source": "Boss Thầy Hạo - Session 15A",
+      "description": "Vật phẩm phá vỡ lời nguyền vĩnh viễn, yêu cầu hy sinh lớn khi sử dụng — quyết định Ending Bí Mật."
+    },
+    {
+      "name": "Xích Sắt Gia Cố",
+      "type": "Vật phẩm phòng thủ ban đêm",
+      "rarity": "Thường",
+      "dropRate": "100%",
+      "source": "Nhiệm vụ - Session 4B",
+      "description": "Giảm rủi ro Vô Diện gây hại khi Khải tự giam mình ban đêm."
+    }
+  ]
+}

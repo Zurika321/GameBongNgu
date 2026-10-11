@@ -1,0 +1,64 @@
+{
+  "bosses": [
+    {
+      "name": "Bóng Gương Thủ Lĩnh",
+      "session": "Session 4A",
+      "difficulty": "★★★☆☆ (mini-boss)",
+      "hp": 150,
+      "phaseCount": 1,
+      "skills": "Phản đòn cận chiến 20% (gây sát thương ngược nếu tấn công liên tục không né). Sao chép combo mạnh nhất người chơi đã dùng trong session.",
+      "counter": "Xen kẽ đòn nhẹ và đòn nặng để nó không kịp học pattern; ưu tiên đỡ đòn (parry) thay vì spam tấn công.",
+      "rewards": "Mảnh Gương Hoàn Hảo (60%, nguyên liệu chế vũ khí đặc biệt)"
+    },
+    {
+      "name": "Đàn Sói Sương Mù",
+      "session": "Session 5",
+      "difficulty": "★★★☆☆",
+      "hp": 260,
+      "phaseCount": 2,
+      "skills": "Phase 1: 'Tru Gọi Bầy' — triệu hồi 2 sói con mỗi 20 giây. Phase 2 (dưới 40% HP): 'Cắn Xé Liên Hoàn' — 3 đòn cận chiến liên tiếp nếu người chơi bị dồn vào góc tường.",
+      "counter": "Giữ khoảng trống di chuyển, ưu tiên hạ sói con trước để giảm áp lực số đông.",
+      "rewards": "Da Sói Đầu Đàn (50%), Bùa Hồi Máu (30%)"
+    },
+    {
+      "name": "Vệ Binh Đá Cổ",
+      "session": "Session 8A",
+      "difficulty": "★★★★☆",
+      "hp": 420,
+      "phaseCount": 2,
+      "skills": "Phase 1: 'Nện Đất' — gây choáng diện rộng quanh boss. Phase 2 (dưới 50% HP): 'Giáp Đá' — miễn sát thương cận chiến 5 giây theo chu kỳ, chỉ có thể phá bằng đạn hiếm (Băng Đạn Bạc) trong lúc kích hoạt giáp.",
+      "counter": "Giữ ít nhất 1 viên đạn bạc trước khi vào trận; né đòn Nện Đất bằng dodge roll đúng thời điểm.",
+      "rewards": "Đá Nguyền Cổ (nếu chưa có, 100%), Lõi Đá Cổ (35%)"
+    },
+    {
+      "name": "Người Gác Hang",
+      "session": "Session 9A",
+      "difficulty": "★★★★☆",
+      "hp": 380,
+      "phaseCount": 2,
+      "skills": "Phase 1: 'Phân Thân' — tách thành 2 bản sao HP thấp hơn (mỗi bản 50% HP gốc). Phase 2: 'Hú Gọi Bóng Tối' — giảm tầm nhìn người chơi 5 giây, dễ bị đánh lén nếu không né kịp.",
+      "counter": "Tập trung hạ từng bản sao thay vì đánh lan man; dùng vật phẩm hồi tầm nhìn nếu có.",
+      "rewards": "Ngọc Bóng Tối (40%), Băng Đạn Bạc x1 (25%)"
+    },
+    {
+      "name": "VÔ DIỆN (Boss Chính)",
+      "session": "Session 12",
+      "difficulty": "★★★★★ (Final Boss)",
+      "hp": 900,
+      "phaseCount": 3,
+      "skills": "Phase 1 'Thức Tỉnh': combo cận chiến 3 đòn 'Vuốt Bóng Tối'; 'Nuốt Ánh Sáng' làm tối màn hình, giảm tầm nhìn 8 giây. Phase 2 'Phẫn Nộ' (dưới 60% HP): tốc độ +30%, thêm 'Nhân Bản Bóng' tạo 2 bản sao yếu gây nhiễu. Phase 3 'Tuyệt Vọng' (chỉ kích hoạt nếu QT người chơi cao xuyên suốt game, dưới 25% HP): 'Đồng Hóa' — cố chiếm thân xác Khải, yêu cầu bấm nhanh QTE liên tục để kháng lại, thất bại QTE dẫn thẳng Session 13C.",
+      "counter": "Chuẩn bị đủ 3 vật phẩm nghi lễ trước trận; giữ ít nhất 2-3 viên đạn bạc để phá Phase 2 nhanh; luyện phản xạ QTE nếu nghi ngờ QT tích lũy cao.",
+      "rewards": "— (không rơi item thường, kết quả trận quyết định thẳng Session 13A/13B/13C)"
+    },
+    {
+      "name": "Thầy Hạo — Thật Diện Mạo",
+      "session": "Session 15A (Secret Boss)",
+      "difficulty": "★★★★★ (Secret, khó hơn cả Final Boss)",
+      "hp": 750,
+      "phaseCount": 2,
+      "skills": "Phase 1: 'Chuyển Nguyền' — cố ép chuyển lời nguyền ngược lại người chơi giữa trận (thanh kháng cự phải giữ trên 50% bằng cách tấn công liên tục). Phase 2 (dưới 45% HP): 'Ký Ức Vay Mượn' — sao chép ngẫu nhiên 1 skill mạnh Khải từng dùng ở Session 12.",
+      "counter": "Duy trì áp lực tấn công liên tục ở Phase 1 để tránh bị chuyển nguyền; theo dõi kỹ animation báo trước của skill sao chép ở Phase 2.",
+      "rewards": "Lõi Vòng Lặp (100%, vật phẩm kết thúc bí mật)"
+    }
+  ]
+}

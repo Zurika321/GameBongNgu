@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: Dialogue_Session_9B
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 9B
+  npcName: "L\xE3o R\xE8n C\u1ED1c"
+  nodes:
+  - text: "Th\u1EE9 th\xE9p n\xE0y s\u1EBD c\u1EAFn v\xE0o th\u1ECBt qu\u1EF7 nh\u01B0
+      c\u1EAFn v\xE0o th\u1ECBt ng\u01B0\u1EDDi. Nh\u01B0ng ta kh\xF4ng \u0111\u1EA3m
+      b\u1EA3o c\u1EADu s\u1ED1ng s\xF3t khi r\xE8n n\xF3."
+    nextNodeIndex: -1
+    choices:
+    - sessionId: 9B
+      choiceId: 9B1
+      label: "R\xE8n Ki\u1EBFm Kh\u1EAFc Qu\u1EF7 (c\u1EA7n \u0111\u1EE7 3 Qu\u1EB7ng
+        Qu\u1EF7)"
+      requiredFlag: HasOre3
+      resultText: "L\xE3o C\u1ED1c nh\xF3m l\xF2. Ti\u1EBFng b\xFAa vang l\xEAn khi
+        l\u01B0\u1EE1i ki\u1EBFm \u0111\u1EB7c bi\u1EC7t d\u1EA7n th\xE0nh h\xECnh."
+      nextNodeIndex: -1
+      ltDelta: 0
+      qtDelta: 0
+    - sessionId: 9B
+      choiceId: 9B2
+      label: "S\u0103n to\xE0n b\u1ED9 \u0111\u1EA1n b\u1EA1c c\xF2n s\xF3t"
+      requiredFlag: 
+      resultText: "Kh\u1EA3i ch\u1ECDn gom \u0111\u1EA1n b\u1EA1c \u0111\u1EC3 c\xF3
+        l\u1EE3i th\u1EBF \u1EDF tr\u1EADn chi\u1EBFn s\u1EAFp t\u1EDBi."
+      nextNodeIndex: -1
+      ltDelta: 0
+      qtDelta: 0

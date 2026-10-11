@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: Dialogue_Session_2B
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 2B
+  npcName: "Kh\u1EA3i"
+  nodes:
+  - text: "Cu\u1ED1n nh\u1EADt k\xFD tr\xEAn g\xE1c m\xE1i k\u1EC3 v\u1EC1 L\u1EDDi
+      Nguy\u1EC1n Song Mi\xEAn. Nh\u1EEFng d\xF2ng cu\u1ED1i b\u1ECB nh\xF2e b\u1EDFi
+      m\xE1u kh\xF4."
+    nextNodeIndex: -1
+    choices:
+    - sessionId: 2B
+      choiceId: 2B1
+      label: "\u0110\u1ECDc h\u1EBFt cu\u1ED1n nh\u1EADt k\xFD"
+      requiredFlag: 
+      resultText: "Kh\u1EA3i ghi nh\u1EDB nh\u1EEFng trang cu\u1ED1i. C\xE1c d\u1EA5u
+        v\u1EBFt trong c\u0103n nh\xE0 gi\u1EDD \u0111\xE2y c\xF3 \xFD ngh\u0129a
+        kh\xE1c."
+      nextNodeIndex: -1
+      ltDelta: 1
+      qtDelta: 0
+    - sessionId: 2B
+      choiceId: 2B2
+      label: "\u0110\u1ED1t cu\u1ED1n nh\u1EADt k\xFD"
+      requiredFlag: 
+      resultText: "Ng\u1ECDn l\u1EEDa nu\u1ED1t l\u1EA5y nh\u1EEFng d\xF2ng ch\u1EEF.
+        Kh\u1EA3i kh\xF4ng th\u1EC3 bi\u1EBFt \u0111\u01B0\u1EE3c ph\u1EA7n s\u1EF1
+        th\u1EADt \u0111\xE3 m\u1EA5t."
+      nextNodeIndex: -1
+      ltDelta: 0
+      qtDelta: 1

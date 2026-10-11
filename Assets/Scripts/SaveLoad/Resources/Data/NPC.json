@@ -1,0 +1,81 @@
+{
+  "npcs": [
+    {
+      "name": "Trưởng Làng Tứ",
+      "role": "Người gác cổng làng, đại diện sự nghi kỵ của dân thường",
+      "location": "Đứng giữa cổng làng ven sông, tay luôn cầm đuốc, hai bên có dân quân hộ vệ.",
+      "sessions": "Session 2A",
+      "dialogue": "Ban đầu: \"Máu trên áo ngươi là của ai?\" — Nếu người chơi thú nhận một phần: giọng dịu lại, cảnh báo thay vì tấn công. Nếu nói dối: về sau xuất hiện lại ở Session 14 với thái độ lạnh nhạt, không tin tưởng Khải."
+    },
+    {
+      "name": "Thầy Hạo",
+      "role": "Người dẫn dắt tâm linh, ẩn giấu bí mật vòng lặp",
+      "location": "Ngồi khoanh chân trước bàn thờ trong am thờ nhỏ trên đồi cao, chuông gió treo phía trên đầu.",
+      "sessions": "Session 3, 8B, 12 (hỗ trợ), 15A (secret boss)",
+      "dialogue": "Session 3: \"Ta có thể khóa nó lại mỗi đêm, nhưng cái giá là một mảnh ký ức của con.\" — Session 8B: \"Con đang biến thành thứ mà con từng sợ hãi nhất đấy.\" — Session 15A (khi bị vạch trần): \"Ta chỉ muốn sống thêm một lần nữa thôi... con hiểu không?\""
+    },
+    {
+      "name": "Én",
+      "role": "Người bạn tự nguyện canh giữ Khải ban đêm",
+      "location": "Đứng ngoài cửa nhà kho đá bỏ hoang ngoài rìa làng, tay ôm ngọn đuốc suốt đêm.",
+      "sessions": "Session 4B",
+      "dialogue": "\"Tôi sẽ canh cho tới sáng. Dù có chuyện gì, tôi cũng không mở cửa đâu.\" — Nếu Vô Diện thoát ra được đêm đó (do RNG xấu), Én có thể trở thành nạn nhân, ảnh hưởng nặng đến chỉ số Quỷ Tính và lời thoại dân làng ở Session 14."
+    },
+    {
+      "name": "Bà Tư Bán Thuốc",
+      "role": "Thương nhân, đầu mối cửa hàng vật phẩm hồi phục",
+      "location": "Đứng sau sạp thuốc lá nhỏ gần cổng chợ trung tâm thị trấn.",
+      "sessions": "Session 5",
+      "dialogue": "\"Cậu mà đánh lui được lũ quái đêm nay, cả thị trấn này mang ơn cậu suốt đời.\" — Về sau bán thêm vật phẩm hiếm nếu Khải được dân làng tin tưởng (LT cao)."
+    },
+    {
+      "name": "Nhi",
+      "role": "Nhân vật đồng hành, mối liên kết cảm xúc chính, không sợ hãi Khải",
+      "location": "Ban đầu đứng bên giếng nước cuối quảng trường (Session 6A); sau đó ngồi trong quán trọ ven sông (Session 7A); cuối cùng đứng cạnh Khải trên đồi trước trận cuối (Session 10).",
+      "sessions": "Session 6A, 7A, 10, 13A (nếu còn sống & tin tưởng)",
+      "dialogue": "Session 6A: \"Sao mỗi sáng lại có người mất tích ngay sau khi anh 'chiến đấu' đêm qua?\" — Session 7A: \"Tôi không sợ anh. Tôi chỉ sợ anh sẽ tự hủy hoại mình trước khi để tôi giúp.\" — Session 10: \"Dù ngày mai có chuyện gì, tôi vẫn ở đây. Anh không phải một mình đâu.\" — Session 13A: \"Để tôi cùng gánh với anh. Anh không cần phải biến mất một mình.\""
+    },
+    {
+      "name": "Bé Tí",
+      "role": "Đứa trẻ lạc đường, phép thử lòng trắc ẩn của người chơi",
+      "location": "Ngồi co ro dưới gốc cây lớn giữa con đường mòn xuyên rừng sương.",
+      "sessions": "Session 6B",
+      "dialogue": "\"Chị con... chị con biến mất rồi... chú cứu chị con được không?\" — Nếu được cứu, xuất hiện thoáng qua ở Session 14 giữa đám đông dân làng, vẫy tay chào Khải."
+    },
+    {
+      "name": "Bóng Ma Nạn Nhân Đầu Tiên",
+      "role": "Linh hồn hiện lên từ bích họa cổ, hé lộ nguồn gốc Vô Diện",
+      "location": "Hiện lên lơ lửng trước bức bích họa lớn nhất trong ngôi đền cổ, không có vị trí vật lý cố định.",
+      "sessions": "Session 8A",
+      "dialogue": "\"Ta chỉ muốn ngủ yên... nhưng nó không cho ta ngủ...\" — Chỉ xuất hiện một lần duy nhất, không lặp lại ở các session sau."
+    },
+    {
+      "name": "Lão Rèn Cốc",
+      "role": "Thợ rèn ẩn dật, cung cấp vũ khí khắc chế quỷ",
+      "location": "Đứng bên lò lửa giữa xưởng rèn bỏ hoang trên sườn núi, tay đầy sẹo bỏng cũ.",
+      "sessions": "Session 9B",
+      "dialogue": "\"Thứ thép này sẽ cắn vào thịt quỷ như cắn vào thịt người. Nhưng ta không đảm bảo cậu sống sót khi rèn nó.\""
+    },
+    {
+      "name": "Ẩn Sĩ Mù",
+      "role": "Người canh giữ hang động nghi lễ, phân biệt máu 'sạch' và 'cưỡng ép'",
+      "location": "Ngồi thiền bất động giữa hang động ngầm dưới ngôi đền cổ, mắt luôn nhắm.",
+      "sessions": "Session 9A, 12 (hỗ trợ nếu còn sống)",
+      "dialogue": "Session 9A: \"Máu tự nguyện khác máu cưỡng ép. Nghi lễ sẽ biết sự khác biệt đó, con trai à.\" — Session 12: \"Giữ vững tâm trí! Đừng để nó len vào từng khoảnh khắc con lơ là!\""
+    },
+    {
+      "name": "Vô Diện",
+      "role": "Con quỷ chiếm giữ thân xác Khải, phản diện chính kiêm nạn nhân đầu tiên của lời nguyền",
+      "location": "Không có vị trí vật lý cố định — chỉ hiện diện qua giọng nói, bóng mờ trong mơ, hoặc trực tiếp trong không gian tiềm thức.",
+      "sessions": "Session 4A (giọng nói), 7B (đối thoại), 11 (đối thoại sâu), 12 (Boss chính), 13B (dư âm)",
+      "dialogue": "Session 4A: \"Ngươi nghĩ khóa được ta sao? Ta chỉ đang... nghỉ ngơi.\" — Session 7B: \"Ta không muốn giết ai cả. Ta chỉ muốn được sống.\" — Session 11: \"Ngươi và ta... vốn dĩ đâu khác nhau là mấy.\" — Session 13B: \"Ngươi thắng rồi đấy... nhưng ngươi có chắc phần 'ngươi' còn thắng không?\""
+    },
+    {
+      "name": "Dân Làng (tổng hợp)",
+      "role": "Phe quần chúng phản ánh hậu quả lựa chọn của người chơi",
+      "location": "Tụ tập trước quảng trường trung tâm thị trấn vào buổi sáng sau trận chiến cuối cùng.",
+      "sessions": "Session 14",
+      "dialogue": "Nếu LT cao: \"Cậu ấy đã cứu chúng ta...\" — Nếu QT cao: \"Đuổi nó đi, nó không phải người nữa!\""
+    }
+  ]
+}

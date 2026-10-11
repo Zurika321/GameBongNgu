@@ -1,0 +1,204 @@
+{
+  "levels": [
+    {
+      "lv": 1,
+      "expRequired": 0,
+      "maxHp": 60,
+      "atk": 8,
+      "def": 3,
+      "maxRareAmmo": 2,
+      "skill": "Chém Cơ Bản (đòn cận chiến đơn)",
+      "session": "Session 1"
+    },
+    {
+      "lv": 2,
+      "expRequired": 120,
+      "maxHp": 72,
+      "atk": 10,
+      "def": 4,
+      "maxRareAmmo": 2,
+      "skill": "Né Tránh Nhanh (dodge roll ngắn)",
+      "session": "Session 2A/2B"
+    },
+    {
+      "lv": 3,
+      "expRequired": 280,
+      "maxHp": 85,
+      "atk": 12,
+      "def": 5,
+      "maxRareAmmo": 3,
+      "skill": "Đỡ Đòn (parry cận chiến cơ bản)",
+      "session": "Session 3"
+    },
+    {
+      "lv": 4,
+      "expRequired": 480,
+      "maxHp": 98,
+      "atk": 14,
+      "def": 6,
+      "maxRareAmmo": 3,
+      "skill": "Đòn Xuyên (phá giáp quái nhẹ)",
+      "session": "Session 4A/4B"
+    },
+    {
+      "lv": 5,
+      "expRequired": 740,
+      "maxHp": 112,
+      "atk": 17,
+      "def": 7,
+      "maxRareAmmo": 4,
+      "skill": "Combo 2 Đòn Liên Tiếp",
+      "session": "Session 5"
+    },
+    {
+      "lv": 6,
+      "expRequired": 1050,
+      "maxHp": 126,
+      "atk": 19,
+      "def": 8,
+      "maxRareAmmo": 4,
+      "skill": "Kháng Choáng Nhẹ (giảm 20% hiệu ứng choáng)",
+      "session": "Session 5-6"
+    },
+    {
+      "lv": 7,
+      "expRequired": 1420,
+      "maxHp": 142,
+      "atk": 22,
+      "def": 9,
+      "maxRareAmmo": 5,
+      "skill": "Nộ Khí (tích lũy đòn đánh trúng để kích hoạt buff tạm)",
+      "session": "Session 6A/6B"
+    },
+    {
+      "lv": 8,
+      "expRequired": 1860,
+      "maxHp": 158,
+      "atk": 25,
+      "def": 10,
+      "maxRareAmmo": 5,
+      "skill": "Ném Vũ Khí Phụ (tấn công tầm ngắn không tốn đạn)",
+      "session": "Session 7A/7B"
+    },
+    {
+      "lv": 9,
+      "expRequired": 2380,
+      "maxHp": 175,
+      "atk": 28,
+      "def": 12,
+      "maxRareAmmo": 6,
+      "skill": "Cường Hóa Vũ Khí Cận Chiến +1 bậc",
+      "session": "Session 8A/8B"
+    },
+    {
+      "lv": 10,
+      "expRequired": 2980,
+      "maxHp": 193,
+      "atk": 31,
+      "def": 13,
+      "maxRareAmmo": 6,
+      "skill": "Kháng Hiệu Ứng Độc/Chảy Máu 30%",
+      "session": "Session 8-9"
+    },
+    {
+      "lv": 11,
+      "expRequired": 3660,
+      "maxHp": 212,
+      "atk": 35,
+      "def": 15,
+      "maxRareAmmo": 7,
+      "skill": "Đòn Chí Mạng Cận Chiến (+15% tỉ lệ)",
+      "session": "Session 9A/9B"
+    },
+    {
+      "lv": 12,
+      "expRequired": 4440,
+      "maxHp": 232,
+      "atk": 39,
+      "def": 16,
+      "maxRareAmmo": 7,
+      "skill": "Phá Giáp Hoàn Toàn (vô hiệu khiên quái 1 lần/trận)",
+      "session": "Session 9-10"
+    },
+    {
+      "lv": 13,
+      "expRequired": 5320,
+      "maxHp": 253,
+      "atk": 43,
+      "def": 18,
+      "maxRareAmmo": 8,
+      "skill": "Tập Trung Tinh Thần (hồi nhẹ LT khi đứng yên phòng thủ)",
+      "session": "Session 10-11"
+    },
+    {
+      "lv": 14,
+      "expRequired": 6320,
+      "maxHp": 276,
+      "atk": 48,
+      "def": 20,
+      "maxRareAmmo": 8,
+      "skill": "Phản Đòn Hoàn Hảo (parry đúng lúc gây sát thương x2)",
+      "session": "Session 12"
+    },
+    {
+      "lv": 15,
+      "expRequired": 7440,
+      "maxHp": 300,
+      "atk": 54,
+      "def": 22,
+      "maxRareAmmo": 9,
+      "skill": "Bộc Phát Cận Chiến (combo 5 đòn không ngắt quãng)",
+      "session": "Session 12"
+    },
+    {
+      "lv": 16,
+      "expRequired": 8700,
+      "maxHp": 326,
+      "atk": 60,
+      "def": 24,
+      "maxRareAmmo": 9,
+      "skill": "Tinh Thông Đạn Bạc (đạn hiếm gây thêm 25% sát thương lên Boss)",
+      "session": "Session 13-15 (secret)"
+    },
+    {
+      "lv": 17,
+      "expRequired": 10100,
+      "maxHp": 354,
+      "atk": 67,
+      "def": 27,
+      "maxRareAmmo": 10,
+      "skill": "Ý Chí Sắt Đá (miễn nhiễm hiệu ứng 'Đồng Hóa' 1 lần)",
+      "session": "Session 15 (secret)"
+    },
+    {
+      "lv": 18,
+      "expRequired": 11660,
+      "maxHp": 384,
+      "atk": 74,
+      "def": 30,
+      "maxRareAmmo": 10,
+      "skill": "Song Kiếm Hợp Bích (dùng 2 vũ khí cận chiến cùng lúc)",
+      "session": "New Game+"
+    },
+    {
+      "lv": 19,
+      "expRequired": 13400,
+      "maxHp": 416,
+      "atk": 82,
+      "def": 33,
+      "maxRareAmmo": 11,
+      "skill": "Trực Giác Sinh Tồn (tự động né đòn chí mạng 10%)",
+      "session": "New Game+"
+    },
+    {
+      "lv": 20,
+      "expRequired": 15340,
+      "maxHp": 450,
+      "atk": 91,
+      "def": 36,
+      "maxRareAmmo": 12,
+      "skill": "Hoàn Thiện Bản Thân (mở toàn bộ cây kỹ năng)",
+      "session": "New Game+"
+    }
+  ]
+}

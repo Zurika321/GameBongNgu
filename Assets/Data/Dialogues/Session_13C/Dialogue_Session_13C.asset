@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: Dialogue_Session_13C
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 13C
+  npcName: "V\xF4 Di\u1EC7n"
+  nodes:
+  - text: "C\u1EA3m \u01A1n v\xEC \u0111\xE3 cho ta m\u01B0\u1EE3n th\xE2n x\xE1c
+      n\xE0y l\xE2u \u0111\u1EBFn v\u1EADy."
+    nextNodeIndex: -1
+    choices: []

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: Dialogue_Session_6B
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 6B
+  npcName: "B\xE9 T\xED"
+  nodes:
+  - text: "Ch\u1ECB con... ch\u1ECB con bi\u1EBFn m\u1EA5t r\u1ED3i... ch\xFA c\u1EE9u
+      ch\u1ECB con \u0111\u01B0\u1EE3c kh\xF4ng?"
+    nextNodeIndex: -1
+    choices:
+    - sessionId: 6B
+      choiceId: 6B1
+      label: "Gi\xFAp B\xE9 T\xED t\xECm ch\u1ECB"
+      requiredFlag: 
+      resultText: "Kh\u1EA3i h\u1EE9a s\u1EBD t\xECm d\u1EA5u v\u1EBFt ng\u01B0\u1EDDi
+        ch\u1ECB. B\xE9 T\xED \u0111\u01B0a anh chi\u1EBFc b\xF9a nh\u1ECF em v\u1EABn
+        gi\u1EEF."
+      nextNodeIndex: -1
+      ltDelta: 1
+      qtDelta: 0
+    - sessionId: 6B
+      choiceId: 6B2
+      label: "Ti\u1EBFp t\u1EE5c \u0111i m\u1ED9t m\xECnh"
+      requiredFlag: 
+      resultText: "Kh\u1EA3i b\u01B0\u1EDBc v\xE0o m\xE0n s\u01B0\u01A1ng. Ti\u1EBFng
+        g\u1ECDi c\u1EE7a \u0111\u1EE9a tr\u1EBB nh\u1ECF d\u1EA7n ph\xEDa sau."
+      nextNodeIndex: -1
+      ltDelta: 0
+      qtDelta: 1
