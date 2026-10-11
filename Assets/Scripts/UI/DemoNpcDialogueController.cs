@@ -168,7 +168,9 @@ public class DemoNpcDialogueController : MonoBehaviour
         speakerText.text = activeNpc.NpcName;
 
         string followUp = recordedChoice != null
-            ? GetPostChoiceDialogue(activeNpc, progress) ?? GetRecordedChoiceResponse(activeNpc, recordedChoice)
+            ? !string.IsNullOrWhiteSpace(activeNpc.PostDialogueText)
+                ? activeNpc.PostDialogueText
+                : GetRecordedChoiceText(activeNpc, recordedChoice)
             : null;
         if (!string.IsNullOrEmpty(followUp))
         {
@@ -182,7 +184,7 @@ public class DemoNpcDialogueController : MonoBehaviour
         if (activeNpc.Dialogue == null || activeNpc.Dialogue.Length == 0)
         {
             SetChoicesVisible(false);
-            StartTyping("No dialogue has been configured for this NPC yet.");
+            StartTyping(string.Empty);
             return;
         }
 
@@ -220,6 +222,7 @@ public class DemoNpcDialogueController : MonoBehaviour
                 if (!string.IsNullOrWhiteSpace(choice.requiredFlag)
                     && !progress.Data.HasFlag(choice.requiredFlag))
                     continue;
+                if (!HasRequiredItem(choice, progress)) continue;
                 if (string.IsNullOrWhiteSpace(choice.sessionId)) return true;
                 if (choice.sessionId != progress.Data.currentSession) continue;
                 if (FindChoiceRecord(progress, choice.sessionId) == null) return true;
@@ -269,81 +272,23 @@ public class DemoNpcDialogueController : MonoBehaviour
         return progress.Data.choices.Find(record => record != null && record.sessionId == sessionId);
     }
 
-    private static string GetRecordedChoiceResponse(DemoNpcDialogueProfile npc, ChoiceRecord record)
+    private static string GetRecordedChoiceText(DemoNpcDialogueProfile npc, ChoiceRecord record)
     {
-        if (npc != null && record != null)
+        if (npc == null || record == null) return null;
+
+        foreach (DemoDialogueNode node in npc.Dialogue ?? System.Array.Empty<DemoDialogueNode>())
         {
-            foreach (DemoDialogueNode node in npc.Dialogue ?? System.Array.Empty<DemoDialogueNode>())
+            if (node == null) continue;
+            foreach (DemoDialogueChoice choice in node.choices ?? System.Array.Empty<DemoDialogueChoice>())
             {
-                if (node == null) continue;
-                foreach (DemoDialogueChoice choice in node.choices ?? System.Array.Empty<DemoDialogueChoice>())
-                {
-                    if (choice == null || choice.sessionId != record.sessionId || choice.choiceId != record.choiceId)
-                        continue;
-                    if (!string.IsNullOrWhiteSpace(choice.resultText)) return choice.resultText;
-                    if (!string.IsNullOrWhiteSpace(choice.label)) return npc.NpcName + ": “" + choice.label + "”";
-                }
+                if (choice == null || choice.sessionId != record.sessionId || choice.choiceId != record.choiceId)
+                    continue;
+                return string.IsNullOrWhiteSpace(choice.resultText) ? null : choice.resultText;
             }
         }
 
-        return "Khải không có gì mới để nói lúc này.";
+        return null;
     }
-
-    private static string GetPostChoiceDialogue(
-        DemoNpcDialogueProfile npc, PlayerProgressionService progress)
-    {
-        if (npc == null || progress == null || progress.Data.choices == null) return null;
-
-        string sessionId;
-        switch (npc.NpcName)
-        {
-            case "Khải": sessionId = "1"; break;
-            case "Trưởng Làng Tứ": sessionId = "2A"; break;
-            case "Thầy Trừ Tà Hạo": sessionId = "3"; break;
-            case "Vô Diện": sessionId = "4A"; break;
-            case "Én": sessionId = "4B"; break;
-            case "Bà Tư Bán Thuốc": sessionId = "5"; break;
-            default: return null;
-        }
-
-        ChoiceRecord choice = progress.Data.choices.Find(
-            record => record != null && record.sessionId == sessionId);
-        if (choice == null) return null;
-
-        switch (npc.NpcName)
-        {
-            case "Khải":
-                const string selfTalkShownFlag = "KhaiPostChoiceSelfTalkShown";
-                if (progress.Data.HasFlag(selfTalkShownFlag)) return null;
-                progress.SetFlag(selfTalkShownFlag);
-                return choice.choiceId == "A"
-                    ? "Khải khẽ gật đầu: “Cánh cửa đã mở. Mình phải tiếp tục đi thôi.”"
-                    : "Khải nhìn lên cầu thang: “Manh mối vẫn còn ở trên gác. Mình phải tìm ra sự thật.”";
-            case "Trưởng Làng Tứ":
-                return choice.choiceId == "A"
-                    ? "Tứ khẽ thở dài: “Nếu con đã chọn giữ kín chuyện đó, hãy cẩn thận trên đường đi.”"
-                    : "Tứ gật đầu: “Cảm ơn con đã thành thật. Cố lên, ta sẽ giúp trong khả năng của mình.”";
-            case "Thầy Trừ Tà Hạo":
-                return choice.choiceId == "A"
-                    ? "Hạo nói nhỏ: “Lá bùa đã được lập. Hãy giữ vững ký ức còn lại của con.”"
-                    : "Hạo gật đầu: “Ta tôn trọng quyết định của con. Hãy chuẩn bị cho điều đang chờ phía trước.”";
-            case "Vô Diện":
-                return choice.choiceId == "A"
-                    ? "Vô Diện thì thầm: “Ngươi đã chịu lắng nghe. Đừng quên điều ta vừa tiết lộ.”"
-                    : "Vô Diện bật cười sau mặt gương: “Cứ chống lại đi. Ta vẫn ở đây.”";
-            case "Én":
-                return choice.choiceId == "A"
-                    ? "Én khẽ nói: “Tôi hiểu. Hãy tự giữ an toàn nhé.”"
-                    : "Én gật đầu: “Tôi sẽ canh ở đây. Cố lên, Khải.”";
-            case "Bà Tư Bán Thuốc":
-                return choice.choiceId == "A"
-                    ? "Bà Tư mỉm cười: “Cố lên chàng trai, cả thị trấn đang trông cậy vào con!”"
-                    : "Bà Tư nhìn theo Khải: “Nếu đổi ý, thị trấn vẫn cần một người dám đứng ra giúp đỡ.”";
-            default:
-                return null;
-        }
-    }
-
     private void LoadDialogueNode(int index)
     {
         DemoDialogueNode[] nodes = activeNpc != null ? activeNpc.Dialogue : null;
@@ -353,7 +298,7 @@ public class DemoNpcDialogueController : MonoBehaviour
             pendingNodeIndex = -1;
             speakerText.text = activeNpc != null ? activeNpc.NpcName : "NPC";
             SetChoicesVisible(false);
-            StartTyping("The conversation has ended.");
+            StartTyping(string.Empty);
             return;
         }
 
@@ -377,6 +322,7 @@ public class DemoNpcDialogueController : MonoBehaviour
                 if (!string.IsNullOrWhiteSpace(choice.requiredFlag)
                     && (progress == null || !progress.Data.HasFlag(choice.requiredFlag)))
                     continue;
+                if (!HasRequiredItem(choice, progress)) continue;
                 if (!string.IsNullOrWhiteSpace(choice.sessionId))
                 {
                     if (progress == null || choice.sessionId != progress.Data.currentSession
@@ -404,6 +350,13 @@ public class DemoNpcDialogueController : MonoBehaviour
                 $"[DemoNpcDialogueController] Dialogue has {visibleChoices.Length} available choices, but only {choiceButtons.Length} choice buttons are assigned.",
                 this);
         }
+    }
+
+    private static bool HasRequiredItem(DemoDialogueChoice choice, PlayerProgressionService progress)
+    {
+        if (choice == null || string.IsNullOrWhiteSpace(choice.requiredItemName)) return true;
+        return progress != null && progress.Data != null
+            && progress.Data.GetItemAmount(choice.requiredItemName) > 0;
     }
 
     private void SetChoicesVisible(bool visible)

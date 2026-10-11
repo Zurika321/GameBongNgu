@@ -8,6 +8,8 @@ public class DemoDialogueChoice
     public string choiceId;
     public string label;
     public string requiredFlag;
+    [Tooltip("Ẩn lựa chọn nếu người chơi không có vật phẩm này trong inventory. Để trống nếu không yêu cầu vật phẩm.")]
+    public string requiredItemName;
     [TextArea] public string resultText;
     public int nextNodeIndex = -1;
     public int ltDelta;

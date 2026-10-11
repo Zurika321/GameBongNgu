@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,10 @@ public class StoryEventAction
     public ZoneEnemySpawner[] spawnSpawners = Array.Empty<ZoneEnemySpawner>();
     public string[] flagsToSet = Array.Empty<string>();
     public string[] flagsToRemove = Array.Empty<string>();
+    public string itemToAdd;
+    [Min(1)] public int itemToAddAmount = 1;
     public string itemToRemove;
+    [Min(1)] public int itemToRemoveAmount = 1;
     public string readableItemToOpen;
 
     [Header("Complete Session (bỏ trống nếu không dùng)")]
@@ -46,6 +50,7 @@ public class StoryEventDirector : MonoBehaviour
     private const string DeactivateObjectsAction = "DeactivateObjects";
 
     [SerializeField] private StoryEventDefinition[] events = Array.Empty<StoryEventDefinition>();
+    [SerializeField] private TMP_Text itemChangeText;
 
     private readonly HashSet<string> completedEvents = new HashSet<string>();
     private DemoNpcDialogueController dialogueController;
@@ -274,11 +279,22 @@ public class StoryEventDirector : MonoBehaviour
 
         CompleteSessionOnce(action.completeSessionId, action.nextSessionId);
 
-        if (!string.IsNullOrWhiteSpace(action.itemToRemove)
-            && progress != null
-            && !progress.RemoveItem(action.itemToRemove))
+        if (!string.IsNullOrWhiteSpace(action.itemToAdd) && progress != null)
         {
-            Debug.LogWarning($"[StoryEventDirector] Could not remove '{action.itemToRemove}' from the inventory.", this);
+            int amount = Mathf.Max(1, action.itemToAddAmount);
+            if (progress.AddItem(action.itemToAdd, amount))
+                ItemChangeNotifier.Show(itemChangeText, action.itemToAdd, amount, true);
+            else
+                Debug.LogWarning($"[StoryEventDirector] Could not add '{action.itemToAdd}' to the inventory.", this);
+        }
+
+        if (!string.IsNullOrWhiteSpace(action.itemToRemove) && progress != null)
+        {
+            int amount = Mathf.Max(1, action.itemToRemoveAmount);
+            if (progress.RemoveItem(action.itemToRemove, amount))
+                ItemChangeNotifier.Show(itemChangeText, action.itemToRemove, amount, false);
+            else
+                Debug.LogWarning($"[StoryEventDirector] Could not remove '{action.itemToRemove}' from the inventory.", this);
         }
 
         if (!string.IsNullOrWhiteSpace(action.readableItemToOpen))
@@ -472,6 +488,8 @@ public class StoryEventDirector : MonoBehaviour
                 lastEvent.actionTypes.Add("RemoveFlags");
             if (!string.IsNullOrWhiteSpace(action.itemToRemove))
                 lastEvent.actionTypes.Add("RemoveItem");
+            if (!string.IsNullOrWhiteSpace(action.itemToAdd))
+                lastEvent.actionTypes.Add("AddItem");
             if (!string.IsNullOrWhiteSpace(action.readableItemToOpen))
                 lastEvent.actionTypes.Add("OpenReadableItem");
             if (action.activateObjects != null)

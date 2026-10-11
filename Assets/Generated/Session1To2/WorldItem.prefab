@@ -142,7 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb78801ae3b0e44fbe98738d8f9ec74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WorldItemPickup
-  itemId: 
-  itemName: 
+  itemId: 1:RAT:1:DROP:0
+  itemName: "V\u1EA3i R\xE1ch"
+  itemDefinition: {fileID: 11400000, guid: e7c8bf9f185cb2847b1595a2a77474bf, type: 2}
   amount: 1
   spawnChance: 1

@@ -30,7 +30,7 @@ public class PlayerProgressionService : MonoBehaviour
         continueRestoreRequested = false;
         DataManager.DeleteData(Tables.Player);
         PlayerSaveData data = new PlayerSaveData();
-        data.AddItem("Dao GÄƒm Gá»‰");
+        // data.AddItem("Dao GÄƒm Gá»‰");
         DataManager.SetData(Tables.Player, data);
     }
 
