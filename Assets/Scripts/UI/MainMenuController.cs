@@ -44,12 +44,12 @@ public class MainMenuController : MonoBehaviour
 
         DataManager.LoadData(Tables.Player);
         PlayerSaveData save = DataManager.GetData<PlayerSaveData>(Tables.Player);
-        // The current scene is updated on every portal transition and is authoritative
-        // for Continue. The last event can belong to an earlier scene.
-        string savedScene = save != null && !string.IsNullOrWhiteSpace(save.currentScene)
-            ? save.currentScene
-            : gameSceneName;
-        LoadGame(savedScene, true);
+        // CoreCombatDemo is the persistent root. PlayerProgressionService reads
+        // currentZone after CoreCombatDemo loads and adds the matching map scene.
+        string savedZone = save != null ? save.currentZone : "";
+        // string savedScene = save != null ? save.currentScene : "";
+        Debug.Log($"[MainMenuController] Continue: loading '{gameSceneName}'; map will be selected from currentZone '{savedZone}'.", this);
+        LoadGame(gameSceneName, true);
     }
 
     private void LoadGame(string sceneName, bool isContinue)

@@ -146,13 +146,13 @@ public class FireballAttackSkill : MonoBehaviour, ISkill, ISkillSpriteConfigurab
         sr.sprite = explosionFrames[0];
 
         // Copy sorting layer/order theo caster, giống cách FlyAttackSkill đang làm cho đạn.
+        sr.sortingLayerName = "skill";
         SpriteRenderer casterSprite = context.Caster != null
             ? context.Caster.GetComponentInChildren<SpriteRenderer>()
             : null;
 
         if (casterSprite != null)
         {
-            sr.sortingLayerName = casterSprite.sortingLayerName;
             sr.sortingOrder = casterSprite.sortingOrder;
         }
 

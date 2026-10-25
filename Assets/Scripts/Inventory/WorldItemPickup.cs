@@ -34,6 +34,8 @@ public class WorldItemPickup : MonoBehaviour
             if (itemRenderer != null && itemDefinition.icon != null) itemRenderer.sprite = itemDefinition.icon;
         }
 
+        ApplySortingLayer();
+
         CreateGroundShadow();
 
         Collider2D itemCollider = GetComponent<Collider2D>();
@@ -68,6 +70,12 @@ public class WorldItemPickup : MonoBehaviour
             float scale = 1f - bobOffset / BobHeight * 0.16f;
             shadowTransform.localScale = new Vector3(0.38f * scale, 0.38f * scale, 1f);
         }
+    }
+
+    private void ApplySortingLayer()
+    {
+        SpriteRenderer itemRenderer = GetComponent<SpriteRenderer>();
+        if (itemRenderer != null) itemRenderer.sortingLayerName = "itemdrop";
     }
 
     private void CreateGroundShadow()
@@ -152,6 +160,7 @@ public class WorldItemPickup : MonoBehaviour
         itemName = itemDefinition != null ? itemDefinition.itemName : newItemName;
         amount = Mathf.Max(1, newAmount);
         spawnChance = 1f;
+        ApplySortingLayer();
 
         if (itemDefinition != null)
         {

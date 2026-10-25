@@ -108,6 +108,25 @@ public static class DataManager
         }
     }
 
+    /// <summary>Đọc dữ liệu đã cache nhưng không âm thầm thay JSON lỗi bằng object mặc định.</summary>
+    public static bool TryGetData<T>(string table, out T result) where T : class
+    {
+        result = null;
+        if (string.IsNullOrEmpty(table)) return false;
+        if (!cache.ContainsKey(table) && !LoadData(table)) return false;
+
+        try
+        {
+            result = JsonUtility.FromJson<T>(cache[table]);
+            return result != null;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("[DataManager] TryGetData(" + table + ") lỗi; dữ liệu save được giữ nguyên: " + e.Message);
+            return false;
+        }
+    }
+
     /// <summary>Xoá file đã lưu của bảng (về lại data gốc trong Resources). Dùng cho New Game.</summary>
     public static void DeleteData(string table)
     {

@@ -1,0 +1,174 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Audio;
+
+/// <summary>
+/// Central live volume/mute manager. All AudioSources must route to the assigned AudioMixer's
+/// Master, Music or SFX groups for changes here to affect them immediately.
+/// </summary>
+public sealed class VolumeManager : MonoBehaviour
+{
+    private const string MasterVolumeKey = "Audio.MasterVolume";
+    private const string MusicVolumeKey = "Audio.MusicVolume";
+    private const string SfxVolumeKey = "Audio.SFXVolume";
+    private const string MasterMuteKey = "Audio.MasterMuted";
+    private const string MusicMuteKey = "Audio.MusicMuted";
+    private const string SfxMuteKey = "Audio.SFXMuted";
+    private const float MinDecibels = -80f;
+
+    private static VolumeManager instance;
+    private static readonly HashSet<string> WarnedParameters = new HashSet<string>();
+
+    [Header("Mixer: expose these exact parameter names")]
+    [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private string masterParameter = "MasterVolume";
+    [SerializeField] private string musicParameter = "MusicVolume";
+    [SerializeField] private string sfxParameter = "SFXVolume";
+
+    [Header("Default values for a new save")]
+    [Range(0f, 1f)] [SerializeField] private float defaultMasterVolume = 1f;
+    [Range(0f, 1f)] [SerializeField] private float defaultMusicVolume = 0.8f;
+    [Range(0f, 1f)] [SerializeField] private float defaultSfxVolume = 1f;
+
+    private float masterVolume;
+    private float musicVolume;
+    private float sfxVolume;
+    private bool masterMuted;
+    private bool musicMuted;
+    private bool sfxMuted;
+
+    /// <summary>Raised after any volume or mute setting changes.</summary>
+    public static event Action OnAudioSettingsChanged;
+
+    public static float MasterVolume => instance != null ? instance.masterVolume : 1f;
+    public static float MusicVolume => instance != null ? instance.musicVolume : 0.8f;
+    public static float SFXVolume => instance != null ? instance.sfxVolume : 1f;
+    public static bool MasterMuted => instance != null && instance.masterMuted;
+    public static bool MusicMuted => instance != null && instance.musicMuted;
+    public static bool SFXMuted => instance != null && instance.sfxMuted;
+    public static bool IsReady => instance != null;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        if (transform.parent != null) transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
+
+        masterVolume = PlayerPrefs.GetFloat(MasterVolumeKey, defaultMasterVolume);
+        musicVolume = PlayerPrefs.GetFloat(MusicVolumeKey, defaultMusicVolume);
+        sfxVolume = PlayerPrefs.GetFloat(SfxVolumeKey, defaultSfxVolume);
+        masterMuted = PlayerPrefs.GetInt(MasterMuteKey, 0) == 1;
+        musicMuted = PlayerPrefs.GetInt(MusicMuteKey, 0) == 1;
+        sfxMuted = PlayerPrefs.GetInt(SfxMuteKey, 0) == 1;
+    }
+
+    private void Start() => ApplyMixer();
+
+    private void OnDestroy()
+    {
+        if (instance == this)
+        {
+            instance = null;
+            OnAudioSettingsChanged = null;
+        }
+    }
+
+    private void OnApplicationPause(bool paused)
+    {
+        if (paused) PlayerPrefs.Save();
+    }
+
+    private void OnApplicationQuit() => PlayerPrefs.Save();
+
+    public static void SetMasterVolume(float value) => ChangeVolume(value, AudioChannel.Master);
+    public static void SetMusicVolume(float value) => ChangeVolume(value, AudioChannel.Music);
+    public static void SetSFXVolume(float value) => ChangeVolume(value, AudioChannel.SFX);
+
+    public static void SetMasterMuted(bool muted) => ChangeMute(muted, AudioChannel.Master);
+    public static void SetMusicMuted(bool muted) => ChangeMute(muted, AudioChannel.Music);
+    public static void SetSFXMuted(bool muted) => ChangeMute(muted, AudioChannel.SFX);
+
+    private enum AudioChannel { Master, Music, SFX }
+
+    private static void ChangeVolume(float value, AudioChannel channel)
+    {
+        if (instance == null)
+        {
+            Debug.LogError("[VolumeManager] Chưa có GameObject chứa VolumeManager trong scene đầu tiên.");
+            return;
+        }
+
+        value = Mathf.Clamp01(value);
+        switch (channel)
+        {
+            case AudioChannel.Master:
+                instance.masterVolume = value;
+                PlayerPrefs.SetFloat(MasterVolumeKey, value);
+                break;
+            case AudioChannel.Music:
+                instance.musicVolume = value;
+                PlayerPrefs.SetFloat(MusicVolumeKey, value);
+                break;
+            case AudioChannel.SFX:
+                instance.sfxVolume = value;
+                PlayerPrefs.SetFloat(SfxVolumeKey, value);
+                break;
+        }
+        instance.ApplyMixer();
+        OnAudioSettingsChanged?.Invoke();
+    }
+
+    private static void ChangeMute(bool muted, AudioChannel channel)
+    {
+        if (instance == null)
+        {
+            Debug.LogError("[VolumeManager] Chưa có GameObject chứa VolumeManager trong scene đầu tiên.");
+            return;
+        }
+
+        switch (channel)
+        {
+            case AudioChannel.Master:
+                instance.masterMuted = muted;
+                PlayerPrefs.SetInt(MasterMuteKey, muted ? 1 : 0);
+                break;
+            case AudioChannel.Music:
+                instance.musicMuted = muted;
+                PlayerPrefs.SetInt(MusicMuteKey, muted ? 1 : 0);
+                break;
+            case AudioChannel.SFX:
+                instance.sfxMuted = muted;
+                PlayerPrefs.SetInt(SfxMuteKey, muted ? 1 : 0);
+                break;
+        }
+        instance.ApplyMixer();
+        OnAudioSettingsChanged?.Invoke();
+    }
+
+    private void ApplyMixer()
+    {
+        if (audioMixer == null)
+        {
+            Debug.LogError("[VolumeManager] Chưa gán AudioMixer trong Inspector. Cài AudioMixer trước khi test âm thanh.", this);
+            return;
+        }
+
+        ApplyParameter(masterParameter, masterVolume, masterMuted);
+        ApplyParameter(musicParameter, musicVolume, musicMuted);
+        ApplyParameter(sfxParameter, sfxVolume, sfxMuted);
+    }
+
+    private void ApplyParameter(string parameter, float volume, bool muted)
+    {
+        float decibels = muted || volume <= 0.0001f ? MinDecibels : Mathf.Max(MinDecibels, 20f * Mathf.Log10(volume));
+        if (!audioMixer.SetFloat(parameter, decibels) && WarnedParameters.Add(parameter))
+            Debug.LogError($"[VolumeManager] Không tìm thấy parameter '{parameter}'. Hãy Expose Volume của group trong AudioMixer với đúng tên này.", this);
+    }
+}

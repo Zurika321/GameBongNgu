@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -49,10 +49,21 @@ public static class QuickCombatDemoSetup
     private static void BuildDemoZones()
     {
         EnsureFolder("Assets/Scenes"); EnsureFolder(SceneFolder);
+        EnsureEmptyZoneOneScene();
         foreach (ZoneSpec zone in Zones) BuildZone(zone);
         UpdateBuildSettings();
         AssetDatabase.SaveAssets(); AssetDatabase.Refresh();
         Debug.Log("[QuickCombatDemoSetup] Updated generated demo scenes Zone2–Zone5. CoreCombatDemo was not modified.");
+    }
+
+    private static void EnsureEmptyZoneOneScene()
+    {
+        const string path = SceneFolder + "/Zone1.unity";
+        if (AssetDatabase.LoadAssetAtPath<SceneAsset>(path) != null) return;
+
+        Scene scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
+        EditorSceneManager.SaveScene(scene, path);
+        EditorSceneManager.CloseScene(scene, true);
     }
 
     private static void BuildZone(ZoneSpec zone)
@@ -67,7 +78,9 @@ public static class QuickCombatDemoSetup
                 scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
         }
         foreach (GameObject root in scene.GetRootGameObjects())
-            if (root.name == GeneratedRootName || root.name == zone.sceneName + "Main")
+            if (root.name == GeneratedRootName || root.name == zone.sceneName + "Main"
+                || root.name == "Player" || root.name == "Main Camera" || root.name == "CmCam"
+                || root.name == "MapBounus" || root.name == "SkillActions")
                 UnityEngine.Object.DestroyImmediate(root);
         SceneManager.SetActiveScene(scene);
         Transform zoneMain = new GameObject(zone.sceneName + "Main").transform;
@@ -123,6 +136,14 @@ public static class QuickCombatDemoSetup
         }
         CreateSkillDisplay(zoneMain, zone);
         CreatePortals(zoneMain, zone, placeRoots);
+        // These scenes are loaded beside CoreCombatDemo. Keep only zone content here;
+        // the player, camera, progression service and director live in the main scene.
+        UnityEngine.Object.DestroyImmediate(player);
+        UnityEngine.Object.DestroyImmediate(camera.gameObject);
+        UnityEngine.Object.DestroyImmediate(cmCamObject);
+        UnityEngine.Object.DestroyImmediate(skillsRuntime);
+        UnityEngine.Object.DestroyImmediate(manager);
+        UnityEngine.Object.DestroyImmediate(connectedStory);
         EditorSceneManager.SaveScene(scene, path);
         EditorSceneManager.CloseScene(scene, true);
     }
@@ -448,7 +469,7 @@ public static class QuickCombatDemoSetup
     private static void CreatePortals(Transform parent, ZoneSpec zone, Transform[] placeRoots)
     {
         int index = Array.IndexOf(Zones, zone);
-        string[] previousScenes = { "CoreCombatDemo", "Zone2", "Zone3", "Zone4" };
+        string[] previousScenes = { "Zone1", "Zone2", "Zone3", "Zone4" };
         string[] previousZones = { "Đồi Cao (Am Thờ)", "Con Đường Rừng Sương", "Bìa Rừng Cháy", "Đại Sảnh Nghi Lễ" };
         Vector2[] previousPositions = { new Vector2(44f, 0f), new Vector2(36f, 0f), new Vector2(36f, 0f), new Vector2(12f, 0f) };
         Vector3 leftDoor = placeRoots[0].position + new Vector3(-10.5f, 0f, 0f);
@@ -493,6 +514,8 @@ public static class QuickCombatDemoSetup
     private static void UpdateBuildSettings()
     {
         List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+        string zoneOnePath = SceneFolder + "/Zone1.unity";
+        if (!scenes.Exists(entry => entry.path == zoneOnePath)) scenes.Add(new EditorBuildSettingsScene(zoneOnePath, true));
         foreach (ZoneSpec zone in Zones)
         {
             string path = SceneFolder + "/" + zone.sceneName + ".unity";

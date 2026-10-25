@@ -22,12 +22,30 @@ public class InventoryGridUI : MonoBehaviour
     [SerializeField] private Button closeBookButton;
     [SerializeField] private Text inventoryStatus;
 
+    [Header("Slot appearance / layout")]
+    [Tooltip("Sprite khung dùng cho mọi ô inventory. Để trống để dùng nền màu mặc định.")]
+    [SerializeField] private Sprite slotFrameSprite;
+    [SerializeField] private Image.Type slotFrameType = Image.Type.Sliced;
+    [SerializeField, Min(1)] private int columns = 6;
+    [SerializeField] private Vector2 slotSize = new Vector2(66f, 66f);
+    [SerializeField] private Vector2 slotSpacing = new Vector2(7f, 7f);
+    [SerializeField] private RectOffset slotPadding;
+    [SerializeField] private Color emptySlotColor = new Color(0.1f, 0.11f, 0.13f, 1f);
+    [SerializeField] private Color itemSlotColor = new Color(0.24f, 0.22f, 0.2f, 1f);
+    [SerializeField] private Color selectedSlotColor = new Color(0.7f, 0.48f, 0.2f, 1f);
+    [SerializeField] private bool drawSlotOutline = true;
+    [SerializeField] private Color slotOutlineColor = new Color(0.56f, 0.43f, 0.25f, 1f);
+    [SerializeField] private Vector2 slotOutlineDistance = new Vector2(1f, -1f);
+
     private readonly InventorySlotView[] slots = new InventorySlotView[SlotCount];
     private int selectedSlot = -1;
     private bool initialized;
 
     private void Awake()
     {
+        if (slotPadding == null)
+            slotPadding = new RectOffset(8, 8, 8, 8);
+
         BuildGridIfNeeded();
         if (equipButton != null) equipButton.onClick.AddListener(EquipSelected);
         if (useButton != null) useButton.onClick.AddListener(UseSelected);
@@ -76,6 +94,12 @@ public class InventoryGridUI : MonoBehaviour
         Refresh();
     }
 
+    internal Color GetSlotColor(bool hasItem, bool isSelected)
+    {
+        if (isSelected) return selectedSlotColor;
+        return hasItem ? itemSlotColor : emptySlotColor;
+    }
+
     private void BuildGridIfNeeded()
     {
         if (gridRoot == null)
@@ -88,10 +112,10 @@ public class InventoryGridUI : MonoBehaviour
         GridLayoutGroup layout = gridRoot.GetComponent<GridLayoutGroup>();
         if (layout == null) layout = gridRoot.gameObject.AddComponent<GridLayoutGroup>();
         layout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
-        layout.constraintCount = 6;
-        layout.cellSize = new Vector2(66f, 66f);
-        layout.spacing = new Vector2(7f, 7f);
-        layout.padding = new RectOffset(8, 8, 8, 8);
+        layout.constraintCount = Mathf.Max(1, columns);
+        layout.cellSize = slotSize;
+        layout.spacing = slotSpacing;
+        layout.padding = slotPadding;
         layout.startCorner = GridLayoutGroup.Corner.UpperLeft;
         layout.startAxis = GridLayoutGroup.Axis.Horizontal;
         layout.childAlignment = TextAnchor.UpperLeft;
@@ -102,7 +126,13 @@ public class InventoryGridUI : MonoBehaviour
             slotObject.transform.SetParent(gridRoot, false);
 
             Image background = slotObject.GetComponent<Image>();
-            background.color = new Color(0.1f, 0.11f, 0.13f, 1f);
+            background.sprite = slotFrameSprite;
+            background.type = slotFrameSprite != null ? slotFrameType : Image.Type.Simple;
+            background.color = GetSlotColor(false, false);
+            Outline outline = slotObject.AddComponent<Outline>();
+            outline.effectColor = slotOutlineColor;
+            outline.effectDistance = slotOutlineDistance;
+            outline.enabled = drawSlotOutline;
             Button button = slotObject.GetComponent<Button>();
             button.targetGraphic = background;
 

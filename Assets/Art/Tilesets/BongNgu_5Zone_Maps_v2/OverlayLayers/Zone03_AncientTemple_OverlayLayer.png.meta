@@ -1,0 +1,1573 @@
+fileFormatVersion: 2
+guid: 0d8ba5176a6425f43b3d098b98c869f3
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3448692516004678848
+    second: Zone03_AncientTemple_OverlayLayer_0
+  - first:
+      213: -5647140088715191156
+    second: Zone03_AncientTemple_OverlayLayer_1
+  - first:
+      213: -4978185105397642025
+    second: Zone03_AncientTemple_OverlayLayer_2
+  - first:
+      213: -8500687079910410212
+    second: Zone03_AncientTemple_OverlayLayer_3
+  - first:
+      213: 6758398059646660210
+    second: Zone03_AncientTemple_OverlayLayer_4
+  - first:
+      213: -3054087293005313245
+    second: Zone03_AncientTemple_OverlayLayer_5
+  - first:
+      213: -3179182906790062195
+    second: Zone03_AncientTemple_OverlayLayer_6
+  - first:
+      213: 1548176829949086768
+    second: Zone03_AncientTemple_OverlayLayer_7
+  - first:
+      213: 8943404607606346273
+    second: Zone03_AncientTemple_OverlayLayer_8
+  - first:
+      213: -6994052183219602482
+    second: Zone03_AncientTemple_OverlayLayer_9
+  - first:
+      213: -6845257208719048916
+    second: Zone03_AncientTemple_OverlayLayer_10
+  - first:
+      213: 9065104887485034664
+    second: Zone03_AncientTemple_OverlayLayer_11
+  - first:
+      213: 4370644532558732614
+    second: Zone03_AncientTemple_OverlayLayer_12
+  - first:
+      213: 5406307644745598106
+    second: Zone03_AncientTemple_OverlayLayer_13
+  - first:
+      213: -7898827542369697753
+    second: Zone03_AncientTemple_OverlayLayer_14
+  - first:
+      213: -5631128943498773069
+    second: Zone03_AncientTemple_OverlayLayer_15
+  - first:
+      213: 4643945750396429316
+    second: Zone03_AncientTemple_OverlayLayer_16
+  - first:
+      213: -5451150741831402170
+    second: Zone03_AncientTemple_OverlayLayer_17
+  - first:
+      213: -63276955626414223
+    second: Zone03_AncientTemple_OverlayLayer_18
+  - first:
+      213: -466183721515218346
+    second: Zone03_AncientTemple_OverlayLayer_19
+  - first:
+      213: 19888145400153414
+    second: Zone03_AncientTemple_OverlayLayer_20
+  - first:
+      213: -2340445154961830306
+    second: Zone03_AncientTemple_OverlayLayer_21
+  - first:
+      213: 1825278455969571314
+    second: Zone03_AncientTemple_OverlayLayer_22
+  - first:
+      213: 6583112188699117582
+    second: Zone03_AncientTemple_OverlayLayer_23
+  - first:
+      213: -4404890766472493852
+    second: Zone03_AncientTemple_OverlayLayer_24
+  - first:
+      213: 6697809892887994455
+    second: Zone03_AncientTemple_OverlayLayer_25
+  - first:
+      213: -3645400483190295849
+    second: Zone03_AncientTemple_OverlayLayer_26
+  - first:
+      213: -4290041641169493359
+    second: Zone03_AncientTemple_OverlayLayer_27
+  - first:
+      213: -7537927361277621825
+    second: Zone03_AncientTemple_OverlayLayer_28
+  - first:
+      213: 219339667160785850
+    second: Zone03_AncientTemple_OverlayLayer_29
+  - first:
+      213: 1033692011095910458
+    second: Zone03_AncientTemple_OverlayLayer_30
+  - first:
+      213: -6276063720871621298
+    second: Zone03_AncientTemple_OverlayLayer_31
+  - first:
+      213: -8348110580843281778
+    second: Zone03_AncientTemple_OverlayLayer_32
+  - first:
+      213: -7538090566821134322
+    second: Zone03_AncientTemple_OverlayLayer_33
+  - first:
+      213: -3784241233719108107
+    second: Zone03_AncientTemple_OverlayLayer_34
+  - first:
+      213: -9080897777663271915
+    second: Zone03_AncientTemple_OverlayLayer_35
+  - first:
+      213: -3220734032257207608
+    second: Zone03_AncientTemple_OverlayLayer_36
+  - first:
+      213: -1561115929992100327
+    second: Zone03_AncientTemple_OverlayLayer_37
+  - first:
+      213: -7835645438661411246
+    second: Zone03_AncientTemple_OverlayLayer_38
+  - first:
+      213: -1641044457899818794
+    second: Zone03_AncientTemple_OverlayLayer_39
+  - first:
+      213: 8715224352009136450
+    second: Zone03_AncientTemple_OverlayLayer_40
+  - first:
+      213: -1584366655094720998
+    second: Zone03_AncientTemple_OverlayLayer_41
+  - first:
+      213: -7280955256345654746
+    second: Zone03_AncientTemple_OverlayLayer_42
+  - first:
+      213: -5987790370131747295
+    second: Zone03_AncientTemple_OverlayLayer_43
+  - first:
+      213: -557908113631609268
+    second: Zone03_AncientTemple_OverlayLayer_44
+  - first:
+      213: -2204009312928919501
+    second: Zone03_AncientTemple_OverlayLayer_45
+  - first:
+      213: 8667421732747741994
+    second: Zone03_AncientTemple_OverlayLayer_46
+  - first:
+      213: -6863624965285173879
+    second: Zone03_AncientTemple_OverlayLayer_47
+  - first:
+      213: -8636306415323685023
+    second: Zone03_AncientTemple_OverlayLayer_48
+  - first:
+      213: -4151057985081327326
+    second: Zone03_AncientTemple_OverlayLayer_49
+  - first:
+      213: -7396406108871768559
+    second: Zone03_AncientTemple_OverlayLayer_50
+  - first:
+      213: 8344165131282832992
+    second: Zone03_AncientTemple_OverlayLayer_51
+  - first:
+      213: -6874720386585028249
+    second: Zone03_AncientTemple_OverlayLayer_52
+  - first:
+      213: 6675844662944623537
+    second: Zone03_AncientTemple_OverlayLayer_53
+  - first:
+      213: -5407183680822806824
+    second: Zone03_AncientTemple_OverlayLayer_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 988
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0433efbbd68c320d0800000000000000
+      internalID: -3448692516004678848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 1516
+        height: 1015
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8c5347520451a1b0800000000000000
+      internalID: -5647140088715191156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_2
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 962
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dc02aea50fe9eab0800000000000000
+      internalID: -4978185105397642025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_3
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 936
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c18ff2fa32e770a80800000000000000
+      internalID: -8500687079910410212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_4
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 910
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27eadeb4a37aacd50800000000000000
+      internalID: 6758398059646660210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_5
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 884
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b426bc9c3bd95d0800000000000000
+      internalID: -3054087293005313245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 858
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d87d8c48df541e3d0800000000000000
+      internalID: -3179182906790062195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_7
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 832
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03c0b9ecf9a3c7510800000000000000
+      internalID: 1548176829949086768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 806
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 122d7fe3b1b5d1c70800000000000000
+      internalID: 8943404607606346273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_9
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 780
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecb76ae689220fe90800000000000000
+      internalID: -6994052183219602482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_10
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 754
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2f7e1e16d2c001a0800000000000000
+      internalID: -6845257208719048916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_11
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 728
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a0f33ebdd8bdcd70800000000000000
+      internalID: 9065104887485034664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 702
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d9aa2bb06a7ac30800000000000000
+      internalID: 4370644532558732614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_13
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 676
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a944a87b820170b40800000000000000
+      internalID: 5406307644745598106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_14
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 650
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7208bf2333ab16290800000000000000
+      internalID: -7898827542369697753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 582
+        width: 50
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bdb5569f063ad1b0800000000000000
+      internalID: -5631128943498773069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_16
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 541
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40460982e0c927040800000000000000
+      internalID: 4643945750396429316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_17
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 515
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64d3800284f9954b0800000000000000
+      internalID: -5451150741831402170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 489
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17f5b61b1f13f1ff0800000000000000
+      internalID: -63276955626414223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_19
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 499
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65a040f0068c789f0800000000000000
+      internalID: -466183721515218346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_20
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 463
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64541d1b928a64000800000000000000
+      internalID: 19888145400153414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_21
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 437
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5e47322881158fd0800000000000000
+      internalID: -2340445154961830306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_22
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 411
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f16d30c511b45910800000000000000
+      internalID: 1825278455969571314
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_23
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 385
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0884f328a9eb5b50800000000000000
+      internalID: 6583112188699117582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_24
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 359
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e4420e9f2faed2c0800000000000000
+      internalID: -4404890766472493852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_25
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 333
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 750afae6c9663fc50800000000000000
+      internalID: 6697809892887994455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_26
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 307
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d2b76f139fe86dc0800000000000000
+      internalID: -3645400483190295849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_27
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 281
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19265726bd5b674c0800000000000000
+      internalID: -4290041641169493359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_28
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 255
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb98958a007e36790800000000000000
+      internalID: -7537927361277621825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_29
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 229
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab36542e3404b0300800000000000000
+      internalID: 219339667160785850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_30
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 203
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a38e7884869685e00800000000000000
+      internalID: 1033692011095910458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_31
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 177
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4d0bb14c41f6e8a0800000000000000
+      internalID: -6276063720871621298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_32
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 151
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e82082b28ad852c80800000000000000
+      internalID: -8348110580843281778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_33
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 125
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0047e76192536790800000000000000
+      internalID: -7538090566821134322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_34
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 99
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fd59cfc5acab7bc0800000000000000
+      internalID: -3784241233719108107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_35
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 73
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51c1fb8759b2af180800000000000000
+      internalID: -9080897777663271915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_36
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 47
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c23c4b3677ad43d0800000000000000
+      internalID: -3220734032257207608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_37
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 21
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9160e93355dc55ae0800000000000000
+      internalID: -1561115929992100327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_38
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25e3da21df1324390800000000000000
+      internalID: -7835645438661411246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_39
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d0024a92c6d939e0800000000000000
+      internalID: -1641044457899818794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_40
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249a6577f52b2f870800000000000000
+      internalID: 8715224352009136450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_41
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16fa19ebe2330ae0800000000000000
+      internalID: -1584366655094720998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_42
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62a010045c9d4fa90800000000000000
+      internalID: -7280955256345654746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_43
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12edace026817eca0800000000000000
+      internalID: -5987790370131747295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_44
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4efdadc689e148f0800000000000000
+      internalID: -557908113631609268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_45
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 330183d0539c961e0800000000000000
+      internalID: -2204009312928919501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_46
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2b0eead42ed84870800000000000000
+      internalID: 8667421732747741994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_47
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 985aca885718fb0a0800000000000000
+      internalID: -6863624965285173879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_48
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16f5437821da52880800000000000000
+      internalID: -8636306415323685023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_49
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 221cd2d71ca7466c0800000000000000
+      internalID: -4151057985081327326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_50
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1164b22f4dfaa5990800000000000000
+      internalID: -7396406108871768559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_51
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06e50554afd6cc370800000000000000
+      internalID: 8344165131282832992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_52
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76996737b361890a0800000000000000
+      internalID: -6874720386585028249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_53
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb608ec95d55ac50800000000000000
+      internalID: 6675844662944623537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone03_AncientTemple_OverlayLayer_54
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d6744d3713d5f4b0800000000000000
+      internalID: -5407183680822806824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Zone03_AncientTemple_OverlayLayer_0: -3448692516004678848
+      Zone03_AncientTemple_OverlayLayer_1: -5647140088715191156
+      Zone03_AncientTemple_OverlayLayer_10: -6845257208719048916
+      Zone03_AncientTemple_OverlayLayer_11: 9065104887485034664
+      Zone03_AncientTemple_OverlayLayer_12: 4370644532558732614
+      Zone03_AncientTemple_OverlayLayer_13: 5406307644745598106
+      Zone03_AncientTemple_OverlayLayer_14: -7898827542369697753
+      Zone03_AncientTemple_OverlayLayer_15: -5631128943498773069
+      Zone03_AncientTemple_OverlayLayer_16: 4643945750396429316
+      Zone03_AncientTemple_OverlayLayer_17: -5451150741831402170
+      Zone03_AncientTemple_OverlayLayer_18: -63276955626414223
+      Zone03_AncientTemple_OverlayLayer_19: -466183721515218346
+      Zone03_AncientTemple_OverlayLayer_2: -4978185105397642025
+      Zone03_AncientTemple_OverlayLayer_20: 19888145400153414
+      Zone03_AncientTemple_OverlayLayer_21: -2340445154961830306
+      Zone03_AncientTemple_OverlayLayer_22: 1825278455969571314
+      Zone03_AncientTemple_OverlayLayer_23: 6583112188699117582
+      Zone03_AncientTemple_OverlayLayer_24: -4404890766472493852
+      Zone03_AncientTemple_OverlayLayer_25: 6697809892887994455
+      Zone03_AncientTemple_OverlayLayer_26: -3645400483190295849
+      Zone03_AncientTemple_OverlayLayer_27: -4290041641169493359
+      Zone03_AncientTemple_OverlayLayer_28: -7537927361277621825
+      Zone03_AncientTemple_OverlayLayer_29: 219339667160785850
+      Zone03_AncientTemple_OverlayLayer_3: -8500687079910410212
+      Zone03_AncientTemple_OverlayLayer_30: 1033692011095910458
+      Zone03_AncientTemple_OverlayLayer_31: -6276063720871621298
+      Zone03_AncientTemple_OverlayLayer_32: -8348110580843281778
+      Zone03_AncientTemple_OverlayLayer_33: -7538090566821134322
+      Zone03_AncientTemple_OverlayLayer_34: -3784241233719108107
+      Zone03_AncientTemple_OverlayLayer_35: -9080897777663271915
+      Zone03_AncientTemple_OverlayLayer_36: -3220734032257207608
+      Zone03_AncientTemple_OverlayLayer_37: -1561115929992100327
+      Zone03_AncientTemple_OverlayLayer_38: -7835645438661411246
+      Zone03_AncientTemple_OverlayLayer_39: -1641044457899818794
+      Zone03_AncientTemple_OverlayLayer_4: 6758398059646660210
+      Zone03_AncientTemple_OverlayLayer_40: 8715224352009136450
+      Zone03_AncientTemple_OverlayLayer_41: -1584366655094720998
+      Zone03_AncientTemple_OverlayLayer_42: -7280955256345654746
+      Zone03_AncientTemple_OverlayLayer_43: -5987790370131747295
+      Zone03_AncientTemple_OverlayLayer_44: -557908113631609268
+      Zone03_AncientTemple_OverlayLayer_45: -2204009312928919501
+      Zone03_AncientTemple_OverlayLayer_46: 8667421732747741994
+      Zone03_AncientTemple_OverlayLayer_47: -6863624965285173879
+      Zone03_AncientTemple_OverlayLayer_48: -8636306415323685023
+      Zone03_AncientTemple_OverlayLayer_49: -4151057985081327326
+      Zone03_AncientTemple_OverlayLayer_5: -3054087293005313245
+      Zone03_AncientTemple_OverlayLayer_50: -7396406108871768559
+      Zone03_AncientTemple_OverlayLayer_51: 8344165131282832992
+      Zone03_AncientTemple_OverlayLayer_52: -6874720386585028249
+      Zone03_AncientTemple_OverlayLayer_53: 6675844662944623537
+      Zone03_AncientTemple_OverlayLayer_54: -5407183680822806824
+      Zone03_AncientTemple_OverlayLayer_6: -3179182906790062195
+      Zone03_AncientTemple_OverlayLayer_7: 1548176829949086768
+      Zone03_AncientTemple_OverlayLayer_8: 8943404607606346273
+      Zone03_AncientTemple_OverlayLayer_9: -6994052183219602482
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

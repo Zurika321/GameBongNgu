@@ -181,6 +181,35 @@ public class StoryObjectState
 }
 
 [Serializable]
+public class EnemyBattleSnapshot
+{
+    public string enemyId;
+    public float health;
+    public float x;
+    public float y;
+    public bool dead;
+    public bool rewardsGranted;
+}
+
+[Serializable]
+public class SpawnerBattleSnapshot
+{
+    public string spawnerId;
+    public string sceneName;
+    public bool started;
+    public bool cleared;
+    public List<EnemyBattleSnapshot> enemies = new List<EnemyBattleSnapshot>();
+}
+
+[Serializable]
+public class SkillCooldownSnapshot
+{
+    public string ownerId;
+    public string skillId;
+    public float remainingSeconds;
+}
+
+[Serializable]
 public class LastEventData
 {
     public string eventId;
@@ -209,7 +238,7 @@ public class PlayerSaveData
     // Tiến trình
     public string currentSession = "1";
     public string currentZone = "Nhà Hoang";
-    public string currentScene = "CoreCombatDemo";
+    public string currentScene = "Zone1";
     public float playerX;
     public float playerY;
     public bool manualSaveOverridesLastEventPosition;
@@ -240,6 +269,8 @@ public class PlayerSaveData
     public List<string> completedStoryEvents = new List<string>();
     public List<StoryObjectState> storyObjectStates = new List<StoryObjectState>();
     public List<string> pendingStorySpawnerIds = new List<string>();
+    public List<SpawnerBattleSnapshot> battleSnapshots = new List<SpawnerBattleSnapshot>();
+    public List<SkillCooldownSnapshot> skillCooldowns = new List<SkillCooldownSnapshot>();
 
     // ---- Hàm tiện ích ----
     public bool AddItem(string itemName, int amount = 1)

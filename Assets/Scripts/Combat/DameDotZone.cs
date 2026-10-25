@@ -109,7 +109,7 @@ public class DameDotZone : MonoBehaviour
         line.startWidth = 0.08f;
         line.endWidth = 0.08f;
         line.useWorldSpace = false;
-        line.sortingLayerName = "Decor";
+        line.sortingLayerName = "skill";
         line.sortingOrder = 9999;
 
         if (shape == DotZoneShape.Circle)

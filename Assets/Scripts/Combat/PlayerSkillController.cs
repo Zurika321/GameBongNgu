@@ -120,6 +120,48 @@ public class PlayerSkillController : MonoBehaviour
         BindUiButtons();
     }
 
+    private void Start()
+    {
+        PlayerProgressionService progress = PlayerProgressionService.Instance;
+        if (progress != null && progress.Data != null) RestoreCooldowns(progress.Data);
+    }
+
+    public void CaptureCooldowns(PlayerSaveData data)
+    {
+        if (data == null || playerController == null) return;
+        if (data.skillCooldowns == null) data.skillCooldowns = new System.Collections.Generic.List<SkillCooldownSnapshot>();
+        const string ownerId = "PLAYER";
+        data.skillCooldowns.RemoveAll(entry => entry != null && entry.ownerId == ownerId);
+
+        if (skillSlots == null) return;
+        foreach (PlayerSkillSlot slot in skillSlots)
+        {
+            if (slot == null || string.IsNullOrWhiteSpace(slot.skillName)) continue;
+            float remaining = Mathf.Clamp(slot.cooldown - (Time.time - slot.lastUsedTime), 0f, Mathf.Max(0f, slot.cooldown));
+            if (remaining <= 0f) continue;
+            data.skillCooldowns.Add(new SkillCooldownSnapshot
+            {
+                ownerId = ownerId,
+                skillId = slot.skillName,
+                remainingSeconds = remaining
+            });
+        }
+    }
+
+    public void RestoreCooldowns(PlayerSaveData data)
+    {
+        if (skillSlots == null) return;
+        foreach (PlayerSkillSlot slot in skillSlots)
+        {
+            if (slot == null || string.IsNullOrWhiteSpace(slot.skillName)) continue;
+            SkillCooldownSnapshot saved = data != null && data.skillCooldowns != null
+                ? data.skillCooldowns.Find(entry => entry != null && entry.ownerId == "PLAYER" && entry.skillId == slot.skillName)
+                : null;
+            float remaining = saved != null ? Mathf.Clamp(saved.remainingSeconds, 0f, Mathf.Max(0f, slot.cooldown)) : 0f;
+            slot.lastUsedTime = remaining > 0f ? Time.time - (slot.cooldown - remaining) : -999f;
+        }
+    }
+
     private void BindUiButtons()
     {
         if (skillSlots == null) return;

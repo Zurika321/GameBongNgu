@@ -1,15 +1,28 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerProgressionService : MonoBehaviour
 {
     private const float AutoSaveInterval = 10f;
+    private const float TransitionFadeDuration = 0.4f;
+    private const string MainGameSceneName = "CoreCombatDemo";
+
+    private static bool zoneTransitionPending;
+    private static bool pendingZoneDataApplied;
+    private static string pendingDestinationScene;
+    private static string pendingDestinationZone;
 
     public static PlayerProgressionService Instance { get; private set; }
+    public static bool IsZoneTransitionPending => zoneTransitionPending;
+    public static bool ShouldDeferConnectedStoryDirector => zoneTransitionPending && !pendingZoneDataApplied;
     public PlayerSaveData Data { get; private set; }
     public bool IsContinueRestorePending => continueRestorePending;
     public bool IsStoryEventBatchActive => storyEventBatchDepth > 0;
+
+    [Header("Zone Scene Transition")]
+    [SerializeField] private GameObject transitionFade;
 
     private GameObject player;
     private HealthController playerHealth;
@@ -17,6 +30,8 @@ public class PlayerProgressionService : MonoBehaviour
     private int storyEventBatchDepth;
     private bool saveDeferred;
     private bool continueRestorePending;
+    private string loadedMapSceneName;
+    private bool saveDataInvalid;
 
     private static bool continueRestoreRequested;
 
@@ -30,7 +45,8 @@ public class PlayerProgressionService : MonoBehaviour
         continueRestoreRequested = false;
         DataManager.DeleteData(Tables.Player);
         PlayerSaveData data = new PlayerSaveData();
-        // data.AddItem("Dao GÄƒm Gá»‰");
+        data.currentScene = "Zone1";
+        data.AddStoredItem("HOUSE-CHEST", "Dao Găm Gỉ");
         DataManager.SetData(Tables.Player, data);
     }
 
@@ -45,19 +61,46 @@ public class PlayerProgressionService : MonoBehaviour
         Instance = this;
         continueRestorePending = continueRestoreRequested;
         continueRestoreRequested = false;
-        bool hasSave = DataManager.LoadData(Tables.Player);
-        Data = hasSave ? DataManager.GetData<PlayerSaveData>(Tables.Player) : new PlayerSaveData();
+        bool saveFileExists = DataManager.HasSavedGame();
+        bool loaded = DataManager.TryGetData(Tables.Player, out PlayerSaveData loadedData);
+        loaded = loaded
+            && !string.IsNullOrWhiteSpace(loadedData.currentSession)
+            && !string.IsNullOrWhiteSpace(loadedData.currentZone)
+            && !string.IsNullOrWhiteSpace(loadedData.currentScene);
+        saveDataInvalid = saveFileExists && !loaded;
+        Data = loaded ? loadedData : new PlayerSaveData();
+        if (saveDataInvalid)
+        {
+            continueRestorePending = false;
+            Debug.LogError("[PlayerProgressionService] Save file exists but could not be parsed. It will not be overwritten; start a new game explicitly to replace it.", this);
+        }
         NormalizeData();
-        Data.unlockedSkills.Remove("ChÃ©m cÆ¡ báº£n");
+        Data.unlockedSkills.Remove("Chém cơ bản");
         for (int level = 1; level <= Data.level; level++) UnlockSkillsForLevel(level);
         ApplyPlayerData();
 
-        if (!hasSave) Save();
+        if (!saveFileExists && !saveDataInvalid) Save();
     }
 
     private void Start()
     {
         ApplyPlayerData();
+        if (SceneManager.GetActiveScene().name == MainGameSceneName)
+        {
+            string savedMapScene = GetSavedMapSceneName();
+            if (!string.IsNullOrWhiteSpace(savedMapScene))
+            {
+                Debug.Log($"[PlayerProgressionService] Loading saved map '{savedMapScene}' additively for currentZone '{Data.currentZone}'.", this);
+                StartCoroutine(LoadSavedZoneMap(savedMapScene));
+            }
+            else
+            {
+                Debug.LogWarning(
+                    $"[PlayerProgressionService] No additive map found for currentScene '{Data.currentScene}' " +
+                    $"or currentZone '{Data.currentZone}'.",
+                    this);
+            }
+        }
     }
 
     private void Update()
@@ -80,8 +123,9 @@ public class PlayerProgressionService : MonoBehaviour
 
     public void Save()
     {
-        if (Data == null) return;
+        if (Data == null || saveDataInvalid) return;
         CapturePlayerLocationAndHealth();
+        CaptureCombatSnapshots();
         if (storyEventBatchDepth > 0)
         {
             saveDeferred = true;
@@ -89,6 +133,20 @@ public class PlayerProgressionService : MonoBehaviour
         }
 
         DataManager.SetData(Tables.Player, Data);
+    }
+
+    private void CaptureCombatSnapshots()
+    {
+        if (Data.skillCooldowns == null) Data.skillCooldowns = new List<SkillCooldownSnapshot>();
+        PlayerSkillController[] playerSkills = FindObjectsByType<PlayerSkillController>(
+            FindObjectsInactive.Include);
+        foreach (PlayerSkillController controller in playerSkills)
+            if (controller != null) controller.CaptureCooldowns(Data);
+
+        ZoneEnemySpawner[] spawners = FindObjectsByType<ZoneEnemySpawner>(
+            FindObjectsInactive.Include);
+        foreach (ZoneEnemySpawner spawner in spawners)
+            if (spawner != null) spawner.CaptureBattleSnapshot(Data);
     }
 
     public void SaveManual()
@@ -165,7 +223,12 @@ public class PlayerProgressionService : MonoBehaviour
             ? new List<string>(lastEvent.spawnedSpawnerIds)
             : new List<string>();
 
-        if (!Data.manualSaveOverridesLastEventPosition)
+        bool hasNewerPlayerSnapshot = Data.manualSaveOverridesLastEventPosition
+            || (Data.HasFlag("HasSavedPlayerPosition")
+                && (Data.hp != lastEvent.hp
+                    || !Mathf.Approximately(Data.playerX, lastEvent.playerX)
+                    || !Mathf.Approximately(Data.playerY, lastEvent.playerY)));
+        if (!hasNewerPlayerSnapshot)
         {
             Data.hp = Mathf.Max(0, lastEvent.hp);
             Data.playerX = lastEvent.playerX;
@@ -194,8 +257,10 @@ public class PlayerProgressionService : MonoBehaviour
             Data.SetFlag("HasSavedPlayerPosition");
         }
         Scene activeScene = SceneManager.GetActiveScene();
-        if (activeScene.IsValid() && !string.IsNullOrWhiteSpace(activeScene.name))
-            Data.currentScene = activeScene.name;
+        string logicalScene = !string.IsNullOrWhiteSpace(loadedMapSceneName)
+            ? loadedMapSceneName
+            : activeScene.name;
+        if (!string.IsNullOrWhiteSpace(logicalScene)) Data.currentScene = logicalScene;
     }
 
     public int GetAttackPower()
@@ -292,7 +357,7 @@ public class PlayerProgressionService : MonoBehaviour
 
         if (Data.choices.Exists(choice => choice.sessionId == sessionId)) return false;
         int effectiveQtDelta = qtDelta;
-        if (effectiveQtDelta > 0 && Data.GetItemAmount("BÃ¹a Há»™ Má»‡nh RÃ¡ch") > 0)
+        if (effectiveQtDelta > 0 && Data.GetItemAmount("Bùa Hộ Mệnh Rách") > 0)
             effectiveQtDelta = Mathf.Max(0, effectiveQtDelta - 1);
         Data.AddChoice(sessionId, choiceId, ltDelta, effectiveQtDelta);
         Save();
@@ -328,7 +393,7 @@ public class PlayerProgressionService : MonoBehaviour
             Save();
             return false;
         }
-        if (itemName.StartsWith("BÄƒng Äáº¡n", System.StringComparison.Ordinal))
+        if (itemName.StartsWith("Băng Đạn", System.StringComparison.Ordinal))
         {
             LevelTable table = GetLevelTable();
             LevelData level = table.levels != null ? FindLevel(table, Data.level) : null;
@@ -411,7 +476,7 @@ public class PlayerProgressionService : MonoBehaviour
 
             UnlockSkillsForLevel(Data.level);
 
-            Debug.Log($"[PlayerProgressionService] Kháº£i reached level {Data.level}.");
+            Debug.Log($"[PlayerProgressionService] Khải reached level {Data.level}.");
         }
 
         ApplyPlayerData();
@@ -447,14 +512,13 @@ public class PlayerProgressionService : MonoBehaviour
         if (!string.IsNullOrWhiteSpace(skill) && !Data.unlockedSkills.Contains(skill))
             Data.unlockedSkills.Add(skill);
     }
-    public void MarkEnemyDefeated(string enemyId)
+
+    public bool MarkEnemyDefeated(string enemyId)
     {
-        if (string.IsNullOrWhiteSpace(enemyId)) return;
-        if (!Data.defeatedEnemies.Contains(enemyId))
-        {
-            Data.defeatedEnemies.Add(enemyId);
-            Save();
-        }
+        if (string.IsNullOrWhiteSpace(enemyId) || Data.defeatedEnemies.Contains(enemyId)) return false;
+        Data.defeatedEnemies.Add(enemyId);
+        Save();
+        return true;
     }
 
     public void MarkWorldItemCollected(string itemId)
@@ -488,11 +552,11 @@ public class PlayerProgressionService : MonoBehaviour
         {
             InventoryEntry entry = Data.inventory[i];
             Data.AddStoredItem(containerId, entry.itemName, entry.amount);
-            if (entry.itemName.StartsWith("BÄƒng Äáº¡n", System.StringComparison.Ordinal))
+            if (entry.itemName.StartsWith("Băng Đạn", System.StringComparison.Ordinal))
                 Data.rareAmmo = Mathf.Max(0, Data.rareAmmo - entry.amount);
         }
         Data.inventory.Clear();
-        Data.equippedItemName = string.Empty;
+        Data.equippedItemName = string.Empty;   // Unequip the item after it is moved into storage.
         if (playerHealth != null)
             playerHealth.ConfigureHealth(GetMaxHealth(), Mathf.Min(playerHealth.CurrentHealth, GetMaxHealth()));
         Save();
@@ -508,7 +572,7 @@ public class PlayerProgressionService : MonoBehaviour
         {
             InventoryEntry entry = container.items[i];
             if (!Data.AddItem(entry.itemName, entry.amount)) continue;
-            if (entry.itemName.StartsWith("BÄƒng Äáº¡n", System.StringComparison.Ordinal))
+            if (entry.itemName.StartsWith("Băng Đạn", System.StringComparison.Ordinal))
             {
                 LevelTable table = GetLevelTable();
                 LevelData level = table.levels != null ? FindLevel(table, Data.level) : null;
@@ -521,9 +585,9 @@ public class PlayerProgressionService : MonoBehaviour
 
     public bool UseBandage()
     {
-        if (Data.GetItemAmount("Váº£i BÄƒng BÃ³") <= 0 || playerHealth == null) return false;
+        if (Data.GetItemAmount("Vải Băng Bó") <= 0 || playerHealth == null) return false;
         float missingHealth = playerHealth.MaxHealth - playerHealth.CurrentHealth;
-        if (missingHealth <= 0f || !Data.RemoveItem("Váº£i BÄƒng BÃ³")) return false;
+        if (missingHealth <= 0f || !Data.RemoveItem("Vải Băng Bó")) return false;
 
         playerHealth.Heal(Mathf.Min(20f, missingHealth));
         Save();
@@ -539,23 +603,262 @@ public class PlayerProgressionService : MonoBehaviour
             : new List<InventoryEntry>();
     }
 
-    public void LoadScene(string sceneName, string zoneName, Vector2 arrivalPosition)
+    public void LoadSceneByZone(string sceneName, string zoneName)
     {
-        if (string.IsNullOrWhiteSpace(sceneName) || Data == null) return;
-        Save();
+        if (string.IsNullOrWhiteSpace(sceneName) || Data == null || saveDataInvalid) return;
+
+        if (player == null) FindPlayer();
+        if (player != null && playerHealth != null)
+            Data.hp = Mathf.CeilToInt(playerHealth.CurrentHealth);
+
         Data.currentScene = sceneName;
-        if (!string.IsNullOrWhiteSpace(zoneName)) Data.currentZone = zoneName;
-        Data.playerX = arrivalPosition.x;
-        Data.playerY = arrivalPosition.y;
-        Data.SetFlag("HasSavedPlayerPosition");
-        if (Data.lastEvent != null)
-        {
-            Data.lastEvent.sceneName = sceneName;
-            Data.lastEvent.playerX = arrivalPosition.x;
-            Data.lastEvent.playerY = arrivalPosition.y;
-        }
+        pendingDestinationScene = sceneName;
+        pendingDestinationZone = zoneName;
+        pendingZoneDataApplied = false;
+        zoneTransitionPending = true;
+        Data.RemoveFlag("HasSavedPlayerPosition");
+        Data.manualSaveOverridesLastEventPosition = true;
+        if (Data.lastEvent != null) Data.lastEvent.sceneName = sceneName;
+        CaptureCombatSnapshots();
         DataManager.SetData(Tables.Player, Data);
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(SwitchZoneMap(sceneName, zoneName));
+    }
+
+    private System.Collections.IEnumerator LoadSavedZoneMap(string sceneName)
+    {
+        yield return null;
+        Scene mapScene = SceneManager.GetSceneByName(sceneName);
+        if (!mapScene.IsValid() || !mapScene.isLoaded)
+        {
+            AsyncOperation load = SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+            if (load == null)
+            {
+                Debug.LogError($"[PlayerProgressionService] Could not load map scene '{sceneName}'.", this);
+                yield break;
+            }
+            while (!load.isDone) yield return null;
+            mapScene = SceneManager.GetSceneByName(sceneName);
+        }
+
+        loadedMapSceneName = sceneName;
+        SetLegacyZoneContentActive(false);
+        ConnectedStoryDirector director = FindAnyObjectByType<ConnectedStoryDirector>(FindObjectsInactive.Include);
+        if (director != null) director.SetMapScene(mapScene);
+        Debug.Log($"[PlayerProgressionService] Additive map '{sceneName}' loaded for zone '{Data.currentZone}'.", this);
+    }
+
+    private System.Collections.IEnumerator SwitchZoneMap(string destinationScene, string destinationZone)
+    {
+        transitionFade = ResolveTransitionFade();
+        Image fadeImage = transitionFade != null
+            ? transitionFade.GetComponent<Image>() ?? transitionFade.GetComponentInChildren<Image>(true)
+            : null;
+        if (transitionFade != null) transitionFade.SetActive(true);
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            color.a = 1f;
+            fadeImage.color = color;
+            fadeImage.raycastTarget = true;
+        }
+        yield return null;
+
+        Scene destination = SceneManager.GetSceneByName(destinationScene);
+        bool destinationIsMainScene = destinationScene == MainGameSceneName;
+        if (!destinationIsMainScene && (!destination.IsValid() || !destination.isLoaded))
+        {
+            AsyncOperation load = SceneManager.LoadSceneAsync(destinationScene, LoadSceneMode.Additive);
+            if (load == null)
+            {
+                Debug.LogError($"[PlayerProgressionService] Could not load map scene '{destinationScene}'.", this);
+                if (transitionFade != null) transitionFade.SetActive(false);
+                zoneTransitionPending = false;
+                yield break;
+            }
+            while (!load.isDone) yield return null;
+            destination = SceneManager.GetSceneByName(destinationScene);
+        }
+        else if (destinationIsMainScene)
+        {
+            destination = SceneManager.GetSceneByName(MainGameSceneName);
+        }
+
+        Scene mainScene = SceneManager.GetSceneByName(MainGameSceneName);
+        if (mainScene.IsValid() && mainScene.isLoaded) SceneManager.SetActiveScene(mainScene);
+
+        string previousMap = loadedMapSceneName;
+        if (!string.IsNullOrWhiteSpace(previousMap) && previousMap != destinationScene)
+        {
+            Scene oldMap = SceneManager.GetSceneByName(previousMap);
+            if (oldMap.IsValid() && oldMap.isLoaded)
+            {
+                AsyncOperation unload = SceneManager.UnloadSceneAsync(oldMap);
+                if (unload != null) while (!unload.isDone) yield return null;
+            }
+        }
+        loadedMapSceneName = destinationIsMainScene ? null : destinationScene;
+        SetLegacyZoneContentActive(destinationIsMainScene);
+
+        Data.currentScene = destinationIsMainScene ? MainGameSceneName : destinationScene;
+        if (!string.IsNullOrWhiteSpace(destinationZone)) Data.currentZone = destinationZone;
+        Data.RemoveFlag("HasSavedPlayerPosition");
+        DataManager.SetData(Tables.Player, Data);
+        pendingZoneDataApplied = true;
+
+        ConnectedStoryDirector director = FindAnyObjectByType<ConnectedStoryDirector>(FindObjectsInactive.Include);
+        if (director != null)
+        {
+            director.enabled = true;
+            director.SetMapScene(destination);
+        }
+        else Debug.LogError("[PlayerProgressionService] ConnectedStoryDirector was not found in the main scene.", this);
+
+        if (fadeImage != null)
+        {
+            float elapsed = 0f;
+            Color color = fadeImage.color;
+            while (elapsed < TransitionFadeDuration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                color.a = 1f - Mathf.Clamp01(elapsed / TransitionFadeDuration);
+                fadeImage.color = color;
+                yield return null;
+            }
+            color.a = 0f;
+            fadeImage.color = color;
+        }
+        if (transitionFade != null) transitionFade.SetActive(false);
+        zoneTransitionPending = false;
+        pendingZoneDataApplied = false;
+        pendingDestinationScene = null;
+        pendingDestinationZone = null;
+    }
+
+    private string GetSavedMapSceneName()
+    {
+        // currentScene is the sole source for selecting the additive map.
+        if (!string.IsNullOrWhiteSpace(Data.currentScene)
+            && Data.currentScene.StartsWith("Zone", System.StringComparison.OrdinalIgnoreCase)
+            && Application.CanStreamedLevelBeLoaded(Data.currentScene))
+        {
+            return Data.currentScene;
+        }
+
+        return null;
+    }
+
+    private static void SetLegacyZoneContentActive(bool active)
+    {
+        Scene mainScene = SceneManager.GetSceneByName(MainGameSceneName);
+        if (!mainScene.IsValid() || !mainScene.isLoaded) return;
+
+        foreach (GameObject root in mainScene.GetRootGameObjects())
+        {
+            if (root.name == "Zone1Main")
+            {
+                if (root.activeSelf != active) root.SetActive(active);
+                return;
+            }
+        }
+    }
+
+    private System.Collections.IEnumerator FinishZoneTransitionAfterSceneLoad()
+    {
+        transitionFade = ResolveTransitionFade();
+        Image fadeImage = transitionFade != null
+            ? transitionFade.GetComponent<Image>() ?? transitionFade.GetComponentInChildren<Image>(true)
+            : null;
+
+        if (transitionFade != null) transitionFade.SetActive(true);
+        if (fadeImage != null)
+        {
+            Color color = fadeImage.color;
+            color.a = 1f;
+            fadeImage.color = color;
+            fadeImage.raycastTarget = true;
+        }
+
+        // Render the transition overlay before changing zone state or enabling its director.
+        yield return null;
+
+        if (!string.IsNullOrWhiteSpace(pendingDestinationZone))
+            Data.currentZone = pendingDestinationZone;
+        Data.RemoveFlag("HasSavedPlayerPosition");
+        DataManager.SetData(Tables.Player, Data);
+        pendingZoneDataApplied = true;
+
+        ConnectedStoryDirector director = FindAnyObjectByType<ConnectedStoryDirector>(FindObjectsInactive.Include);
+        if (director != null)
+        {
+            director.enabled = true;
+            float waitTime = 0f;
+            while (director != null && !director.IsInitialized && waitTime < 5f)
+            {
+                waitTime += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            if (director != null && !director.IsInitialized)
+                Debug.LogError("[PlayerProgressionService] ConnectedStoryDirector did not initialize before the zone transition timeout.", director);
+        }
+        else
+        {
+            Debug.LogError("[PlayerProgressionService] ConnectedStoryDirector was not found in the destination scene.", this);
+        }
+
+        if (fadeImage != null)
+        {
+            float elapsed = 0f;
+            Color color = fadeImage.color;
+            while (elapsed < TransitionFadeDuration)
+            {
+                elapsed += Time.unscaledDeltaTime;
+                color.a = 1f - Mathf.Clamp01(elapsed / TransitionFadeDuration);
+                fadeImage.color = color;
+                yield return null;
+            }
+            color.a = 0f;
+            fadeImage.color = color;
+        }
+
+        if (transitionFade != null) transitionFade.SetActive(false);
+        zoneTransitionPending = false;
+        pendingDestinationScene = null;
+        pendingDestinationZone = null;
+        pendingZoneDataApplied = false;
+    }
+
+    private GameObject ResolveTransitionFade()
+    {
+        if (transitionFade != null) return transitionFade;
+
+        Scene activeScene = SceneManager.GetActiveScene();
+        foreach (GameObject root in activeScene.GetRootGameObjects())
+        {
+            foreach (Transform child in root.GetComponentsInChildren<Transform>(true))
+            {
+                if (child.name == "TransitionFade") return child.gameObject;
+            }
+        }
+
+        GameObject canvasObject = new GameObject("ZoneTransitionCanvas", typeof(Canvas), typeof(CanvasScaler));
+        Canvas canvas = canvasObject.GetComponent<Canvas>();
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingOrder = short.MaxValue;
+        CanvasScaler scaler = canvasObject.GetComponent<CanvasScaler>();
+        scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
+        scaler.referenceResolution = new Vector2(1920f, 1080f);
+
+        transitionFade = new GameObject("TransitionFade", typeof(RectTransform), typeof(Image));
+        transitionFade.transform.SetParent(canvasObject.transform, false);
+        RectTransform rect = transitionFade.GetComponent<RectTransform>();
+        rect.anchorMin = Vector2.zero;
+        rect.anchorMax = Vector2.one;
+        rect.offsetMin = Vector2.zero;
+        rect.offsetMax = Vector2.zero;
+        Image image = transitionFade.GetComponent<Image>();
+        image.color = Color.black;
+        image.raycastTarget = true;
+        return transitionFade;
     }
     public void SetCurrentZone(string zoneName)
     {
@@ -639,7 +942,9 @@ public class PlayerProgressionService : MonoBehaviour
         if (Data.completedStoryEvents == null) Data.completedStoryEvents = new List<string>();
         if (Data.storyObjectStates == null) Data.storyObjectStates = new List<StoryObjectState>();
         if (Data.pendingStorySpawnerIds == null) Data.pendingStorySpawnerIds = new List<string>();
-        if (string.IsNullOrWhiteSpace(Data.currentScene)) Data.currentScene = "CoreCombatDemo";
+        if (Data.battleSnapshots == null) Data.battleSnapshots = new List<SpawnerBattleSnapshot>();
+        if (Data.skillCooldowns == null) Data.skillCooldowns = new List<SkillCooldownSnapshot>();
+        if (string.IsNullOrWhiteSpace(Data.currentScene)) Data.currentScene = "Zone1";
         if (Data.lastEvent != null)
         {
             if (Data.lastEvent.actionTypes == null) Data.lastEvent.actionTypes = new List<string>();
@@ -650,7 +955,7 @@ public class PlayerProgressionService : MonoBehaviour
             if (Data.lastEvent.completedOneShotEvents == null)
                 Data.lastEvent.completedOneShotEvents = new List<string>();
         }
-        if (Data.equippedItemName == null) Data.equippedItemName = string.Empty;
+        Data.equippedItemName = string.Empty;   // Unequip the item after it is moved into storage.
         HashSet<int> usedSlots = new HashSet<int>();
         for (int i = Data.inventory.Count - 1; i >= 0; i--)
         {
@@ -677,7 +982,7 @@ public class PlayerProgressionService : MonoBehaviour
         }
         if (!string.IsNullOrEmpty(Data.equippedItemName)
             && !Data.inventory.Exists(item => item.itemName == Data.equippedItemName))
-            Data.equippedItemName = string.Empty;
+        Data.equippedItemName = string.Empty;   // Unequip the item after it is moved into storage.
         Data.level = Mathf.Clamp(Data.level, 1, 20);
         Data.exp = Mathf.Max(0, Data.exp);
         Data.lt = Mathf.Max(0, Data.lt);
@@ -696,9 +1001,28 @@ public class PlayerProgressionService : MonoBehaviour
     {
         if (Instance == this) Instance = null;
     }
+    // Called by StorageWindowUI.
+    public void RevalidateEquipment()
+    {
+        if (Data == null || string.IsNullOrEmpty(Data.equippedItemName)) return;
+        if (Data.GetItemAmount(Data.equippedItemName) > 0) return;
+
+        Data.equippedItemName = string.Empty;   // Unequip the item after it is moved into storage.
+        if (playerHealth != null)
+            playerHealth.ConfigureHealth(GetMaxHealth(), Mathf.Min(playerHealth.CurrentHealth, GetMaxHealth()));
+    }
+
+    public void AdjustRareAmmoForTransfer(string itemName, int delta)
+    {
+        if (Data == null || string.IsNullOrEmpty(itemName) || delta == 0) return;
+        if (!itemName.StartsWith("Băng Đạn", System.StringComparison.Ordinal)) return;
+
+        if (delta > 0)
+        {
+            LevelTable table = GetLevelTable();
+            LevelData level = table.levels != null ? FindLevel(table, Data.level) : null;
+            if (level != null) Data.rareAmmo = Mathf.Min(level.maxRareAmmo, Data.rareAmmo + delta);
+        }
+        else Data.rareAmmo = Mathf.Max(0, Data.rareAmmo + delta);
+    }
 }
-
-
-
-
-

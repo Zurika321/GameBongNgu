@@ -1,0 +1,3939 @@
+fileFormatVersion: 2
+guid: 8dc6ff441adc9b44da077fdf9ced5802
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -922739963468452011
+    second: Zone04_RitualSummit_OverlayLayer_0
+  - first:
+      213: -225872222378701433
+    second: Zone04_RitualSummit_OverlayLayer_1
+  - first:
+      213: 642621866599337925
+    second: Zone04_RitualSummit_OverlayLayer_2
+  - first:
+      213: 3967832705238170438
+    second: Zone04_RitualSummit_OverlayLayer_3
+  - first:
+      213: -1678982217674007090
+    second: Zone04_RitualSummit_OverlayLayer_4
+  - first:
+      213: -7323294740921120407
+    second: Zone04_RitualSummit_OverlayLayer_5
+  - first:
+      213: -7033417415031654558
+    second: Zone04_RitualSummit_OverlayLayer_6
+  - first:
+      213: -7811721213038941493
+    second: Zone04_RitualSummit_OverlayLayer_7
+  - first:
+      213: -7816857925639833638
+    second: Zone04_RitualSummit_OverlayLayer_8
+  - first:
+      213: -894078368172906216
+    second: Zone04_RitualSummit_OverlayLayer_9
+  - first:
+      213: 5511962050936030421
+    second: Zone04_RitualSummit_OverlayLayer_10
+  - first:
+      213: -5592193084758963961
+    second: Zone04_RitualSummit_OverlayLayer_11
+  - first:
+      213: -5114566315043898485
+    second: Zone04_RitualSummit_OverlayLayer_12
+  - first:
+      213: -2178686242564910670
+    second: Zone04_RitualSummit_OverlayLayer_13
+  - first:
+      213: 3544349738840603738
+    second: Zone04_RitualSummit_OverlayLayer_14
+  - first:
+      213: 1528844679151495255
+    second: Zone04_RitualSummit_OverlayLayer_15
+  - first:
+      213: -1609963884086158919
+    second: Zone04_RitualSummit_OverlayLayer_16
+  - first:
+      213: -5620483956031941530
+    second: Zone04_RitualSummit_OverlayLayer_17
+  - first:
+      213: 3278269916251007250
+    second: Zone04_RitualSummit_OverlayLayer_18
+  - first:
+      213: -2511754465035150836
+    second: Zone04_RitualSummit_OverlayLayer_19
+  - first:
+      213: -1503463614293203724
+    second: Zone04_RitualSummit_OverlayLayer_20
+  - first:
+      213: -3153809321855948694
+    second: Zone04_RitualSummit_OverlayLayer_21
+  - first:
+      213: -7957642844349866291
+    second: Zone04_RitualSummit_OverlayLayer_22
+  - first:
+      213: -6521082238601429585
+    second: Zone04_RitualSummit_OverlayLayer_23
+  - first:
+      213: 2385550375769724746
+    second: Zone04_RitualSummit_OverlayLayer_24
+  - first:
+      213: 7801265068773743097
+    second: Zone04_RitualSummit_OverlayLayer_25
+  - first:
+      213: 4153314176538753353
+    second: Zone04_RitualSummit_OverlayLayer_26
+  - first:
+      213: -8292462510143197952
+    second: Zone04_RitualSummit_OverlayLayer_27
+  - first:
+      213: -3927621472629183562
+    second: Zone04_RitualSummit_OverlayLayer_28
+  - first:
+      213: 4488629302373584835
+    second: Zone04_RitualSummit_OverlayLayer_29
+  - first:
+      213: 4955498177464691655
+    second: Zone04_RitualSummit_OverlayLayer_30
+  - first:
+      213: 7607479236419672305
+    second: Zone04_RitualSummit_OverlayLayer_31
+  - first:
+      213: -7006916663915724284
+    second: Zone04_RitualSummit_OverlayLayer_32
+  - first:
+      213: -47381174293115021
+    second: Zone04_RitualSummit_OverlayLayer_33
+  - first:
+      213: -568404606344370098
+    second: Zone04_RitualSummit_OverlayLayer_34
+  - first:
+      213: -289194167120362654
+    second: Zone04_RitualSummit_OverlayLayer_35
+  - first:
+      213: -1711264535520247784
+    second: Zone04_RitualSummit_OverlayLayer_36
+  - first:
+      213: 3011245492090256749
+    second: Zone04_RitualSummit_OverlayLayer_37
+  - first:
+      213: 2481177058471123644
+    second: Zone04_RitualSummit_OverlayLayer_38
+  - first:
+      213: 4997325605391516838
+    second: Zone04_RitualSummit_OverlayLayer_39
+  - first:
+      213: -4155909496436940063
+    second: Zone04_RitualSummit_OverlayLayer_40
+  - first:
+      213: -5388827186116363005
+    second: Zone04_RitualSummit_OverlayLayer_41
+  - first:
+      213: 5230502487579078533
+    second: Zone04_RitualSummit_OverlayLayer_42
+  - first:
+      213: -6900450092594802489
+    second: Zone04_RitualSummit_OverlayLayer_43
+  - first:
+      213: -419609991410690041
+    second: Zone04_RitualSummit_OverlayLayer_44
+  - first:
+      213: 6417654153316807883
+    second: Zone04_RitualSummit_OverlayLayer_45
+  - first:
+      213: 1206480772956084618
+    second: Zone04_RitualSummit_OverlayLayer_46
+  - first:
+      213: -4080071572180961937
+    second: Zone04_RitualSummit_OverlayLayer_47
+  - first:
+      213: -1536072859612577804
+    second: Zone04_RitualSummit_OverlayLayer_48
+  - first:
+      213: 8039233335412241173
+    second: Zone04_RitualSummit_OverlayLayer_49
+  - first:
+      213: -4014805610175974996
+    second: Zone04_RitualSummit_OverlayLayer_50
+  - first:
+      213: -3048913915597149966
+    second: Zone04_RitualSummit_OverlayLayer_51
+  - first:
+      213: -990502522257528714
+    second: Zone04_RitualSummit_OverlayLayer_52
+  - first:
+      213: 212310947550199754
+    second: Zone04_RitualSummit_OverlayLayer_53
+  - first:
+      213: 2175381430014163621
+    second: Zone04_RitualSummit_OverlayLayer_54
+  - first:
+      213: 758288446100475114
+    second: Zone04_RitualSummit_OverlayLayer_55
+  - first:
+      213: 5113835297402790542
+    second: Zone04_RitualSummit_OverlayLayer_56
+  - first:
+      213: 7165615462537579879
+    second: Zone04_RitualSummit_OverlayLayer_57
+  - first:
+      213: -8321694794528931571
+    second: Zone04_RitualSummit_OverlayLayer_58
+  - first:
+      213: -5543982416030692146
+    second: Zone04_RitualSummit_OverlayLayer_59
+  - first:
+      213: 2252314447169800884
+    second: Zone04_RitualSummit_OverlayLayer_60
+  - first:
+      213: -3595614126683165191
+    second: Zone04_RitualSummit_OverlayLayer_61
+  - first:
+      213: -4381447762077148654
+    second: Zone04_RitualSummit_OverlayLayer_62
+  - first:
+      213: -4982095757264916129
+    second: Zone04_RitualSummit_OverlayLayer_63
+  - first:
+      213: -8308005791435252599
+    second: Zone04_RitualSummit_OverlayLayer_64
+  - first:
+      213: 5722698469816266494
+    second: Zone04_RitualSummit_OverlayLayer_65
+  - first:
+      213: 7299436090389981608
+    second: Zone04_RitualSummit_OverlayLayer_66
+  - first:
+      213: 7582414926510594597
+    second: Zone04_RitualSummit_OverlayLayer_67
+  - first:
+      213: 8662903157240913082
+    second: Zone04_RitualSummit_OverlayLayer_68
+  - first:
+      213: 1464165637369029770
+    second: Zone04_RitualSummit_OverlayLayer_69
+  - first:
+      213: -5739830757596346129
+    second: Zone04_RitualSummit_OverlayLayer_70
+  - first:
+      213: 1797463283073263102
+    second: Zone04_RitualSummit_OverlayLayer_71
+  - first:
+      213: -1668044649255257366
+    second: Zone04_RitualSummit_OverlayLayer_72
+  - first:
+      213: -4602501865803638667
+    second: Zone04_RitualSummit_OverlayLayer_73
+  - first:
+      213: -829801329677378011
+    second: Zone04_RitualSummit_OverlayLayer_74
+  - first:
+      213: 4477355720380708429
+    second: Zone04_RitualSummit_OverlayLayer_75
+  - first:
+      213: -6287270795213432954
+    second: Zone04_RitualSummit_OverlayLayer_76
+  - first:
+      213: -1224295923246596360
+    second: Zone04_RitualSummit_OverlayLayer_77
+  - first:
+      213: -877861445534171683
+    second: Zone04_RitualSummit_OverlayLayer_78
+  - first:
+      213: 3357886764330068355
+    second: Zone04_RitualSummit_OverlayLayer_79
+  - first:
+      213: -4545001977260100824
+    second: Zone04_RitualSummit_OverlayLayer_80
+  - first:
+      213: -2188887546182856742
+    second: Zone04_RitualSummit_OverlayLayer_81
+  - first:
+      213: 3026745006572076657
+    second: Zone04_RitualSummit_OverlayLayer_82
+  - first:
+      213: 5522283019404670353
+    second: Zone04_RitualSummit_OverlayLayer_83
+  - first:
+      213: -8274760593276085278
+    second: Zone04_RitualSummit_OverlayLayer_84
+  - first:
+      213: 691488018285198247
+    second: Zone04_RitualSummit_OverlayLayer_85
+  - first:
+      213: 9122995057145092929
+    second: Zone04_RitualSummit_OverlayLayer_86
+  - first:
+      213: -6312381283175770440
+    second: Zone04_RitualSummit_OverlayLayer_87
+  - first:
+      213: 8915959718056616967
+    second: Zone04_RitualSummit_OverlayLayer_88
+  - first:
+      213: -971792630147171606
+    second: Zone04_RitualSummit_OverlayLayer_89
+  - first:
+      213: -1333421562970864196
+    second: Zone04_RitualSummit_OverlayLayer_90
+  - first:
+      213: -4214820992841896008
+    second: Zone04_RitualSummit_OverlayLayer_91
+  - first:
+      213: 2044837660800707664
+    second: Zone04_RitualSummit_OverlayLayer_92
+  - first:
+      213: 8144268499796075183
+    second: Zone04_RitualSummit_OverlayLayer_93
+  - first:
+      213: -3675516294832306855
+    second: Zone04_RitualSummit_OverlayLayer_94
+  - first:
+      213: -6244488474227256636
+    second: Zone04_RitualSummit_OverlayLayer_95
+  - first:
+      213: 3202287956020467307
+    second: Zone04_RitualSummit_OverlayLayer_96
+  - first:
+      213: 6110967902383893651
+    second: Zone04_RitualSummit_OverlayLayer_97
+  - first:
+      213: 1547630835968220796
+    second: Zone04_RitualSummit_OverlayLayer_98
+  - first:
+      213: 9221301742143201221
+    second: Zone04_RitualSummit_OverlayLayer_99
+  - first:
+      213: -5305644794067833652
+    second: Zone04_RitualSummit_OverlayLayer_100
+  - first:
+      213: 5097083618785276019
+    second: Zone04_RitualSummit_OverlayLayer_101
+  - first:
+      213: 8443202399527144440
+    second: Zone04_RitualSummit_OverlayLayer_102
+  - first:
+      213: 996999151492385906
+    second: Zone04_RitualSummit_OverlayLayer_103
+  - first:
+      213: -6373675851310279110
+    second: Zone04_RitualSummit_OverlayLayer_104
+  - first:
+      213: -3121960883817753973
+    second: Zone04_RitualSummit_OverlayLayer_105
+  - first:
+      213: 8194697755042970498
+    second: Zone04_RitualSummit_OverlayLayer_106
+  - first:
+      213: 2750051321954907316
+    second: Zone04_RitualSummit_OverlayLayer_107
+  - first:
+      213: -1703509267146443098
+    second: Zone04_RitualSummit_OverlayLayer_108
+  - first:
+      213: 6194319304289040277
+    second: Zone04_RitualSummit_OverlayLayer_109
+  - first:
+      213: 7857567185561852146
+    second: Zone04_RitualSummit_OverlayLayer_110
+  - first:
+      213: 8645925731451263007
+    second: Zone04_RitualSummit_OverlayLayer_111
+  - first:
+      213: -1774578436331473663
+    second: Zone04_RitualSummit_OverlayLayer_112
+  - first:
+      213: 4525129439897791565
+    second: Zone04_RitualSummit_OverlayLayer_113
+  - first:
+      213: -4018051804515879425
+    second: Zone04_RitualSummit_OverlayLayer_114
+  - first:
+      213: -6362345799912539079
+    second: Zone04_RitualSummit_OverlayLayer_115
+  - first:
+      213: -4371186604533573442
+    second: Zone04_RitualSummit_OverlayLayer_116
+  - first:
+      213: -1491107339676213087
+    second: Zone04_RitualSummit_OverlayLayer_117
+  - first:
+      213: 1848782468194767478
+    second: Zone04_RitualSummit_OverlayLayer_118
+  - first:
+      213: 7751164534762157143
+    second: Zone04_RitualSummit_OverlayLayer_119
+  - first:
+      213: -4718008990113485136
+    second: Zone04_RitualSummit_OverlayLayer_120
+  - first:
+      213: 1144079044332857626
+    second: Zone04_RitualSummit_OverlayLayer_121
+  - first:
+      213: -8636774302275126590
+    second: Zone04_RitualSummit_OverlayLayer_122
+  - first:
+      213: 186650509639803864
+    second: Zone04_RitualSummit_OverlayLayer_123
+  - first:
+      213: 3243084229161798682
+    second: Zone04_RitualSummit_OverlayLayer_124
+  - first:
+      213: -732315206576804016
+    second: Zone04_RitualSummit_OverlayLayer_125
+  - first:
+      213: 1208378755377709385
+    second: Zone04_RitualSummit_OverlayLayer_126
+  - first:
+      213: 439435996668254914
+    second: Zone04_RitualSummit_OverlayLayer_127
+  - first:
+      213: 233182590311675302
+    second: Zone04_RitualSummit_OverlayLayer_128
+  - first:
+      213: 5333914217893255711
+    second: Zone04_RitualSummit_OverlayLayer_129
+  - first:
+      213: 1402525831292814572
+    second: Zone04_RitualSummit_OverlayLayer_130
+  - first:
+      213: -4708661115581853456
+    second: Zone04_RitualSummit_OverlayLayer_131
+  - first:
+      213: -8943476940184454641
+    second: Zone04_RitualSummit_OverlayLayer_132
+  - first:
+      213: 7834075163796799499
+    second: Zone04_RitualSummit_OverlayLayer_133
+  - first:
+      213: 4292442902901483714
+    second: Zone04_RitualSummit_OverlayLayer_134
+  - first:
+      213: -709387625033097143
+    second: Zone04_RitualSummit_OverlayLayer_135
+  - first:
+      213: 8437351030295279205
+    second: Zone04_RitualSummit_OverlayLayer_136
+  - first:
+      213: 8960256770179774480
+    second: Zone04_RitualSummit_OverlayLayer_137
+  - first:
+      213: -1562970307244519524
+    second: Zone04_RitualSummit_OverlayLayer_138
+  - first:
+      213: 1311095375649422784
+    second: Zone04_RitualSummit_OverlayLayer_139
+  - first:
+      213: -682777012775639768
+    second: Zone04_RitualSummit_OverlayLayer_140
+  - first:
+      213: 7398032125930337285
+    second: Zone04_RitualSummit_OverlayLayer_141
+  - first:
+      213: -7712291423195159390
+    second: Zone04_RitualSummit_OverlayLayer_142
+  - first:
+      213: 4171150838054847179
+    second: Zone04_RitualSummit_OverlayLayer_143
+  - first:
+      213: 1339621137990003615
+    second: Zone04_RitualSummit_OverlayLayer_144
+  - first:
+      213: -8548554820286557631
+    second: Zone04_RitualSummit_OverlayLayer_145
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 54
+        width: 1291
+        height: 961
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55fe76164e4c133f0800000000000000
+      internalID: -922739963468452011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_1
+      rect:
+        serializedVersion: 2
+        x: 1107
+        y: 668
+        width: 411
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78d4d74196a8ddcf0800000000000000
+      internalID: -225872222378701433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_2
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 988
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cf4d83de2d0be800800000000000000
+      internalID: 642621866599337925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_3
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 962
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64bf5eba2d2901730800000000000000
+      internalID: 3967832705238170438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_4
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 936
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecdd753919e03b8e0800000000000000
+      internalID: -1678982217674007090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_5
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 910
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96909edcb3e6e5a90800000000000000
+      internalID: -7323294740921120407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_6
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 884
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267fdfb2028446e90800000000000000
+      internalID: -7033417415031654558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_7
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 858
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bca2e6ce1f0379390800000000000000
+      internalID: -7811721213038941493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_8
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 832
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad77a82d121f48390800000000000000
+      internalID: -7816857925639833638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_9
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 806
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81961bf06789793f0800000000000000
+      internalID: -894078368172906216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_10
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 780
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d4c97d184c6e7c40800000000000000
+      internalID: 5511962050936030421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_11
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 754
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 709cb83a40a8462b0800000000000000
+      internalID: -5592193084758963961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_12
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 728
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8b31abd8096509b0800000000000000
+      internalID: -5114566315043898485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_13
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 702
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b153e2d760c3c1e0800000000000000
+      internalID: -2178686242564910670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_14
+      rect:
+        serializedVersion: 2
+        x: 1267
+        y: 623
+        width: 35
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5cb7570f4f003130800000000000000
+      internalID: 3544349738840603738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_15
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 659
+        width: 23
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7582291b22c873510800000000000000
+      internalID: 1528844679151495255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_16
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 676
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b916db906248a9e0800000000000000
+      internalID: -1609963884086158919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_17
+      rect:
+        serializedVersion: 2
+        x: 1304
+        y: 642
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6641feede970002b0800000000000000
+      internalID: -5620483956031941530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_18
+      rect:
+        serializedVersion: 2
+        x: 1347
+        y: 620
+        width: 37
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219adfbae11ce7d20800000000000000
+      internalID: 3278269916251007250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_19
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 650
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0a14943f94742dd0800000000000000
+      internalID: -2511754465035150836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_20
+      rect:
+        serializedVersion: 2
+        x: 1329
+        y: 617
+        width: 18
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f42459fecf922be0800000000000000
+      internalID: -1503463614293203724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_21
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 624
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a68e571a12b6b34d0800000000000000
+      internalID: -3153809321855948694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_22
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 598
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dced8159ef5c09190800000000000000
+      internalID: -7957642844349866291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_23
+      rect:
+        serializedVersion: 2
+        x: 1273
+        y: 571
+        width: 41
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fad7d0111467085a0800000000000000
+      internalID: -6521082238601429585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_24
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 566
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47dd857d6d2b1120800000000000000
+      internalID: 2385550375769724746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_25
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 572
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f91ce64f39a34c60800000000000000
+      internalID: 7801265068773743097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_26
+      rect:
+        serializedVersion: 2
+        x: 1326
+        y: 548
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 949bf250d3983a930800000000000000
+      internalID: 4153314176538753353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_27
+      rect:
+        serializedVersion: 2
+        x: 1357
+        y: 555
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00daba948414bec80800000000000000
+      internalID: -8292462510143197952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_28
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 546
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbadbf74194e79c0800000000000000
+      internalID: -3927621472629183562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_29
+      rect:
+        serializedVersion: 2
+        x: 1386
+        y: 522
+        width: 31
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cf03689190da4e30800000000000000
+      internalID: 4488629302373584835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_30
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 520
+        width: 35
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cbe0e8465775c440800000000000000
+      internalID: 4955498177464691655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_31
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 540
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f854f23f02339960800000000000000
+      internalID: 7607479236419672305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_32
+      rect:
+        serializedVersion: 2
+        x: 1448
+        y: 499
+        width: 15
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 402c98c1b6e62ce90800000000000000
+      internalID: -7006916663915724284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_33
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 520
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37fc731b21ba75ff0800000000000000
+      internalID: -47381174293115021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_34
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 495
+        width: 37
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e48e526a50f9c18f0800000000000000
+      internalID: -568404606344370098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_35
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 507
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2630dadef639cfbf0800000000000000
+      internalID: -289194167120362654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_36
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 437
+        width: 34
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 810879bb8fd5048e0800000000000000
+      internalID: -1711264535520247784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_37
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 465
+        width: 28
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6d398f12d71ac920800000000000000
+      internalID: 3011245492090256749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_38
+      rect:
+        serializedVersion: 2
+        x: 1441
+        y: 466
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cba150b8369ee6220800000000000000
+      internalID: 2481177058471123644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_39
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 432
+        width: 60
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4435049211a5540800000000000000
+      internalID: 4997325605391516838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_40
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 432
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e2243af45e3356c0800000000000000
+      internalID: -4155909496436940063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_41
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 423
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30df097b93a0735b0800000000000000
+      internalID: -5388827186116363005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_42
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 435
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58fa2f0dc4a769840800000000000000
+      internalID: 5230502487579078533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_43
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 409
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c05390733dac30a0800000000000000
+      internalID: -6900450092594802489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_44
+      rect:
+        serializedVersion: 2
+        x: 1393
+        y: 433
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 708d2cd9fee3d2af0800000000000000
+      internalID: -419609991410690041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_45
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 439
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc432c34376101950800000000000000
+      internalID: 6417654153316807883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_46
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 419
+        width: 53
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a89d26ceed74eb010800000000000000
+      internalID: 1206480772956084618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_47
+      rect:
+        serializedVersion: 2
+        x: 1079
+        y: 323
+        width: 360
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f65fbf1b58ca067c0800000000000000
+      internalID: -4080071572180961937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_48
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 381
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ff7ca56fd5ceaae0800000000000000
+      internalID: -1536072859612577804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_49
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 355
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513b9b7ff18119f60800000000000000
+      internalID: 8039233335412241173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_50
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 304
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca13733a19b8848c0800000000000000
+      internalID: -4014805610175974996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_51
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 329
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f8261692f410b5d0800000000000000
+      internalID: -3048913915597149966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_52
+      rect:
+        serializedVersion: 2
+        x: 1289
+        y: 306
+        width: 23
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67826b334370142f0800000000000000
+      internalID: -990502522257528714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_53
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 316
+        width: 15
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acff7a29ea742f200800000000000000
+      internalID: 212310947550199754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_54
+      rect:
+        serializedVersion: 2
+        x: 1476
+        y: 276
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aab9fa82e1803e10800000000000000
+      internalID: 2175381430014163621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_55
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 268
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec0a1bf25bf58a00800000000000000
+      internalID: 758288446100475114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_56
+      rect:
+        serializedVersion: 2
+        x: 1307
+        y: 289
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e822c85db1ef7f640800000000000000
+      internalID: 5113835297402790542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_57
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 297
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76d49915c41617360800000000000000
+      internalID: 7165615462537579879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_58
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 283
+        width: 18
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d01c2e2bca6638c80800000000000000
+      internalID: -8321694794528931571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_59
+      rect:
+        serializedVersion: 2
+        x: 1351
+        y: 282
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ecc8a7bad51df03b0800000000000000
+      internalID: -5543982416030692146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_60
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 283
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ba49027e04d14f10800000000000000
+      internalID: 2252314447169800884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_61
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 277
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fd6cad8000d91ec0800000000000000
+      internalID: -3595614126683165191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_62
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 248
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a167b6978f133c0800000000000000
+      internalID: -4381447762077148654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_63
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 251
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f517e371e4a0cdab0800000000000000
+      internalID: -4982095757264916129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_64
+      rect:
+        serializedVersion: 2
+        x: 1328
+        y: 240
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98c1d9910c804bc80800000000000000
+      internalID: -8308005791435252599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_65
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 225
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: efee11a20fb1b6f40800000000000000
+      internalID: 5722698469816266494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_66
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 214
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a96c5c337ecc4560800000000000000
+      internalID: 7299436090389981608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_67
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 199
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52a984ac3362a3960800000000000000
+      internalID: 7582414926510594597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_68
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 147
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: abc54f20680d83870800000000000000
+      internalID: 8662903157240913082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_69
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 185
+        width: 18
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a84e6b3c3e2c15410800000000000000
+      internalID: 1464165637369029770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_70
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 114
+        width: 17
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe8cb9e36560850b0800000000000000
+      internalID: -5739830757596346129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_71
+      rect:
+        serializedVersion: 2
+        x: 1301
+        y: 157
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef5a364255fd1f810800000000000000
+      internalID: 1797463283073263102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_72
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 145
+        width: 34
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea36abaa3ae9d8e0800000000000000
+      internalID: -1668044649255257366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_73
+      rect:
+        serializedVersion: 2
+        x: 1367
+        y: 124
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57893ba20f0a020c0800000000000000
+      internalID: -4602501865803638667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_74
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 173
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ede6e4614fb74f0800000000000000
+      internalID: -829801329677378011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_75
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 147
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d46fa5e3e43c22e30800000000000000
+      internalID: 4477355720380708429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_76
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 121
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6879d9ce5802fb8a0800000000000000
+      internalID: -6287270795213432954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_77
+      rect:
+        serializedVersion: 2
+        x: 1282
+        y: 87
+        width: 21
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fe7dea285d620fe0800000000000000
+      internalID: -1224295923246596360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_78
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 95
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dddbce89aa531d3f0800000000000000
+      internalID: -877861445534171683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_79
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 52
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38921e7a83c999e20800000000000000
+      internalID: 3357886764330068355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_80
+      rect:
+        serializedVersion: 2
+        x: 975
+        y: 52
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 823b6f938c8ece0c0800000000000000
+      internalID: -4545001977260100824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_81
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 16
+        width: 396
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adf8e7cbf528f91e0800000000000000
+      internalID: -2188887546182856742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_82
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 69
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17e7a6e0c88210a20800000000000000
+      internalID: 3026745006572076657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_83
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 16
+        width: 560
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19579c8d52713ac40800000000000000
+      internalID: 5522283019404670353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_84
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 0
+        width: 69
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ebd06cf4152a2d80800000000000000
+      internalID: -8274760593276085278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_85
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 41
+        width: 41
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7abf35060b8a89900800000000000000
+      internalID: 691488018285198247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_86
+      rect:
+        serializedVersion: 2
+        x: 1015
+        y: 49
+        width: 41
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14b17c43ba36b9e70800000000000000
+      internalID: 9122995057145092929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_87
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 50
+        width: 23
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b6db79daaae568a0800000000000000
+      internalID: -6312381283175770440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_88
+      rect:
+        serializedVersion: 2
+        x: 1080
+        y: 45
+        width: 43
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 704e472ff1adbbb70800000000000000
+      internalID: 8915959718056616967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_89
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 43
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea3cbc60cf7382f0800000000000000
+      internalID: -971792630147171606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_90
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 26
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb5864b372cbe7de0800000000000000
+      internalID: -1333421562970864196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_91
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 17
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bfacc953a2f185c0800000000000000
+      internalID: -4214820992841896008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_92
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05ced5bb409b06c10800000000000000
+      internalID: 2044837660800707664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_93
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa2afb5ec01460170800000000000000
+      internalID: 8144268499796075183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_94
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9554c505761fdfcc0800000000000000
+      internalID: -3675516294832306855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_95
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c2d9a141de1759a0800000000000000
+      internalID: -6244488474227256636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_96
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b669c17fdefc07c20800000000000000
+      internalID: 3202287956020467307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_97
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39ce76f0ee48ec450800000000000000
+      internalID: 6110967902383893651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_98
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7e935dab0a4a7510800000000000000
+      internalID: 1547630835968220796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_99
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cfd223f315a8ff70800000000000000
+      internalID: 9221301742143201221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_100
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cccaf299b209e56b0800000000000000
+      internalID: -5305644794067833652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_101
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 370b828bb8a7cb640800000000000000
+      internalID: 5097083618785276019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_102
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fb8a8e29d74c2570800000000000000
+      internalID: 8443202399527144440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_103
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27cc11a227d06dd00800000000000000
+      internalID: 996999151492385906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_104
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a365a2915972c87a0800000000000000
+      internalID: -6373675851310279110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_105
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b82d065fd119ca4d0800000000000000
+      internalID: -3121960883817753973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_106
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28bf60bd03a69b170800000000000000
+      internalID: 8194697755042970498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_107
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b4373f5b152a2620800000000000000
+      internalID: 2750051321954907316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_108
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a6762cd85beb58e0800000000000000
+      internalID: -1703509267146443098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_109
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5973e7d9694a6f550800000000000000
+      internalID: 6194319304289040277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_110
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f81e2e59bfab0d60800000000000000
+      internalID: 7857567185561852146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_111
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f18df8905af7cf770800000000000000
+      internalID: 8645925731451263007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_112
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 105f464705e6f57e0800000000000000
+      internalID: -1774578436331473663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_113
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4c25cb104d7cce30800000000000000
+      internalID: 4525129439897791565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_114
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff5b6be1c230d38c0800000000000000
+      internalID: -4018051804515879425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_115
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93cb302443864b7a0800000000000000
+      internalID: -6362345799912539079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_116
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb894d551fc6653c0800000000000000
+      internalID: -4371186604533573442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_117
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a02f9856c58e4be0800000000000000
+      internalID: -1491107339676213087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_118
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67218bb0cd138a910800000000000000
+      internalID: 1848782468194767478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_119
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 754ba12b31ba19b60800000000000000
+      internalID: 7751164534762157143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_120
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0beaf2112d3468eb0800000000000000
+      internalID: -4718008990113485136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_121
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a19ad6844d590ef00800000000000000
+      internalID: 1144079044332857626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_122
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca3bab1883042880800000000000000
+      internalID: -8636774302275126590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_123
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d3e93c46ad179200800000000000000
+      internalID: 186650509639803864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_124
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 9
+        width: 18
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c4cdf7cefb10d20800000000000000
+      internalID: 3243084229161798682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_125
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f6f58133b46d5f0800000000000000
+      internalID: -732315206576804016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_126
+      rect:
+        serializedVersion: 2
+        x: 1010
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 941ca64631605c010800000000000000
+      internalID: 1208378755377709385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_127
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2ca5ee2f5b0391600800000000000000
+      internalID: 439435996668254914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_128
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a53557945e6c3300800000000000000
+      internalID: 233182590311675302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_129
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1adeeb88bed50a40800000000000000
+      internalID: 5333914217893255711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_130
+      rect:
+        serializedVersion: 2
+        x: 1114
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce4848a00d5c67310800000000000000
+      internalID: 1402525831292814572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_131
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f09c06b9a977aeb0800000000000000
+      internalID: -4708661115581853456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_132
+      rect:
+        serializedVersion: 2
+        x: 1166
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a78638b1362e380800000000000000
+      internalID: -8943476940184454641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_133
+      rect:
+        serializedVersion: 2
+        x: 1192
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0081d1dad938bc60800000000000000
+      internalID: 7834075163796799499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_134
+      rect:
+        serializedVersion: 2
+        x: 1218
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c8e61ee312d19b30800000000000000
+      internalID: 4292442902901483714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_135
+      rect:
+        serializedVersion: 2
+        x: 1244
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94028d9a6bfb726f0800000000000000
+      internalID: -709387625033097143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_136
+      rect:
+        serializedVersion: 2
+        x: 1270
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 566b60e1f0e771570800000000000000
+      internalID: 8437351030295279205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_137
+      rect:
+        serializedVersion: 2
+        x: 1296
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 018bada1f0a395c70800000000000000
+      internalID: 8960256770179774480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_138
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9f053a59c63f4ae0800000000000000
+      internalID: -1562970307244519524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_139
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cdbd343c42f13210800000000000000
+      internalID: 1311095375649422784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_140
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 825a4b4ace94686f0800000000000000
+      internalID: -682777012775639768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_141
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5047107a5071ba660800000000000000
+      internalID: 7398032125930337285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_142
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a42924efcf68f490800000000000000
+      internalID: -7712291423195159390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_143
+      rect:
+        serializedVersion: 2
+        x: 1452
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc205d66697e2e930800000000000000
+      internalID: 4171150838054847179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_144
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9baf7fc35a479210800000000000000
+      internalID: 1339621137990003615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone04_RitualSummit_OverlayLayer_145
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 9
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 142ddd1eeae6d5980800000000000000
+      internalID: -8548554820286557631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Zone04_RitualSummit_OverlayLayer_0: -922739963468452011
+      Zone04_RitualSummit_OverlayLayer_1: -225872222378701433
+      Zone04_RitualSummit_OverlayLayer_10: 5511962050936030421
+      Zone04_RitualSummit_OverlayLayer_100: -5305644794067833652
+      Zone04_RitualSummit_OverlayLayer_101: 5097083618785276019
+      Zone04_RitualSummit_OverlayLayer_102: 8443202399527144440
+      Zone04_RitualSummit_OverlayLayer_103: 996999151492385906
+      Zone04_RitualSummit_OverlayLayer_104: -6373675851310279110
+      Zone04_RitualSummit_OverlayLayer_105: -3121960883817753973
+      Zone04_RitualSummit_OverlayLayer_106: 8194697755042970498
+      Zone04_RitualSummit_OverlayLayer_107: 2750051321954907316
+      Zone04_RitualSummit_OverlayLayer_108: -1703509267146443098
+      Zone04_RitualSummit_OverlayLayer_109: 6194319304289040277
+      Zone04_RitualSummit_OverlayLayer_11: -5592193084758963961
+      Zone04_RitualSummit_OverlayLayer_110: 7857567185561852146
+      Zone04_RitualSummit_OverlayLayer_111: 8645925731451263007
+      Zone04_RitualSummit_OverlayLayer_112: -1774578436331473663
+      Zone04_RitualSummit_OverlayLayer_113: 4525129439897791565
+      Zone04_RitualSummit_OverlayLayer_114: -4018051804515879425
+      Zone04_RitualSummit_OverlayLayer_115: -6362345799912539079
+      Zone04_RitualSummit_OverlayLayer_116: -4371186604533573442
+      Zone04_RitualSummit_OverlayLayer_117: -1491107339676213087
+      Zone04_RitualSummit_OverlayLayer_118: 1848782468194767478
+      Zone04_RitualSummit_OverlayLayer_119: 7751164534762157143
+      Zone04_RitualSummit_OverlayLayer_12: -5114566315043898485
+      Zone04_RitualSummit_OverlayLayer_120: -4718008990113485136
+      Zone04_RitualSummit_OverlayLayer_121: 1144079044332857626
+      Zone04_RitualSummit_OverlayLayer_122: -8636774302275126590
+      Zone04_RitualSummit_OverlayLayer_123: 186650509639803864
+      Zone04_RitualSummit_OverlayLayer_124: 3243084229161798682
+      Zone04_RitualSummit_OverlayLayer_125: -732315206576804016
+      Zone04_RitualSummit_OverlayLayer_126: 1208378755377709385
+      Zone04_RitualSummit_OverlayLayer_127: 439435996668254914
+      Zone04_RitualSummit_OverlayLayer_128: 233182590311675302
+      Zone04_RitualSummit_OverlayLayer_129: 5333914217893255711
+      Zone04_RitualSummit_OverlayLayer_13: -2178686242564910670
+      Zone04_RitualSummit_OverlayLayer_130: 1402525831292814572
+      Zone04_RitualSummit_OverlayLayer_131: -4708661115581853456
+      Zone04_RitualSummit_OverlayLayer_132: -8943476940184454641
+      Zone04_RitualSummit_OverlayLayer_133: 7834075163796799499
+      Zone04_RitualSummit_OverlayLayer_134: 4292442902901483714
+      Zone04_RitualSummit_OverlayLayer_135: -709387625033097143
+      Zone04_RitualSummit_OverlayLayer_136: 8437351030295279205
+      Zone04_RitualSummit_OverlayLayer_137: 8960256770179774480
+      Zone04_RitualSummit_OverlayLayer_138: -1562970307244519524
+      Zone04_RitualSummit_OverlayLayer_139: 1311095375649422784
+      Zone04_RitualSummit_OverlayLayer_14: 3544349738840603738
+      Zone04_RitualSummit_OverlayLayer_140: -682777012775639768
+      Zone04_RitualSummit_OverlayLayer_141: 7398032125930337285
+      Zone04_RitualSummit_OverlayLayer_142: -7712291423195159390
+      Zone04_RitualSummit_OverlayLayer_143: 4171150838054847179
+      Zone04_RitualSummit_OverlayLayer_144: 1339621137990003615
+      Zone04_RitualSummit_OverlayLayer_145: -8548554820286557631
+      Zone04_RitualSummit_OverlayLayer_15: 1528844679151495255
+      Zone04_RitualSummit_OverlayLayer_16: -1609963884086158919
+      Zone04_RitualSummit_OverlayLayer_17: -5620483956031941530
+      Zone04_RitualSummit_OverlayLayer_18: 3278269916251007250
+      Zone04_RitualSummit_OverlayLayer_19: -2511754465035150836
+      Zone04_RitualSummit_OverlayLayer_2: 642621866599337925
+      Zone04_RitualSummit_OverlayLayer_20: -1503463614293203724
+      Zone04_RitualSummit_OverlayLayer_21: -3153809321855948694
+      Zone04_RitualSummit_OverlayLayer_22: -7957642844349866291
+      Zone04_RitualSummit_OverlayLayer_23: -6521082238601429585
+      Zone04_RitualSummit_OverlayLayer_24: 2385550375769724746
+      Zone04_RitualSummit_OverlayLayer_25: 7801265068773743097
+      Zone04_RitualSummit_OverlayLayer_26: 4153314176538753353
+      Zone04_RitualSummit_OverlayLayer_27: -8292462510143197952
+      Zone04_RitualSummit_OverlayLayer_28: -3927621472629183562
+      Zone04_RitualSummit_OverlayLayer_29: 4488629302373584835
+      Zone04_RitualSummit_OverlayLayer_3: 3967832705238170438
+      Zone04_RitualSummit_OverlayLayer_30: 4955498177464691655
+      Zone04_RitualSummit_OverlayLayer_31: 7607479236419672305
+      Zone04_RitualSummit_OverlayLayer_32: -7006916663915724284
+      Zone04_RitualSummit_OverlayLayer_33: -47381174293115021
+      Zone04_RitualSummit_OverlayLayer_34: -568404606344370098
+      Zone04_RitualSummit_OverlayLayer_35: -289194167120362654
+      Zone04_RitualSummit_OverlayLayer_36: -1711264535520247784
+      Zone04_RitualSummit_OverlayLayer_37: 3011245492090256749
+      Zone04_RitualSummit_OverlayLayer_38: 2481177058471123644
+      Zone04_RitualSummit_OverlayLayer_39: 4997325605391516838
+      Zone04_RitualSummit_OverlayLayer_4: -1678982217674007090
+      Zone04_RitualSummit_OverlayLayer_40: -4155909496436940063
+      Zone04_RitualSummit_OverlayLayer_41: -5388827186116363005
+      Zone04_RitualSummit_OverlayLayer_42: 5230502487579078533
+      Zone04_RitualSummit_OverlayLayer_43: -6900450092594802489
+      Zone04_RitualSummit_OverlayLayer_44: -419609991410690041
+      Zone04_RitualSummit_OverlayLayer_45: 6417654153316807883
+      Zone04_RitualSummit_OverlayLayer_46: 1206480772956084618
+      Zone04_RitualSummit_OverlayLayer_47: -4080071572180961937
+      Zone04_RitualSummit_OverlayLayer_48: -1536072859612577804
+      Zone04_RitualSummit_OverlayLayer_49: 8039233335412241173
+      Zone04_RitualSummit_OverlayLayer_5: -7323294740921120407
+      Zone04_RitualSummit_OverlayLayer_50: -4014805610175974996
+      Zone04_RitualSummit_OverlayLayer_51: -3048913915597149966
+      Zone04_RitualSummit_OverlayLayer_52: -990502522257528714
+      Zone04_RitualSummit_OverlayLayer_53: 212310947550199754
+      Zone04_RitualSummit_OverlayLayer_54: 2175381430014163621
+      Zone04_RitualSummit_OverlayLayer_55: 758288446100475114
+      Zone04_RitualSummit_OverlayLayer_56: 5113835297402790542
+      Zone04_RitualSummit_OverlayLayer_57: 7165615462537579879
+      Zone04_RitualSummit_OverlayLayer_58: -8321694794528931571
+      Zone04_RitualSummit_OverlayLayer_59: -5543982416030692146
+      Zone04_RitualSummit_OverlayLayer_6: -7033417415031654558
+      Zone04_RitualSummit_OverlayLayer_60: 2252314447169800884
+      Zone04_RitualSummit_OverlayLayer_61: -3595614126683165191
+      Zone04_RitualSummit_OverlayLayer_62: -4381447762077148654
+      Zone04_RitualSummit_OverlayLayer_63: -4982095757264916129
+      Zone04_RitualSummit_OverlayLayer_64: -8308005791435252599
+      Zone04_RitualSummit_OverlayLayer_65: 5722698469816266494
+      Zone04_RitualSummit_OverlayLayer_66: 7299436090389981608
+      Zone04_RitualSummit_OverlayLayer_67: 7582414926510594597
+      Zone04_RitualSummit_OverlayLayer_68: 8662903157240913082
+      Zone04_RitualSummit_OverlayLayer_69: 1464165637369029770
+      Zone04_RitualSummit_OverlayLayer_7: -7811721213038941493
+      Zone04_RitualSummit_OverlayLayer_70: -5739830757596346129
+      Zone04_RitualSummit_OverlayLayer_71: 1797463283073263102
+      Zone04_RitualSummit_OverlayLayer_72: -1668044649255257366
+      Zone04_RitualSummit_OverlayLayer_73: -4602501865803638667
+      Zone04_RitualSummit_OverlayLayer_74: -829801329677378011
+      Zone04_RitualSummit_OverlayLayer_75: 4477355720380708429
+      Zone04_RitualSummit_OverlayLayer_76: -6287270795213432954
+      Zone04_RitualSummit_OverlayLayer_77: -1224295923246596360
+      Zone04_RitualSummit_OverlayLayer_78: -877861445534171683
+      Zone04_RitualSummit_OverlayLayer_79: 3357886764330068355
+      Zone04_RitualSummit_OverlayLayer_8: -7816857925639833638
+      Zone04_RitualSummit_OverlayLayer_80: -4545001977260100824
+      Zone04_RitualSummit_OverlayLayer_81: -2188887546182856742
+      Zone04_RitualSummit_OverlayLayer_82: 3026745006572076657
+      Zone04_RitualSummit_OverlayLayer_83: 5522283019404670353
+      Zone04_RitualSummit_OverlayLayer_84: -8274760593276085278
+      Zone04_RitualSummit_OverlayLayer_85: 691488018285198247
+      Zone04_RitualSummit_OverlayLayer_86: 9122995057145092929
+      Zone04_RitualSummit_OverlayLayer_87: -6312381283175770440
+      Zone04_RitualSummit_OverlayLayer_88: 8915959718056616967
+      Zone04_RitualSummit_OverlayLayer_89: -971792630147171606
+      Zone04_RitualSummit_OverlayLayer_9: -894078368172906216
+      Zone04_RitualSummit_OverlayLayer_90: -1333421562970864196
+      Zone04_RitualSummit_OverlayLayer_91: -4214820992841896008
+      Zone04_RitualSummit_OverlayLayer_92: 2044837660800707664
+      Zone04_RitualSummit_OverlayLayer_93: 8144268499796075183
+      Zone04_RitualSummit_OverlayLayer_94: -3675516294832306855
+      Zone04_RitualSummit_OverlayLayer_95: -6244488474227256636
+      Zone04_RitualSummit_OverlayLayer_96: 3202287956020467307
+      Zone04_RitualSummit_OverlayLayer_97: 6110967902383893651
+      Zone04_RitualSummit_OverlayLayer_98: 1547630835968220796
+      Zone04_RitualSummit_OverlayLayer_99: 9221301742143201221
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

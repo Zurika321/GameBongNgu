@@ -12,10 +12,14 @@ public class StoryEventAction
     public ZoneEnemySpawner[] spawnSpawners = Array.Empty<ZoneEnemySpawner>();
     public string[] flagsToSet = Array.Empty<string>();
     public string[] flagsToRemove = Array.Empty<string>();
+    [Tooltip("Item added when this event or choice action runs.")]
     public string itemToAdd;
-    [Min(1)] public int itemToAddAmount = 1;
+    [Min(1), Tooltip("Quantity to add for this action.")]
+    public int itemToAddAmount = 1;
+    [Tooltip("Item removed when this event or choice action runs.")]
     public string itemToRemove;
-    [Min(1)] public int itemToRemoveAmount = 1;
+    [Min(1), Tooltip("Quantity to remove for this action.")]
+    public int itemToRemoveAmount = 1;
     public string readableItemToOpen;
 
     [Header("Complete Session (bỏ trống nếu không dùng)")]
@@ -76,8 +80,6 @@ public class StoryEventDirector : MonoBehaviour
 
         if (progress.IsContinueRestorePending)
         {
-            RestoreStoryObjectStates();
-            RefreshDialogueProfiles();
             StartCoroutine(ResumeLastEventAfterContinue());
             return;
         }
@@ -119,36 +121,41 @@ public class StoryEventDirector : MonoBehaviour
             return false;
         }
 
-        if (definition.oneShot && IsEventCompleted(eventId)) return true;
+        bool hasPendingChoice = false;
+        if (definition.dialogueProfile != null
+            && DemoNpcDialogueController.HasSessionChoices(definition.dialogueProfile))
+        {
+            if (dialogueController == null)
+                dialogueController = FindAnyObjectByType<DemoNpcDialogueController>();
+            if (dialogueController == null)
+            {
+                Debug.LogError($"[StoryEventDirector] Cannot validate choices for '{eventId}': dialogue controller is missing.", this);
+                return false;
+            }
+            hasPendingChoice = dialogueController.HasPendingChoiceForCurrentSession(definition.dialogueProfile, progress);
+        }
+
+        if (definition.oneShot && IsEventCompleted(eventId))
+        {
+            if (!hasPendingChoice) return true;
+            ClearCompletedEventForPendingChoice(eventId);
+        }
         if (!string.IsNullOrEmpty(activeDialogueEventId))
         {
             if (activeDialogueEventId == eventId) return true;
             Debug.LogWarning($"[StoryEventDirector] Cannot start '{eventId}' while '{activeDialogueEventId}' is awaiting a choice.", this);
             return false;
         }
-
         if (definition.dialogueProfile != null
-            && DemoNpcDialogueController.HasSessionChoices(definition.dialogueProfile))
+            && DemoNpcDialogueController.HasSessionChoices(definition.dialogueProfile)
+            && !hasPendingChoice)
         {
-            if (dialogueController == null)
-                dialogueController = FindAnyObjectByType<DemoNpcDialogueController>();
-
-            if (dialogueController == null)
+            if (HasRecordedChoice(definition.dialogueProfile))
             {
-                Debug.LogError($"[StoryEventDirector] Cannot validate choices for '{eventId}': dialogue controller is missing.", this);
-                return false;
+                CompleteEvent(definition);
+                return true;
             }
-
-            if (!dialogueController.HasPendingChoiceForCurrentSession(definition.dialogueProfile, progress))
-            {
-                if (HasRecordedChoice(definition.dialogueProfile))
-                {
-                    CompleteEvent(definition);
-                    return true;
-                }
-
-                return false;
-            }
+            return false;
         }
 
         progress.BeginStoryEventBatch();
@@ -319,7 +326,12 @@ public class StoryEventDirector : MonoBehaviour
 
         // Flag trùng với ConnectedStoryDirector: Session1Complete, Session2AComplete, ...
         string completeFlag = "Session" + sessionId + "Complete";
-        if (progress.Data.HasFlag(completeFlag)) return;
+        if (progress.Data.HasFlag(completeFlag))
+        {
+            string currentSession = progress.Data.currentSession;
+            if (currentSession == nextSessionId) return;
+            if (currentSession != sessionId && currentSession != sessionId + ".5") return;
+        }
 
         bool ownsBatch = !progress.IsStoryEventBatchActive;
         if (ownsBatch) progress.BeginStoryEventBatch();
@@ -335,6 +347,15 @@ public class StoryEventDirector : MonoBehaviour
         }
     }
 
+    private void ClearCompletedEventForPendingChoice(string eventId)
+    {
+        completedEvents.Remove(eventId);
+        if (progress.Data.completedStoryEvents != null)
+            progress.Data.completedStoryEvents.RemoveAll(id => id == eventId);
+        progress.RemoveFlag(EventFlagPrefix + eventId);
+        progress.Save();
+        Debug.LogWarning($"[StoryEventDirector] Cleared stale completion for '{eventId}' because its current-session choice is still pending.", this);
+    }
     private void CompleteEvent(StoryEventDefinition definition)
     {
         if (definition.oneShot)
@@ -580,19 +601,38 @@ public class StoryEventDirector : MonoBehaviour
         }
 
         progress.RestoreLastEventSnapshot(lastEvent);
-        RestoreCompletedEventsFromSave();
-        RefreshDialogueProfiles();
 
         if (!string.IsNullOrWhiteSpace(lastEvent.sceneName)
-            && SceneManager.GetActiveScene().name != lastEvent.sceneName)
+            && SceneManager.GetActiveScene().name == "CoreCombatDemo"
+            && lastEvent.sceneName.StartsWith("Zone", StringComparison.OrdinalIgnoreCase)
+            && Application.CanStreamedLevelBeLoaded(lastEvent.sceneName))
+        {
+            float waitRemaining = 15f;
+            Scene eventScene = SceneManager.GetSceneByName(lastEvent.sceneName);
+            while ((!eventScene.IsValid() || !eventScene.isLoaded) && waitRemaining > 0f)
+            {
+                waitRemaining -= Time.unscaledDeltaTime;
+                yield return null;
+                eventScene = SceneManager.GetSceneByName(lastEvent.sceneName);
+            }
+        }
+
+        Scene lastEventScene = string.IsNullOrWhiteSpace(lastEvent.sceneName)
+            ? SceneManager.GetActiveScene()
+            : SceneManager.GetSceneByName(lastEvent.sceneName);
+        if (!lastEventScene.IsValid() || !lastEventScene.isLoaded)
         {
             Debug.LogWarning(
-                $"[StoryEventDirector] Last event belongs to scene '{lastEvent.sceneName}', not the loaded scene; replay skipped.",
+                $"[StoryEventDirector] Last event scene '{lastEvent.sceneName}' is not loaded; replay skipped.",
                 this);
             progress.CompleteContinueRestore();
             progress.Save();
             yield break;
         }
+
+        RestoreStoryObjectStates();
+        RestoreCompletedEventsFromSave();
+        RefreshDialogueProfiles();
 
         replayingLastEvent = true;
         try
@@ -632,7 +672,7 @@ public class StoryEventDirector : MonoBehaviour
                     StoryEventDefinition definition = FindEvent(lastEvent.eventId);
                     if (definition != null && definition.dialogueProfile == profile)
                         activeDialogueEventId = definition.eventId;
-                    if (dialogueController == null || !dialogueController.StartDialogue(profile))
+                    if (dialogueController == null || !dialogueController.StartDialogueForContinueRestore(profile))
                     {
                         activeDialogueEventId = null;
                         Debug.LogError($"[StoryEventDirector] Could not replay dialogue event '{lastEvent.eventId}'.", this);
@@ -721,7 +761,7 @@ public class StoryEventDirector : MonoBehaviour
             foreach (DemoDialogueChoice choice in node.choices ?? Array.Empty<DemoDialogueChoice>())
             {
                 if (choice == null || string.IsNullOrWhiteSpace(choice.sessionId)) continue;
-                if (progress.Data.choices.Exists(record => record != null && record.sessionId == choice.sessionId))
+                if (progress.Data.choices.Exists(record => record != null && record.sessionId == choice.sessionId && record.choiceId == choice.choiceId))
                     return true;
             }
         }

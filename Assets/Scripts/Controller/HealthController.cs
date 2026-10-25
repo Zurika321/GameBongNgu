@@ -231,6 +231,7 @@ public class HealthController : MonoBehaviour, IDamage, IHealth
         SpriteRenderer renderer = barObject.AddComponent<SpriteRenderer>();
         renderer.sprite = GetSharedWhiteSprite();
         renderer.color = color;
+        renderer.sortingLayerName = "decor";
         renderer.sortingOrder = healthBarSortingOrder + (parent == stunBarRoot ? -2 : 0)
             + (objectName == "Fill" ? 1 : 0);
         return renderer;

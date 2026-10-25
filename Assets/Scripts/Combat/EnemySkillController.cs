@@ -130,6 +130,40 @@ public class EnemySkillController : MonoBehaviour
         }
     }
 
+    public void CaptureCooldowns(PlayerSaveData data, string enemyId)
+    {
+        if (data == null || string.IsNullOrWhiteSpace(enemyId)) return;
+        if (data.skillCooldowns == null) data.skillCooldowns = new System.Collections.Generic.List<SkillCooldownSnapshot>();
+        data.skillCooldowns.RemoveAll(entry => entry != null && entry.ownerId == enemyId);
+        if (skillSlots == null) return;
+
+        foreach (EnemySkillSlot slot in skillSlots)
+        {
+            if (slot == null || string.IsNullOrWhiteSpace(slot.skillName)) continue;
+            float remaining = Mathf.Clamp(slot.cooldown - (Time.time - slot.lastUsedTime), 0f, Mathf.Max(0f, slot.cooldown));
+            if (remaining <= 0f) continue;
+            data.skillCooldowns.Add(new SkillCooldownSnapshot
+            {
+                ownerId = enemyId,
+                skillId = slot.skillName,
+                remainingSeconds = remaining
+            });
+        }
+    }
+
+    public void RestoreCooldowns(PlayerSaveData data, string enemyId)
+    {
+        if (skillSlots == null || data == null || data.skillCooldowns == null || string.IsNullOrWhiteSpace(enemyId)) return;
+        foreach (EnemySkillSlot slot in skillSlots)
+        {
+            if (slot == null || string.IsNullOrWhiteSpace(slot.skillName)) continue;
+            SkillCooldownSnapshot saved = data.skillCooldowns.Find(
+                entry => entry != null && entry.ownerId == enemyId && entry.skillId == slot.skillName);
+            float remaining = saved != null ? Mathf.Clamp(saved.remainingSeconds, 0f, Mathf.Max(0f, slot.cooldown)) : 0f;
+            slot.lastUsedTime = remaining > 0f ? Time.time - (slot.cooldown - remaining) : -999f;
+        }
+    }
+
 // MỚI - toàn bộ hàm này
 private void IgnorePhysicalCollisionWithPlayer()
 {

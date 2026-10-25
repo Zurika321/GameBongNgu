@@ -20,6 +20,11 @@ public class DemoNpcDialogueController : MonoBehaviour
     [Header("Dialogue UI")]
     [SerializeField] private GameObject dialogueRoot;
     [SerializeField] private Image portraitImage;
+    [SerializeField] private Sprite[] playerPortraitFrames;
+    [SerializeField] private string playerName = "\u004B\u0068\u1EA3i";
+    [SerializeField, Tooltip("Use this ID in dialogue lines when the player speaks.")] private string playerSpeakerId = "player";
+    [SerializeField, Min(0.1f)] private float playerPortraitFrameRate = 4f;
+    [SerializeField] private DemoDialogueSpeaker[] dialogueSpeakers = System.Array.Empty<DemoDialogueSpeaker>();
     [SerializeField] private Text speakerText;
     [SerializeField] private Text dialogueText;
     [SerializeField] private Text continueButtonLabel;
@@ -31,6 +36,7 @@ public class DemoNpcDialogueController : MonoBehaviour
     private DemoNpcDialogueProfile[] npcs = new DemoNpcDialogueProfile[0];
     private DemoNpcDialogueProfile nearbyNpc;
     private DemoNpcDialogueProfile activeNpc;
+    private DemoDialogueSpeaker activeSpeaker;
     private DemoDialogueChoice[] visibleChoices = new DemoDialogueChoice[0];
     private string fullDialogueText = string.Empty;
     private float typedCharacterCount;
@@ -39,6 +45,7 @@ public class DemoNpcDialogueController : MonoBehaviour
     private int currentNodeIndex = -1;
     private int pendingNodeIndex = -1;
     private bool isTyping;
+    private bool activeSpeakerIsPlayer;
     private bool dialogueOpen;
 
     private void Awake()
@@ -126,8 +133,10 @@ public class DemoNpcDialogueController : MonoBehaviour
                 && FindRecordedChoice(npc, progress) == null)
                 continue;
 
+            if (npc.InteractionRange <= 0f) continue;
+
             float distanceSquared = ((Vector2)npc.transform.position - (Vector2)player.position).sqrMagnitude;
-            float npcRange = Mathf.Max(0.1f, npc.InteractionRange);
+            float npcRange = npc.InteractionRange;
             if (distanceSquared > npcRange * npcRange) continue;
             if (distanceSquared > nearestDistanceSquared) continue;
 
@@ -137,17 +146,17 @@ public class DemoNpcDialogueController : MonoBehaviour
 
         if (nearbyNpc != null)
         {
-            interactionPromptText.text = "Press E to talk to " + nearbyNpc.NpcName;
+            interactionPromptText.text = "Press E to talk to " + GetNpcDisplayName(nearbyNpc);
         }
     }
 
-    private void OpenDialogue(DemoNpcDialogueProfile npc)
+    private void OpenDialogue(DemoNpcDialogueProfile npc, bool allowPendingChoiceRestore = false)
     {
         PlayerProgressionService progress = PlayerProgressionService.Instance;
         bool hasChoiceFlow = HasSessionChoices(npc);
         bool hasPendingChoice = HasPendingChoiceForCurrentSession(npc, progress);
         ChoiceRecord recordedChoice = hasPendingChoice ? null : FindRecordedChoice(npc, progress);
-        if (hasChoiceFlow && !hasPendingChoice && recordedChoice == null)
+        if (!allowPendingChoiceRestore && hasChoiceFlow && !hasPendingChoice && recordedChoice == null)
             return;
 
         activeNpc = npc;
@@ -156,28 +165,36 @@ public class DemoNpcDialogueController : MonoBehaviour
         visibleChoices = new DemoDialogueChoice[0];
         PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null) playerController.LockMovement(true);
+        FaceDialogueParticipants(npc);
         StoryEventDirector storyEvents = FindAnyObjectByType<StoryEventDirector>();
         if (storyEvents != null) storyEvents.RecordDialogueOpened(activeNpc);
 
-        Sprite[] frames = activeNpc.PortraitFrames;
-        portraitImage.sprite = frames != null && frames.Length > 0
-            ? frames[0]
-            : activeNpc.GetFallbackPortrait();
-        portraitTimer = 0f;
-        portraitFrameIndex = 0;
-        speakerText.text = activeNpc.NpcName;
+        SetDialogueSpeaker(string.Empty);
 
-        string followUp = recordedChoice != null
-            ? !string.IsNullOrWhiteSpace(activeNpc.PostDialogueText)
-                ? activeNpc.PostDialogueText
-                : GetRecordedChoiceText(activeNpc, recordedChoice)
-            : null;
+        string followUp = null;
+        bool followUpIsLocalizationKey = false;
+        if (recordedChoice != null)
+        {
+            if (!string.IsNullOrWhiteSpace(activeNpc.PostDialogueText))
+            {
+                followUp = activeNpc.PostDialogueText;
+                followUpIsLocalizationKey = activeNpc.PostDialogueTextIsLocalizationKey;
+            }
+            else
+            {
+                followUp = GetRecordedChoiceText(activeNpc, recordedChoice);
+                followUpIsLocalizationKey = GetRecordedChoiceTextIsLocalizationKey(activeNpc, recordedChoice);
+            }
+        }
         if (!string.IsNullOrEmpty(followUp))
         {
+            SetDialogueSpeaker(string.IsNullOrWhiteSpace(activeNpc.PostDialogueText)
+                ? GetRecordedChoiceSpeakerId(activeNpc, recordedChoice)
+                : string.Empty);
             currentNodeIndex = -1;
             pendingNodeIndex = -1;
             SetChoicesVisible(false);
-            StartTyping(followUp);
+            StartTyping(followUp, followUpIsLocalizationKey);
             return;
         }
 
@@ -191,6 +208,32 @@ public class DemoNpcDialogueController : MonoBehaviour
         LoadDialogueNode(0);
     }
 
+    private void FaceDialogueParticipants(DemoNpcDialogueProfile npc)
+    {
+        if (player == null || npc == null) return;
+        CharacterAnimation playerAnimation = player.GetComponentInChildren<CharacterAnimation>();
+        DemoDialogueSpeaker profileSpeaker = FindProfileSpeaker(npc);
+        if (profileSpeaker != null && profileSpeaker.character != null)
+        {
+            Vector2 towardNpc = (Vector2)(profileSpeaker.character.transform.position - player.position);
+            if (playerAnimation != null)
+            {
+                playerAnimation.SetFacing(towardNpc);
+                playerAnimation.Play(AnimState.Idle);
+            }
+        }
+
+        foreach (DemoDialogueSpeaker speaker in dialogueSpeakers ?? System.Array.Empty<DemoDialogueSpeaker>())
+        {
+            if (speaker == null || speaker.character == null) continue;
+            CharacterAnimation animation = speaker.character.GetComponentInChildren<CharacterAnimation>();
+            if (animation == null) continue;
+            Vector2 towardPlayer = (Vector2)(player.position - speaker.character.transform.position);
+            animation.SetFacing(towardPlayer);
+            animation.Play(AnimState.Idle);
+        }
+    }
+
     public bool StartDialogue(DemoNpcDialogueProfile npc)
     {
         if (npc == null || dialogueOpen || !isActiveAndEnabled) return false;
@@ -198,6 +241,13 @@ public class DemoNpcDialogueController : MonoBehaviour
         if (HasSessionChoices(npc) && !HasPendingChoiceForCurrentSession(npc, progress))
             return false;
         OpenDialogue(npc);
+        return dialogueOpen;
+    }
+
+    public bool StartDialogueForContinueRestore(DemoNpcDialogueProfile npc)
+    {
+        if (npc == null || dialogueOpen || !isActiveAndEnabled) return false;
+        OpenDialogue(npc, true);
         return dialogueOpen;
     }
 
@@ -296,7 +346,7 @@ public class DemoNpcDialogueController : MonoBehaviour
         {
             currentNodeIndex = -1;
             pendingNodeIndex = -1;
-            speakerText.text = activeNpc != null ? activeNpc.NpcName : "NPC";
+            speakerText.text = GetNpcDisplayName(activeNpc);
             SetChoicesVisible(false);
             StartTyping(string.Empty);
             return;
@@ -304,10 +354,119 @@ public class DemoNpcDialogueController : MonoBehaviour
 
         currentNodeIndex = index;
         DemoDialogueNode node = nodes[index];
-        speakerText.text = activeNpc.NpcName;
+        SetDialogueSpeaker(node.speakerId);
         pendingNodeIndex = node.nextNodeIndex;
-        StartTyping(node.text);
+        StartTyping(node.text, node.textIsLocalizationKey);
         ShowChoices(node.choices);
+    }
+
+    private static bool GetRecordedChoiceTextIsLocalizationKey(DemoNpcDialogueProfile npc, ChoiceRecord record)
+    {
+        if (npc == null || record == null) return false;
+        foreach (DemoDialogueNode node in npc.Dialogue ?? System.Array.Empty<DemoDialogueNode>())
+        {
+            if (node == null) continue;
+            foreach (DemoDialogueChoice choice in node.choices ?? System.Array.Empty<DemoDialogueChoice>())
+                if (choice != null && choice.sessionId == record.sessionId && choice.choiceId == record.choiceId)
+                    return choice.resultTextIsLocalizationKey;
+        }
+        return false;
+    }
+
+    private static string GetRecordedChoiceSpeakerId(DemoNpcDialogueProfile npc, ChoiceRecord record)
+    {
+        if (npc == null || record == null) return string.Empty;
+
+        foreach (DemoDialogueNode node in npc.Dialogue ?? System.Array.Empty<DemoDialogueNode>())
+        {
+            if (node == null) continue;
+            foreach (DemoDialogueChoice choice in node.choices ?? System.Array.Empty<DemoDialogueChoice>())
+            {
+                if (choice == null || choice.sessionId != record.sessionId || choice.choiceId != record.choiceId)
+                    continue;
+                return choice.resultSpeakerId;
+            }
+        }
+
+        return string.Empty;
+    }
+
+    private void SetDialogueSpeaker(string speakerId)
+    {
+        activeSpeakerIsPlayer = !string.IsNullOrWhiteSpace(playerSpeakerId)
+            && string.Equals(speakerId, playerSpeakerId, System.StringComparison.OrdinalIgnoreCase);
+        activeSpeaker = activeSpeakerIsPlayer
+            ? null
+            : string.IsNullOrWhiteSpace(speakerId)
+                ? FindProfileSpeaker(activeNpc)
+                : FindDialogueSpeaker(speakerId);
+        if (!activeSpeakerIsPlayer && activeSpeaker == null)
+            activeSpeaker = FindProfileSpeaker(activeNpc);
+        string displayName = activeSpeakerIsPlayer
+            ? playerName
+            : activeSpeaker != null && !string.IsNullOrWhiteSpace(activeSpeaker.characterName)
+                ? activeSpeaker.characterName
+                : GetNpcDisplayName(activeNpc);
+        speakerText.text = displayName;
+        portraitTimer = 0f;
+        portraitFrameIndex = 0;
+
+        Sprite[] frames = activeSpeakerIsPlayer
+            ? playerPortraitFrames
+            : activeSpeaker != null ? activeSpeaker.portraitFrames : null;
+        if (frames != null && frames.Length > 0 && frames[0] != null)
+            portraitImage.sprite = frames[0];
+        else if (activeSpeakerIsPlayer)
+            portraitImage.sprite = null;
+        else
+        {
+            SpriteRenderer renderer = activeSpeaker != null && activeSpeaker.character != null
+                ? activeSpeaker.character.GetComponentInChildren<SpriteRenderer>()
+                : null;
+            portraitImage.sprite = renderer != null ? renderer.sprite : null;
+        }
+    }
+
+    private DemoDialogueSpeaker FindProfileSpeaker(DemoNpcDialogueProfile profile)
+    {
+        if (profile == null) return null;
+        foreach (DemoDialogueSpeaker speaker in dialogueSpeakers ?? System.Array.Empty<DemoDialogueSpeaker>())
+        {
+            if (speaker == null || speaker.character == null) continue;
+            Transform characterTransform = speaker.character.transform;
+            if (characterTransform == profile.transform
+                || characterTransform.IsChildOf(profile.transform)
+                || profile.transform.IsChildOf(characterTransform))
+                return speaker;
+        }
+
+        foreach (DemoDialogueNode node in profile.Dialogue ?? System.Array.Empty<DemoDialogueNode>())
+        {
+            if (node == null || string.IsNullOrWhiteSpace(node.speakerId)
+                || string.Equals(node.speakerId, playerSpeakerId, System.StringComparison.OrdinalIgnoreCase))
+                continue;
+            DemoDialogueSpeaker speaker = FindDialogueSpeaker(node.speakerId);
+            if (speaker != null) return speaker;
+        }
+
+        return null;
+    }
+
+    private string GetNpcDisplayName(DemoNpcDialogueProfile profile)
+    {
+        DemoDialogueSpeaker speaker = FindProfileSpeaker(profile);
+        return speaker != null && !string.IsNullOrWhiteSpace(speaker.characterName)
+            ? speaker.characterName
+            : "NPC";
+    }
+
+    private DemoDialogueSpeaker FindDialogueSpeaker(string speakerId)
+    {
+        if (string.IsNullOrWhiteSpace(speakerId)) return null;
+        foreach (DemoDialogueSpeaker speaker in dialogueSpeakers ?? System.Array.Empty<DemoDialogueSpeaker>())
+            if (speaker != null && speaker.id == speakerId) return speaker;
+        Debug.LogWarning($"[DemoNpcDialogueController] No dialogue speaker is configured with ID '{speakerId}'. Using the interacting NPC.", this);
+        return null;
     }
 
     private void ShowChoices(DemoDialogueChoice[] choices)
@@ -341,7 +500,7 @@ public class DemoNpcDialogueController : MonoBehaviour
             if (!hasChoice) continue;
 
             Text label = choiceButtons[i].GetComponentInChildren<Text>();
-            if (label != null) label.text = visibleChoices[i].label;
+            if (label != null) label.text = ResolveLocalizedText(visibleChoices[i].label, visibleChoices[i].labelIsLocalizationKey);
         }
 
         if (visibleChoices.Length > choiceButtons.Length)
@@ -356,7 +515,7 @@ public class DemoNpcDialogueController : MonoBehaviour
     {
         if (choice == null || string.IsNullOrWhiteSpace(choice.requiredItemName)) return true;
         return progress != null && progress.Data != null
-            && progress.Data.GetItemAmount(choice.requiredItemName) > 0;
+            && progress.Data.GetItemAmount(choice.requiredItemName) >= Mathf.Max(1, choice.requiredItemAmount);
     }
 
     private void SetChoicesVisible(bool visible)
@@ -390,8 +549,19 @@ public class DemoNpcDialogueController : MonoBehaviour
             pendingNodeIndex = choice.nextNodeIndex;
             SetChoicesVisible(false);
             visibleChoices = new DemoDialogueChoice[0];
-            speakerText.text = "YOU  /  " + activeNpc.NpcName;
-            StartTyping("You: " + choice.label + "\n\n" + activeNpc.NpcName + ": " + choice.resultText);
+            if (!string.IsNullOrWhiteSpace(choice.resultText))
+            {
+                SetDialogueSpeaker(choice.resultSpeakerId);
+                StartTyping(choice.resultText, choice.resultTextIsLocalizationKey);
+            }
+            else if (pendingNodeIndex >= 0)
+            {
+                LoadDialogueNode(pendingNodeIndex);
+            }
+            else
+            {
+                CloseDialogue();
+            }
         }
         finally
         {
@@ -442,13 +612,19 @@ public class DemoNpcDialogueController : MonoBehaviour
         if (closedNpc != null) DialogueClosed?.Invoke(closedNpc);
     }
 
-    private void StartTyping(string text)
+    private void StartTyping(string text, bool isLocalizationKey = false)
     {
-        fullDialogueText = text ?? string.Empty;
+        fullDialogueText = ResolveLocalizedText(text, isLocalizationKey);
         typedCharacterCount = 0f;
         isTyping = true;
         dialogueText.text = string.Empty;
         UpdateContinueHint();
+    }
+
+    private static string ResolveLocalizedText(string text, bool isLocalizationKey)
+    {
+        if (string.IsNullOrEmpty(text)) return string.Empty;
+        return isLocalizationKey ? transition.dich(text, transition.CurrentLanguage) : text;
     }
 
     private void UpdateTypewriter()
@@ -481,11 +657,15 @@ public class DemoNpcDialogueController : MonoBehaviour
     {
         if (activeNpc == null) return;
 
-        Sprite[] frames = activeNpc.PortraitFrames;
+        if (activeSpeaker == null && !activeSpeakerIsPlayer) return;
+        Sprite[] frames = activeSpeakerIsPlayer ? playerPortraitFrames : activeSpeaker.portraitFrames;
         if (frames == null || frames.Length == 0) return;
 
+        float frameRate = activeSpeakerIsPlayer
+            ? playerPortraitFrameRate
+            : activeSpeaker.portraitFrameRate;
         portraitTimer += Time.unscaledDeltaTime;
-        float frameDuration = 1f / Mathf.Max(0.1f, activeNpc.PortraitFrameRate);
+        float frameDuration = 1f / Mathf.Max(0.1f, frameRate);
         if (portraitTimer < frameDuration) return;
 
         portraitTimer %= frameDuration;

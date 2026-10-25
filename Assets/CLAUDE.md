@@ -20,16 +20,19 @@
   UI hiện có; LT/QT có thể hiển thị trong công cụ demo, không tự xem đó là UI gameplay cuối.
 
 ### Tóm tắt cốt truyện
+
 Nhân vật chính **Khải** — thợ săn quái vật lang thang — mắc "Lời Nguyền Song Miên": mỗi khi
 ngủ, con quỷ **Vô Diện** chiếm xác anh, để lại ký ức đứt đoạn và máu khi tỉnh dậy. Chi tiết
 đầy đủ 15 session, nhánh rẽ và 7 kết thúc: xem `cot-truyen-bong-ngu.md` nếu file đã được bổ sung.
 
 ### Cơ chế cốt lõi (2 chỉ số song song)
+
 - **Lý Trí (LT)**: tăng khi giữ nhân tính, giảm khi chứng kiến/gây kinh hoàng.
 - **Quỷ Tính (QT)**: tăng khi để Vô Diện kiểm soát/dùng sức mạnh quỷ, giảm khi kháng cự.
 - Tổ hợp LT/QT tích lũy quyết định lựa chọn khả dụng và 1 trong 7 kết thúc.
 
 ### Chiến đấu
+
 - **Cận chiến** là chủ lực: dao găm → rìu → kiếm khắc quỷ (chế tạo)... nâng cấp qua hệ thống
   lên cấp (EXP từ giết quái + hoàn thành sự kiện cốt truyện, Lv1–20, xem sheet `He Thong Level`).
 - **Tầm xa** (nỏ/súng lục cũ dùng Băng Đạn Cũ/Đồng/Bạc) rất mạnh nhưng đạn cực hiếm
@@ -147,6 +150,7 @@ Assets/
 ## 3. Hệ thống Controller — quy ước bắt buộc
 
 ### State Machine (Player & Enemy dùng chung logic)
+
 Mỗi Controller (Player/Enemy) quản lý một tập state, ví dụ:
 `Idle, Move, Attack, UseSkill, Locked, Invincible, Die`
 
@@ -160,13 +164,16 @@ Mỗi Controller (Player/Enemy) quản lý một tập state, ví dụ:
   script chạy animation chết, khóa mọi input.
 
 ### Interface bắt buộc
+
 - **`IDamage`**: mọi entity nhận sát thương phải implement.
+
   ```csharp
   public interface IDamage
   {
       void TakeDamage(float damage, GameObject source);
   }
   ```
+
   `source` là GameObject gây sát thương (dùng để biết nguồn attack — player, enemy, bẫy...).
 
 - **`IHealth`**: quản lý máu, sinh ra thanh máu đơn giản hiển thị phía trên đầu Player/Enemy.
@@ -174,6 +181,7 @@ Mỗi Controller (Player/Enemy) quản lý một tập state, ví dụ:
   → gọi animation die tương ứng.
 
 ### Luồng liên kết giữa các script
+
 ```
 Input → PlayerController (đổi state, gọi Move()/Attack()/UseSkill())
       → gửi state + tốc độ sang PlayerAnimation (chọn đúng frame theo state)
@@ -183,6 +191,7 @@ Input → PlayerController (đổi state, gọi Move()/Attack()/UseSkill())
 ```
 
 Animation script (`PlayerAnimation.cs`, `EnemyAnimation.cs`...) chỉ chịu trách nhiệm:
+
 - Giữ tham chiếu Sprites (kéo thả/chỉnh sửa trong Inspector)
 - Chạy đúng frame theo state nhận được từ Controller
 - Không tự ý đổi state — chỉ Controller mới đổi state
@@ -208,19 +217,21 @@ Animation script (`PlayerAnimation.cs`, `EnemyAnimation.cs`...) chỉ chịu tr�
 
 ## 6. Dữ liệu tham chiếu nhanh (từ BongNgu_GameDesign.xlsx)
 
-| Sheet | Nội dung |
-|---|---|
+| Sheet              | Nội dung                                                                              |
+| ------------------ | ------------------------------------------------------------------------------------- |
 | `Chi Tiet Session` | 15 session: bối cảnh, nhiệm vụ, quái/boss, NPC, item rơi, Lv đề xuất, ảnh hưởng LT/QT |
-| `He Thong Level` | EXP, HP/ATK/DEF theo Lv1-20, kỹ năng mở khóa tương ứng session |
-| `Database Quai` | Quái thường theo 5 Zone, độ khó, skill, điểm yếu, item rơi |
-| `Database Boss` | Boss theo session, HP, số phase, skill từng phase, cách khắc chế |
-| `Database Item` | Toàn bộ vật phẩm, độ hiếm, tỉ lệ rơi, nguồn rơi, công dụng |
-| `Database NPC` | NPC, vị trí trong map, session xuất hiện, lời thoại theo giai đoạn |
-| `Cay Ky Nang` | 3 nhánh kỹ năng (Cận Chiến/Sinh Tồn/Quỷ Tính), điều kiện mở khóa, hiệu ứng |
-| `So Do Zone` | 5 Zone, địa điểm, kết nối giữa các địa điểm, quái/NPC tại từng nơi |
+| `He Thong Level`   | EXP, HP/ATK/DEF theo Lv1-20, kỹ năng mở khóa tương ứng session                        |
+| `Database Quai`    | Quái thường theo 5 Zone, độ khó, skill, điểm yếu, item rơi                            |
+| `Database Boss`    | Boss theo session, HP, số phase, skill từng phase, cách khắc chế                      |
+| `Database Item`    | Toàn bộ vật phẩm, độ hiếm, tỉ lệ rơi, nguồn rơi, công dụng                            |
+| `Database NPC`     | NPC, vị trí trong map, session xuất hiện, lời thoại theo giai đoạn                    |
+| `Cay Ky Nang`      | 3 nhánh kỹ năng (Cận Chiến/Sinh Tồn/Quỷ Tính), điều kiện mở khóa, hiệu ứng            |
+| `So Do Zone`       | 5 Zone, địa điểm, kết nối giữa các địa điểm, quái/NPC tại từng nơi                    |
 
 ---
+
 ### Việc cần bổ sung tiếp (điền khi có quyết định):
+
 1. Unity version + Render Pipeline (URP hay Built-in)
 2. Input System đang dùng (Input System mới / Input Manager cũ)
 3. Save/Load format
@@ -229,23 +240,27 @@ Animation script (`PlayerAnimation.cs`, `EnemyAnimation.cs`...) chỉ chịu tr�
 ## 7. Ghi chú hiện trạng và quyết định dự án (ưu tiên khi bắt đầu phiên mới)
 
 ### Tài liệu cốt truyện
+
 - Đọc cả `Bóng Ngủ — Sơ đồ Event & Cốt truyện chi tiết.pdf` và `BongNgu_GameDesign.xlsx` trước khi tạo/cập nhật nội dung session.
 - PDF có các chỉnh sửa flow/event chi tiết hơn GDD, gồm session `1.5`, Choice ID, required flag, điều kiện phân nhánh và ending. Khi hai tài liệu không khớp, giữ nguyên các mã/flow đang dùng trong `PlayerProgressionService` và kiểm tra phần cập nhật tương ứng trong PDF; không tự gộp nhánh.
 - Dùng đúng Choice ID và session ID vì save data lưu `currentSession` và `ChoiceRecord`; thay tên ID có thể làm save/Continue hoặc lựa chọn bị lệch.
 
 ### Scene và công cụ build
-- Scene hiện có: `Assets/Scenes/Zones/CoreCombatDemo.unity`, `Zone2.unity` đến `Zone5.unity`, và `Assets/Scenes/MainMenu/MainMenu.unity`.
-- `CoreCombatDemo` là scene Zone 1 do người dùng tự chỉnh. **Không đưa scene này vào `QuickCombatDemoSetup`, không build lại, không ghi đè hoặc sửa scene này trừ khi người dùng yêu cầu rõ.**
-- `QuickCombatDemoSetup` chỉ dành cho cập nhật Zone 2–5 qua menu `Tools/Game Setup/Update Demo Zones 2-5`. Khi sửa tool, cập nhật scene hiện có, giữ cấu trúc `Zone2Main`…`Zone5Main`/`MapBounous` và tránh tạo nội dung trùng lặp.
+
+- Scene hiện có: `Assets/Scenes/Zones/CoreCombatDemo.unity`, `Zone1.unity` đến `Zone5.unity`, và `Assets/Scenes/MainMenu/MainMenu.unity`.
+- `CoreCombatDemo` là scene chính kết chứa các gameobject chung như player hay setting hay data do người dùng tự chỉnh. **Không đưa scene này vào `QuickCombatDemoSetup`, không build lại, không ghi đè hoặc sửa scene này trừ khi người dùng yêu cầu rõ.**
+- `QuickCombatDemoSetup` chỉ dành cho cập nhật Zone 1–5 qua menu `Tools/Game Setup/Update Demo Zones 1-5`. Khi sửa tool, cập nhật scene hiện có, giữ cấu trúc `Zone1Main`…`Zone5Main`/`MapBounous` và tránh tạo nội dung trùng lặp.
 - Chỉ thêm scene vào Build Settings khi phù hợp với pipeline scene hiện hành; không tự tạo scene mới thay cho scene đã có.
 
 ### Save, chuyển scene, vị trí và camera
+
 - `PlayerSaveData` lưu `currentScene`, `currentZone`, `currentSession`, `playerX` và `playerY`. Chuyển scene qua `FlaggedScenePortal` phải giữ kiểm tra `requiredFlag` và gọi `PlayerProgressionService.LoadScene(scene, zone, arrivalPosition)` để lưu đích đến trước khi chuyển.
 - `MainMenuButton` là nút UI riêng để về `MainMenu`; gán `MainMenuButton.GoToMainMenu()` trong Button `On Click`.
 - `ConnectedStoryDirector` hiện nhận mảng `{ currentZone, startTransform }`, đặt player theo `currentZone` lúc load (không tìm thấy thì dùng `(0,0,0)`), cập nhật zone từ collider con của `MapBounous`, và gán `PolygonCollider2D` tương ứng vào `CinemachineConfiner2D`.
 - Tên vùng trong save, `MapBounous` và `ZoneSpawnPoint.currentZone` phải khớp. Khi đổi tên zone, cập nhật cả ba nơi và kiểm tra vị trí teleport/collider.
 
 ### Dialogue theo session
+
 - `DemoDialogueAsset` là `ScriptableObject`; dữ liệu nằm dưới `Assets/Data/Dialogues/Session_<ID>/`. `DemoNpcDialogueProfile` ưu tiên trường `Dialogue Asset`, còn mảng inline `dialogue` chỉ là fallback cho dữ liệu cũ.
 - `DemoDialogueAsset.PostDialogueText` là câu NPC nói lại sau khi người chơi đã ghi nhận một lựa chọn trong dialogue đó; nếu để trống, controller dùng lời đáp cũ theo choice.
 - `DemoNpcDialogueProfile.InteractionRange` điều khiển riêng khoảng cách hiện prompt E cho từng NPC; `DemoNpcDialogueController` chọn NPC gần nhất trong phạm vi cấu hình của NPC đó.
@@ -254,6 +269,7 @@ Animation script (`PlayerAnimation.cs`, `EnemyAnimation.cs`...) chỉ chịu tr�
 - Các lựa chọn điều kiện dùng `requiredFlag`; trước khi thêm flag, xác minh tên flag và điểm set trong flow PDF/`PlayerProgressionService`. Đảm bảo session có lựa chọn vẫn tương thích với bộ lọc current session trong `DemoNpcDialogueController`.
 
 ### Trạng thái script cần xác minh trước khi xóa/thay thế
+
 - `SessionDemoDirector.cs` vẫn còn trong project; đừng ghi trong tài liệu hoặc giả định rằng nó đã bị xóa. Kiểm tra scene/prefab references trước khi loại bỏ.
 - Trong lần rà soát gần nhất, `ZoneLocationTracker.cs` và `ZoneDemoDialogueUI.cs` không tồn tại; chức năng vị trí/confiner nằm trong `ConnectedStoryDirector`, dialogue runtime chính nằm trong `DemoNpcDialogueController` và `DemoNpcDialogueProfile`.
 - `ConnectedStoryDirector` còn các khối story cũ đã comment. Chỉ dọn chúng khi đã xác nhận không còn flow cần dùng và không làm mất dữ liệu Inspector/scene.

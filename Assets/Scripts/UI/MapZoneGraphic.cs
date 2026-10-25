@@ -1,95 +1,144 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(CanvasRenderer))]
 public class MapZoneGraphic : Graphic
 {
     [SerializeField] private float lineThickness = 3f;
-    [SerializeField] private float markerSize = 12f;
 
     private Transform mapTarget;
     private float worldRadius = 8f;
     private MapZoneRegion[] regions = new MapZoneRegion[0];
-    private EnemyController[] enemies = new EnemyController[0];
-    private DemoNpcDialogueProfile[] npcs = new DemoNpcDialogueProfile[0];
+    private bool cacheDirty = true;
+    private bool hasRenderState;
+    private Vector2 lastTargetPosition;
+    private float lastWorldRadius;
+    private float nextCacheRefreshTime;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+        SceneManager.sceneUnloaded += HandleSceneUnloaded;
+        cacheDirty = true;
+    }
+
+    protected override void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+        SceneManager.sceneUnloaded -= HandleSceneUnloaded;
+        base.OnDisable();
+    }
 
     public void Refresh(Transform target, float radius)
     {
-        mapTarget = target;
-        if (mapTarget == null)
+        if (target == null)
         {
             GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null) mapTarget = player.transform;
+            if (player != null) target = player.transform;
         }
 
+        bool targetChanged = mapTarget != target;
+        mapTarget = target;
         worldRadius = Mathf.Max(1f, radius);
-        regions = FindObjectsByType<MapZoneRegion>();
-        enemies = FindObjectsByType<EnemyController>();
-        npcs = FindObjectsByType<DemoNpcDialogueProfile>();
+        bool radiusChanged = Mathf.Abs(worldRadius - lastWorldRadius) > 0.01f;
+        Vector2 targetPosition = mapTarget != null ? (Vector2)mapTarget.position : Vector2.zero;
+        bool targetMoved = !hasRenderState || (targetPosition - lastTargetPosition).sqrMagnitude >= 0.0025f;
+        bool refreshCache = cacheDirty || (targetMoved && Time.unscaledTime >= nextCacheRefreshTime);
+
+        if (refreshCache)
+        {
+            regions = FindObjectsByType<MapZoneRegion>(FindObjectsSortMode.None);
+            nextCacheRefreshTime = Time.unscaledTime + 1f;
+            cacheDirty = false;
+        }
+
+        if (!hasRenderState || targetChanged || targetMoved || radiusChanged || refreshCache)
+        {
+            lastTargetPosition = targetPosition;
+            lastWorldRadius = worldRadius;
+            hasRenderState = true;
+            SetVerticesDirty();
+        }
+    }
+
+    public void InvalidateCache()
+    {
+        cacheDirty = true;
+        hasRenderState = false;
         SetVerticesDirty();
     }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode) => InvalidateCache();
+    private void HandleSceneUnloaded(Scene scene) => InvalidateCache();
 
     protected override void OnPopulateMesh(VertexHelper vertexHelper)
     {
         vertexHelper.Clear();
-
         foreach (MapZoneRegion region in regions)
         {
             if (region == null || region.Polygon == null || region.Polygon.pathCount == 0) continue;
             AddPolygonOutline(vertexHelper, region);
-        }
-
-        foreach (EnemyController enemy in enemies)
-        {
-            if (enemy != null) AddMarker(vertexHelper, enemy.transform.position, new Color(1f, 0.38f, 0.32f, 1f));
-        }
-
-        foreach (DemoNpcDialogueProfile npc in npcs)
-        {
-            if (npc != null) AddMarker(vertexHelper, npc.transform.position, new Color(0.72f, 0.58f, 1f, 1f));
-        }
-
-        if (mapTarget != null)
-        {
-            AddMarker(vertexHelper, mapTarget.position, new Color(1f, 0.9f, 0.35f, 1f), markerSize * 1.5f);
         }
     }
 
     private void AddPolygonOutline(VertexHelper vertexHelper, MapZoneRegion region)
     {
         Vector2[] path = region.Polygon.GetPath(0);
-        float mapScale = rectTransform.rect.height * 0.5f;
+        Rect bounds = rectTransform.rect;
+        float mapScale = bounds.height * 0.5f;
         Vector2[] points = new Vector2[path.Length];
         for (int i = 0; i < path.Length; i++)
         {
             Vector3 worldPoint = region.Polygon.transform.TransformPoint(path[i]);
-            points[i] = WorldToMapPosition(worldPoint) * mapScale;
+            points[i] = bounds.center + WorldToMapPosition(worldPoint) * mapScale;
         }
 
         for (int i = 0; i < points.Length; i++)
         {
             Vector2 start = points[i];
             Vector2 end = points[(i + 1) % points.Length];
+            if (!ClipSegmentToRect(ref start, ref end, bounds)) continue;
             Vector2 edge = end - start;
             if (edge.sqrMagnitude < 0.001f) continue;
-
             Vector2 normal = new Vector2(-edge.y, edge.x).normalized * lineThickness * 0.5f;
             AddQuad(vertexHelper, start - normal, start + normal, end + normal, end - normal, region.MapColor);
         }
     }
 
-    private void AddMarker(VertexHelper vertexHelper, Vector3 worldPosition, Color markerColor, float? size = null)
+    private static bool ClipSegmentToRect(ref Vector2 start, ref Vector2 end, Rect rect)
     {
-        float mapScale = rectTransform.rect.height * 0.5f;
-        Vector2 center = WorldToMapPosition(worldPosition) * mapScale;
-        float halfSize = (size ?? markerSize) * 0.5f;
-        AddQuad(
-            vertexHelper,
-            center + new Vector2(-halfSize, -halfSize),
-            center + new Vector2(-halfSize, halfSize),
-            center + new Vector2(halfSize, halfSize),
-            center + new Vector2(halfSize, -halfSize),
-            markerColor);
+        Vector2 delta = end - start;
+        float tMin = 0f;
+        float tMax = 1f;
+        if (!Clip(-delta.x, start.x - rect.xMin, ref tMin, ref tMax)
+            || !Clip(delta.x, rect.xMax - start.x, ref tMin, ref tMax)
+            || !Clip(-delta.y, start.y - rect.yMin, ref tMin, ref tMax)
+            || !Clip(delta.y, rect.yMax - start.y, ref tMin, ref tMax))
+            return false;
+
+        Vector2 originalStart = start;
+        start = originalStart + delta * tMin;
+        end = originalStart + delta * tMax;
+        return true;
+    }
+
+    private static bool Clip(float p, float q, ref float tMin, ref float tMax)
+    {
+        if (Mathf.Abs(p) < 0.000001f) return q >= 0f;
+        float ratio = q / p;
+        if (p < 0f)
+        {
+            if (ratio > tMax) return false;
+            if (ratio > tMin) tMin = ratio;
+        }
+        else
+        {
+            if (ratio < tMin) return false;
+            if (ratio < tMax) tMax = ratio;
+        }
+        return true;
     }
 
     private Vector2 WorldToMapPosition(Vector3 worldPosition)

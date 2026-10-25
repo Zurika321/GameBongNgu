@@ -3,21 +3,67 @@ using UnityEngine;
 
 public class BasicMeleeSkill : ISkill
 {
+    private enum DirectionBlock
+    {
+        Down = 0,
+        Up = 1,
+        Left = 2,
+        Right = 3
+    }
+
     public void Execute(SkillContext context)
     {
         if (context == null || context.Caster == null) return;
 
         ArcAttackSkill.CreateHitbox(context);
         PlayerController controller = context.Caster.GetComponent<PlayerController>();
-        if (controller != null && SkillActions.Instance != null)
-            SkillActions.Instance.StartCoroutine(UnlockAfterAttack(controller, context.Duration));
+        CharacterAnimation animation = context.Caster.GetComponentInChildren<CharacterAnimation>();
+        Sprite[] animationFrames = GetDirectionalFrames(context.CharacterAnimationSprites, context.Direction);
+        float duration = context.Duration > 0f ? context.Duration : 0.2f;
+
+        if (SkillActions.Instance != null)
+        {
+            SkillActions.Instance.StartCoroutine(AttackRoutine(
+                controller, animation, animationFrames, duration));
+        }
+        else if (controller != null)
+        {
+            Debug.LogWarning("[BasicMeleeSkill] SkillActions is missing; cannot play the attack animation or unlock movement.", context.Caster);
+        }
     }
 
-    private static IEnumerator UnlockAfterAttack(PlayerController controller, float duration)
+    private static IEnumerator AttackRoutine(
+        PlayerController controller,
+        CharacterAnimation animation,
+        Sprite[] frames,
+        float duration)
     {
-        controller.LockMovement(true);
-        yield return new WaitForSeconds(Mathf.Max(0.08f, duration));
+        if (controller != null) controller.LockMovement(true);
+        if (animation != null && frames.Length > 0)
+            animation.PlayCustom(frames, frames.Length / duration, false);
+
+        yield return new WaitForSeconds(duration);
         if (controller != null) controller.LockMovement(false);
+    }
+
+    private static Sprite[] GetDirectionalFrames(Sprite[] sprites, Vector2 direction)
+    {
+        if (sprites == null || sprites.Length < 4 || sprites.Length % 4 != 0)
+            return System.Array.Empty<Sprite>();
+
+        int framesPerDirection = sprites.Length / 4;
+        int startIndex = ResolveDirectionBlock(direction) * framesPerDirection;
+        Sprite[] frames = new Sprite[framesPerDirection];
+        System.Array.Copy(sprites, startIndex, frames, 0, framesPerDirection);
+        return frames;
+    }
+
+    private static int ResolveDirectionBlock(Vector2 direction)
+    {
+        if (direction.sqrMagnitude < 0.001f) return (int)DirectionBlock.Down;
+        if (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x))
+            return direction.y >= 0f ? (int)DirectionBlock.Up : (int)DirectionBlock.Down;
+        return direction.x >= 0f ? (int)DirectionBlock.Right : (int)DirectionBlock.Left;
     }
 }
 

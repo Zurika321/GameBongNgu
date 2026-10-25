@@ -4,22 +4,22 @@ using UnityEngine;
 [System.Serializable]
 public class SkillRegistration
 {
-    [Tooltip("TÃªn skill pháº£i khá»›p vá»›i skillName trong PlayerSkillSlot/EnemySkillSlot.")]
+    [Tooltip("Tên skill phải khớp với skillName trong PlayerSkillSlot/EnemySkillSlot.")]
     public string skillName;
 
-    [Tooltip("Sprite riÃªng cho skill: FlyAttack/DashAttack2 theo thá»© tá»± Down, Up, Left, Right; Fireball gá»“m 6 frame bay rá»“i 6 frame ná»•.")]
+    [Tooltip("Sprite riêng cho skill: FlyAttack/DashAttack2 theo thứ tự Down, Up, Left, Right; Fireball gồm 6 frame bay rồi 6 frame nổ.")]
     public Sprite[] skillSprites;
 }
 
 /// <summary>
-/// Äáº·t 1 GameObject duy nháº¥t chá»©a script nÃ y trong scene (vd tÃªn "SkillActions").
-/// Player hoáº·c Enemy chá»‰ cáº§n gá»i:
+/// Đặt 1 GameObject duy nhất chứa script này trong scene (vd tên "SkillActions").
+/// Player hoặc Enemy chỉ cần gọi:
 ///     SkillActions.Instance.Activate("ArcAttack", context);
-/// Sprite cá»§a tá»«ng skill Ä‘Æ°á»£c cáº¥u hÃ¬nh theo tÃªn á»Ÿ skillRegistrations, khÃ´ng truyá»n qua SkillContext.
+/// Sprite của từng skill được cấu hình theo tên ở skillRegistrations, không truyền qua SkillContext.
 /// </summary>
 public class SkillActions : MonoBehaviour
 {
-    [Header("Skill registry - tÃªn pháº£i khá»›p vá»›i PlayerSkillSlot/EnemySkillSlot")]
+    [Header("Skill registry - tên phải khớp với PlayerSkillSlot/EnemySkillSlot")]
     [SerializeField] private SkillRegistration[] skillRegistrations =
     {
         new SkillRegistration { skillName = "BasicSlash" },
@@ -55,7 +55,7 @@ public class SkillActions : MonoBehaviour
     {
         if (skillRegistrations == null || skillRegistrations.Length == 0)
         {
-            Debug.LogWarning("[SkillActions] ChÆ°a cáº¥u hÃ¬nh skillRegistrations trong Inspector.", this);
+            Debug.LogWarning("[SkillActions] Chưa cấu hình skillRegistrations trong Inspector.", this);
             return;
         }
 
@@ -63,20 +63,20 @@ public class SkillActions : MonoBehaviour
         {
             if (registration == null || string.IsNullOrWhiteSpace(registration.skillName))
             {
-                Debug.LogWarning("[SkillActions] Bá» qua Ä‘Äƒng kÃ½ skill khÃ´ng cÃ³ tÃªn.", this);
+                Debug.LogWarning("[SkillActions] Bỏ qua đăng ký skill không có tên.", this);
                 continue;
             }
 
             if (skillMap.ContainsKey(registration.skillName))
             {
-                Debug.LogWarning($"[SkillActions] TÃªn skill '{registration.skillName}' bá»‹ Ä‘Äƒng kÃ½ trÃ¹ng.", this);
+                Debug.LogWarning($"[SkillActions] Tên skill '{registration.skillName}' bị đăng ký trùng.", this);
                 continue;
             }
 
             ISkill skill = CreateSkill(registration.skillName);
             if (skill == null)
             {
-                Debug.LogWarning($"[SkillActions] KhÃ´ng cÃ³ class skill Ä‘Æ°á»£c há»— trá»£ cho '{registration.skillName}'.", this);
+                Debug.LogWarning($"[SkillActions] Không có class skill được hỗ trợ cho '{registration.skillName}'.", this);
                 continue;
             }
 
@@ -86,7 +86,7 @@ public class SkillActions : MonoBehaviour
             }
             else if (registration.skillSprites != null && registration.skillSprites.Length > 0)
             {
-                Debug.LogWarning($"[SkillActions] Skill '{registration.skillName}' khÃ´ng nháº­n cáº¥u hÃ¬nh sprite skill.", this);
+                Debug.LogWarning($"[SkillActions] Skill '{registration.skillName}' không nhận cấu hình sprite skill.", this);
             }
 
             skillMap.Add(registration.skillName, skill);
@@ -129,8 +129,8 @@ public class SkillActions : MonoBehaviour
     }
 
     /// <summary>
-    /// Gá»i hÃ m nÃ y tá»« Player hoáº·c Enemy Ä‘á»ƒ kÃ­ch hoáº¡t skill theo tÃªn.
-    /// KhÃ´ng tÃ¬m tháº¥y skill -> chá»‰ Debug.Log ra, khÃ´ng vÄƒng lá»—i.
+    /// Gọi hàm này từ Player hoặc Enemy để kích hoạt skill theo tên.
+    /// Không tìm thấy skill -> chỉ Debug.Log ra, không văng lỗi.
     /// </summary>
     public void Activate(string skillName, SkillContext context)
     {
@@ -138,13 +138,13 @@ public class SkillActions : MonoBehaviour
 
         if (string.IsNullOrWhiteSpace(skillName))
         {
-            Debug.LogWarning("[SkillActions] KhÃ´ng thá»ƒ kÃ­ch hoáº¡t skill khi tÃªn bá»‹ trá»‘ng.", this);
+            Debug.LogWarning("[SkillActions] Không thể kích hoạt skill khi tên bị trống.", this);
             return;
         }
 
         if (context == null)
         {
-            Debug.LogWarning($"[SkillActions] SkillContext null khi gá»i skill '{skillName}'.");
+            Debug.LogWarning($"[SkillActions] SkillContext null khi gọi skill '{skillName}'.");
             return;
         }
 
@@ -154,7 +154,7 @@ public class SkillActions : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"[SkillActions] KhÃ´ng tÃ¬m tháº¥y skill cÃ³ tÃªn '{skillName}'.", this);
+            Debug.LogWarning($"[SkillActions] Không tìm thấy skill có tên '{skillName}'.", this);
         }
     }
 

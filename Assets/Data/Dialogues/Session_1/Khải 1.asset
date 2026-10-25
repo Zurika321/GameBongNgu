@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: "Kh\u1EA3i 1"
+  m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
+  sessionId: 1
+  npcName: "V\xF4 Di\u1EC7n"
+  postDialogueText: 
+  nodes:
+  - speakerId: player
+    text: "A, \u0110au \u0111\u1EA7u qu\xE1 ! "
+    nextNodeIndex: 1
+    choices: []
+  - speakerId: player
+    text: "T\u1EA1i sao m\xECnh l\u1EA1i ng\u1EE7 d\u01B0\u1EDBi \u0111\u1EA5t th\u1EBF
+      n\xE0y v\xE0 t\u1EA1i sao ng\u01B0\u1EDDi m\xECnh l\u1EA1i \u0111\u1EA7y v\u1EC7t
+      m\xE1u ? "
+    nextNodeIndex: 2
+    choices: []
+  - speakerId: player
+    text: "Ch\u1EAFc m\xECnh ph\u1EA3i ki\u1EBFm g\xEC \u0111\xF3 \u0103n \u0111\u1EC3
+      b\xECnh t\u0129nh tr\u01B0\u1EDBc \u0111\u1EBD, m\xECnh nh\u1EDB l\xE0 c\xF3
+      \u0111\u1EC3 \u0111\xE8n \u1EDF trong t\u1EE7 \u0111\u1EA7u gi\u01B0\u1EDDng. "
+    nextNodeIndex: 3
+    choices: []
+  - speakerId: player
+    text: "M\xECnh nh\u1EDB m\xECnh c\xF2 \u0111\u1EC3 \u0111\xE8n \u1EDF trong c\xE1i
+      t\u1EE7 \u0111\u1EA7u gi\u01B0\u1EDDng. "
+    nextNodeIndex: -1
+    choices: []

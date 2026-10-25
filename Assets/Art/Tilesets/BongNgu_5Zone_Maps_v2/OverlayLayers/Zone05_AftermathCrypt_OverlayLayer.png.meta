@@ -1,0 +1,3601 @@
+fileFormatVersion: 2
+guid: e1298d2f56a8e934eb118f3ad42bb298
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5658837541934053542
+    second: Zone05_AftermathCrypt_OverlayLayer_0
+  - first:
+      213: -8925273625182375990
+    second: Zone05_AftermathCrypt_OverlayLayer_1
+  - first:
+      213: 7856847737379468393
+    second: Zone05_AftermathCrypt_OverlayLayer_2
+  - first:
+      213: -6385013685907177819
+    second: Zone05_AftermathCrypt_OverlayLayer_3
+  - first:
+      213: 8182691347372391054
+    second: Zone05_AftermathCrypt_OverlayLayer_4
+  - first:
+      213: -7331565209469091803
+    second: Zone05_AftermathCrypt_OverlayLayer_5
+  - first:
+      213: -4169383902310221613
+    second: Zone05_AftermathCrypt_OverlayLayer_6
+  - first:
+      213: 7287855879874843222
+    second: Zone05_AftermathCrypt_OverlayLayer_7
+  - first:
+      213: 8548200630117397636
+    second: Zone05_AftermathCrypt_OverlayLayer_8
+  - first:
+      213: -6754375322519954880
+    second: Zone05_AftermathCrypt_OverlayLayer_9
+  - first:
+      213: 4959828018324205731
+    second: Zone05_AftermathCrypt_OverlayLayer_10
+  - first:
+      213: -3066352909035317330
+    second: Zone05_AftermathCrypt_OverlayLayer_11
+  - first:
+      213: -7423733136099439069
+    second: Zone05_AftermathCrypt_OverlayLayer_12
+  - first:
+      213: -5626715683369413084
+    second: Zone05_AftermathCrypt_OverlayLayer_13
+  - first:
+      213: -5072493002647666219
+    second: Zone05_AftermathCrypt_OverlayLayer_14
+  - first:
+      213: -6100664350089125483
+    second: Zone05_AftermathCrypt_OverlayLayer_15
+  - first:
+      213: 3676074147560690324
+    second: Zone05_AftermathCrypt_OverlayLayer_16
+  - first:
+      213: -6253630925709406185
+    second: Zone05_AftermathCrypt_OverlayLayer_17
+  - first:
+      213: -7288392287290709123
+    second: Zone05_AftermathCrypt_OverlayLayer_18
+  - first:
+      213: 4473748957686842500
+    second: Zone05_AftermathCrypt_OverlayLayer_19
+  - first:
+      213: 4658622619996666374
+    second: Zone05_AftermathCrypt_OverlayLayer_20
+  - first:
+      213: 2686868845219655602
+    second: Zone05_AftermathCrypt_OverlayLayer_21
+  - first:
+      213: -6536252568532675828
+    second: Zone05_AftermathCrypt_OverlayLayer_22
+  - first:
+      213: 6785300632690015511
+    second: Zone05_AftermathCrypt_OverlayLayer_23
+  - first:
+      213: -7763921241405286379
+    second: Zone05_AftermathCrypt_OverlayLayer_24
+  - first:
+      213: 5932968765356511035
+    second: Zone05_AftermathCrypt_OverlayLayer_25
+  - first:
+      213: 6396323126090347068
+    second: Zone05_AftermathCrypt_OverlayLayer_26
+  - first:
+      213: 3282424405472761623
+    second: Zone05_AftermathCrypt_OverlayLayer_27
+  - first:
+      213: -5412703522399297008
+    second: Zone05_AftermathCrypt_OverlayLayer_28
+  - first:
+      213: -4579126863465659827
+    second: Zone05_AftermathCrypt_OverlayLayer_29
+  - first:
+      213: -7928020702785036139
+    second: Zone05_AftermathCrypt_OverlayLayer_30
+  - first:
+      213: -8086048080715179593
+    second: Zone05_AftermathCrypt_OverlayLayer_31
+  - first:
+      213: 1908866141632485693
+    second: Zone05_AftermathCrypt_OverlayLayer_32
+  - first:
+      213: -8056150563022289517
+    second: Zone05_AftermathCrypt_OverlayLayer_33
+  - first:
+      213: -9094598840661396731
+    second: Zone05_AftermathCrypt_OverlayLayer_34
+  - first:
+      213: -7939209876298568001
+    second: Zone05_AftermathCrypt_OverlayLayer_35
+  - first:
+      213: -5435637943993825365
+    second: Zone05_AftermathCrypt_OverlayLayer_36
+  - first:
+      213: 4954742413883193162
+    second: Zone05_AftermathCrypt_OverlayLayer_37
+  - first:
+      213: 8662555926566207416
+    second: Zone05_AftermathCrypt_OverlayLayer_38
+  - first:
+      213: -3179964934065577
+    second: Zone05_AftermathCrypt_OverlayLayer_39
+  - first:
+      213: -201037679103669531
+    second: Zone05_AftermathCrypt_OverlayLayer_40
+  - first:
+      213: 5858336034584645545
+    second: Zone05_AftermathCrypt_OverlayLayer_41
+  - first:
+      213: 4002582551207784975
+    second: Zone05_AftermathCrypt_OverlayLayer_42
+  - first:
+      213: -3733764622452732333
+    second: Zone05_AftermathCrypt_OverlayLayer_43
+  - first:
+      213: -2657726755519102186
+    second: Zone05_AftermathCrypt_OverlayLayer_44
+  - first:
+      213: -6822956789761053342
+    second: Zone05_AftermathCrypt_OverlayLayer_45
+  - first:
+      213: 1769078339837236953
+    second: Zone05_AftermathCrypt_OverlayLayer_46
+  - first:
+      213: -3267847448324291489
+    second: Zone05_AftermathCrypt_OverlayLayer_47
+  - first:
+      213: 7294687247447261144
+    second: Zone05_AftermathCrypt_OverlayLayer_48
+  - first:
+      213: -1590786956895381128
+    second: Zone05_AftermathCrypt_OverlayLayer_49
+  - first:
+      213: -6711390264577744246
+    second: Zone05_AftermathCrypt_OverlayLayer_50
+  - first:
+      213: 5443836418586059570
+    second: Zone05_AftermathCrypt_OverlayLayer_51
+  - first:
+      213: -8678573523456313049
+    second: Zone05_AftermathCrypt_OverlayLayer_52
+  - first:
+      213: 2721916418708248000
+    second: Zone05_AftermathCrypt_OverlayLayer_53
+  - first:
+      213: -144881681592422007
+    second: Zone05_AftermathCrypt_OverlayLayer_54
+  - first:
+      213: -6722801799796973430
+    second: Zone05_AftermathCrypt_OverlayLayer_55
+  - first:
+      213: -7424567583799092618
+    second: Zone05_AftermathCrypt_OverlayLayer_56
+  - first:
+      213: -6527141770585047557
+    second: Zone05_AftermathCrypt_OverlayLayer_57
+  - first:
+      213: -7048769614018473267
+    second: Zone05_AftermathCrypt_OverlayLayer_58
+  - first:
+      213: -5295315150079673053
+    second: Zone05_AftermathCrypt_OverlayLayer_59
+  - first:
+      213: 7158257412259790698
+    second: Zone05_AftermathCrypt_OverlayLayer_60
+  - first:
+      213: 5406648438733671407
+    second: Zone05_AftermathCrypt_OverlayLayer_61
+  - first:
+      213: 2616265641848909387
+    second: Zone05_AftermathCrypt_OverlayLayer_62
+  - first:
+      213: 135970563174351528
+    second: Zone05_AftermathCrypt_OverlayLayer_63
+  - first:
+      213: -5752723932654988214
+    second: Zone05_AftermathCrypt_OverlayLayer_64
+  - first:
+      213: 100139380063803676
+    second: Zone05_AftermathCrypt_OverlayLayer_65
+  - first:
+      213: -5021207917493142683
+    second: Zone05_AftermathCrypt_OverlayLayer_66
+  - first:
+      213: -5821713359231681945
+    second: Zone05_AftermathCrypt_OverlayLayer_67
+  - first:
+      213: 1428859261222191267
+    second: Zone05_AftermathCrypt_OverlayLayer_68
+  - first:
+      213: 8635740336276944528
+    second: Zone05_AftermathCrypt_OverlayLayer_69
+  - first:
+      213: -1503256358940176795
+    second: Zone05_AftermathCrypt_OverlayLayer_70
+  - first:
+      213: -8468255462223075584
+    second: Zone05_AftermathCrypt_OverlayLayer_71
+  - first:
+      213: -9035713715235260751
+    second: Zone05_AftermathCrypt_OverlayLayer_72
+  - first:
+      213: -5533406263697569289
+    second: Zone05_AftermathCrypt_OverlayLayer_73
+  - first:
+      213: -5226496544413513824
+    second: Zone05_AftermathCrypt_OverlayLayer_74
+  - first:
+      213: 7991824941537961816
+    second: Zone05_AftermathCrypt_OverlayLayer_75
+  - first:
+      213: -7886727213619720443
+    second: Zone05_AftermathCrypt_OverlayLayer_76
+  - first:
+      213: -7149691193248272736
+    second: Zone05_AftermathCrypt_OverlayLayer_77
+  - first:
+      213: 3843423280851821447
+    second: Zone05_AftermathCrypt_OverlayLayer_78
+  - first:
+      213: -8920491748379982603
+    second: Zone05_AftermathCrypt_OverlayLayer_79
+  - first:
+      213: 7793658164983856417
+    second: Zone05_AftermathCrypt_OverlayLayer_80
+  - first:
+      213: 5307724930862441183
+    second: Zone05_AftermathCrypt_OverlayLayer_81
+  - first:
+      213: -2308154687273761331
+    second: Zone05_AftermathCrypt_OverlayLayer_82
+  - first:
+      213: -6154133161145300484
+    second: Zone05_AftermathCrypt_OverlayLayer_83
+  - first:
+      213: 4857556609860205380
+    second: Zone05_AftermathCrypt_OverlayLayer_84
+  - first:
+      213: -6492272327935686757
+    second: Zone05_AftermathCrypt_OverlayLayer_85
+  - first:
+      213: -783251318259313563
+    second: Zone05_AftermathCrypt_OverlayLayer_86
+  - first:
+      213: 582847568811546716
+    second: Zone05_AftermathCrypt_OverlayLayer_87
+  - first:
+      213: 3889475862934911030
+    second: Zone05_AftermathCrypt_OverlayLayer_88
+  - first:
+      213: 8727995911488472467
+    second: Zone05_AftermathCrypt_OverlayLayer_89
+  - first:
+      213: -923306116142680321
+    second: Zone05_AftermathCrypt_OverlayLayer_90
+  - first:
+      213: 8502561436172792782
+    second: Zone05_AftermathCrypt_OverlayLayer_91
+  - first:
+      213: 8248660865727739487
+    second: Zone05_AftermathCrypt_OverlayLayer_92
+  - first:
+      213: 8295729344250005818
+    second: Zone05_AftermathCrypt_OverlayLayer_93
+  - first:
+      213: -4883469891006675699
+    second: Zone05_AftermathCrypt_OverlayLayer_94
+  - first:
+      213: 6316591383881143441
+    second: Zone05_AftermathCrypt_OverlayLayer_95
+  - first:
+      213: 3526261233393149531
+    second: Zone05_AftermathCrypt_OverlayLayer_96
+  - first:
+      213: -4967606867312807325
+    second: Zone05_AftermathCrypt_OverlayLayer_97
+  - first:
+      213: -4719415409730726971
+    second: Zone05_AftermathCrypt_OverlayLayer_98
+  - first:
+      213: -6136870824165264633
+    second: Zone05_AftermathCrypt_OverlayLayer_99
+  - first:
+      213: -1910482572774048575
+    second: Zone05_AftermathCrypt_OverlayLayer_100
+  - first:
+      213: 7780368717832372549
+    second: Zone05_AftermathCrypt_OverlayLayer_101
+  - first:
+      213: -517040898086615674
+    second: Zone05_AftermathCrypt_OverlayLayer_102
+  - first:
+      213: 4502317666589500500
+    second: Zone05_AftermathCrypt_OverlayLayer_103
+  - first:
+      213: -7332456851279208144
+    second: Zone05_AftermathCrypt_OverlayLayer_104
+  - first:
+      213: -6451090520657068136
+    second: Zone05_AftermathCrypt_OverlayLayer_105
+  - first:
+      213: 2930959246534286867
+    second: Zone05_AftermathCrypt_OverlayLayer_106
+  - first:
+      213: -1156699367160744448
+    second: Zone05_AftermathCrypt_OverlayLayer_107
+  - first:
+      213: -1002956916191207554
+    second: Zone05_AftermathCrypt_OverlayLayer_108
+  - first:
+      213: 42766255491446924
+    second: Zone05_AftermathCrypt_OverlayLayer_109
+  - first:
+      213: -2616436086585971070
+    second: Zone05_AftermathCrypt_OverlayLayer_110
+  - first:
+      213: 819024823161006555
+    second: Zone05_AftermathCrypt_OverlayLayer_111
+  - first:
+      213: 7549754847690251989
+    second: Zone05_AftermathCrypt_OverlayLayer_112
+  - first:
+      213: 5373062172051160413
+    second: Zone05_AftermathCrypt_OverlayLayer_113
+  - first:
+      213: -2143667335047349095
+    second: Zone05_AftermathCrypt_OverlayLayer_114
+  - first:
+      213: 7354380810916659708
+    second: Zone05_AftermathCrypt_OverlayLayer_115
+  - first:
+      213: 4796384035315497715
+    second: Zone05_AftermathCrypt_OverlayLayer_116
+  - first:
+      213: -5021198088123847910
+    second: Zone05_AftermathCrypt_OverlayLayer_117
+  - first:
+      213: -5546583246300413464
+    second: Zone05_AftermathCrypt_OverlayLayer_118
+  - first:
+      213: -8531782209589727427
+    second: Zone05_AftermathCrypt_OverlayLayer_119
+  - first:
+      213: 7850564193626121262
+    second: Zone05_AftermathCrypt_OverlayLayer_120
+  - first:
+      213: 4965335965074763668
+    second: Zone05_AftermathCrypt_OverlayLayer_121
+  - first:
+      213: -5736247578544713228
+    second: Zone05_AftermathCrypt_OverlayLayer_122
+  - first:
+      213: 8186511867780337971
+    second: Zone05_AftermathCrypt_OverlayLayer_123
+  - first:
+      213: -9217691205496465897
+    second: Zone05_AftermathCrypt_OverlayLayer_124
+  - first:
+      213: -5499765763449844814
+    second: Zone05_AftermathCrypt_OverlayLayer_125
+  - first:
+      213: 4243462329654437359
+    second: Zone05_AftermathCrypt_OverlayLayer_126
+  - first:
+      213: 4066503197600201946
+    second: Zone05_AftermathCrypt_OverlayLayer_127
+  - first:
+      213: 6022618138988643843
+    second: Zone05_AftermathCrypt_OverlayLayer_128
+  - first:
+      213: -3953354512319818680
+    second: Zone05_AftermathCrypt_OverlayLayer_129
+  - first:
+      213: 1114547431281687040
+    second: Zone05_AftermathCrypt_OverlayLayer_130
+  - first:
+      213: -3449499445115077341
+    second: Zone05_AftermathCrypt_OverlayLayer_131
+  - first:
+      213: 6208285189263247637
+    second: Zone05_AftermathCrypt_OverlayLayer_132
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 988
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a8bf9833ca388e40800000000000000
+      internalID: 5658837541934053542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 101
+        width: 1264
+        height: 923
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: acf67df0dee032480800000000000000
+      internalID: -8925273625182375990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_2
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 964b5d8c361290d60800000000000000
+      internalID: 7856847737379468393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_3
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aebe75c1efd367a0800000000000000
+      internalID: -6385013685907177819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_4
+      rect:
+        serializedVersion: 2
+        x: 1262
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a3bca3d62ce8170800000000000000
+      internalID: 8182691347372391054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_5
+      rect:
+        serializedVersion: 2
+        x: 1288
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5208bf9494c014a90800000000000000
+      internalID: -7331565209469091803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_6
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d831926e6f5326c0800000000000000
+      internalID: -4169383902310221613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_7
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6529e2e5f4aa32560800000000000000
+      internalID: 7287855879874843222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_8
+      rect:
+        serializedVersion: 2
+        x: 1366
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484faeace2f41a670800000000000000
+      internalID: 8548200630117397636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_9
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04a988d2e63a342a0800000000000000
+      internalID: -6754375322519954880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_10
+      rect:
+        serializedVersion: 2
+        x: 1418
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a07e3bed49d4d440800000000000000
+      internalID: 4959828018324205731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_11
+      rect:
+        serializedVersion: 2
+        x: 1444
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea7d6f486402275d0800000000000000
+      internalID: -3066352909035317330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_12
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32e0f7b9b0a99f890800000000000000
+      internalID: -7423733136099439069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_13
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42695a8c5e3e9e1b0800000000000000
+      internalID: -5626715683369413084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_14
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 988
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d108834d72ea99b0800000000000000
+      internalID: -5072493002647666219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_15
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 962
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5916c07a816165ba0800000000000000
+      internalID: -6100664350089125483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_16
+      rect:
+        serializedVersion: 2
+        x: 997
+        y: 516
+        width: 539
+        height: 485
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4921a55e5f9040330800000000000000
+      internalID: 3676074147560690324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_17
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 936
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71091b46ec3a639a0800000000000000
+      internalID: -6253630925709406185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_18
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 910
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7b275c84dd6ada90800000000000000
+      internalID: -7288392287290709123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_19
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 884
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484c23d59f2f51e30800000000000000
+      internalID: 4473748957686842500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_20
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 858
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60a30872790c6a040800000000000000
+      internalID: 4658622619996666374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_21
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 832
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bfa165aafca94520800000000000000
+      internalID: 2686868845219655602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_22
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 806
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0310626be09a45a0800000000000000
+      internalID: -6536252568532675828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_23
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 780
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71db8b1b9fa3a2e50800000000000000
+      internalID: 6785300632690015511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_24
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 754
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5189de514c2014490800000000000000
+      internalID: -7763921241405286379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_25
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 728
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3f009a68a3265250800000000000000
+      internalID: 5932968765356511035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_26
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 702
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c323b377efd44c850800000000000000
+      internalID: 6396323126090347068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_27
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 676
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 717d6421b938d8d20800000000000000
+      internalID: 3282424405472761623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_28
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 650
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01262e8f2d632e4b0800000000000000
+      internalID: -5412703522399297008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_29
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 624
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d424ea1016ca370c0800000000000000
+      internalID: -4579126863465659827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_30
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 598
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5902e8edc230af190800000000000000
+      internalID: -7928020702785036139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_31
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 572
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b91e30cc1698cf80800000000000000
+      internalID: -8086048080715179593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_32
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 546
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3956c764a7ad7a10800000000000000
+      internalID: 1908866141632485693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_33
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 520
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3954ef90fbdc23090800000000000000
+      internalID: -8056150563022289517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_34
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 504
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 503b2b72a8e79c180800000000000000
+      internalID: -9094598840661396731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_35
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 494
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbe63f56ea242d190800000000000000
+      internalID: -7939209876298568001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_36
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 478
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba70d94d61cb094b0800000000000000
+      internalID: -5435637943993825365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_37
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 468
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a47b11d59f7c2c440800000000000000
+      internalID: 4954742413883193162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_38
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 452
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bffee118b4973870800000000000000
+      internalID: 8662555926566207416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_39
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 442
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 752f4b7b6d3b4fff0800000000000000
+      internalID: -3179964934065577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_40
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 426
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ea8e86cb45c53df0800000000000000
+      internalID: -201037679103669531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_41
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 416
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9afc94ca59dfc4150800000000000000
+      internalID: 5858336034584645545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_42
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 400
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f02baecaf970c8730800000000000000
+      internalID: 4002582551207784975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_43
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 390
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35ec8c3bbd00f2cc0800000000000000
+      internalID: -3733764622452732333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_44
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 374
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6138b3bd89bdd1bd0800000000000000
+      internalID: -2657726755519102186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_45
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 364
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26de37403fcff41a0800000000000000
+      internalID: -6822956789761053342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_46
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 348
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d616d980670d8810800000000000000
+      internalID: 1769078339837236953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_47
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 338
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54c67e3f0646a2d0800000000000000
+      internalID: -3267847448324291489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_48
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 322
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8df7aa3176feb3560800000000000000
+      internalID: 7294687247447261144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_49
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 312
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8791de8e0b36ce9e0800000000000000
+      internalID: -1590786956895381128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_50
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 296
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8224d2ec1a5cd2a0800000000000000
+      internalID: -6711390264577744246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_51
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 286
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 233282941646c8b40800000000000000
+      internalID: 5443836418586059570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_52
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 270
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 729b6498c538f8780800000000000000
+      internalID: -8678573523456313049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_53
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 260
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5986dbf8036c520800000000000000
+      internalID: 2721916418708248000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_54
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 244
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 981f832d0e64dfdf0800000000000000
+      internalID: -144881681592422007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_55
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 234
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a80aebbc16fc3b2a0800000000000000
+      internalID: -6722801799796973430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_56
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 218
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 67a56cc9e13a6f890800000000000000
+      internalID: -7424567583799092618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_57
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 208
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfdf9a5542fea65a0800000000000000
+      internalID: -6527141770585047557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_58
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 192
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc29cdcc16dbd2e90800000000000000
+      internalID: -7048769614018473267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_59
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 182
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32db1c14de24386b0800000000000000
+      internalID: -5295315150079673053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_60
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 166
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6f3d8cb03d375360800000000000000
+      internalID: 7158257412259790698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_61
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 156
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: feb04200c16480b40800000000000000
+      internalID: 5406648438733671407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_62
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 140
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4ea67c5db7de4420800000000000000
+      internalID: 2616265641848909387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_63
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 130
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a2caedb18013e100800000000000000
+      internalID: 135970563174351528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_64
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 114
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a44163fff083a20b0800000000000000
+      internalID: -5752723932654988214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_65
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 104
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c191bb05c34c36100800000000000000
+      internalID: 100139380063803676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_66
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 88
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56b3176a006115ab0800000000000000
+      internalID: -5021207917493142683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_67
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 78
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76a79d66b8e153fa0800000000000000
+      internalID: -5821713359231681945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_68
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 62
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a00d2b7de354d310800000000000000
+      internalID: 1428859261222191267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_69
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 52
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 096bc4ce41058d770800000000000000
+      internalID: 8635740336276944528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_70
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 16
+        width: 560
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e060f5e4c532be0800000000000000
+      internalID: -1503256358940176795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_71
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 16
+        width: 373
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 007aeea1686ba7a80800000000000000
+      internalID: -8468255462223075584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_72
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 36
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b6f64fcf32ba9280800000000000000
+      internalID: -9035713715235260751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_73
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 26
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f9826602546533b0800000000000000
+      internalID: -5533406263697569289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_74
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 16
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a70d628511c777b0800000000000000
+      internalID: -5226496544413513824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_75
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8572a7b117aa8ee60800000000000000
+      internalID: 7991824941537961816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_76
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f4ac78267bc8290800000000000000
+      internalID: -7886727213619720443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_77
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0aea2bc8db137cc90800000000000000
+      internalID: -7149691193248272736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_78
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 783a3a05c15965530800000000000000
+      internalID: 3843423280851821447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_79
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f40204840c043480800000000000000
+      internalID: -8920491748379982603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_80
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12d7fa8fec2a82c60800000000000000
+      internalID: 7793658164983856417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_81
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd26a8df3b3d8a940800000000000000
+      internalID: 5307724930862441183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_82
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc505628a89c7ffd0800000000000000
+      internalID: -2308154687273761331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_83
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf98b75fe70289aa0800000000000000
+      internalID: -6154133161145300484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_84
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44b711f0002896340800000000000000
+      internalID: 4857556609860205380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_85
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b978b4c17b0d6e5a0800000000000000
+      internalID: -6492272327935686757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_86
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5641c4d63155125f0800000000000000
+      internalID: -783251318259313563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_87
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c58563996c0b61800800000000000000
+      internalID: 582847568811546716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_88
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 638f0b4a0b13af530800000000000000
+      internalID: 3889475862934911030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_89
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3950551e902102970800000000000000
+      internalID: 8727995911488472467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_90
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff6be50baf1cf23f0800000000000000
+      internalID: -923306116142680321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_91
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec3b304e39a2ff570800000000000000
+      internalID: 8502561436172792782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_92
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f563e56aa51297270800000000000000
+      internalID: 8248660865727739487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_93
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a394eccc2e9502370800000000000000
+      internalID: 8295729344250005818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_94
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d054b33020e6a3cb0800000000000000
+      internalID: -4883469891006675699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_95
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 194578b956a09a750800000000000000
+      internalID: 6316591383881143441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_96
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5621a9a8ebcfe030800000000000000
+      internalID: 3526261233393149531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_97
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 362770aafd38f0bb0800000000000000
+      internalID: -4967606867312807325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_98
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c3de7b70b4418eb0800000000000000
+      internalID: -4719415409730726971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_99
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 703bb2dff7475daa0800000000000000
+      internalID: -6136870824165264633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_100
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1cc7a34e83a9c75e0800000000000000
+      internalID: -1910482572774048575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_101
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 541c5ff602c69fb60800000000000000
+      internalID: 7780368717832372549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_102
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 685c237ea0a13d8f0800000000000000
+      internalID: -517040898086615674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_103
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 454680f30127b7e30800000000000000
+      internalID: 4502317666589500500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_104
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 031af90c751ed3a90800000000000000
+      internalID: -7332456851279208144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_105
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89f785ec95f1976a0800000000000000
+      internalID: -6451090520657068136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_106
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31e92d4e7ebdca820800000000000000
+      internalID: 2930959246534286867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_107
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 006f674dd0492ffe0800000000000000
+      internalID: -1156699367160744448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_108
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e7fd665aff7c412f0800000000000000
+      internalID: -1002956916191207554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_109
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c88f0faceafe79000800000000000000
+      internalID: 42766255491446924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_110
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ea781ed3d80bbd0800000000000000
+      internalID: -2616436086585971070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_111
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd92dbebcb2cd5b00800000000000000
+      internalID: 819024823161006555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_112
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5de5cdd980e16c860800000000000000
+      internalID: 7549754847690251989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_113
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5db239e393f09a40800000000000000
+      internalID: 5373062172051160413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_114
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99cf4e99ae92042e0800000000000000
+      internalID: -2143667335047349095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_115
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf103a1e162001660800000000000000
+      internalID: 7354380810916659708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_116
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fab5572edd209240800000000000000
+      internalID: 4796384035315497715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_117
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1be18a31fe115ab0800000000000000
+      internalID: -5021198088123847910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_118
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e1812face39603b0800000000000000
+      internalID: -5546583246300413464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_119
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3f2860a845099980800000000000000
+      internalID: -8531782209589727427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_120
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e246c7f3a8ec2fc60800000000000000
+      internalID: 7850564193626121262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_121
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fa0c4b0ca68e440800000000000000
+      internalID: 4965335965074763668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_122
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f1d5212831c460b0800000000000000
+      internalID: -5736247578544713228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_123
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33111947b255c9170800000000000000
+      internalID: 8186511867780337971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_124
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716142f9fae241080800000000000000
+      internalID: -9217691205496465897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_125
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bb87b95d28eca3b0800000000000000
+      internalID: -5499765763449844814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_126
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe5edc8818ec3ea30800000000000000
+      internalID: 4243462329654437359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_127
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: adc33faec1f1f6830800000000000000
+      internalID: 4066503197600201946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_128
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3060e38c943a49350800000000000000
+      internalID: 6022618138988643843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_129
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8445dfd440dd229c0800000000000000
+      internalID: -3953354512319818680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_130
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00a7edecbfaa77f00800000000000000
+      internalID: 1114547431281687040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_131
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d3209e78ae020d0800000000000000
+      internalID: -3449499445115077341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone05_AftermathCrypt_OverlayLayer_132
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 519ca5a9c72482650800000000000000
+      internalID: 6208285189263247637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Zone05_AftermathCrypt_OverlayLayer_0: 5658837541934053542
+      Zone05_AftermathCrypt_OverlayLayer_1: -8925273625182375990
+      Zone05_AftermathCrypt_OverlayLayer_10: 4959828018324205731
+      Zone05_AftermathCrypt_OverlayLayer_100: -1910482572774048575
+      Zone05_AftermathCrypt_OverlayLayer_101: 7780368717832372549
+      Zone05_AftermathCrypt_OverlayLayer_102: -517040898086615674
+      Zone05_AftermathCrypt_OverlayLayer_103: 4502317666589500500
+      Zone05_AftermathCrypt_OverlayLayer_104: -7332456851279208144
+      Zone05_AftermathCrypt_OverlayLayer_105: -6451090520657068136
+      Zone05_AftermathCrypt_OverlayLayer_106: 2930959246534286867
+      Zone05_AftermathCrypt_OverlayLayer_107: -1156699367160744448
+      Zone05_AftermathCrypt_OverlayLayer_108: -1002956916191207554
+      Zone05_AftermathCrypt_OverlayLayer_109: 42766255491446924
+      Zone05_AftermathCrypt_OverlayLayer_11: -3066352909035317330
+      Zone05_AftermathCrypt_OverlayLayer_110: -2616436086585971070
+      Zone05_AftermathCrypt_OverlayLayer_111: 819024823161006555
+      Zone05_AftermathCrypt_OverlayLayer_112: 7549754847690251989
+      Zone05_AftermathCrypt_OverlayLayer_113: 5373062172051160413
+      Zone05_AftermathCrypt_OverlayLayer_114: -2143667335047349095
+      Zone05_AftermathCrypt_OverlayLayer_115: 7354380810916659708
+      Zone05_AftermathCrypt_OverlayLayer_116: 4796384035315497715
+      Zone05_AftermathCrypt_OverlayLayer_117: -5021198088123847910
+      Zone05_AftermathCrypt_OverlayLayer_118: -5546583246300413464
+      Zone05_AftermathCrypt_OverlayLayer_119: -8531782209589727427
+      Zone05_AftermathCrypt_OverlayLayer_12: -7423733136099439069
+      Zone05_AftermathCrypt_OverlayLayer_120: 7850564193626121262
+      Zone05_AftermathCrypt_OverlayLayer_121: 4965335965074763668
+      Zone05_AftermathCrypt_OverlayLayer_122: -5736247578544713228
+      Zone05_AftermathCrypt_OverlayLayer_123: 8186511867780337971
+      Zone05_AftermathCrypt_OverlayLayer_124: -9217691205496465897
+      Zone05_AftermathCrypt_OverlayLayer_125: -5499765763449844814
+      Zone05_AftermathCrypt_OverlayLayer_126: 4243462329654437359
+      Zone05_AftermathCrypt_OverlayLayer_127: 4066503197600201946
+      Zone05_AftermathCrypt_OverlayLayer_128: 6022618138988643843
+      Zone05_AftermathCrypt_OverlayLayer_129: -3953354512319818680
+      Zone05_AftermathCrypt_OverlayLayer_13: -5626715683369413084
+      Zone05_AftermathCrypt_OverlayLayer_130: 1114547431281687040
+      Zone05_AftermathCrypt_OverlayLayer_131: -3449499445115077341
+      Zone05_AftermathCrypt_OverlayLayer_132: 6208285189263247637
+      Zone05_AftermathCrypt_OverlayLayer_14: -5072493002647666219
+      Zone05_AftermathCrypt_OverlayLayer_15: -6100664350089125483
+      Zone05_AftermathCrypt_OverlayLayer_16: 3676074147560690324
+      Zone05_AftermathCrypt_OverlayLayer_17: -6253630925709406185
+      Zone05_AftermathCrypt_OverlayLayer_18: -7288392287290709123
+      Zone05_AftermathCrypt_OverlayLayer_19: 4473748957686842500
+      Zone05_AftermathCrypt_OverlayLayer_2: 7856847737379468393
+      Zone05_AftermathCrypt_OverlayLayer_20: 4658622619996666374
+      Zone05_AftermathCrypt_OverlayLayer_21: 2686868845219655602
+      Zone05_AftermathCrypt_OverlayLayer_22: -6536252568532675828
+      Zone05_AftermathCrypt_OverlayLayer_23: 6785300632690015511
+      Zone05_AftermathCrypt_OverlayLayer_24: -7763921241405286379
+      Zone05_AftermathCrypt_OverlayLayer_25: 5932968765356511035
+      Zone05_AftermathCrypt_OverlayLayer_26: 6396323126090347068
+      Zone05_AftermathCrypt_OverlayLayer_27: 3282424405472761623
+      Zone05_AftermathCrypt_OverlayLayer_28: -5412703522399297008
+      Zone05_AftermathCrypt_OverlayLayer_29: -4579126863465659827
+      Zone05_AftermathCrypt_OverlayLayer_3: -6385013685907177819
+      Zone05_AftermathCrypt_OverlayLayer_30: -7928020702785036139
+      Zone05_AftermathCrypt_OverlayLayer_31: -8086048080715179593
+      Zone05_AftermathCrypt_OverlayLayer_32: 1908866141632485693
+      Zone05_AftermathCrypt_OverlayLayer_33: -8056150563022289517
+      Zone05_AftermathCrypt_OverlayLayer_34: -9094598840661396731
+      Zone05_AftermathCrypt_OverlayLayer_35: -7939209876298568001
+      Zone05_AftermathCrypt_OverlayLayer_36: -5435637943993825365
+      Zone05_AftermathCrypt_OverlayLayer_37: 4954742413883193162
+      Zone05_AftermathCrypt_OverlayLayer_38: 8662555926566207416
+      Zone05_AftermathCrypt_OverlayLayer_39: -3179964934065577
+      Zone05_AftermathCrypt_OverlayLayer_4: 8182691347372391054
+      Zone05_AftermathCrypt_OverlayLayer_40: -201037679103669531
+      Zone05_AftermathCrypt_OverlayLayer_41: 5858336034584645545
+      Zone05_AftermathCrypt_OverlayLayer_42: 4002582551207784975
+      Zone05_AftermathCrypt_OverlayLayer_43: -3733764622452732333
+      Zone05_AftermathCrypt_OverlayLayer_44: -2657726755519102186
+      Zone05_AftermathCrypt_OverlayLayer_45: -6822956789761053342
+      Zone05_AftermathCrypt_OverlayLayer_46: 1769078339837236953
+      Zone05_AftermathCrypt_OverlayLayer_47: -3267847448324291489
+      Zone05_AftermathCrypt_OverlayLayer_48: 7294687247447261144
+      Zone05_AftermathCrypt_OverlayLayer_49: -1590786956895381128
+      Zone05_AftermathCrypt_OverlayLayer_5: -7331565209469091803
+      Zone05_AftermathCrypt_OverlayLayer_50: -6711390264577744246
+      Zone05_AftermathCrypt_OverlayLayer_51: 5443836418586059570
+      Zone05_AftermathCrypt_OverlayLayer_52: -8678573523456313049
+      Zone05_AftermathCrypt_OverlayLayer_53: 2721916418708248000
+      Zone05_AftermathCrypt_OverlayLayer_54: -144881681592422007
+      Zone05_AftermathCrypt_OverlayLayer_55: -6722801799796973430
+      Zone05_AftermathCrypt_OverlayLayer_56: -7424567583799092618
+      Zone05_AftermathCrypt_OverlayLayer_57: -6527141770585047557
+      Zone05_AftermathCrypt_OverlayLayer_58: -7048769614018473267
+      Zone05_AftermathCrypt_OverlayLayer_59: -5295315150079673053
+      Zone05_AftermathCrypt_OverlayLayer_6: -4169383902310221613
+      Zone05_AftermathCrypt_OverlayLayer_60: 7158257412259790698
+      Zone05_AftermathCrypt_OverlayLayer_61: 5406648438733671407
+      Zone05_AftermathCrypt_OverlayLayer_62: 2616265641848909387
+      Zone05_AftermathCrypt_OverlayLayer_63: 135970563174351528
+      Zone05_AftermathCrypt_OverlayLayer_64: -5752723932654988214
+      Zone05_AftermathCrypt_OverlayLayer_65: 100139380063803676
+      Zone05_AftermathCrypt_OverlayLayer_66: -5021207917493142683
+      Zone05_AftermathCrypt_OverlayLayer_67: -5821713359231681945
+      Zone05_AftermathCrypt_OverlayLayer_68: 1428859261222191267
+      Zone05_AftermathCrypt_OverlayLayer_69: 8635740336276944528
+      Zone05_AftermathCrypt_OverlayLayer_7: 7287855879874843222
+      Zone05_AftermathCrypt_OverlayLayer_70: -1503256358940176795
+      Zone05_AftermathCrypt_OverlayLayer_71: -8468255462223075584
+      Zone05_AftermathCrypt_OverlayLayer_72: -9035713715235260751
+      Zone05_AftermathCrypt_OverlayLayer_73: -5533406263697569289
+      Zone05_AftermathCrypt_OverlayLayer_74: -5226496544413513824
+      Zone05_AftermathCrypt_OverlayLayer_75: 7991824941537961816
+      Zone05_AftermathCrypt_OverlayLayer_76: -7886727213619720443
+      Zone05_AftermathCrypt_OverlayLayer_77: -7149691193248272736
+      Zone05_AftermathCrypt_OverlayLayer_78: 3843423280851821447
+      Zone05_AftermathCrypt_OverlayLayer_79: -8920491748379982603
+      Zone05_AftermathCrypt_OverlayLayer_8: 8548200630117397636
+      Zone05_AftermathCrypt_OverlayLayer_80: 7793658164983856417
+      Zone05_AftermathCrypt_OverlayLayer_81: 5307724930862441183
+      Zone05_AftermathCrypt_OverlayLayer_82: -2308154687273761331
+      Zone05_AftermathCrypt_OverlayLayer_83: -6154133161145300484
+      Zone05_AftermathCrypt_OverlayLayer_84: 4857556609860205380
+      Zone05_AftermathCrypt_OverlayLayer_85: -6492272327935686757
+      Zone05_AftermathCrypt_OverlayLayer_86: -783251318259313563
+      Zone05_AftermathCrypt_OverlayLayer_87: 582847568811546716
+      Zone05_AftermathCrypt_OverlayLayer_88: 3889475862934911030
+      Zone05_AftermathCrypt_OverlayLayer_89: 8727995911488472467
+      Zone05_AftermathCrypt_OverlayLayer_9: -6754375322519954880
+      Zone05_AftermathCrypt_OverlayLayer_90: -923306116142680321
+      Zone05_AftermathCrypt_OverlayLayer_91: 8502561436172792782
+      Zone05_AftermathCrypt_OverlayLayer_92: 8248660865727739487
+      Zone05_AftermathCrypt_OverlayLayer_93: 8295729344250005818
+      Zone05_AftermathCrypt_OverlayLayer_94: -4883469891006675699
+      Zone05_AftermathCrypt_OverlayLayer_95: 6316591383881143441
+      Zone05_AftermathCrypt_OverlayLayer_96: 3526261233393149531
+      Zone05_AftermathCrypt_OverlayLayer_97: -4967606867312807325
+      Zone05_AftermathCrypt_OverlayLayer_98: -4719415409730726971
+      Zone05_AftermathCrypt_OverlayLayer_99: -6136870824165264633
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

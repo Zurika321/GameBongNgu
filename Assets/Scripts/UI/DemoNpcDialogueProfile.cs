@@ -6,19 +6,43 @@ public class DemoDialogueChoice
 {
     public string sessionId;
     public string choiceId;
+    [Tooltip("Tick when label contains a key from Assets/transitions/<language>.json; otherwise it is displayed as written.")]
+    public bool labelIsLocalizationKey;
     public string label;
     public string requiredFlag;
     [Tooltip("Ẩn lựa chọn nếu người chơi không có vật phẩm này trong inventory. Để trống nếu không yêu cầu vật phẩm.")]
     public string requiredItemName;
-    [TextArea] public string resultText;
+    [Min(1), Tooltip("Minimum inventory quantity required to show this choice.")]
+    public int requiredItemAmount = 1;
+    [TextArea, Tooltip("Optional line shown after selecting this choice.")] public string resultText;
+    [Tooltip("Tick when resultText contains a localization key.")]
+    public bool resultTextIsLocalizationKey;
+    [Tooltip("Speaker ID for resultText. Use the player ID or an ID from Dialogue Speakers.")]
+    public string resultSpeakerId;
     public int nextNodeIndex = -1;
     public int ltDelta;
     public int qtDelta;
 }
 
 [Serializable]
+public class DemoDialogueSpeaker
+{
+    [Tooltip("ID referenced by the speakerId field on dialogue nodes.")]
+    public string id;
+    public string characterName;
+    [Tooltip("Optional scene character. If assigned, it faces the player and plays idle during dialogue.")]
+    public GameObject character;
+    public Sprite[] portraitFrames = Array.Empty<Sprite>();
+    [Min(0.1f)] public float portraitFrameRate = 4f;
+}
+
+[Serializable]
 public class DemoDialogueNode
 {
+    [Tooltip("Matches an entry in DemoNpcDialogueController Dialogue Speakers. Leave empty to use the interacting NPC.")]
+    public string speakerId;
+    [Tooltip("Tick when text contains a key from Assets/transitions/<language>.json; otherwise it is displayed as written.")]
+    public bool textIsLocalizationKey;
     [TextArea(2, 5)] public string text;
     public int nextNodeIndex = -1;
     public DemoDialogueChoice[] choices;
@@ -26,29 +50,16 @@ public class DemoDialogueNode
 
 public class DemoNpcDialogueProfile : MonoBehaviour
 {
-    [SerializeField] private string npcName = "Mira";
     [Header("Interaction")]
-    [SerializeField, Min(0.1f)] private float interactionRange = 2.25f;
-    [Tooltip("Portrait sẽ lần lượt chạy các sprite này trong khung thoại. Có thể kéo frame animation vào đây.")]
-    [SerializeField] private Sprite[] portraitFrames;
-    [SerializeField, Min(0.1f)] private float portraitFrameRate = 4f;
+    [SerializeField, Tooltip("Set to 0 or less to disable E interaction.")] private float interactionRange = 2.25f;
+
     [Header("Dialogue Data")]
     [SerializeField] private DemoDialogueAsset dialogueAsset;
     [SerializeField] private DemoDialogueNode[] dialogue = new DemoDialogueNode[0];
 
-    public string NpcName => dialogueAsset != null && !string.IsNullOrWhiteSpace(dialogueAsset.NpcName)
-        ? dialogueAsset.NpcName
-        : npcName;
     public float InteractionRange => interactionRange;
-    public Sprite[] PortraitFrames => portraitFrames;
-    public float PortraitFrameRate => portraitFrameRate;
     public DemoDialogueAsset DialogueAsset => dialogueAsset;
     public string PostDialogueText => dialogueAsset != null ? dialogueAsset.PostDialogueText : string.Empty;
+    public bool PostDialogueTextIsLocalizationKey => dialogueAsset != null && dialogueAsset.PostDialogueTextIsLocalizationKey;
     public DemoDialogueNode[] Dialogue => dialogueAsset != null ? dialogueAsset.Nodes : dialogue;
-
-    public Sprite GetFallbackPortrait()
-    {
-        SpriteRenderer renderer = GetComponentInChildren<SpriteRenderer>();
-        return renderer != null ? renderer.sprite : null;
-    }
 }

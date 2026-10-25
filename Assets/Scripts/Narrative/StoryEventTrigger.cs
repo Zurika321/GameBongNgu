@@ -5,6 +5,7 @@ public class StoryEventTrigger : MonoBehaviour
 {
     [SerializeField] private StoryEventDirector director;
     [SerializeField] private string eventId;
+    [SerializeField] private string requiredFlag;
 
     private bool triggered;
 
@@ -43,6 +44,8 @@ public class StoryEventTrigger : MonoBehaviour
         if (triggered || other.GetComponentInParent<PlayerController>() == null) return;
         PlayerProgressionService progress = PlayerProgressionService.Instance;
         if (progress != null && progress.IsContinueRestorePending) return;
+        if (!string.IsNullOrWhiteSpace(requiredFlag)
+            && (progress == null || progress.Data == null || !progress.Data.HasFlag(requiredFlag))) return;
 
         if (director == null)
         {
@@ -57,6 +60,6 @@ public class StoryEventTrigger : MonoBehaviour
         if (!director.TriggerEvent(eventId)) return;
 
         triggered = true;
-        if (director.IsEventCompleted(eventId)) enabled = false;
     }
 }
+

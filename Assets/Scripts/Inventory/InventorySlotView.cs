@@ -34,9 +34,9 @@ public class InventorySlotView : MonoBehaviour, IPointerClickHandler, IBeginDrag
 
         Image background = GetComponent<Image>();
         if (background != null)
-            background.color = isSelected
-                ? new Color(0.7f, 0.48f, 0.2f, 1f)
-                : hasItem ? new Color(0.24f, 0.22f, 0.2f, 1f) : new Color(0.1f, 0.11f, 0.13f, 1f);
+            background.color = inventory != null
+                ? inventory.GetSlotColor(hasItem, isSelected)
+                : Color.white;
     }
 
     public void OnPointerClick(PointerEventData eventData)

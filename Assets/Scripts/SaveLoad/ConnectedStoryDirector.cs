@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity.Cinemachine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ConnectedStoryDirector : MonoBehaviour
 {
@@ -16,13 +17,22 @@ public class ConnectedStoryDirector : MonoBehaviour
 
     [SerializeField] private ZoneSpawnPoint[] zoneSpawnPoints = Array.Empty<ZoneSpawnPoint>();
     [SerializeField, Min(0.5f)] private float interactionRange = 2.25f;
-    [SerializeField] private bool showStoryStatus = true;
+    [SerializeField] private InventoryStorage storage;
+    [SerializeField, Min(0.1f)] private float storageRange = 2.25f;
     private DemoNpcDialogueProfile nearbyDialogue;
     private DemoNpcDialogueProfile activeDialogue;
     private PolygonCollider2D appliedPolygon;
     private PlayerProgressionService progress;
     private bool initialized;
-    private bool statusPanelVisible = true;
+    private bool statusPanelVisible = false;
+
+    public bool IsInitialized => initialized;
+
+    private void Awake()
+    {
+        if (PlayerProgressionService.ShouldDeferConnectedStoryDirector)
+            enabled = false;
+    }
 
     private void Start()
     {
@@ -75,8 +85,8 @@ public class ConnectedStoryDirector : MonoBehaviour
         //     mainCamera.transform.position = position;
         // }
 
-        // if (!GameplayPause.IsPaused && Input.GetKeyDown(KeyCode.F) && IsNearStorage())
-        //     ToggleStorageTransfer();
+        if (!GameplayPause.IsPaused && Input.GetKeyDown(KeyCode.F) && IsNearStorage())
+            ToggleStorageTransfer();
     }
 
     private void OnGUI()
@@ -84,7 +94,7 @@ public class ConnectedStoryDirector : MonoBehaviour
         if (!initialized || GameplayPause.IsPaused || progress == null) return;
 
         // DrawDialogue();
-        if (!showStoryStatus || !statusPanelVisible) return;
+        if (!statusPanelVisible) return;
 
         GUILayout.BeginArea(new Rect(12f, 12f, 330f, 205f), GUI.skin.box);
         GUILayout.Label("BÓNG NGỦ  |  SESSION " + progress.Data.currentSession);
@@ -98,14 +108,14 @@ public class ConnectedStoryDirector : MonoBehaviour
         GUILayout.Space(4f);
         GUILayout.Label("Mục tiêu: " + GetObjective());
 
-        // if (IsNearStorage())
-        // {
-        //     GUILayout.Label(storage.DisplayName + " — nhấn F để cất/lấy toàn bộ đồ.");
-        //     GUILayout.BeginHorizontal();
-        //     if (GUILayout.Button("Cất toàn bộ")) progress.StoreAll(storage.ContainerId);
-        //     if (GUILayout.Button("Lấy toàn bộ")) progress.WithdrawAll(storage.ContainerId);
-        //     GUILayout.EndHorizontal();
-        // }
+        if (IsNearStorage())
+        {
+            GUILayout.Label(storage.DisplayName + " — nhấn F để cất/lấy toàn bộ đồ.");
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Cất toàn bộ")) progress.StoreAll(storage.ContainerId);
+            if (GUILayout.Button("Lấy toàn bộ")) progress.WithdrawAll(storage.ContainerId);
+            GUILayout.EndHorizontal();
+        }
 
         if (GUILayout.Button("Lưu tiến trình ngay")) progress.SaveManual();
         GUILayout.EndArea();
@@ -249,6 +259,14 @@ public class ConnectedStoryDirector : MonoBehaviour
 
     private void RestorePlayerAtCurrentZone()
     {
+        // Portals/Continue restore an exact saved arrival point. Do not replace it
+        // with the zone's default spawn point after the scene loads.
+        if (progress.Data.HasFlag("HasSavedPlayerPosition"))
+        {
+            player.position = new Vector3(progress.Data.playerX, progress.Data.playerY, player.position.z);
+            return;
+        }
+
         string currentZone = progress.Data.currentZone;
         if (zoneSpawnPoints != null)
         {
@@ -262,7 +280,57 @@ public class ConnectedStoryDirector : MonoBehaviour
             }
         }
 
+        PolygonCollider2D region = FindRegion(currentZone);
+        if (region != null)
+        {
+            player.position = region.transform.position;
+            return;
+        }
+
+        Debug.LogWarning(
+            $"[ConnectedStoryDirector] No spawn point is configured for currentZone '{currentZone}'; moving the player to (0, 0, 0).",
+            this);
         player.position = Vector3.zero;
+    }
+
+    public void SetMapScene(Scene mapScene)
+    {
+        Transform newMap = null;
+        if (mapScene.IsValid() && mapScene.isLoaded)
+        {
+            foreach (GameObject root in mapScene.GetRootGameObjects())
+            {
+                if (root.name == "MapBounus")
+                {
+                    newMap = root.transform;
+                    break;
+                }
+            }
+        }
+
+        if (newMap == null)
+        {
+            Debug.LogError($"[ConnectedStoryDirector] MapBounus was not found in scene '{mapScene.name}'.", this);
+            return;
+        }
+
+        mapBounous = newMap;
+        appliedPolygon = null;
+        if (player == null || progress == null) return;
+        RestorePlayerAtCurrentZone();
+        ApplyConfinerForCurrentZone();
+        UpdateCurrentZone(false);
+    }
+
+    private PolygonCollider2D FindRegion(string zoneName)
+    {
+        if (mapBounous == null || string.IsNullOrWhiteSpace(zoneName)) return null;
+        foreach (PolygonCollider2D region in mapBounous.GetComponentsInChildren<PolygonCollider2D>(true))
+        {
+            if (region != null && string.Equals(region.gameObject.name, zoneName, StringComparison.OrdinalIgnoreCase))
+                return region;
+        }
+        return null;
     }
 
     private void UpdateCurrentZone(bool saveOnChange)
@@ -421,18 +489,21 @@ public class ConnectedStoryDirector : MonoBehaviour
     //     progress.Save();
     // }
 
-    // private bool IsNearStorage()
-    // {
-    //     return player != null && storage != null
-    //         && Vector2.Distance(player.position, storage.transform.position)
-    //             <= Mathf.Max(storageRange, storage.InteractionRange);
-    // }
+    private bool IsNearStorage()
+    {
+        if (storage == null)
+            storage = FindAnyObjectByType<InventoryStorage>();
 
-    // private void ToggleStorageTransfer()
-    // {
-    //     if (storage == null) return;
-    //     var stored = progress.GetStoredItems(storage.ContainerId);
-    //     if (stored.Count > 0) progress.WithdrawAll(storage.ContainerId);
-    //     else progress.StoreAll(storage.ContainerId);
-    // }
+        return player != null && storage != null
+            && Vector2.Distance(player.position, storage.transform.position)
+                <= Mathf.Max(storageRange, storage.InteractionRange);
+    }
+
+    private void ToggleStorageTransfer()
+    {
+        if (storage == null) return;
+        var stored = progress.GetStoredItems(storage.ContainerId);
+        if (stored.Count > 0) progress.WithdrawAll(storage.ContainerId);
+        else progress.StoreAll(storage.ContainerId);
+    }
 }

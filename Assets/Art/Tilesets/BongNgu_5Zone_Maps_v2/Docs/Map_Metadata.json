@@ -1,0 +1,482 @@
+{
+  "image_size_px": [
+    1536,
+    1024
+  ],
+  "reference_tile_px": [
+    16,
+    16
+  ],
+  "grid_equivalent_tiles": [
+    96,
+    64
+  ],
+  "note": "Artwork maps are 1536x1024 concept maps; visual detail is not guaranteed to snap perfectly to a 16x16 Unity tile grid. Use overlays as layout/collider guidance, then build actual Tilemaps from tiles.",
+  "zones": [
+    {
+      "zone": "Zone01_ForestVillage",
+      "title": "ZONE 1 — RỪNG THÔNG & LÀNG VEN SÔNG",
+      "base_file": "Base/Zone01_ForestVillage_Base.png",
+      "annotated_file": "Annotated/Zone01_ForestVillage_Annotated.png",
+      "overlay_layer": "OverlayLayers/Zone01_ForestVillage_OverlayLayer.png",
+      "locations": [
+        {
+          "name": "NHÀ HOANG",
+          "label_position_px": [
+            70,
+            170
+          ],
+          "tile_origin_approx": [
+            4.38,
+            10.62
+          ]
+        },
+        {
+          "name": "LÀNG VEN SÔNG",
+          "label_position_px": [
+            475,
+            500
+          ],
+          "tile_origin_approx": [
+            29.69,
+            31.25
+          ]
+        },
+        {
+          "name": "ĐỒI CAO / AM THỜ HẠO",
+          "label_position_px": [
+            1015,
+            120
+          ],
+          "tile_origin_approx": [
+            63.44,
+            7.5
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "point": [
+            1516,
+            170
+          ],
+          "dir": "right",
+          "text": "SANG ZONE 2 · NHÀ KHO ĐÁ",
+          "color": [
+            244,
+            191,
+            79
+          ],
+          "approx_tile_xy": [
+            94.75,
+            10.62
+          ]
+        },
+        {
+          "point": [
+            1320,
+            45
+          ],
+          "dir": "up",
+          "text": "LỐI NGẦM → ZONE 5 (BÍ MẬT)",
+          "color": [
+            199,
+            115,
+            255
+          ],
+          "approx_tile_xy": [
+            82.5,
+            2.81
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "Zone02_RuinedTown",
+      "title": "ZONE 2 — THỊ TRẤN RỆU RÃ & VÙNG LÂN CẬN",
+      "base_file": "Base/Zone02_RuinedTown_Base.png",
+      "annotated_file": "Annotated/Zone02_RuinedTown_Annotated.png",
+      "overlay_layer": "OverlayLayers/Zone02_RuinedTown_OverlayLayer.png",
+      "locations": [
+        {
+          "name": "NHÀ KHO ĐÁ",
+          "label_position_px": [
+            94,
+            130
+          ],
+          "tile_origin_approx": [
+            5.88,
+            8.12
+          ]
+        },
+        {
+          "name": "QUẢNG TRƯỜNG TRUNG TÂM",
+          "label_position_px": [
+            525,
+            420
+          ],
+          "tile_origin_approx": [
+            32.81,
+            26.25
+          ]
+        },
+        {
+          "name": "QUÁN TRỌ VEN SÔNG",
+          "label_position_px": [
+            140,
+            755
+          ],
+          "tile_origin_approx": [
+            8.75,
+            47.19
+          ]
+        },
+        {
+          "name": "ĐƯỜNG RỪNG SƯƠNG",
+          "label_position_px": [
+            1130,
+            350
+          ],
+          "tile_origin_approx": [
+            70.62,
+            21.88
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "point": [
+            12,
+            145
+          ],
+          "dir": "left",
+          "text": "TỪ ZONE 1 · ĐỒI CAO",
+          "color": [
+            244,
+            191,
+            79
+          ],
+          "approx_tile_xy": [
+            0.75,
+            9.06
+          ]
+        },
+        {
+          "point": [
+            1518,
+            438
+          ],
+          "dir": "right",
+          "text": "SANG ZONE 3 · ĐỀN CỔ",
+          "color": [
+            97,
+            220,
+            128
+          ],
+          "approx_tile_xy": [
+            94.88,
+            27.38
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "Zone03_AncientTemple",
+      "title": "ZONE 3 — NGÔI ĐỀN CỔ & XƯỞNG RÈN",
+      "base_file": "Base/Zone03_AncientTemple_Base.png",
+      "annotated_file": "Annotated/Zone03_AncientTemple_Annotated.png",
+      "overlay_layer": "OverlayLayers/Zone03_AncientTemple_OverlayLayer.png",
+      "locations": [
+        {
+          "name": "NGÔI ĐỀN CỔ",
+          "label_position_px": [
+            475,
+            335
+          ],
+          "tile_origin_approx": [
+            29.69,
+            20.94
+          ]
+        },
+        {
+          "name": "HANG ĐỘNG NGẦM",
+          "label_position_px": [
+            500,
+            805
+          ],
+          "tile_origin_approx": [
+            31.25,
+            50.31
+          ]
+        },
+        {
+          "name": "XƯỞNG RÈN SƯỜN NÚI",
+          "label_position_px": [
+            1095,
+            125
+          ],
+          "tile_origin_approx": [
+            68.44,
+            7.81
+          ]
+        },
+        {
+          "name": "BÌA RỪNG CHÁY",
+          "label_position_px": [
+            1130,
+            615
+          ],
+          "tile_origin_approx": [
+            70.62,
+            38.44
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "point": [
+            10,
+            420
+          ],
+          "dir": "left",
+          "text": "TỪ ZONE 2 · RỪNG SƯƠNG",
+          "color": [
+            97,
+            220,
+            128
+          ],
+          "approx_tile_xy": [
+            0.62,
+            26.25
+          ]
+        },
+        {
+          "point": [
+            1080,
+            12
+          ],
+          "dir": "up",
+          "text": "SANG ZONE 4 · ĐỈNH ĐỒI",
+          "color": [
+            75,
+            172,
+            255
+          ],
+          "approx_tile_xy": [
+            67.5,
+            0.75
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "Zone04_RitualSummit",
+      "title": "ZONE 4 — ĐỈNH ĐỒI & ĐẠI SẢNH NGHI LỄ",
+      "base_file": "Base/Zone04_RitualSummit_Base.png",
+      "annotated_file": "Annotated/Zone04_RitualSummit_Annotated.png",
+      "overlay_layer": "OverlayLayers/Zone04_RitualSummit_OverlayLayer.png",
+      "locations": [
+        {
+          "name": "ĐỈNH ĐỒI",
+          "label_position_px": [
+            95,
+            510
+          ],
+          "tile_origin_approx": [
+            5.94,
+            31.88
+          ]
+        },
+        {
+          "name": "ĐẠI SẢNH NGHI LỄ",
+          "label_position_px": [
+            575,
+            145
+          ],
+          "tile_origin_approx": [
+            35.94,
+            9.06
+          ]
+        },
+        {
+          "name": "KHÔNG GIAN TIỀM THỨC",
+          "label_position_px": [
+            1160,
+            110
+          ],
+          "tile_origin_approx": [
+            72.5,
+            6.88
+          ]
+        },
+        {
+          "name": "ĐƯỜNG LÊN ĐẠI SẢNH",
+          "label_position_px": [
+            610,
+            510
+          ],
+          "tile_origin_approx": [
+            38.12,
+            31.88
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "point": [
+            925,
+            1012
+          ],
+          "dir": "down",
+          "text": "TỪ ZONE 3 · NGÔI ĐỀN CỔ",
+          "color": [
+            75,
+            172,
+            255
+          ],
+          "approx_tile_xy": [
+            57.81,
+            63.25
+          ]
+        },
+        {
+          "point": [
+            1516,
+            570
+          ],
+          "dir": "right",
+          "text": "SANG ZONE 5 · HẬU CHIẾN",
+          "color": [
+            255,
+            93,
+            102
+          ],
+          "approx_tile_xy": [
+            94.75,
+            35.62
+          ]
+        }
+      ]
+    },
+    {
+      "zone": "Zone05_AftermathCrypt",
+      "title": "ZONE 5 — QUẢNG TRƯỜNG HẬU CHIẾN & HẦM MỘ",
+      "base_file": "Base/Zone05_AftermathCrypt_Base.png",
+      "annotated_file": "Annotated/Zone05_AftermathCrypt_Annotated.png",
+      "overlay_layer": "OverlayLayers/Zone05_AftermathCrypt_OverlayLayer.png",
+      "locations": [
+        {
+          "name": "QUẢNG TRƯỜNG HẬU CHIẾN",
+          "label_position_px": [
+            100,
+            180
+          ],
+          "tile_origin_approx": [
+            6.25,
+            11.25
+          ]
+        },
+        {
+          "name": "LỐI XUỐNG HẦM MỘ",
+          "label_position_px": [
+            650,
+            600
+          ],
+          "tile_origin_approx": [
+            40.62,
+            37.5
+          ]
+        },
+        {
+          "name": "HẦM MỘ BÍ MẬT",
+          "label_position_px": [
+            1130,
+            190
+          ],
+          "tile_origin_approx": [
+            70.62,
+            11.88
+          ]
+        }
+      ],
+      "portals": [
+        {
+          "point": [
+            476,
+            12
+          ],
+          "dir": "up",
+          "text": "TỪ ZONE 4 · ĐẠI SẢNH NGHI LỄ",
+          "color": [
+            75,
+            172,
+            255
+          ],
+          "approx_tile_xy": [
+            29.75,
+            0.75
+          ]
+        },
+        {
+          "point": [
+            1516,
+            270
+          ],
+          "dir": "right",
+          "text": "LỐI BÍ MẬT → ZONE 1 · ĐỒI CAO",
+          "color": [
+            199,
+            115,
+            255
+          ],
+          "approx_tile_xy": [
+            94.75,
+            16.88
+          ]
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "from_zone": "Zone 1",
+      "from_location": "Đồi Cao (Am Thờ)",
+      "to_zone": "Zone 2",
+      "to_location": "Nhà Kho Đá",
+      "type": "main",
+      "condition": "Theo tiến trình Session 3/4B"
+    },
+    {
+      "from_zone": "Zone 2",
+      "from_location": "Quảng Trường Trung Tâm / Con Đường Rừng Sương",
+      "to_zone": "Zone 3",
+      "to_location": "Ngôi Đền Cổ",
+      "type": "main",
+      "condition": "Theo tiến trình Session 6B/8A"
+    },
+    {
+      "from_zone": "Zone 3",
+      "from_location": "Ngôi Đền Cổ",
+      "to_zone": "Zone 4",
+      "to_location": "Đỉnh Đồi",
+      "type": "main",
+      "condition": "Tiếp tục hành trình tới Session 10"
+    },
+    {
+      "from_zone": "Zone 4",
+      "from_location": "Đại Sảnh Nghi Lễ",
+      "to_zone": "Zone 5",
+      "to_location": "Quảng Trường Hậu Chiến",
+      "type": "post-boss",
+      "condition": "Sau khi hoàn thành Trận Chiến Cuối / sống sót"
+    },
+    {
+      "from_zone": "Zone 5",
+      "from_location": "Hầm Mộ Bí Mật",
+      "to_zone": "Zone 1",
+      "to_location": "Đồi Cao (Am Thờ)",
+      "type": "secret",
+      "condition": "Nhánh Session 15; mở bằng điều kiện truyện bí mật"
+    }
+  ]
+}

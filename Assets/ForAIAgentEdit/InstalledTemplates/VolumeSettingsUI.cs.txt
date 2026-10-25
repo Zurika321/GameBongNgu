@@ -1,0 +1,51 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+/// <summary>
+/// Optional bridge between Unity UI Sliders/Toggles and VolumeManager.
+/// Assign the controls in Inspector; no reference to the persistent VolumeManager is needed.
+/// Slider ranges should be 0..1.
+/// </summary>
+public sealed class VolumeSettingsUI : MonoBehaviour
+{
+    [Header("Optional sliders (range 0 to 1)")]
+    [SerializeField] private Slider masterSlider;
+    [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sfxSlider;
+
+    [Header("Optional mute toggles")]
+    [SerializeField] private Toggle masterMuteToggle;
+    [SerializeField] private Toggle musicMuteToggle;
+    [SerializeField] private Toggle sfxMuteToggle;
+
+    private void OnEnable()
+    {
+        VolumeManager.OnAudioSettingsChanged += SyncControls;
+        SyncControls();
+    }
+
+    private void Start() => SyncControls();
+
+    private void OnDisable() => VolumeManager.OnAudioSettingsChanged -= SyncControls;
+
+    public void OnMasterVolumeChanged(float value) => VolumeManager.SetMasterVolume(value);
+    public void OnMusicVolumeChanged(float value) => VolumeManager.SetMusicVolume(value);
+    public void OnSFXVolumeChanged(float value) => VolumeManager.SetSFXVolume(value);
+
+    public void OnMasterMuteChanged(bool isMuted) => VolumeManager.SetMasterMuted(isMuted);
+    public void OnMusicMuteChanged(bool isMuted) => VolumeManager.SetMusicMuted(isMuted);
+    public void OnSFXMuteChanged(bool isMuted) => VolumeManager.SetSFXMuted(isMuted);
+
+    private void SyncControls()
+    {
+        if (!VolumeManager.IsReady) return;
+
+        if (masterSlider != null) masterSlider.SetValueWithoutNotify(VolumeManager.MasterVolume);
+        if (musicSlider != null) musicSlider.SetValueWithoutNotify(VolumeManager.MusicVolume);
+        if (sfxSlider != null) sfxSlider.SetValueWithoutNotify(VolumeManager.SFXVolume);
+
+        if (masterMuteToggle != null) masterMuteToggle.SetIsOnWithoutNotify(VolumeManager.MasterMuted);
+        if (musicMuteToggle != null) musicMuteToggle.SetIsOnWithoutNotify(VolumeManager.MusicMuted);
+        if (sfxMuteToggle != null) sfxMuteToggle.SetIsOnWithoutNotify(VolumeManager.SFXMuted);
+    }
+}

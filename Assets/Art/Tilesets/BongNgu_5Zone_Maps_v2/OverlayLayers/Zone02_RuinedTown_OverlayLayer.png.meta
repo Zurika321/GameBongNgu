@@ -1,0 +1,4251 @@
+fileFormatVersion: 2
+guid: 839b0c0538923a64eae0a31e8a3f1ddd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1860917819559413096
+    second: Zone02_RuinedTown_OverlayLayer_0
+  - first:
+      213: -2011163371676015324
+    second: Zone02_RuinedTown_OverlayLayer_1
+  - first:
+      213: 2386148263172749751
+    second: Zone02_RuinedTown_OverlayLayer_2
+  - first:
+      213: 557806847254212867
+    second: Zone02_RuinedTown_OverlayLayer_3
+  - first:
+      213: 784419242534461853
+    second: Zone02_RuinedTown_OverlayLayer_4
+  - first:
+      213: 7186255898177130174
+    second: Zone02_RuinedTown_OverlayLayer_5
+  - first:
+      213: -305745363823469504
+    second: Zone02_RuinedTown_OverlayLayer_6
+  - first:
+      213: -7855686759424653156
+    second: Zone02_RuinedTown_OverlayLayer_7
+  - first:
+      213: 3441368695748644464
+    second: Zone02_RuinedTown_OverlayLayer_8
+  - first:
+      213: -5135512574627260449
+    second: Zone02_RuinedTown_OverlayLayer_9
+  - first:
+      213: -3607190272893523376
+    second: Zone02_RuinedTown_OverlayLayer_10
+  - first:
+      213: -2594388361098989331
+    second: Zone02_RuinedTown_OverlayLayer_11
+  - first:
+      213: 8635578257406310925
+    second: Zone02_RuinedTown_OverlayLayer_12
+  - first:
+      213: -1738708197502374864
+    second: Zone02_RuinedTown_OverlayLayer_13
+  - first:
+      213: 4084707160185139432
+    second: Zone02_RuinedTown_OverlayLayer_14
+  - first:
+      213: 8774026822325894587
+    second: Zone02_RuinedTown_OverlayLayer_15
+  - first:
+      213: 8334813825349858319
+    second: Zone02_RuinedTown_OverlayLayer_16
+  - first:
+      213: 3117639784065270698
+    second: Zone02_RuinedTown_OverlayLayer_17
+  - first:
+      213: 3353444054901384146
+    second: Zone02_RuinedTown_OverlayLayer_18
+  - first:
+      213: -2655416762283330109
+    second: Zone02_RuinedTown_OverlayLayer_19
+  - first:
+      213: 908182938484890705
+    second: Zone02_RuinedTown_OverlayLayer_20
+  - first:
+      213: 4426649441899873099
+    second: Zone02_RuinedTown_OverlayLayer_21
+  - first:
+      213: 8627621690295125491
+    second: Zone02_RuinedTown_OverlayLayer_22
+  - first:
+      213: 2730045459207856070
+    second: Zone02_RuinedTown_OverlayLayer_23
+  - first:
+      213: 7894256830959797936
+    second: Zone02_RuinedTown_OverlayLayer_24
+  - first:
+      213: 4317552920125977145
+    second: Zone02_RuinedTown_OverlayLayer_25
+  - first:
+      213: 4638638152721866583
+    second: Zone02_RuinedTown_OverlayLayer_26
+  - first:
+      213: -3529107719362951841
+    second: Zone02_RuinedTown_OverlayLayer_27
+  - first:
+      213: 1725259975245936539
+    second: Zone02_RuinedTown_OverlayLayer_28
+  - first:
+      213: 4918187463048161596
+    second: Zone02_RuinedTown_OverlayLayer_29
+  - first:
+      213: 6467021799806648908
+    second: Zone02_RuinedTown_OverlayLayer_30
+  - first:
+      213: -4120206019785080431
+    second: Zone02_RuinedTown_OverlayLayer_31
+  - first:
+      213: 1703965270066673650
+    second: Zone02_RuinedTown_OverlayLayer_32
+  - first:
+      213: -7094715986151528423
+    second: Zone02_RuinedTown_OverlayLayer_33
+  - first:
+      213: 8016998240469810339
+    second: Zone02_RuinedTown_OverlayLayer_34
+  - first:
+      213: -3958194653806825809
+    second: Zone02_RuinedTown_OverlayLayer_35
+  - first:
+      213: -2150262365233730761
+    second: Zone02_RuinedTown_OverlayLayer_36
+  - first:
+      213: -4986446912616733716
+    second: Zone02_RuinedTown_OverlayLayer_37
+  - first:
+      213: 8542826347984572080
+    second: Zone02_RuinedTown_OverlayLayer_38
+  - first:
+      213: 4671682928269039270
+    second: Zone02_RuinedTown_OverlayLayer_39
+  - first:
+      213: 8797400120467414832
+    second: Zone02_RuinedTown_OverlayLayer_40
+  - first:
+      213: 7318017741795595258
+    second: Zone02_RuinedTown_OverlayLayer_41
+  - first:
+      213: -6292381741625959460
+    second: Zone02_RuinedTown_OverlayLayer_42
+  - first:
+      213: -6066761606568263948
+    second: Zone02_RuinedTown_OverlayLayer_43
+  - first:
+      213: 6703036286763278375
+    second: Zone02_RuinedTown_OverlayLayer_44
+  - first:
+      213: 1730164510499857773
+    second: Zone02_RuinedTown_OverlayLayer_45
+  - first:
+      213: -921257677616927998
+    second: Zone02_RuinedTown_OverlayLayer_46
+  - first:
+      213: -2423421444972732
+    second: Zone02_RuinedTown_OverlayLayer_47
+  - first:
+      213: -9025348942068253171
+    second: Zone02_RuinedTown_OverlayLayer_48
+  - first:
+      213: -5947284170323949808
+    second: Zone02_RuinedTown_OverlayLayer_49
+  - first:
+      213: 4428959486948488307
+    second: Zone02_RuinedTown_OverlayLayer_50
+  - first:
+      213: -7238918503022211037
+    second: Zone02_RuinedTown_OverlayLayer_51
+  - first:
+      213: 1110537491492097687
+    second: Zone02_RuinedTown_OverlayLayer_52
+  - first:
+      213: 8081971692957125442
+    second: Zone02_RuinedTown_OverlayLayer_53
+  - first:
+      213: 25111196932370182
+    second: Zone02_RuinedTown_OverlayLayer_54
+  - first:
+      213: -4352826943714814013
+    second: Zone02_RuinedTown_OverlayLayer_55
+  - first:
+      213: -1489338960317691054
+    second: Zone02_RuinedTown_OverlayLayer_56
+  - first:
+      213: -3329913926925397793
+    second: Zone02_RuinedTown_OverlayLayer_57
+  - first:
+      213: 617474522004748272
+    second: Zone02_RuinedTown_OverlayLayer_58
+  - first:
+      213: 4278288016999537193
+    second: Zone02_RuinedTown_OverlayLayer_59
+  - first:
+      213: 1423258592438797891
+    second: Zone02_RuinedTown_OverlayLayer_60
+  - first:
+      213: 1409723891930692435
+    second: Zone02_RuinedTown_OverlayLayer_61
+  - first:
+      213: -4231446590743733577
+    second: Zone02_RuinedTown_OverlayLayer_62
+  - first:
+      213: -8930970116544515555
+    second: Zone02_RuinedTown_OverlayLayer_63
+  - first:
+      213: -4672130757826776488
+    second: Zone02_RuinedTown_OverlayLayer_64
+  - first:
+      213: -8519625717968669482
+    second: Zone02_RuinedTown_OverlayLayer_65
+  - first:
+      213: -7096932214056931853
+    second: Zone02_RuinedTown_OverlayLayer_66
+  - first:
+      213: -3184649198438626841
+    second: Zone02_RuinedTown_OverlayLayer_67
+  - first:
+      213: -4600970981636374793
+    second: Zone02_RuinedTown_OverlayLayer_68
+  - first:
+      213: 3547048698130861536
+    second: Zone02_RuinedTown_OverlayLayer_69
+  - first:
+      213: 7002661546609492582
+    second: Zone02_RuinedTown_OverlayLayer_70
+  - first:
+      213: -2419466846755526587
+    second: Zone02_RuinedTown_OverlayLayer_71
+  - first:
+      213: 6934228170539225993
+    second: Zone02_RuinedTown_OverlayLayer_72
+  - first:
+      213: -6303525901458510927
+    second: Zone02_RuinedTown_OverlayLayer_73
+  - first:
+      213: 951546333492715492
+    second: Zone02_RuinedTown_OverlayLayer_74
+  - first:
+      213: 8274114924359543380
+    second: Zone02_RuinedTown_OverlayLayer_75
+  - first:
+      213: -7460988786880542387
+    second: Zone02_RuinedTown_OverlayLayer_76
+  - first:
+      213: 1313872328485483655
+    second: Zone02_RuinedTown_OverlayLayer_77
+  - first:
+      213: -3173236075415737739
+    second: Zone02_RuinedTown_OverlayLayer_78
+  - first:
+      213: -8304940703505046812
+    second: Zone02_RuinedTown_OverlayLayer_79
+  - first:
+      213: -1577594976629623453
+    second: Zone02_RuinedTown_OverlayLayer_80
+  - first:
+      213: -1490559420632588118
+    second: Zone02_RuinedTown_OverlayLayer_81
+  - first:
+      213: -7014364462246526867
+    second: Zone02_RuinedTown_OverlayLayer_82
+  - first:
+      213: 3075581539247143319
+    second: Zone02_RuinedTown_OverlayLayer_83
+  - first:
+      213: 7860278785881714580
+    second: Zone02_RuinedTown_OverlayLayer_84
+  - first:
+      213: 1199543786519784796
+    second: Zone02_RuinedTown_OverlayLayer_85
+  - first:
+      213: 5245840757605413166
+    second: Zone02_RuinedTown_OverlayLayer_86
+  - first:
+      213: -3461444098574066638
+    second: Zone02_RuinedTown_OverlayLayer_87
+  - first:
+      213: -3425474513222425894
+    second: Zone02_RuinedTown_OverlayLayer_88
+  - first:
+      213: -8602584278671405533
+    second: Zone02_RuinedTown_OverlayLayer_89
+  - first:
+      213: 5788142245434573724
+    second: Zone02_RuinedTown_OverlayLayer_90
+  - first:
+      213: -5013259872275269150
+    second: Zone02_RuinedTown_OverlayLayer_91
+  - first:
+      213: 4010458741475331126
+    second: Zone02_RuinedTown_OverlayLayer_92
+  - first:
+      213: -731798538462219282
+    second: Zone02_RuinedTown_OverlayLayer_93
+  - first:
+      213: 2747283389239919099
+    second: Zone02_RuinedTown_OverlayLayer_94
+  - first:
+      213: -3770727343728444274
+    second: Zone02_RuinedTown_OverlayLayer_95
+  - first:
+      213: 9149006766518779215
+    second: Zone02_RuinedTown_OverlayLayer_96
+  - first:
+      213: -2100867175594629118
+    second: Zone02_RuinedTown_OverlayLayer_97
+  - first:
+      213: -3233353037493705241
+    second: Zone02_RuinedTown_OverlayLayer_98
+  - first:
+      213: 5542721960726259409
+    second: Zone02_RuinedTown_OverlayLayer_99
+  - first:
+      213: -3128447142703273629
+    second: Zone02_RuinedTown_OverlayLayer_100
+  - first:
+      213: 2578313138209510258
+    second: Zone02_RuinedTown_OverlayLayer_101
+  - first:
+      213: -6895859161838564717
+    second: Zone02_RuinedTown_OverlayLayer_102
+  - first:
+      213: 5392029797183370845
+    second: Zone02_RuinedTown_OverlayLayer_103
+  - first:
+      213: 5785726273034089260
+    second: Zone02_RuinedTown_OverlayLayer_104
+  - first:
+      213: 3821946530115374781
+    second: Zone02_RuinedTown_OverlayLayer_105
+  - first:
+      213: 8542751465948090880
+    second: Zone02_RuinedTown_OverlayLayer_106
+  - first:
+      213: 5259730292592889259
+    second: Zone02_RuinedTown_OverlayLayer_107
+  - first:
+      213: -1783735269242164477
+    second: Zone02_RuinedTown_OverlayLayer_108
+  - first:
+      213: 399205803632274725
+    second: Zone02_RuinedTown_OverlayLayer_109
+  - first:
+      213: 198319758795807544
+    second: Zone02_RuinedTown_OverlayLayer_110
+  - first:
+      213: -4206707940411507301
+    second: Zone02_RuinedTown_OverlayLayer_111
+  - first:
+      213: -1783793722336985316
+    second: Zone02_RuinedTown_OverlayLayer_112
+  - first:
+      213: 8921450351224990356
+    second: Zone02_RuinedTown_OverlayLayer_113
+  - first:
+      213: -8144105574688608711
+    second: Zone02_RuinedTown_OverlayLayer_114
+  - first:
+      213: -7201683416813978593
+    second: Zone02_RuinedTown_OverlayLayer_115
+  - first:
+      213: 4662987319667613391
+    second: Zone02_RuinedTown_OverlayLayer_116
+  - first:
+      213: 3986362124989830318
+    second: Zone02_RuinedTown_OverlayLayer_117
+  - first:
+      213: 7914701295035505469
+    second: Zone02_RuinedTown_OverlayLayer_118
+  - first:
+      213: 8121866137933319945
+    second: Zone02_RuinedTown_OverlayLayer_119
+  - first:
+      213: 9149350526484694748
+    second: Zone02_RuinedTown_OverlayLayer_120
+  - first:
+      213: 698488432554694160
+    second: Zone02_RuinedTown_OverlayLayer_121
+  - first:
+      213: -1261931934167112932
+    second: Zone02_RuinedTown_OverlayLayer_122
+  - first:
+      213: 8987387723983766963
+    second: Zone02_RuinedTown_OverlayLayer_123
+  - first:
+      213: -6517284139414383606
+    second: Zone02_RuinedTown_OverlayLayer_124
+  - first:
+      213: -8950014908147477180
+    second: Zone02_RuinedTown_OverlayLayer_125
+  - first:
+      213: -8398100065484190995
+    second: Zone02_RuinedTown_OverlayLayer_126
+  - first:
+      213: -6879846407779142816
+    second: Zone02_RuinedTown_OverlayLayer_127
+  - first:
+      213: -4576992897172743915
+    second: Zone02_RuinedTown_OverlayLayer_128
+  - first:
+      213: 2663670482972647497
+    second: Zone02_RuinedTown_OverlayLayer_129
+  - first:
+      213: -3364591259197550494
+    second: Zone02_RuinedTown_OverlayLayer_130
+  - first:
+      213: -3404436667853557812
+    second: Zone02_RuinedTown_OverlayLayer_131
+  - first:
+      213: 1221410644306273390
+    second: Zone02_RuinedTown_OverlayLayer_132
+  - first:
+      213: 2183170846033382920
+    second: Zone02_RuinedTown_OverlayLayer_133
+  - first:
+      213: 1566466037681575546
+    second: Zone02_RuinedTown_OverlayLayer_134
+  - first:
+      213: -8601216168244328529
+    second: Zone02_RuinedTown_OverlayLayer_135
+  - first:
+      213: -9187497168371105290
+    second: Zone02_RuinedTown_OverlayLayer_136
+  - first:
+      213: 4103490942271556747
+    second: Zone02_RuinedTown_OverlayLayer_137
+  - first:
+      213: 2794884852491932686
+    second: Zone02_RuinedTown_OverlayLayer_138
+  - first:
+      213: 1423423303474912814
+    second: Zone02_RuinedTown_OverlayLayer_139
+  - first:
+      213: 182784895018339205
+    second: Zone02_RuinedTown_OverlayLayer_140
+  - first:
+      213: 7932274635672690987
+    second: Zone02_RuinedTown_OverlayLayer_141
+  - first:
+      213: -9043701282642568132
+    second: Zone02_RuinedTown_OverlayLayer_142
+  - first:
+      213: 3706139160449062208
+    second: Zone02_RuinedTown_OverlayLayer_143
+  - first:
+      213: -3504295603262143356
+    second: Zone02_RuinedTown_OverlayLayer_144
+  - first:
+      213: 7100865323464950653
+    second: Zone02_RuinedTown_OverlayLayer_145
+  - first:
+      213: 4002406204802036421
+    second: Zone02_RuinedTown_OverlayLayer_146
+  - first:
+      213: -9186219813059727908
+    second: Zone02_RuinedTown_OverlayLayer_147
+  - first:
+      213: -1847765734842175177
+    second: Zone02_RuinedTown_OverlayLayer_148
+  - first:
+      213: -8334108408345460137
+    second: Zone02_RuinedTown_OverlayLayer_149
+  - first:
+      213: 5214484526328272468
+    second: Zone02_RuinedTown_OverlayLayer_150
+  - first:
+      213: -3092058003273579702
+    second: Zone02_RuinedTown_OverlayLayer_151
+  - first:
+      213: -4889240291338065968
+    second: Zone02_RuinedTown_OverlayLayer_152
+  - first:
+      213: -4143465306035355464
+    second: Zone02_RuinedTown_OverlayLayer_153
+  - first:
+      213: 8271301289082427469
+    second: Zone02_RuinedTown_OverlayLayer_154
+  - first:
+      213: -2866823378841865406
+    second: Zone02_RuinedTown_OverlayLayer_155
+  - first:
+      213: 5802919975210675791
+    second: Zone02_RuinedTown_OverlayLayer_156
+  - first:
+      213: 3285380901656975005
+    second: Zone02_RuinedTown_OverlayLayer_157
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_0
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89a77f84a11bc26e0800000000000000
+      internalID: -1860917819559413096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42569fda199e614e0800000000000000
+      internalID: -2011163371676015324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_2
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b9b3d7f33d4d1120800000000000000
+      internalID: 2386148263172749751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_3
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3013ed74f5abdb700800000000000000
+      internalID: 557806847254212867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_4
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d916f322521d2ea00800000000000000
+      internalID: 784419242534461853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_5
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe47eb3aa5bab360800000000000000
+      internalID: 7186255898177130174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_6
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04c54952636c1cbf0800000000000000
+      internalID: -305745363823469504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_7
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9801c5738efaf290800000000000000
+      internalID: -7855686759424653156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_8
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07e4f3b789232cf20800000000000000
+      internalID: 3441368695748644464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_9
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd75ac1c58efab8b0800000000000000
+      internalID: -5135512574627260449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_10
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05aefeafe8fa0fdc0800000000000000
+      internalID: -3607190272893523376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_11
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de0794ff781eefbd0800000000000000
+      internalID: -2594388361098989331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_12
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0a3acefbacb7d770800000000000000
+      internalID: 8635578257406310925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_13
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03cafcf3b1eded7e0800000000000000
+      internalID: -1738708197502374864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_14
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e0745e358bcfa830800000000000000
+      internalID: 4084707160185139432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_15
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbdfb7a78ea93c970800000000000000
+      internalID: 8774026822325894587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_16
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f043ef0b3053ba370800000000000000
+      internalID: 8334813825349858319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_17
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa306da9dd4144b20800000000000000
+      internalID: 3117639784065270698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_18
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3ea82c993d98e20800000000000000
+      internalID: 3353444054901384146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_19
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c5fb711680162bd0800000000000000
+      internalID: -2655416762283330109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_20
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15c567f12938a9c00800000000000000
+      internalID: 908182938484890705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_21
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b438f99c63e9e6d30800000000000000
+      internalID: 4426649441899873099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_22
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f50f7a57387bb770800000000000000
+      internalID: 8627621690295125491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_23
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 1012
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cf90c871e113e520800000000000000
+      internalID: 2730045459207856070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_24
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 1007
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b64f0f13c80e8d60800000000000000
+      internalID: 7894256830959797936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_25
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9323f0761870beb30800000000000000
+      internalID: 4317552920125977145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_26
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1007
+        width: 50
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75f9f86c2d0cf5040800000000000000
+      internalID: 4638638152721866583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_27
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f55484d2a37160fc0800000000000000
+      internalID: -3529107719362951841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_28
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b97bbb18eca51f710800000000000000
+      internalID: 1725259975245936539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_29
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1007
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c39e3c1a079e04440800000000000000
+      internalID: 4918187463048161596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_30
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c42ce2c201a7fb950800000000000000
+      internalID: 6467021799806648908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_31
+      rect:
+        serializedVersion: 2
+        x: 794
+        y: 1007
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191c84d647612d6c0800000000000000
+      internalID: -4120206019785080431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_32
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f73de79263b5a710800000000000000
+      internalID: 1703965270066673650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_33
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 918272766618a8d90800000000000000
+      internalID: -7094715986151528423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_34
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ac72208c69124f60800000000000000
+      internalID: 8016998240469810339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_35
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae6efb0feaa119c0800000000000000
+      internalID: -3958194653806825809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_36
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73b2a5a75cbb822e0800000000000000
+      internalID: -2150262365233730761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_37
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce3e22ac3f49ccab0800000000000000
+      internalID: -4986446912616733716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_38
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0bec7793d473e8670800000000000000
+      internalID: 8542826347984572080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_39
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a69bb22fd625d040800000000000000
+      internalID: 4671682928269039270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_40
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03f50778cc4a61a70800000000000000
+      internalID: 8797400120467414832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_41
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af39bb71d52de8560800000000000000
+      internalID: 7318017741795595258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_42
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdb1b3bf428fca8a0800000000000000
+      internalID: -6292381741625959460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_43
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fe358f36788ecba0800000000000000
+      internalID: -6066761606568263948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_44
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72024151df7f50d50800000000000000
+      internalID: 6703036286763278375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_45
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65e45b9477c20810800000000000000
+      internalID: 1730164510499857773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_46
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20baa03f5090733f0800000000000000
+      internalID: -921257677616927998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_47
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 44f91a939e367fff0800000000000000
+      internalID: -2423421444972732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_48
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d0ef21e94f48fb280800000000000000
+      internalID: -9025348942068253171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_49
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0178981ae80077da0800000000000000
+      internalID: -5947284170323949808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_50
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37439201033d67d30800000000000000
+      internalID: 4428959486948488307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_51
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 320db5599f13a8b90800000000000000
+      internalID: -7238918503022211037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_52
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79ec322f6fb696f00800000000000000
+      internalID: 1110537491492097687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_53
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24bc8734f6ee82070800000000000000
+      internalID: 8081971692957125442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_54
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 60fe9052086395000800000000000000
+      internalID: 25111196932370182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_55
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c7112bf4f6a793c0800000000000000
+      internalID: -4352826943714814013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_56
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25b4d104b1ec45be0800000000000000
+      internalID: -1489338960317691054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_57
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd05cf41de4c9c1d0800000000000000
+      internalID: -3329913926925397793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_58
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 1007
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f772f56ec5b19800800000000000000
+      internalID: 617474522004748272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_59
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68
+        width: 1536
+        height: 939
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92a511cb8488f5b30800000000000000
+      internalID: 4278288016999537193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_60
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 218
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34646d9262e60c310800000000000000
+      internalID: 1423258592438797891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_61
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 192
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35bf8e12968509310800000000000000
+      internalID: 1409723891930692435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_62
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 166
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba9ea0beb1e645c0800000000000000
+      internalID: -4231446590743733577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_63
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 140
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d123cbf4ff1de0480800000000000000
+      internalID: -8930970116544515555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_64
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 114
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 852fe8b64d1492fb0800000000000000
+      internalID: -4672130757826776488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_65
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 88
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d4f1356c8534c980800000000000000
+      internalID: -8519625717968669482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_66
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 62
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fd2c12a0c1a28d90800000000000000
+      internalID: -7096932214056931853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_67
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 16
+        width: 577
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e945d05d6addc3d0800000000000000
+      internalID: -3184649198438626841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_68
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 196
+        width: 25
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fefea9e4411620c0800000000000000
+      internalID: -4600970981636374793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_69
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 146
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ed0a157ff5a93130800000000000000
+      internalID: 3547048698130861536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_70
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 183
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66242ff23937e2160800000000000000
+      internalID: 7002661546609492582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_71
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 175
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5486d45c8b35c6ed0800000000000000
+      internalID: -2419466846755526587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_72
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 140
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9835f7038c35b3060800000000000000
+      internalID: 6934228170539225993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_73
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 138
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bb671317906588a0800000000000000
+      internalID: -6303525901458510927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_74
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 149
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ef982b4952943d00800000000000000
+      internalID: 951546333492715492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_75
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 135
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45a65318faf83d270800000000000000
+      internalID: 8274114924359543380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_76
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 123
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4900d47a3e357890800000000000000
+      internalID: -7460988786880542387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_77
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 142
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 784b79bebefcb3210800000000000000
+      internalID: 1313872328485483655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_78
+      rect:
+        serializedVersion: 2
+        x: 696
+        y: 120
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57ae3681a9666f3d0800000000000000
+      internalID: -3173236075415737739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_79
+      rect:
+        serializedVersion: 2
+        x: 697
+        y: 132
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e226ee7e6ceebc80800000000000000
+      internalID: -8304940703505046812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_80
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 151
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 365fc8a2ab14b1ae0800000000000000
+      internalID: -1577594976629623453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_81
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 169
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa02590ba18705be0800000000000000
+      internalID: -1490559420632588118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_82
+      rect:
+        serializedVersion: 2
+        x: 712
+        y: 178
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d600cae6fa8f7ae90800000000000000
+      internalID: -7014364462246526867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_83
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 178
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79933946d19aeaa20800000000000000
+      internalID: 3075581539247143319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_84
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 174
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49fa40409e1551d60800000000000000
+      internalID: 7860278785881714580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_85
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 206
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5de908e7b2a5a010800000000000000
+      internalID: 1199543786519784796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_86
+      rect:
+        serializedVersion: 2
+        x: 731
+        y: 190
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2136591068fcc840800000000000000
+      internalID: 5245840757605413166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_87
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 221
+        width: 26
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23cde9e8eea76ffc0800000000000000
+      internalID: -3461444098574066638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_88
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 230
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad2293444154670d0800000000000000
+      internalID: -3425474513222425894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_89
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 204
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32e4e6f4d2b7d9880800000000000000
+      internalID: -8602584278671405533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_90
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 178
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c934f8094bc935050800000000000000
+      internalID: 5788142245434573724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_91
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 152
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e9ff4225b25d6ab0800000000000000
+      internalID: -5013259872275269150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_92
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 126
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63c4fff1af208a730800000000000000
+      internalID: 4010458741475331126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_93
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 100
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee33fc34b1128d5f0800000000000000
+      internalID: -731798538462219282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_94
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 74
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf10af0dfaf402620800000000000000
+      internalID: 2747283389239919099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_95
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 36
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8cb634857fababc0800000000000000
+      internalID: -3770727343728444274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_96
+      rect:
+        serializedVersion: 2
+        x: 1145
+        y: 16
+        width: 373
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4d3ffd3e2dc7fe70800000000000000
+      internalID: 9149006766518779215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_97
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 48
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20867664f6838d2e0800000000000000
+      internalID: -2100867175594629118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_98
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 16
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5e1ce1b82d023d0800000000000000
+      internalID: -3233353037493705241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_99
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 22
+        width: 6
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d668d5b144bbec40800000000000000
+      internalID: 5542721960726259409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_100
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 369e59026e58594d0800000000000000
+      internalID: -3128447142703273629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_101
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27353b2832208c320800000000000000
+      internalID: 2578313138209510258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_102
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39a4d7dc0acfc40a0800000000000000
+      internalID: -6895859161838564717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_103
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d56bf67488654da40800000000000000
+      internalID: 5392029797183370845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_104
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2377d724670b4050800000000000000
+      internalID: 5785726273034089260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_105
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbe401e9e184a0530800000000000000
+      internalID: 3821946530115374781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_106
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00298446233fd8670800000000000000
+      internalID: 8542751465948090880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_107
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bad4c5875d05ef840800000000000000
+      internalID: 5259730292592889259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_108
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b2c772936ee37e0800000000000000
+      internalID: -1783735269242164477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_109
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52da6c530934a8500800000000000000
+      internalID: 399205803632274725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_110
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83b17f615c290c200800000000000000
+      internalID: 198319758795807544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_111
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9df4f19a65ce95c0800000000000000
+      internalID: -4206707940411507301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_112
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1f388b7f01be37e0800000000000000
+      internalID: -1783793722336985316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_113
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49aac0a93db5fcb70800000000000000
+      internalID: 8921450351224990356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_114
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93e286f01235afe80800000000000000
+      internalID: -8144105574688608711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_115
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1c3bfba61b7e0c90800000000000000
+      internalID: -7201683416813978593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_116
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fce50fcf24246b040800000000000000
+      internalID: 4662987319667613391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_117
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea417166b37625730800000000000000
+      internalID: 3986362124989830318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_118
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3b5ae9d4eaa6dd60800000000000000
+      internalID: 7914701295035505469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_119
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90f0ac0983aa6b070800000000000000
+      internalID: 8121866137933319945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_120
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd647a814d509fe70800000000000000
+      internalID: 9149350526484694748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_121
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0165426578781b900800000000000000
+      internalID: 698488432554694160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_122
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c136f358797bc7ee0800000000000000
+      internalID: -1261931934167112932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_123
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b542ca848d99bc70800000000000000
+      internalID: 8987387723983766963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_124
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a041be1fa94fd85a0800000000000000
+      internalID: -6517284139414383606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_125
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4455b693cd82bc380800000000000000
+      internalID: -8950014908147477180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_126
+      rect:
+        serializedVersion: 2
+        x: 693
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dea41a84c74f37b80800000000000000
+      internalID: -8398100065484190995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_127
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063b313a420e580a0800000000000000
+      internalID: -6879846407779142816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_128
+      rect:
+        serializedVersion: 2
+        x: 745
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5195880c5314b70c0800000000000000
+      internalID: -4576992897172743915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_129
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9402748013247f420800000000000000
+      internalID: 2663670482972647497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_130
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 260552d73129e41d0800000000000000
+      internalID: -3364591259197550494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_131
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccf264853e201c0d0800000000000000
+      internalID: -3404436667853557812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_132
+      rect:
+        serializedVersion: 2
+        x: 849
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e64a1ca728253f010800000000000000
+      internalID: 1221410644306273390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_133
+      rect:
+        serializedVersion: 2
+        x: 875
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80e0fc9415e2c4e10800000000000000
+      internalID: 2183170846033382920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_134
+      rect:
+        serializedVersion: 2
+        x: 901
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7659b0df843db510800000000000000
+      internalID: 1566466037681575546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_135
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa74377577752a880800000000000000
+      internalID: -8601216168244328529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_136
+      rect:
+        serializedVersion: 2
+        x: 953
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f14558b0047f7080800000000000000
+      internalID: -9187497168371105290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_137
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8c0121554782f830800000000000000
+      internalID: 4103490942271556747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_138
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e04d6e427fc69c620800000000000000
+      internalID: 2794884852491932686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_139
+      rect:
+        serializedVersion: 2
+        x: 1031
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2e92a0f3f301c310800000000000000
+      internalID: 1423423303474912814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_140
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58b00e1c4e1698200800000000000000
+      internalID: 182784895018339205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_141
+      rect:
+        serializedVersion: 2
+        x: 1083
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b21ac1011c9151e60800000000000000
+      internalID: 7932274635672690987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_142
+      rect:
+        serializedVersion: 2
+        x: 1109
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3c585959915e7280800000000000000
+      internalID: -9043701282642568132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_143
+      rect:
+        serializedVersion: 2
+        x: 1135
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0451bb23ee9de6330800000000000000
+      internalID: 3706139160449062208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_144
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 484c89327bd3e5fc0800000000000000
+      internalID: -3504295603262143356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_145
+      rect:
+        serializedVersion: 2
+        x: 1187
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d738403c3675b8260800000000000000
+      internalID: 7100865323464950653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_146
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c27b04dc376b8730800000000000000
+      internalID: 4002406204802036421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_147
+      rect:
+        serializedVersion: 2
+        x: 1239
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cdd6bed20cdf38080800000000000000
+      internalID: -9186219813059727908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_148
+      rect:
+        serializedVersion: 2
+        x: 1265
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 731f792aada6b56e0800000000000000
+      internalID: -1847765734842175177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_149
+      rect:
+        serializedVersion: 2
+        x: 1291
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75209f00f8c475c80800000000000000
+      internalID: -8334108408345460137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_150
+      rect:
+        serializedVersion: 2
+        x: 1317
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45651969c029d5840800000000000000
+      internalID: 5214484526328272468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_151
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4389f1e0adc615d0800000000000000
+      internalID: -3092058003273579702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_152
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7644dfbdde52cb0800000000000000
+      internalID: -4889240291338065968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_153
+      rect:
+        serializedVersion: 2
+        x: 1395
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b08b96d1447f76c0800000000000000
+      internalID: -4143465306035355464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_154
+      rect:
+        serializedVersion: 2
+        x: 1421
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d481dfdf2b099c270800000000000000
+      internalID: 8271301289082427469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_155
+      rect:
+        serializedVersion: 2
+        x: 1447
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2437856735ff638d0800000000000000
+      internalID: -2866823378841865406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_156
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e6376e8fc188050800000000000000
+      internalID: 5802919975210675791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone02_RuinedTown_OverlayLayer_157
+      rect:
+        serializedVersion: 2
+        x: 1499
+        y: 9
+        width: 19
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d96dd1bf584089d20800000000000000
+      internalID: 3285380901656975005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Zone02_RuinedTown_OverlayLayer_0: -1860917819559413096
+      Zone02_RuinedTown_OverlayLayer_1: -2011163371676015324
+      Zone02_RuinedTown_OverlayLayer_10: -3607190272893523376
+      Zone02_RuinedTown_OverlayLayer_100: -3128447142703273629
+      Zone02_RuinedTown_OverlayLayer_101: 2578313138209510258
+      Zone02_RuinedTown_OverlayLayer_102: -6895859161838564717
+      Zone02_RuinedTown_OverlayLayer_103: 5392029797183370845
+      Zone02_RuinedTown_OverlayLayer_104: 5785726273034089260
+      Zone02_RuinedTown_OverlayLayer_105: 3821946530115374781
+      Zone02_RuinedTown_OverlayLayer_106: 8542751465948090880
+      Zone02_RuinedTown_OverlayLayer_107: 5259730292592889259
+      Zone02_RuinedTown_OverlayLayer_108: -1783735269242164477
+      Zone02_RuinedTown_OverlayLayer_109: 399205803632274725
+      Zone02_RuinedTown_OverlayLayer_11: -2594388361098989331
+      Zone02_RuinedTown_OverlayLayer_110: 198319758795807544
+      Zone02_RuinedTown_OverlayLayer_111: -4206707940411507301
+      Zone02_RuinedTown_OverlayLayer_112: -1783793722336985316
+      Zone02_RuinedTown_OverlayLayer_113: 8921450351224990356
+      Zone02_RuinedTown_OverlayLayer_114: -8144105574688608711
+      Zone02_RuinedTown_OverlayLayer_115: -7201683416813978593
+      Zone02_RuinedTown_OverlayLayer_116: 4662987319667613391
+      Zone02_RuinedTown_OverlayLayer_117: 3986362124989830318
+      Zone02_RuinedTown_OverlayLayer_118: 7914701295035505469
+      Zone02_RuinedTown_OverlayLayer_119: 8121866137933319945
+      Zone02_RuinedTown_OverlayLayer_12: 8635578257406310925
+      Zone02_RuinedTown_OverlayLayer_120: 9149350526484694748
+      Zone02_RuinedTown_OverlayLayer_121: 698488432554694160
+      Zone02_RuinedTown_OverlayLayer_122: -1261931934167112932
+      Zone02_RuinedTown_OverlayLayer_123: 8987387723983766963
+      Zone02_RuinedTown_OverlayLayer_124: -6517284139414383606
+      Zone02_RuinedTown_OverlayLayer_125: -8950014908147477180
+      Zone02_RuinedTown_OverlayLayer_126: -8398100065484190995
+      Zone02_RuinedTown_OverlayLayer_127: -6879846407779142816
+      Zone02_RuinedTown_OverlayLayer_128: -4576992897172743915
+      Zone02_RuinedTown_OverlayLayer_129: 2663670482972647497
+      Zone02_RuinedTown_OverlayLayer_13: -1738708197502374864
+      Zone02_RuinedTown_OverlayLayer_130: -3364591259197550494
+      Zone02_RuinedTown_OverlayLayer_131: -3404436667853557812
+      Zone02_RuinedTown_OverlayLayer_132: 1221410644306273390
+      Zone02_RuinedTown_OverlayLayer_133: 2183170846033382920
+      Zone02_RuinedTown_OverlayLayer_134: 1566466037681575546
+      Zone02_RuinedTown_OverlayLayer_135: -8601216168244328529
+      Zone02_RuinedTown_OverlayLayer_136: -9187497168371105290
+      Zone02_RuinedTown_OverlayLayer_137: 4103490942271556747
+      Zone02_RuinedTown_OverlayLayer_138: 2794884852491932686
+      Zone02_RuinedTown_OverlayLayer_139: 1423423303474912814
+      Zone02_RuinedTown_OverlayLayer_14: 4084707160185139432
+      Zone02_RuinedTown_OverlayLayer_140: 182784895018339205
+      Zone02_RuinedTown_OverlayLayer_141: 7932274635672690987
+      Zone02_RuinedTown_OverlayLayer_142: -9043701282642568132
+      Zone02_RuinedTown_OverlayLayer_143: 3706139160449062208
+      Zone02_RuinedTown_OverlayLayer_144: -3504295603262143356
+      Zone02_RuinedTown_OverlayLayer_145: 7100865323464950653
+      Zone02_RuinedTown_OverlayLayer_146: 4002406204802036421
+      Zone02_RuinedTown_OverlayLayer_147: -9186219813059727908
+      Zone02_RuinedTown_OverlayLayer_148: -1847765734842175177
+      Zone02_RuinedTown_OverlayLayer_149: -8334108408345460137
+      Zone02_RuinedTown_OverlayLayer_15: 8774026822325894587
+      Zone02_RuinedTown_OverlayLayer_150: 5214484526328272468
+      Zone02_RuinedTown_OverlayLayer_151: -3092058003273579702
+      Zone02_RuinedTown_OverlayLayer_152: -4889240291338065968
+      Zone02_RuinedTown_OverlayLayer_153: -4143465306035355464
+      Zone02_RuinedTown_OverlayLayer_154: 8271301289082427469
+      Zone02_RuinedTown_OverlayLayer_155: -2866823378841865406
+      Zone02_RuinedTown_OverlayLayer_156: 5802919975210675791
+      Zone02_RuinedTown_OverlayLayer_157: 3285380901656975005
+      Zone02_RuinedTown_OverlayLayer_16: 8334813825349858319
+      Zone02_RuinedTown_OverlayLayer_17: 3117639784065270698
+      Zone02_RuinedTown_OverlayLayer_18: 3353444054901384146
+      Zone02_RuinedTown_OverlayLayer_19: -2655416762283330109
+      Zone02_RuinedTown_OverlayLayer_2: 2386148263172749751
+      Zone02_RuinedTown_OverlayLayer_20: 908182938484890705
+      Zone02_RuinedTown_OverlayLayer_21: 4426649441899873099
+      Zone02_RuinedTown_OverlayLayer_22: 8627621690295125491
+      Zone02_RuinedTown_OverlayLayer_23: 2730045459207856070
+      Zone02_RuinedTown_OverlayLayer_24: 7894256830959797936
+      Zone02_RuinedTown_OverlayLayer_25: 4317552920125977145
+      Zone02_RuinedTown_OverlayLayer_26: 4638638152721866583
+      Zone02_RuinedTown_OverlayLayer_27: -3529107719362951841
+      Zone02_RuinedTown_OverlayLayer_28: 1725259975245936539
+      Zone02_RuinedTown_OverlayLayer_29: 4918187463048161596
+      Zone02_RuinedTown_OverlayLayer_3: 557806847254212867
+      Zone02_RuinedTown_OverlayLayer_30: 6467021799806648908
+      Zone02_RuinedTown_OverlayLayer_31: -4120206019785080431
+      Zone02_RuinedTown_OverlayLayer_32: 1703965270066673650
+      Zone02_RuinedTown_OverlayLayer_33: -7094715986151528423
+      Zone02_RuinedTown_OverlayLayer_34: 8016998240469810339
+      Zone02_RuinedTown_OverlayLayer_35: -3958194653806825809
+      Zone02_RuinedTown_OverlayLayer_36: -2150262365233730761
+      Zone02_RuinedTown_OverlayLayer_37: -4986446912616733716
+      Zone02_RuinedTown_OverlayLayer_38: 8542826347984572080
+      Zone02_RuinedTown_OverlayLayer_39: 4671682928269039270
+      Zone02_RuinedTown_OverlayLayer_4: 784419242534461853
+      Zone02_RuinedTown_OverlayLayer_40: 8797400120467414832
+      Zone02_RuinedTown_OverlayLayer_41: 7318017741795595258
+      Zone02_RuinedTown_OverlayLayer_42: -6292381741625959460
+      Zone02_RuinedTown_OverlayLayer_43: -6066761606568263948
+      Zone02_RuinedTown_OverlayLayer_44: 6703036286763278375
+      Zone02_RuinedTown_OverlayLayer_45: 1730164510499857773
+      Zone02_RuinedTown_OverlayLayer_46: -921257677616927998
+      Zone02_RuinedTown_OverlayLayer_47: -2423421444972732
+      Zone02_RuinedTown_OverlayLayer_48: -9025348942068253171
+      Zone02_RuinedTown_OverlayLayer_49: -5947284170323949808
+      Zone02_RuinedTown_OverlayLayer_5: 7186255898177130174
+      Zone02_RuinedTown_OverlayLayer_50: 4428959486948488307
+      Zone02_RuinedTown_OverlayLayer_51: -7238918503022211037
+      Zone02_RuinedTown_OverlayLayer_52: 1110537491492097687
+      Zone02_RuinedTown_OverlayLayer_53: 8081971692957125442
+      Zone02_RuinedTown_OverlayLayer_54: 25111196932370182
+      Zone02_RuinedTown_OverlayLayer_55: -4352826943714814013
+      Zone02_RuinedTown_OverlayLayer_56: -1489338960317691054
+      Zone02_RuinedTown_OverlayLayer_57: -3329913926925397793
+      Zone02_RuinedTown_OverlayLayer_58: 617474522004748272
+      Zone02_RuinedTown_OverlayLayer_59: 4278288016999537193
+      Zone02_RuinedTown_OverlayLayer_6: -305745363823469504
+      Zone02_RuinedTown_OverlayLayer_60: 1423258592438797891
+      Zone02_RuinedTown_OverlayLayer_61: 1409723891930692435
+      Zone02_RuinedTown_OverlayLayer_62: -4231446590743733577
+      Zone02_RuinedTown_OverlayLayer_63: -8930970116544515555
+      Zone02_RuinedTown_OverlayLayer_64: -4672130757826776488
+      Zone02_RuinedTown_OverlayLayer_65: -8519625717968669482
+      Zone02_RuinedTown_OverlayLayer_66: -7096932214056931853
+      Zone02_RuinedTown_OverlayLayer_67: -3184649198438626841
+      Zone02_RuinedTown_OverlayLayer_68: -4600970981636374793
+      Zone02_RuinedTown_OverlayLayer_69: 3547048698130861536
+      Zone02_RuinedTown_OverlayLayer_7: -7855686759424653156
+      Zone02_RuinedTown_OverlayLayer_70: 7002661546609492582
+      Zone02_RuinedTown_OverlayLayer_71: -2419466846755526587
+      Zone02_RuinedTown_OverlayLayer_72: 6934228170539225993
+      Zone02_RuinedTown_OverlayLayer_73: -6303525901458510927
+      Zone02_RuinedTown_OverlayLayer_74: 951546333492715492
+      Zone02_RuinedTown_OverlayLayer_75: 8274114924359543380
+      Zone02_RuinedTown_OverlayLayer_76: -7460988786880542387
+      Zone02_RuinedTown_OverlayLayer_77: 1313872328485483655
+      Zone02_RuinedTown_OverlayLayer_78: -3173236075415737739
+      Zone02_RuinedTown_OverlayLayer_79: -8304940703505046812
+      Zone02_RuinedTown_OverlayLayer_8: 3441368695748644464
+      Zone02_RuinedTown_OverlayLayer_80: -1577594976629623453
+      Zone02_RuinedTown_OverlayLayer_81: -1490559420632588118
+      Zone02_RuinedTown_OverlayLayer_82: -7014364462246526867
+      Zone02_RuinedTown_OverlayLayer_83: 3075581539247143319
+      Zone02_RuinedTown_OverlayLayer_84: 7860278785881714580
+      Zone02_RuinedTown_OverlayLayer_85: 1199543786519784796
+      Zone02_RuinedTown_OverlayLayer_86: 5245840757605413166
+      Zone02_RuinedTown_OverlayLayer_87: -3461444098574066638
+      Zone02_RuinedTown_OverlayLayer_88: -3425474513222425894
+      Zone02_RuinedTown_OverlayLayer_89: -8602584278671405533
+      Zone02_RuinedTown_OverlayLayer_9: -5135512574627260449
+      Zone02_RuinedTown_OverlayLayer_90: 5788142245434573724
+      Zone02_RuinedTown_OverlayLayer_91: -5013259872275269150
+      Zone02_RuinedTown_OverlayLayer_92: 4010458741475331126
+      Zone02_RuinedTown_OverlayLayer_93: -731798538462219282
+      Zone02_RuinedTown_OverlayLayer_94: 2747283389239919099
+      Zone02_RuinedTown_OverlayLayer_95: -3770727343728444274
+      Zone02_RuinedTown_OverlayLayer_96: 9149006766518779215
+      Zone02_RuinedTown_OverlayLayer_97: -2100867175594629118
+      Zone02_RuinedTown_OverlayLayer_98: -3233353037493705241
+      Zone02_RuinedTown_OverlayLayer_99: 5542721960726259409
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

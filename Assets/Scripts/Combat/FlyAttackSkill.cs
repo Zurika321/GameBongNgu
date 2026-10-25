@@ -114,14 +114,12 @@ public class FlyAttackSkill : MonoBehaviour, ISkill, ISkillSpriteConfigurable
         SpriteRenderer sr = visualObj.AddComponent<SpriteRenderer>();
         sr.sprite = spriteToUse;
 
+        sr.sortingLayerName = "skill";
         SpriteRenderer casterSprite = context.Caster != null
             ? context.Caster.GetComponentInChildren<SpriteRenderer>()
             : null;
         if (casterSprite != null)
-        {
-            sr.sortingLayerName = casterSprite.sortingLayerName;
             sr.sortingOrder = casterSprite.sortingOrder;
-        }
     }
 
     private static Sprite ResolveDirectionSprite(Sprite[] sprites, Vector2 direction)

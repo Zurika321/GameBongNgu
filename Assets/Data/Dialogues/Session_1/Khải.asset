@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
   m_Name: "Kh\u1EA3i"
   m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
-  sessionId: 1
+  sessionId: 1.5
   npcName: "V\xF4 Di\u1EC7n"
   postDialogueText: 
   nodes:
-  - text: "Kh\u1EA3i nh\xECn xu\u1ED1ng c\xE1i x\xE1c trong g\xF3c c\u0103n nh\xE0.
+  - speakerId: player
+    text: "Kh\u1EA3i nh\xECn xu\u1ED1ng c\xE1i x\xE1c trong g\xF3c c\u0103n nh\xE0.
       M\u1EA3nh g\u01B0\u01A1ng v\u1EE1 ph\u1EA3n chi\u1EBFu m\u1ED9t g\u01B0\u01A1ng
       m\u1EB7t xa l\u1EA1. M\u1ED9t gi\u1ECDng th\xEC th\u1EA7m vang l\xEAn trong
       \u0111\u1EA7u: \u201CNg\u01B0\u01A1i \u0111\u1ECBnh l\xE0m g\xEC v\u1EDBi ng\u01B0\u1EDDi
       n\xE0y?\u201D"
     nextNodeIndex: 1
     choices: []
-  - text: "Kh\u1EA3i t\u1EF1 h\u1ECFi: n\xEAn ch\xF4n c\u1EA5t ng\u01B0\u1EDDi \u0111\xE3
+  - speakerId: player
+    text: "Kh\u1EA3i t\u1EF1 h\u1ECFi: n\xEAn ch\xF4n c\u1EA5t ng\u01B0\u1EDDi \u0111\xE3
       khu\u1EA5t r\u1ED3i r\u1EDDi \u0111i, hay \u0111i\u1EC1u tra d\u1EA5u v\u1EBFt
       trong c\u0103n nh\xE0?"
     nextNodeIndex: -1
@@ -34,9 +36,11 @@ MonoBehaviour:
         khu\u1EA5t r\u1ED3i r\u1EDDi nh\xE0."
       requiredFlag: Session1Ready
       requiredItemName: 
+      requiredItemAmount: 1
       resultText: "Kh\u1EA3i l\u1EB7ng l\u1EBD ch\xF4n c\u1EA5t ng\u01B0\u1EDDi ch\u1EBFt.
         C\xE1nh c\u1EEDa ch\xEDnh m\u1EDF ra con \u0111\u01B0\u1EDDng r\u1EEBng th\xF4ng
         ven s\xF4ng."
+      resultSpeakerId: player
       nextNodeIndex: 2
       ltDelta: 0
       qtDelta: 1
@@ -45,13 +49,16 @@ MonoBehaviour:
       label: "\u0110i\u1EC1u tra. T\xECm manh m\u1ED1i tr\xEAn g\xE1c m\xE1i."
       requiredFlag: Session1Ready
       requiredItemName: 
+      requiredItemAmount: 1
       resultText: "Kh\u1EA3i quy\u1EBFt \u0111\u1ECBnh t\xECm hi\u1EC3u chuy\u1EC7n
         \u0111\xE3 x\u1EA3y ra. C\u1EA7u thang g\u1ED7 l\xEAn g\xE1c m\xE1i \u0111\xE3
         c\xF3 th\u1EC3 s\u1EED d\u1EE5ng."
+      resultSpeakerId: player
       nextNodeIndex: 2
       ltDelta: 1
       qtDelta: 0
-  - text: "Kh\u1EA3i bi\u1EBFt l\u1EF1a ch\u1ECDn n\xE0y s\u1EBD thay \u0111\u1ED5i
+  - speakerId: player
+    text: "Kh\u1EA3i bi\u1EBFt l\u1EF1a ch\u1ECDn n\xE0y s\u1EBD thay \u0111\u1ED5i
       con \u0111\u01B0\u1EDDng ph\xEDa tr\u01B0\u1EDBc."
     nextNodeIndex: -1
     choices: []
