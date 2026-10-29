@@ -15,25 +15,25 @@ MonoBehaviour:
   sessionId: 1
   npcName: "V\xF4 Di\u1EC7n"
   postDialogueText: 
+  postDialogueTextIsLocalizationKey: 0
   nodes:
   - speakerId: player
-    text: "A, \u0110au \u0111\u1EA7u qu\xE1 ! "
+    textIsLocalizationKey: 1
+    text: DIALOGUE_KHAI_1_LINE_01
     nextNodeIndex: 1
     choices: []
   - speakerId: player
-    text: "T\u1EA1i sao m\xECnh l\u1EA1i ng\u1EE7 d\u01B0\u1EDBi \u0111\u1EA5t th\u1EBF
-      n\xE0y v\xE0 t\u1EA1i sao ng\u01B0\u1EDDi m\xECnh l\u1EA1i \u0111\u1EA7y v\u1EC7t
-      m\xE1u ? "
+    textIsLocalizationKey: 1
+    text: DIALOGUE_KHAI_1_LINE_02
     nextNodeIndex: 2
     choices: []
   - speakerId: player
-    text: "Ch\u1EAFc m\xECnh ph\u1EA3i ki\u1EBFm g\xEC \u0111\xF3 \u0103n \u0111\u1EC3
-      b\xECnh t\u0129nh tr\u01B0\u1EDBc \u0111\u1EBD, m\xECnh nh\u1EDB l\xE0 c\xF3
-      \u0111\u1EC3 \u0111\xE8n \u1EDF trong t\u1EE7 \u0111\u1EA7u gi\u01B0\u1EDDng. "
+    textIsLocalizationKey: 1
+    text: DIALOGUE_KHAI_1_LINE_03
     nextNodeIndex: 3
     choices: []
   - speakerId: player
-    text: "M\xECnh nh\u1EDB m\xECnh c\xF2 \u0111\u1EC3 \u0111\xE8n \u1EDF trong c\xE1i
-      t\u1EE7 \u0111\u1EA7u gi\u01B0\u1EDDng. "
+    textIsLocalizationKey: 1
+    text: DIALOGUE_KHAI_1_LINE_04
     nextNodeIndex: -1
     choices: []

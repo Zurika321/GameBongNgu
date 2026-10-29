@@ -1,0 +1,296 @@
+Để triển khai hệ thống **Flag & ID Registry** bám sát cấu trúc dự án hiện tại của bạn (đọc các bảng JSON trong `Assets/Scripts/SaveLoad/Resources/Data` và thay thế các biến chuỗi như `requiredFlag`, `requiredItemName` trong Dialogue/StoryEvent/Spawner), bạn chỉ cần làm theo **4 bước** dưới đây mà không cần cài thêm Odin Inspector:
+
+---
+
+### Bước 1: Tạo Attribute đánh dấu (`RegistryIdAttribute.cs`)
+
+Đặt file này trong thư mục `Assets/Scripts/...` (không đặt trong thư mục `Editor` để các script runtime như `DemoDialogueAsset` hay `ZoneEnemySpawner` có thể gọi được).
+
+```csharp
+using UnityEngine;
+
+public enum RegistryIdType
+{
+    Flag,
+    Item,
+    Session
+}
+
+public class RegistryIdAttribute : PropertyAttribute
+{
+    public RegistryIdType IdType { get; private set; }
+
+    public RegistryIdAttribute(RegistryIdType idType)
+    {
+        IdType = idType;
+    }
+}
+
+```
+
+---
+
+### Bước 2: Tạo ScriptableObject làm Database (`GameIdRegistry.cs`)
+
+Script này giữ danh sách **Flags** do Designer định nghĩa và có nút bấm để tự động quét file JSON (`Item.json`, `Session.json`) nằm trong `Assets/Scripts/SaveLoad/Resources/Data`.
+
+*Lưu ý: Đặt asset tạo ra tại `Assets/Resources/GameIdRegistry.asset` để Editor dễ dàng nạp tự động.*
+
+```csharp
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "GameIdRegistry", menuName = "BongNgu/Flag & ID Registry")]
+public class GameIdRegistry : ScriptableObject
+{
+    [Header("1. Danh sách Cờ (Tự định nghĩa hoặc quét từ Scene)")]
+    public List<string> flags = new List<string>();
+
+    [Header("2. Dữ liệu đồng bộ từ JSON (Read-Only)")]
+    public List<string> itemIds = new List<string>();
+    public List<string> sessionIds = new List<string>();
+
+    public List<string> GetList(RegistryIdType type)
+    {
+        switch (type)
+        {
+            case RegistryIdType.Flag: return flags;
+            case RegistryIdType.Item: return itemIds;
+            case RegistryIdType.Session: return sessionIds;
+            default: return new List<string>();
+        }
+    }
+
+#if UNITY_EDITOR
+    // Cấu trúc phụ trợ để đọc mảng JSON bằng JsonUtility
+    [Serializable]
+    private class Wrapper<T> { public T[] items; }
+
+    [Serializable]
+    private class ItemDto { public string id; public string itemName; } // Sửa tên biến cho khớp cột trong Item.json của bạn
+
+    [Serializable]
+    private class SessionDto { public string id; public string sessionId; } // Sửa tên biến cho khớp Session.json của bạn
+
+    [ContextMenu("Đồng bộ Item & Session từ JSON")]
+    public void SyncFromJson()
+    {
+        // Đọc từ Assets/Scripts/SaveLoad/Resources/Data/...
+        TextAsset itemJson = Resources.Load<TextAsset>("Data/Item");
+        if (itemJson != null)
+        {
+            itemIds = ParseIdsFromJson<ItemDto>(itemJson.text, dto => !string.IsNullOrEmpty(dto.id) ? dto.id : dto.itemName);
+        }
+
+        TextAsset sessionJson = Resources.Load<TextAsset>("Data/Session");
+        if (sessionJson != null)
+        {
+            sessionIds = ParseIdsFromJson<SessionDto>(sessionJson.text, dto => !string.IsNullOrEmpty(dto.id) ? dto.id : dto.sessionId);
+        }
+
+        UnityEditor.EditorUtility.SetDirty(this);
+        UnityEditor.AssetDatabase.SaveAssets();
+        Debug.Log($"[GameIdRegistry] Đã đồng bộ {itemIds.Count} Items và {sessionIds.Count} Sessions từ JSON!");
+    }
+
+    private List<string> ParseIdsFromJson<T>(string rawJson, Func<T, string> selector)
+    {
+        var result = new List<string>();
+        string wrapped = rawJson.TrimStart().StartsWith("[") 
+            ? "{\"items\":" + rawJson + "}" 
+            : rawJson;
+
+        try
+        {
+            var data = JsonUtility.FromJson<Wrapper<T>>(wrapped);
+            if (data?.items != null)
+            {
+                foreach (var element in data.items)
+                {
+                    string val = selector(element);
+                    if (!string.IsNullOrEmpty(val) && !result.Contains(val))
+                        result.Add(val);
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Lỗi đọc JSON trong GameIdRegistry: {e.Message}");
+        }
+        return result;
+    }
+#endif
+}
+
+```
+
+(Nếu dự án của bạn đã có sẵn `Newtonsoft.Json` trong `DataManager`, bạn có thể thay hàm `ParseIdsFromJson` bằng `JArray.Parse(rawJson)` để lấy trực tiếp trường tên/ID).
+
+---
+
+### Bước 3: Viết CustomPropertyDrawer có thanh tìm kiếm (`RegistryIdDrawer.cs`)
+
+Đặt file này bắt buộc trong thư mục **`Assets/Scripts/Editor/`**. Chúng ta sử dụng `AdvancedDropdown` có sẵn của Unity để tạo menu thả xuống kèm **thanh Search** (rất mượt khi danh sách lên tới hàng trăm Flag/Item) và báo màu đỏ nếu giá trị đang lưu bị sai/không có trong từ điển.
+
+```csharp
+#if UNITY_EDITOR
+using System.Collections.Generic;
+using UnityEditor;
+using UnityEditor.IMGUI.Controls;
+using UnityEngine;
+
+[CustomPropertyDrawer(typeof(RegistryIdAttribute))]
+public class RegistryIdDrawer : PropertyDrawer
+{
+    private static GameIdRegistry _cachedRegistry;
+
+    private static GameIdRegistry GetRegistry()
+    {
+        if (_cachedRegistry == null)
+        {
+            _cachedRegistry = Resources.Load<GameIdRegistry>("GameIdRegistry");
+            if (_cachedRegistry == null)
+            {
+                string[] guids = AssetDatabase.FindAssets("t:GameIdRegistry");
+                if (guids.Length > 0)
+                {
+                    string path = AssetDatabase.GUIDToAssetPath(guids[0]);
+                    _cachedRegistry = AssetDatabase.LoadAssetAtPath<GameIdRegistry>(path);
+                }
+            }
+        }
+        return _cachedRegistry;
+    }
+
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        if (property.propertyType != SerializedPropertyType.String)
+        {
+            EditorGUI.PropertyField(position, property, label);
+            return;
+        }
+
+        RegistryIdAttribute attr = (RegistryIdAttribute)attribute;
+        GameIdRegistry registry = GetRegistry();
+
+        if (registry == null)
+        {
+            EditorGUI.PropertyField(position, property, label);
+            return;
+        }
+
+        List<string> validList = registry.GetList(attr.IdType);
+        string currentValue = property.stringValue;
+        bool isMissing = !string.IsNullOrEmpty(currentValue) && !validList.Contains(currentValue);
+
+        EditorGUI.BeginProperty(position, label, property);
+        Rect fieldRect = EditorGUI.PrefixLabel(position, label);
+
+        // Chừa 24px bên phải cho nút mở nhanh asset Registry
+        Rect dropdownRect = new Rect(fieldRect.x, fieldRect.y, fieldRect.width - 26f, fieldRect.height);
+        Rect pingRect = new Rect(fieldRect.xMax - 22f, fieldRect.y, 22f, fieldRect.height);
+
+        // Tô đỏ nếu chuỗi hiện tại không nằm trong Registry (bắt lỗi gõ sai cũ)
+        Color prevColor = GUI.backgroundColor;
+        if (isMissing) GUI.backgroundColor = new Color(1f, 0.45f, 0.45f);
+
+        string displayLabel = string.IsNullOrEmpty(currentValue) 
+            ? $"-- Không chọn ({attr.IdType}) --" 
+            : (isMissing ? $"⚠️ [Không hợp lệ] {currentValue}" : currentValue);
+
+        if (EditorGUI.DropdownButton(dropdownRect, new GUIContent(displayLabel), FocusType.Keyboard))
+        {
+            var dropdown = new SearchableIdDropdown(new AdvancedDropdownState(), validList, selectedValue =>
+            {
+                property.serializedObject.Update();
+                property.stringValue = selectedValue;
+                property.serializedObject.ApplyModifiedProperties();
+            });
+            dropdown.Show(dropdownRect);
+        }
+
+        GUI.backgroundColor = prevColor;
+
+        // Nút nhảy nhanh tới file GameIdRegistry để thêm Flag hoặc Sync JSON
+        if (GUI.Button(pingRect, new GUIContent("⚙", "Mở GameIdRegistry")))
+        {
+            Selection.activeObject = registry;
+            EditorGUIUtility.PingObject(registry);
+        }
+
+        EditorGUI.EndProperty();
+    }
+
+    // Class tạo Dropdown có sẵn ô Search của Unity
+    private class SearchableIdDropdown : AdvancedDropdown
+    {
+        private readonly List<string> _items;
+        private readonly System.Action<string> _onSelected;
+
+        public SearchableIdDropdown(AdvancedDropdownState state, List<string> items, System.Action<string> onSelected) 
+            : base(state)
+        {
+            _items = items;
+            _onSelected = onSelected;
+            minimumSize = new Vector2(260, 300);
+        }
+
+        protected override AdvancedDropdownItem BuildRoot()
+        {
+            var root = new AdvancedDropdownItem("Tìm kiếm & Chọn ID");
+            root.AddChild(new IdDropdownItem("(Trống / Bỏ chọn)", ""));
+
+            foreach (var item in _items)
+            {
+                if (!string.IsNullOrEmpty(item))
+                    root.AddChild(new IdDropdownItem(item, item));
+            }
+            return root;
+        }
+
+        protected override void ItemSelected(AdvancedDropdownItem item)
+        {
+            if (item is IdDropdownItem idItem)
+                _onSelected?.Invoke(idItem.Value);
+        }
+
+        private class IdDropdownItem : AdvancedDropdownItem
+        {
+            public string Value { get; }
+            public IdDropdownItem(string displayName, string value) : base(displayName)
+            {
+                Value = value;
+            }
+        }
+    }
+}
+#endif
+
+```
+
+---
+
+### Bước 4: Áp dụng vào các Script hiện tại & Khởi tạo
+
+Bây giờ bạn mở các script như `DemoDialogueAsset`, `StoryEventDirector`, hoặc `ZoneEnemySpawner` và chỉ cần gắn `[RegistryId(...)]` lên trước các biến `string` cũ. **Dữ liệu cũ đã lưu trong Scene/Asset hoàn toàn không bị mất** vì bản chất biến lưu trữ vẫn là `string`:
+
+```csharp
+// Trong Dialogue Choice, StoryEventDirector hoặc ZoneEnemySpawner:
+[RegistryId(RegistryIdType.Flag)]
+public string requiredFlag;
+
+[RegistryId(RegistryIdType.Item)]
+public string requiredItemName;
+
+[RegistryId(RegistryIdType.Session)]
+public string requiredSession;
+
+```
+
+**Cách sử dụng thực tế trong Unity:**
+
+1. Chuột phải vào thư mục `Assets/Resources` -> chọn **Create > BongNgu > Flag & ID Registry** và đặt tên là `GameIdRegistry`.
+2. Bấm chuột phải vào tiêu đề của `GameIdRegistry` trong Inspector -> chọn **"Đồng bộ Item & Session từ JSON"**. Danh sách Item và Session sẽ tự động nạp vào.
+3. Nhập các Flag chuẩn của game vào mục `Flags`.
+4. Quay lại bất kỳ `StoryEventDirector` hay `DemoDialogueAsset` nào: các ô `requiredFlag` và `requiredItemName` giờ đã biến thành Dropdown có thanh tìm kiếm. Nếu có chỗ nào trước đây từng gõ sai chính tả, ô đó sẽ **hiện màu đỏ cảnh báo `⚠️ [Không hợp lệ]**` ngay lập tức.

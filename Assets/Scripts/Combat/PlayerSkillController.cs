@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Serialization;
@@ -92,11 +93,14 @@ public class PlayerSkillController : MonoBehaviour
     private GameObject ownerRoot;
     private IFacingProvider facingProvider;
     private PlayerController playerController;
+    private PlayerSkillSlot[] skillSlotTemplates;
+    private bool skillSlotTemplatesCaptured;
 
     [System.NonSerialized] private IHealth health;
 
     private void Awake()
     {
+        CaptureConfiguredSkillTemplates();
         playerController = GetComponentInParent<PlayerController>();
         ownerRoot = ownerOverride != null
             ? ownerOverride
@@ -124,6 +128,103 @@ public class PlayerSkillController : MonoBehaviour
     {
         PlayerProgressionService progress = PlayerProgressionService.Instance;
         if (progress != null && progress.Data != null) RestoreCooldowns(progress.Data);
+    }
+
+    private void CaptureConfiguredSkillTemplates()
+    {
+        if (skillSlotTemplatesCaptured) return;
+        skillSlotTemplates = skillSlots != null
+            ? (PlayerSkillSlot[])skillSlots.Clone()
+            : new PlayerSkillSlot[0];
+        skillSlotTemplatesCaptured = true;
+    }
+
+    public void SyncEquippedSkills(PlayerSaveData data, SkillTable table)
+    {
+        if (data == null) return;
+        CaptureConfiguredSkillTemplates();
+
+        List<PlayerSkillSlot> runtimeSlots = new List<PlayerSkillSlot>();
+        foreach (PlayerSkillSlot template in skillSlotTemplates)
+        {
+            if (template == null || string.IsNullOrWhiteSpace(template.skillName)
+                || !string.IsNullOrWhiteSpace(template.requiredUnlockSkill))
+                continue;
+            runtimeSlots.Add(CopySlot(template));
+        }
+
+        if (data.equippedSkills != null && table != null && table.skills != null)
+        {
+            for (int slotIndex = 0; slotIndex < PlayerSaveData.EquippedSkillCapacity; slotIndex++)
+            {
+                EquippedSkillData equipped = data.equippedSkills.Find(entry =>
+                    entry != null && entry.slotIndex == slotIndex);
+                if (equipped == null) continue;
+
+                SkillData definition = table.skills.Find(skill => skill != null
+                    && string.Equals(skill.name, equipped.skillName, System.StringComparison.OrdinalIgnoreCase));
+                if (definition == null || string.IsNullOrWhiteSpace(definition.activeSkillId)) continue;
+
+                PlayerSkillSlot slot = FindTemplate(definition.activeSkillId);
+                if (slot == null && definition.activeSkillId == "BasicSlash")
+                    slot = FindTemplate("NormalAttack");
+                if (slot == null) slot = new PlayerSkillSlot();
+                slot.skillName = definition.activeSkillId;
+                slot.requiredUnlockSkill = equipped.skillName;
+                slot.pcKey = equipped.inputKey;
+                slot.uiButton = null;
+                slot.mouseButton = MouseButtonSelect.None;
+                slot.cooldown = definition.cooldown > 0f ? definition.cooldown : slot.cooldown;
+                slot.damage = definition.damage;
+                slot.skillSize = definition.skillSize;
+                slot.range = definition.range;
+                slot.speed = definition.speed;
+                slot.duration = definition.duration;
+                slot.stunTime = definition.stunTime;
+                slot.debug = definition.debug;
+                slot.canPierce = definition.canPierce;
+                slot.lastUsedTime = -999f;
+                slot.pcKeyInvalid = false;
+                runtimeSlots.Add(slot);
+            }
+        }
+
+        skillSlots = runtimeSlots.ToArray();
+        RestoreCooldowns(data);
+    }
+
+    private PlayerSkillSlot FindTemplate(string skillName)
+    {
+        foreach (PlayerSkillSlot template in skillSlotTemplates)
+            if (template != null && string.Equals(template.skillName, skillName,
+                System.StringComparison.OrdinalIgnoreCase))
+                return CopySlot(template);
+        return null;
+    }
+
+    private static PlayerSkillSlot CopySlot(PlayerSkillSlot source)
+    {
+        return new PlayerSkillSlot
+        {
+            skillName = source.skillName,
+            requiredUnlockSkill = source.requiredUnlockSkill,
+            cooldown = source.cooldown,
+            pcKey = source.pcKey,
+            uiButton = source.uiButton,
+            mouseButton = source.mouseButton,
+            damage = source.damage,
+            skillSize = source.skillSize,
+            range = source.range,
+            speed = source.speed,
+            duration = source.duration,
+            stunTime = source.stunTime,
+            characterAnimationSprites = source.characterAnimationSprites,
+            debug = source.debug,
+            canPierce = source.canPierce,
+            dotConfig = source.dotConfig,
+            lastUsedTime = -999f,
+            pcKeyInvalid = false
+        };
     }
 
     public void CaptureCooldowns(PlayerSaveData data)

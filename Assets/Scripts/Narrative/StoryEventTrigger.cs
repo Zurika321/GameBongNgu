@@ -5,7 +5,7 @@ public class StoryEventTrigger : MonoBehaviour
 {
     [SerializeField] private StoryEventDirector director;
     [SerializeField] private string eventId;
-    [SerializeField] private string requiredFlag;
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
 
     private bool triggered;
 

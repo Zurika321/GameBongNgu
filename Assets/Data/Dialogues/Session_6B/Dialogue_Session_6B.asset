@@ -15,26 +15,31 @@ MonoBehaviour:
   sessionId: 6B
   npcName: "B\xE9 T\xED"
   nodes:
-  - text: "Ch\u1ECB con... ch\u1ECB con bi\u1EBFn m\u1EA5t r\u1ED3i... ch\xFA c\u1EE9u
-      ch\u1ECB con \u0111\u01B0\u1EE3c kh\xF4ng?"
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_6B_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 6B
       choiceId: 6B1
-      label: "Gi\xFAp B\xE9 T\xED t\xECm ch\u1ECB"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_6B_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "Kh\u1EA3i h\u1EE9a s\u1EBD t\xECm d\u1EA5u v\u1EBFt ng\u01B0\u1EDDi
-        ch\u1ECB. B\xE9 T\xED \u0111\u01B0a anh chi\u1EBFc b\xF9a nh\u1ECF em v\u1EABn
-        gi\u1EEF."
+      resultText: "DIALOGUE_SESSION_6B_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 1
       qtDelta: 0
     - sessionId: 6B
       choiceId: 6B2
-      label: "Ti\u1EBFp t\u1EE5c \u0111i m\u1ED9t m\xECnh"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_6B_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Kh\u1EA3i b\u01B0\u1EDBc v\xE0o m\xE0n s\u01B0\u01A1ng. Ti\u1EBFng
-        g\u1ECDi c\u1EE7a \u0111\u1EE9a tr\u1EBB nh\u1ECF d\u1EA7n ph\xEDa sau."
+      resultText: "DIALOGUE_SESSION_6B_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 1

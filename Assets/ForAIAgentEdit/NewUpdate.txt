@@ -1,0 +1,122 @@
+Tài liệu **Tiến trình tạo code game mở rộng** (dự án *Bóng Ngủ*) được viết rất bài bản, rõ ràng và đi thẳng vào các vấn đề kỹ thuật cốt lõi. Dưới đây là đánh giá tổng quan, phân tích các điểm nghẽn chưa hoàn thiện và đề xuất hướng phát triển tiếp theo dựa trên nội dung báo cáo.
+
+---
+
+## 1. Đánh giá tổng quan về dự án và tài liệu
+
+* **Tư duy kiến trúc chuẩn xác (Data-Driven & Modular):** Mục tiêu tách biệt phần code hệ thống (System) khỏi phần tạo nội dung (Authoring) là hướng đi rất chuẩn trong làm game. Dự án đã chia thành 14 nhóm thư mục rõ ràng (Controller, Combat, AI, Narrative, Save/Load...), giúp dễ bảo trì và mở rộng về sau.
+
+
+* **Nhận diện đúng "nợ kỹ thuật" (Technical Debt):** Bản rà soát không chỉ liệt kê tính năng mà chỉ ra rất sát các rủi ro tiềm ẩn khi làm việc trên Unity (như việc tồn tại song song 2 chuẩn dữ liệu thoại, tự sinh UI bằng code lúc runtime, hay phụ thuộc vào tên/đường dẫn Hierarchy để làm ID lưu trữ).
+
+
+* **Điểm hạn chế duy nhất của bản rà soát:** Đây mới là **rà soát tĩnh (Static Audit)** dựa trên mã nguồn, YAML và tài liệu thiết kế. Chưa có bước kiểm chứng thực tế trong **Play Mode** để bắt các lỗi runtime, null reference hoặc xung đột khi load Additive Scene.
+
+
+
+---
+
+## 2. Những điểm chưa hoàn thiện (Các "nút thắt" nguy hiểm nhất)
+
+Dựa trên danh sách công việc còn dang dở trong file, có 5 vấn đề lớn đang cản trở việc mở rộng nội dung game:
+
+### A. Phân mảnh dữ liệu Hội thoại và Sự kiện (Story/Dialogue)
+
+* **Tình trạng:** Có tới 28 file `DemoDialogueAsset` trên ổ đĩa (đủ cho đến Session 15), nhưng chỉ 3 asset thực sự được nối vào scene/prefab. Phần lớn hội thoại đang bị nhúng trực tiếp (inline) vào `DemoNpcDialogueProfile` ngay trong từng scene.
+
+
+* **Hậu quả:** Rất khó quản lý bản dịch (Localization hiện mới chỉ có 9 key mẫu trong `vn.json`/`en.json`), khó sửa lỗi chính tả đồng loạt và dễ mất dữ liệu khi merge scene hoặc sửa prefab.
+
+
+
+### B. Rủi ro hỏng file Save do cơ chế tự sinh ID và thiếu Versioning
+
+* **Tình trạng:** `ZoneEnemySpawner` có trường `persistentSpawnerId` nhưng đang bị bỏ trống ở nhiều scene, hệ thống phải lấy tên hoặc đường dẫn trên Hierarchy làm ID dự phòng. Ngoài ra, `PlayerSaveData` chưa có số phiên bản (schema version).
+
+
+* **Hậu quả:** Chỉ cần đổi tên một GameObject quái hoặc kéo nó vào một thư mục con trên Hierarchy là file save cũ sẽ không nhận diện được quái đó đã chết hay chưa (dẫn đến lỗi hồi sinh quái hoặc nhận thưởng trùng).
+
+
+
+### C. Lạm dụng việc gõ chuỗi (String-typing) và hạn chế về logic điều kiện
+
+* **Tình trạng:** Các cờ (flag), tên item (`requiredItemName`), skill đang phải gõ tay bằng chữ. Điều kiện hội thoại và trigger mới chỉ nhận các cờ đơn lẻ, chưa hỗ trợ gộp nhóm logic **AND / OR**.
+
+
+* **Hậu quả:** Chỉ cần gõ dư một dấu cách hoặc sai chữ hoa/thường trong Inspector là sự kiện không kích hoạt mà không báo lỗi.
+
+### D. Lẫn lộn giữa dựng UI trong Editor và tự sinh UI lúc chạy (Runtime Fallback)
+
+* **Tình trạng:** Nhiều hệ thống UI (`InventoryGridUI`, `StorageWindowUI`, `PlayerStatusHUD`, thanh máu...) đang có các nhánh code tự động tạo UI nếu thiếu reference. Trong khi đó, script công cụ `BongNguUI.cs` lại đang để rỗng.
+
+
+* **Hậu quả:** Người thiết kế không thể chỉnh giao diện trực tiếp bằng mắt trong Scene View, mỗi lần muốn đổi vị trí hay font chữ lại phải mò vào code C#.
+
+### E. Lệch pha giữa Tài liệu, Scene thực tế và Build Settings
+
+* **Tình trạng:** Tài liệu `StoryEventDirector_Guide.md` chỉ mới ghi tới Session 5 và trỏ sai đường dẫn scene (`Assets/Scenes/Test/...` thay vì `Assets/Scenes/Zones/...`), trong khi dữ liệu YAML trong các Zone đã có sự kiện chạy tới Session 15A. `SampleScene` vẫn còn nằm trong Build Settings và file `SessionDemoDirector.cs` bị khóa (comment) toàn bộ.
+
+
+
+---
+
+## 3. Ý kiến đề xuất: Nên thêm và làm gì tiếp theo?
+
+Ngoài các gạch đầu dòng đã có trong Mục 3 và Mục 5 của tài liệu, bạn nên bổ sung thêm các giải pháp kỹ thuật cụ thể sau để tăng tốc độ hoàn thiện:
+
+### 1. Tự động hóa việc cấp ID bằng `OnValidate()` (Giải quyết ngay lỗi Save)
+
+Thay vì bắt người làm game tự gõ `persistentSpawnerId` cho từng spawner hay rương đồ, hãy viết thêm một đoạn code nhỏ trong hàm `OnValidate()` của Unity (hoặc dùng Custom PropertyDrawer):
+
+* Tự động sinh mã `GUID` duy nhất ngay khi kéo Prefab vào Scene nếu ô ID đang trống.
+* Cảnh báo hoặc tự động cấp lại ID mới nếu phát hiện người dùng vừa **Duplicate (Ctrl+D)** object đó trong Scene.
+**Phương án đã cập nhật theo `1.txt`:** Dùng `[UniqueId]` chung cho ID encounter và container, một PropertyDrawer chỉ đọc có nút Reset kèm cảnh báo save, `OnValidate()` dùng tiện ích chung để sinh ID và xử lý ID trùng, cùng menu Editor cấp/sửa ID cho các Scene đang mở. Giữ nguyên các `containerId` hiện có vì chúng là khóa của dữ liệu save; chỉ ID trống hoặc trùng mới được cấp lại. Sau khi chạy menu, cần lưu các Scene đã đánh dấu thay đổi.
+
+### 2. Tạo "Flag & ID Registry" (Từ điển Cờ và ID tập trung)
+
+Để dẹp bỏ hoàn toàn việc gõ chuỗi thủ công cho `requiredFlag` hay `requiredItemName`:
+
+* Tạo một `ScriptableObject` đóng vai trò là **Database chứa danh sách tất cả các Flag, Session ID, và đọc trực tiếp danh sách Item ID từ JSON**.
+
+
+* Dùng **Odin Inspector** (nếu project có dùng) hoặc viết một `[CustomPropertyDrawer]` nhỏ để biến các ô nhập chuỗi trong Inspector thành **Menu thả xuống (Dropdown có thanh tìm kiếm)**. Người thiết kế chỉ việc chọn từ danh sách, đảm bảo 100% không bao giờ gõ sai tên.
+
+**Đã tích hợp trong project:** RegistryIdAttribute, GameIdRegistry và RegistryIdDrawer được đặt trong Assets/Scripts/Registry và Assets/Scripts/Editor. Asset Assets/Resources/GameIdRegistry.asset dùng Item.json (items[].name) và Session.json (sessions[].id), đồng thời bổ sung các ID đang được scene/prefab/asset tham chiếu. Nút đồng bộ nằm trong Inspector của registry. Các field string và string[] đã gắn dropdown; giá trị hiện có vẫn giữ nguyên, ID không có trong registry được tô cảnh báo. Không cài Odin Inspector.
+
+### 3. Xây dựng công cụ "One-Click Migration" cho Hội thoại
+
+Hiện tại có rất nhiều thoại đang nằm inline trong các scene từ Zone 1 đến Zone 5. Nếu copy-paste bằng tay sang `DemoDialogueAsset` sẽ rất tốn công và dễ sót:
+
+* Công cụ quét DemoNpcDialogueProfile có thoại inline trong scene/prefab, trích xuất thành DemoDialogueAsset, sinh localization key và gắn asset lại vào profile.
+
+**Đã tích hợp trong project:** Assets/Data/Dialogues/dialogue_localization_migrator.py. Chạy python Assets/Data/Dialogues/dialogue_localization_migrator.py --dry-run để xem kế hoạch trước. Cờ IsLocalizationKey=true giữ nguyên key; false chuyển nội dung thành key mới. Mỗi lần áp dụng có key mới sẽ ghi riêng vào vn.json, vn_2.json, vn_3.json... cùng thư mục với script; script đọc file gốc Assets/Resources/transitions/vn.json và các patch cũ để tránh trùng, không sửa file gốc. Các DemoDialogueAsset có sẵn được quét khi thêm --include-existing-assets; cờ localization bị thiếu được xem là false và sẽ được ghi thành true sau khi tạo key. Có thể tự rà từng patch rồi chép vào file gốc.
+
+
+
+**Cách chạy:** Mở PowerShell tại thư mục `Assets` của project rồi dùng một lệnh dưới đây. Các lệnh có `--dry-run` chỉ xem trước, không ghi file. Đóng Unity trước khi áp dụng thay đổi.
+
+- Xem trước việc migrate thoại inline trong scene/prefab:
+  `python Data/Dialogues/dialogue_localization_migrator.py --dry-run`
+- Áp dụng migrate thoại inline và tạo patch JSON chứa key mới:
+  `python Data/Dialogues/dialogue_localization_migrator.py`
+- Xem trước cả thoại inline và các `DemoDialogueAsset` có sẵn:
+  `python Data/Dialogues/dialogue_localization_migrator.py --include-existing-assets --dry-run`
+- Áp dụng cho cả thoại inline và các `DemoDialogueAsset` có sẵn:
+  `python Data/Dialogues/dialogue_localization_migrator.py --include-existing-assets`
+
+### 4. Thiết kế hệ thống Action/Condition dạng Module (`[SerializeReference]`)
+
+Khi nâng cấp `StoryEventDirector`, thay vì dùng một `enum ActionType` khổng lồ chứa đủ mọi biến (vừa biến cho thoại, vừa biến cho item, vừa biến cho spawner gây rối Inspector):
+
+* Hãy dùng thuộc tính `[SerializeReference]` của Unity kết hợp với interface `IStoryAction` và `IStoryCondition`.
+* Cách này giúp danh sách Action trong Inspector cực kỳ gọn: chọn "Add Item Action" thì chỉ hiện ô chọn Item và số lượng; chọn "Spawn Action" thì chỉ hiện ô kéo thả Spawner. Khi cần thêm cơ chế mới chỉ việc viết thêm 1 class nhỏ kế thừa `IStoryAction` mà không sợ làm hỏng cấu trúc cũ.
+
+### 5. Bổ sung "Debug / Cheat Menu" ngay trong Play Mode
+
+Tài liệu có nhắc đến việc phải Playtest từ *New Game -> Continue -> Chuyển Zone* cho tới tận Session 15. Nếu test thủ công từ đầu sẽ mất rất nhiều thời gian:
+
+* Nên làm một bảng **Debug Overlay nhỏ** (bật/tắt bằng phím tắt như `F1` hoặc `~` khi chạy trong Editor): cho phép nhảy cóc tới bất kỳ Session/Zone nào, bật/tắt nhanh một Flag, bơm đầy máu, hoặc kích hoạt thử một `StoryEvent` bất kỳ ngay lập tức để kiểm tra luồng hoạt động.
+
+---
+
+**Gợi ý bước đi đầu tiên ngay hôm nay:** Bạn nên bắt đầu bằng việc **dọn dẹp và đồng bộ (Clean-up)** trước — xóa `BongNguUI.cs` (nếu không dùng), xóa `SessionDemoDirector.cs` đã comment, gỡ `SampleScene` khỏi Build Settings, và viết script tự sinh ID cho `ZoneEnemySpawner`. Sau khi nền móng sạch sẽ, việc bắt tay vào làm công cụ kiểm tra (Validation Tool) và chuyển đổi thoại sẽ trơn tru hơn rất nhiều.

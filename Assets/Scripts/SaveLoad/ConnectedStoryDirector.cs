@@ -19,6 +19,11 @@ public class ConnectedStoryDirector : MonoBehaviour
     [SerializeField, Min(0.5f)] private float interactionRange = 2.25f;
     [SerializeField] private InventoryStorage storage;
     [SerializeField, Min(0.1f)] private float storageRange = 2.25f;
+    [SerializeField, Min(0.1f), Tooltip("Refreshes cached zone colliders and dialogue NPCs at this interval.")]
+    private float objectCacheRefreshInterval = 1f;
+    private PolygonCollider2D[] zoneRegions = Array.Empty<PolygonCollider2D>();
+    private DemoNpcDialogueProfile[] dialogueProfiles = Array.Empty<DemoNpcDialogueProfile>();
+    private float nextObjectCacheRefresh;
     private DemoNpcDialogueProfile nearbyDialogue;
     private DemoNpcDialogueProfile activeDialogue;
     private PolygonCollider2D appliedPolygon;
@@ -27,6 +32,45 @@ public class ConnectedStoryDirector : MonoBehaviour
     private bool statusPanelVisible = false;
 
     public bool IsInitialized => initialized;
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += HandleSceneLoaded;
+        SceneManager.sceneUnloaded += HandleSceneUnloaded;
+        RefreshObjectCaches();
+        nextObjectCacheRefresh = Time.unscaledTime + Mathf.Max(0.1f, objectCacheRefreshInterval);
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneLoaded;
+        SceneManager.sceneUnloaded -= HandleSceneUnloaded;
+    }
+
+    private void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        RefreshObjectCaches();
+        nextObjectCacheRefresh = Time.unscaledTime + Mathf.Max(0.1f, objectCacheRefreshInterval);
+    }
+
+    private void HandleSceneUnloaded(Scene scene)
+    {
+        RefreshObjectCaches();
+        nextObjectCacheRefresh = Time.unscaledTime + Mathf.Max(0.1f, objectCacheRefreshInterval);
+    }
+
+    private void RefreshObjectCaches()
+    {
+        RefreshZoneRegions();
+        dialogueProfiles = FindObjectsByType<DemoNpcDialogueProfile>(FindObjectsSortMode.None);
+    }
+
+    private void RefreshZoneRegions()
+    {
+        zoneRegions = mapBounous != null
+            ? mapBounous.GetComponentsInChildren<PolygonCollider2D>(true)
+            : Array.Empty<PolygonCollider2D>();
+    }
 
     private void Awake()
     {
@@ -68,6 +112,11 @@ public class ConnectedStoryDirector : MonoBehaviour
     {
         if (!initialized || progress == null) return;
         if (progress.IsContinueRestorePending) return;
+        if (Time.unscaledTime >= nextObjectCacheRefresh)
+        {
+            RefreshObjectCaches();
+            nextObjectCacheRefresh = Time.unscaledTime + Mathf.Max(0.1f, objectCacheRefreshInterval);
+        }
         if (!GameplayPause.IsPaused && Input.GetKeyDown(KeyCode.F1))
             statusPanelVisible = !statusPanelVisible;
         UpdateCurrentZone(true);
@@ -316,6 +365,7 @@ public class ConnectedStoryDirector : MonoBehaviour
 
         mapBounous = newMap;
         appliedPolygon = null;
+        RefreshZoneRegions();
         if (player == null || progress == null) return;
         RestorePlayerAtCurrentZone();
         ApplyConfinerForCurrentZone();
@@ -325,7 +375,8 @@ public class ConnectedStoryDirector : MonoBehaviour
     private PolygonCollider2D FindRegion(string zoneName)
     {
         if (mapBounous == null || string.IsNullOrWhiteSpace(zoneName)) return null;
-        foreach (PolygonCollider2D region in mapBounous.GetComponentsInChildren<PolygonCollider2D>(true))
+        if (zoneRegions == null || zoneRegions.Length == 0) RefreshZoneRegions();
+        foreach (PolygonCollider2D region in zoneRegions)
         {
             if (region != null && string.Equals(region.gameObject.name, zoneName, StringComparison.OrdinalIgnoreCase))
                 return region;
@@ -336,8 +387,7 @@ public class ConnectedStoryDirector : MonoBehaviour
     private void UpdateCurrentZone(bool saveOnChange)
     {
         if (player == null || mapBounous == null || progress == null || progress.Data == null) return;
-        PolygonCollider2D[] regions = mapBounous.GetComponentsInChildren<PolygonCollider2D>(true);
-        foreach (PolygonCollider2D region in regions)
+        foreach (PolygonCollider2D region in zoneRegions)
         {
             if (region == null || !region.OverlapPoint(player.position)) continue;
             string zoneName = region.gameObject.name;
@@ -369,8 +419,9 @@ public class ConnectedStoryDirector : MonoBehaviour
         nearbyDialogue = null;
         if (player == null) return;
         float best = interactionRange * interactionRange;
-        foreach (DemoNpcDialogueProfile profile in FindObjectsByType<DemoNpcDialogueProfile>(FindObjectsSortMode.None))
+        foreach (DemoNpcDialogueProfile profile in dialogueProfiles)
         {
+            if (profile == null) continue;
             float distance = ((Vector2)profile.transform.position - (Vector2)player.position).sqrMagnitude;
             if (distance > best) continue;
             nearbyDialogue = profile;
@@ -398,7 +449,11 @@ public class ConnectedStoryDirector : MonoBehaviour
         if (mapBounous == null)
         {
             GameObject mapObject = GameObject.Find("MapBounous");
-            if (mapObject != null) mapBounous = mapObject.transform;
+            if (mapObject != null)
+            {
+                mapBounous = mapObject.transform;
+                RefreshZoneRegions();
+            }
         }
 
         if (cameraConfiner == null)

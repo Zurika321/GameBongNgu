@@ -15,38 +15,45 @@ MonoBehaviour:
   sessionId: 14
   npcName: "D\xE2n L\xE0ng (t\u1ED5ng h\u1EE3p)"
   nodes:
-  - text: "Qu\u1EA3ng tr\u01B0\u1EDDng d\u1EA7n h\u1ED3i sinh. C\xF3 ng\u01B0\u1EDDi
-      c\xFAi \u0111\u1EA7u c\u1EA3m \u01A1n Kh\u1EA3i; c\xF3 ng\u01B0\u1EDDi l\xF9i
-      l\u1EA1i khi nh\xECn th\u1EA5y b\xF3ng t\u1ED1i trong anh."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_14_LINE_01"
+
+
     nextNodeIndex: -1
     choices:
     - sessionId: 14
       choiceId: 14A_Sach
-      label: "R\u1EDDi th\u1ECB tr\u1EA5n b\xECnh y\xEAn"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_14_LINE_01_CHOICE_01"
       requiredFlag: LT_Cao
-      resultText: "Kh\u1EA3i r\u1EDDi qu\u1EA3ng tr\u01B0\u1EDDng trong \xE1nh n\u1EAFng
-        s\u1EDBm. Ng\u01B0\u1EDDi d\xE2n \u0111\u1EC3 anh \u0111i m\xE0 kh\xF4ng
-        c\xF2n s\u1EE3 h\xE3i."
+      resultText: "DIALOGUE_SESSION_14_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
     - sessionId: 14
       choiceId: 14A_Loi
-      label: "R\u1EDDi th\u1ECB tr\u1EA5n c\xF4 \u0111\u1ED9c"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_14_LINE_01_CHOICE_02"
       requiredFlag: QT_Cao
-      resultText: "Kh\u1EA3i r\u1EDDi \u0111i gi\u1EEFa nh\u1EEFng \xE1nh nh\xECn
-        d\xE8 ch\u1EEBng. C\xE2u chuy\u1EC7n c\u1EE7a anh ch\u01B0a th\u1EC3 \u0111\u01B0\u1EE3c
-        tha th\u1EE9 ho\xE0n to\xE0n."
+      resultText: "DIALOGUE_SESSION_14_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
     - sessionId: 14
       choiceId: 14B
-      label: "\u0110\u1ECDc l\u1EA1i cu\u1ED1n nh\u1EADt k\xFD"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_14_LINE_01_CHOICE_03"
       requiredFlag: SecretEligible
-      resultText: "Kh\u1EA3i nh\u1EADn ra n\xE9t ch\u1EEF trong nh\u1EADt k\xFD tr\xF9ng
-        v\u1EDBi n\xE9t ch\u1EEF c\u1EE7a H\u1EA1o. D\u01B0\u1EDBi am th\u1EDD c\xF2n
-        m\u1ED9t b\xED m\u1EADt."
+      resultText: "DIALOGUE_SESSION_14_LINE_01_CHOICE_03_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0

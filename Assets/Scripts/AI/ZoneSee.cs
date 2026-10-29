@@ -26,15 +26,18 @@ public class ZoneSee : MonoBehaviour
 
     void LateUpdate()
     {
-        if (enemyBody != null)
+        // A DetectionZone parented to the enemy follows it automatically.
+        // Keep manual following only for setups where it is not a child.
+        if (enemyBody != null && transform.parent != enemyBody)
         {
-            transform.position = enemyBody.position;    // bám theo enemy
+            Vector3 bodyPosition = enemyBody.position;
+            if ((transform.position - bodyPosition).sqrMagnitude > 0.000001f)
+                transform.position = bodyPosition;
         }
 
-        if (col != null)
-        {
+        // Reassigning CircleCollider2D.radius every frame dirties its physics shape.
+        if (col != null && !Mathf.Approximately(col.radius, radius))
             col.radius = radius;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

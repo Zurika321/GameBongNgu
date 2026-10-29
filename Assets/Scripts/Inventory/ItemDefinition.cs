@@ -13,7 +13,7 @@ public enum ItemCategory
 [CreateAssetMenu(menuName = "Bóng Ngủ/Item Definition")]
 public class ItemDefinition : ScriptableObject
 {
-    public string itemName;
+    [RegistryId(RegistryIdType.Item)] public string itemName;
     [TextArea] public string description;
     public ItemCategory category;
     public Sprite icon;

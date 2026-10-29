@@ -1,0 +1,75 @@
+Cách 2: Tạo Custom [UniqueId] Attribute & PropertyDrawer (Dùng chung cho cả Spawner, Rương, Cửa...)Vì dự án của bạn có cả spawner lẫn rương theo container ID cần lưu trạng thái, thay vì copy-paste hàm OnValidate() vào từng script một, bạn có thể tạo một Attribute tên là [UniqueId] để tái sử dụng ở bất kỳ đâu và khóa không cho sửa nhầm trên Inspector:   Bước 1: Tạo file UniqueIdAttribute.cs (Đặt trong thư mục Scripts bình thường)C#using UnityEngine;
+
+public class UniqueIdAttribute : PropertyAttribute { }
+Bước 2: Tạo file UniqueIdDrawer.cs (Đặt trong thư mục Assets/Scripts/Editor/)C##if UNITY_EDITOR
+using System;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+[CustomPropertyDrawer(typeof(UniqueIdAttribute))]
+public class UniqueIdDrawer : PropertyDrawer
+{
+    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+    {
+        // Chừa chỗ bên phải cho nút "Tạo lại"
+        Rect textFieldRect = new Rect(position.x, position.y, position.width - 65, position.height);
+        Rect buttonRect = new Rect(position.x + position.width - 60, position.y, 60, position.height);
+
+        // Khóa ô text để người làm game không vô tình gõ nhầm làm hỏng save
+        GUI.enabled = false;
+        EditorGUI.PropertyField(textFieldRect, property, label, true);
+        GUI.enabled = true;
+
+        // Nút bấm tạo lại ID nếu cần
+        if (GUI.Button(buttonRect, "Reset"))
+        {
+            var targetObject = property.serializedObject.targetObject as Component;
+            if (targetObject != null && targetObject.gameObject.scene.IsValid())
+            {
+                property.stringValue = $"{targetObject.gameObject.scene.name}_{Guid.NewGuid():N}";
+                property.serializedObject.ApplyModifiedProperties();
+            }
+        }
+    }
+}
+#endif
+Khi đã có Attribute này, ở bên trong ZoneEnemySpawner hay script Rương đồ, bạn chỉ cần thêm [UniqueId] phía trước biến:C#[UniqueId]
+public string persistentSpawnerId;
+Cách cập nhật hàng loạt cho các Scene cũ đang bị rỗng IDTrong báo cáo rà soát, bạn có nhiều scene cũ (Zone1–Zone5, CoreCombatDemo) đang để trống persistentSpawnerId. Thay vì phải mở từng scene và bấm vào từng spawner để OnValidate kích hoạt, bạn có thể thêm một hàm menu nhỏ (đặt trong thư mục Editor) để bấm 1 nút là điền hết cho toàn bộ scene hiện tại:   C##if UNITY_EDITOR
+using System;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine;
+
+public static class SpawnerIdFixerTool
+{
+    [MenuItem("Tools/Bóng Ngự/Cấp ID cho toàn bộ Spawner trong Scene hiện tại")]
+    public static void FixAllSpawnerIdsInCurrentScene()
+    {
+        var spawners = GameObject.FindObjectsByType<ZoneEnemySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        int fixedCount = 0;
+
+        foreach (var spawner in spawners)
+        {
+            if (string.IsNullOrEmpty(spawner.persistentSpawnerId))
+            {
+                Undo.RecordObject(spawner, "Auto Assign Spawner ID");
+                spawner.persistentSpawnerId = $"{spawner.gameObject.scene.name}_{Guid.NewGuid():N}";
+                EditorUtility.SetDirty(spawner);
+                fixedCount++;
+            }
+        }
+
+        if (fixedCount > 0)
+        {
+            EditorSceneManager.MarkAllScenesDirty();
+            Debug.Log($"Đã cấp mới ID cho {fixedCount} spawner! Hãy bấm Ctrl+S để lưu Scene.");
+        }
+        else
+        {
+            Debug.Log("Tất cả spawner trong Scene hiện tại đã có ID đầy đủ.");
+        }
+    }
+}
+#endif

@@ -6,7 +6,7 @@ using UnityEngine;
 public class InventoryStorage : MonoBehaviour
 {
     [Header("Thông tin rương")]
-    [SerializeField] private string containerId = "Nhà Hoang - Rương";
+    [UniqueId, SerializeField] private string containerId = "Nhà Hoang - Rương";
     [SerializeField] private string displayName = "Rương gỗ";
 
     [Header("Prompt (kéo vào Inspector)")]
@@ -15,6 +15,10 @@ public class InventoryStorage : MonoBehaviour
 
     [Header("Cửa sổ kho (thường đặt trong CoreCombatDemo)")]
     [SerializeField] private StorageWindowUI window;
+
+#if UNITY_EDITOR
+    private void OnValidate() => UniqueIdUtility.EnsureIds(this);
+#endif
 
     private readonly HashSet<Collider2D> playerColliders = new HashSet<Collider2D>();
 

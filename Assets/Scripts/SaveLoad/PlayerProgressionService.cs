@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerProgressionService : MonoBehaviour
 {
-    private const float AutoSaveInterval = 10f;
+    private const float AutoSaveInterval = 30f;
     private const float TransitionFadeDuration = 0.4f;
     private const string MainGameSceneName = "CoreCombatDemo";
 
@@ -32,6 +33,13 @@ public class PlayerProgressionService : MonoBehaviour
     private bool continueRestorePending;
     private string loadedMapSceneName;
     private bool saveDataInvalid;
+    private SkillTable cachedSkillTable;
+    private bool skillTableLoaded;
+
+    private static readonly string[] SkillInputKeys =
+    {
+        "1", "2", "3", "4", "5", "6", "7", "8", "9", "space"
+    };
 
     private static bool continueRestoreRequested;
 
@@ -46,8 +54,29 @@ public class PlayerProgressionService : MonoBehaviour
         DataManager.DeleteData(Tables.Player);
         PlayerSaveData data = new PlayerSaveData();
         data.currentScene = "Zone1";
+        data.languageCode = transition.IsReady ? transition.CurrentLanguage : "vn";
         data.AddStoredItem("HOUSE-CHEST", "Dao Găm Gỉ");
         DataManager.SetData(Tables.Player, data);
+    }
+
+    public static void PersistLanguagePreference(string languageCode)
+    {
+        if (string.IsNullOrWhiteSpace(languageCode)) return;
+
+        if (Instance != null)
+        {
+            if (Instance.Data == null || Instance.saveDataInvalid) return;
+            Instance.Data.languageCode = languageCode.Trim().ToLowerInvariant();
+            Instance.Save();
+            return;
+        }
+
+        if (!DataManager.HasSavedGame()
+            || !DataManager.TryGetData(Tables.Player, out PlayerSaveData savedData)
+            || savedData == null) return;
+
+        savedData.languageCode = languageCode.Trim().ToLowerInvariant();
+        DataManager.SetData(Tables.Player, savedData);
     }
 
     private void Awake()
@@ -77,6 +106,7 @@ public class PlayerProgressionService : MonoBehaviour
         NormalizeData();
         Data.unlockedSkills.Remove("Chém cơ bản");
         for (int level = 1; level <= Data.level; level++) UnlockSkillsForLevel(level);
+        NormalizeEquippedSkills();
         ApplyPlayerData();
 
         if (!saveFileExists && !saveDataInvalid) Save();
@@ -337,9 +367,192 @@ public class PlayerProgressionService : MonoBehaviour
 
     public bool HasUnlockedSkill(string skillName)
     {
-        return !string.IsNullOrWhiteSpace(skillName)
-            && Data.unlockedSkills != null
-            && Data.unlockedSkills.Contains(skillName);
+        if (string.IsNullOrWhiteSpace(skillName) || Data == null || Data.unlockedSkills == null)
+            return false;
+        return Data.unlockedSkills.Exists(unlocked =>
+            string.Equals(unlocked, skillName, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public SkillData GetSkillDefinition(string skillName)
+    {
+        if (string.IsNullOrWhiteSpace(skillName)) return null;
+        SkillTable table = GetSkillTable();
+        return table.skills != null
+            ? table.skills.Find(skill => skill != null
+                && string.Equals(skill.name, skillName, StringComparison.OrdinalIgnoreCase))
+            : null;
+    }
+
+    public EquippedSkillData GetEquippedSkillAtSlot(int slotIndex)
+    {
+        if (Data == null || Data.equippedSkills == null) return null;
+        return Data.equippedSkills.Find(skill => skill != null && skill.slotIndex == slotIndex);
+    }
+
+    public int GetEquippedSkillIndex(string skillName)
+    {
+        if (string.IsNullOrWhiteSpace(skillName) || Data == null || Data.equippedSkills == null)
+            return -1;
+        EquippedSkillData equipped = Data.equippedSkills.Find(skill => skill != null
+            && string.Equals(skill.skillName, skillName, StringComparison.OrdinalIgnoreCase));
+        return equipped != null ? equipped.slotIndex : -1;
+    }
+
+    public int GetEquippedSkillCount()
+    {
+        return Data != null && Data.equippedSkills != null ? Data.equippedSkills.Count : 0;
+    }
+
+    public bool CanEquipSkill(string skillName)
+    {
+        if (!HasUnlockedSkill(skillName)) return false;
+        SkillData definition = GetSkillDefinition(skillName);
+        return definition != null
+            && !string.IsNullOrWhiteSpace(definition.activeSkillId)
+            && SkillActions.Instance != null
+            && SkillActions.Instance.HasRegisteredSkill(definition.activeSkillId);
+    }
+
+    public bool EquipSkill(string skillName)
+    {
+        if (!CanEquipSkill(skillName)) return false;
+        if (GetEquippedSkillIndex(skillName) >= 0) return true;
+        if (Data.equippedSkills == null) Data.equippedSkills = new List<EquippedSkillData>();
+        if (Data.equippedSkills.Count >= PlayerSaveData.EquippedSkillCapacity) return false;
+
+        bool[] occupiedSlots = new bool[PlayerSaveData.EquippedSkillCapacity];
+        HashSet<string> usedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (EquippedSkillData entry in Data.equippedSkills)
+        {
+            if (entry == null) continue;
+            if (entry.slotIndex >= 0 && entry.slotIndex < occupiedSlots.Length)
+                occupiedSlots[entry.slotIndex] = true;
+            if (!string.IsNullOrWhiteSpace(entry.inputKey)) usedKeys.Add(entry.inputKey);
+        }
+
+        int freeSlot = Array.FindIndex(occupiedSlots, occupied => !occupied);
+        string inputKey = FindAvailableSkillInputKey(usedKeys);
+        if (freeSlot < 0 || string.IsNullOrWhiteSpace(inputKey)) return false;
+
+        Data.equippedSkills.Add(new EquippedSkillData
+        {
+            slotIndex = freeSlot,
+            skillName = skillName.Trim(),
+            inputKey = inputKey
+        });
+        NormalizeEquippedSkills();
+        SyncPlayerSkillControllers();
+        Save();
+        return true;
+    }
+
+    public bool UnequipSkill(string skillName)
+    {
+        if (string.IsNullOrWhiteSpace(skillName) || Data == null || Data.equippedSkills == null)
+            return false;
+        int removed = Data.equippedSkills.RemoveAll(skill => skill != null
+            && string.Equals(skill.skillName, skillName, StringComparison.OrdinalIgnoreCase));
+        if (removed == 0) return false;
+        SyncPlayerSkillControllers();
+        Save();
+        return true;
+    }
+
+    public bool CycleEquippedSkillKey(string skillName)
+    {
+        int slotIndex = GetEquippedSkillIndex(skillName);
+        EquippedSkillData equipped = GetEquippedSkillAtSlot(slotIndex);
+        if (equipped == null) return false;
+
+        string currentKey = NormalizeSkillInputKey(equipped.inputKey);
+        int currentIndex = Array.IndexOf(SkillInputKeys, currentKey);
+        for (int offset = 1; offset <= SkillInputKeys.Length; offset++)
+        {
+            int candidateIndex = (currentIndex + offset + SkillInputKeys.Length) % SkillInputKeys.Length;
+            string candidate = SkillInputKeys[candidateIndex];
+            bool usedByAnotherSkill = Data.equippedSkills.Exists(skill => skill != null
+                && skill.slotIndex != slotIndex
+                && string.Equals(NormalizeSkillInputKey(skill.inputKey), candidate, StringComparison.OrdinalIgnoreCase));
+            if (usedByAnotherSkill) continue;
+
+            equipped.inputKey = candidate;
+            SyncPlayerSkillControllers();
+            Save();
+            return true;
+        }
+        return false;
+    }
+
+    private void SyncPlayerSkillControllers()
+    {
+        if (player == null) FindPlayer();
+        if (player == null || Data == null) return;
+        SkillTable table = GetSkillTable();
+        PlayerSkillController[] controllers = player.GetComponentsInChildren<PlayerSkillController>(true);
+        foreach (PlayerSkillController controller in controllers)
+            if (controller != null) controller.SyncEquippedSkills(Data, table);
+    }
+
+    private static string NormalizeSkillInputKey(string inputKey)
+    {
+        if (string.IsNullOrWhiteSpace(inputKey)) return string.Empty;
+        string candidate = inputKey.Trim().ToLowerInvariant();
+        return Array.Exists(SkillInputKeys, key => key == candidate) ? candidate : string.Empty;
+    }
+
+    private static string FindAvailableSkillInputKey(HashSet<string> usedKeys)
+    {
+        foreach (string key in SkillInputKeys)
+            if (usedKeys == null || !usedKeys.Contains(key)) return key;
+        return string.Empty;
+    }
+
+    private void NormalizeEquippedSkills()
+    {
+        if (Data == null) return;
+        if (Data.equippedSkills == null) Data.equippedSkills = new List<EquippedSkillData>();
+
+        EquippedSkillData[] slots = new EquippedSkillData[PlayerSaveData.EquippedSkillCapacity];
+        HashSet<string> usedNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (EquippedSkillData entry in Data.equippedSkills)
+        {
+            if (entry == null || entry.slotIndex < 0 || entry.slotIndex >= slots.Length
+                || slots[entry.slotIndex] != null || string.IsNullOrWhiteSpace(entry.skillName)
+                || !HasUnlockedSkill(entry.skillName) || !usedNames.Add(entry.skillName.Trim()))
+                continue;
+            slots[entry.slotIndex] = new EquippedSkillData
+            {
+                slotIndex = entry.slotIndex, skillName = entry.skillName.Trim(), inputKey = entry.inputKey
+            };
+        }
+
+        foreach (EquippedSkillData entry in Data.equippedSkills)
+        {
+            if (entry == null || string.IsNullOrWhiteSpace(entry.skillName)
+                || !HasUnlockedSkill(entry.skillName) || usedNames.Contains(entry.skillName.Trim()))
+                continue;
+            int freeSlot = Array.FindIndex(slots, slot => slot == null);
+            if (freeSlot < 0) break;
+            usedNames.Add(entry.skillName.Trim());
+            slots[freeSlot] = new EquippedSkillData
+            {
+                slotIndex = freeSlot, skillName = entry.skillName.Trim(), inputKey = entry.inputKey
+            };
+        }
+
+        HashSet<string> usedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        Data.equippedSkills = new List<EquippedSkillData>();
+        for (int i = 0; i < slots.Length; i++)
+        {
+            EquippedSkillData entry = slots[i];
+            if (entry == null) continue;
+            string key = NormalizeSkillInputKey(entry.inputKey);
+            if (string.IsNullOrEmpty(key) || usedKeys.Contains(key))
+                key = FindAvailableSkillInputKey(usedKeys);
+            entry.inputKey = key;
+            usedKeys.Add(key);
+            Data.equippedSkills.Add(entry);
+        }
     }
 
     public bool HasCollectedWorldItem(string itemId)
@@ -509,7 +722,7 @@ public class PlayerProgressionService : MonoBehaviour
             case 19: skill = "Trực Giác Sinh Tồn"; break;
             case 20: skill = "Hoàn Thiện Bản Thân"; break;
         }
-        if (!string.IsNullOrWhiteSpace(skill) && !Data.unlockedSkills.Contains(skill))
+        if (!string.IsNullOrWhiteSpace(skill) && !HasUnlockedSkill(skill))
             Data.unlockedSkills.Add(skill);
     }
 
@@ -866,6 +1079,17 @@ public class PlayerProgressionService : MonoBehaviour
         Data.currentZone = zoneName;
     }
 
+    private SkillTable GetSkillTable()
+    {
+        if (!skillTableLoaded)
+        {
+            cachedSkillTable = DataManager.GetData<SkillTable>(Tables.Skill);
+            if (cachedSkillTable.skills == null) cachedSkillTable.skills = new List<SkillData>();
+            skillTableLoaded = true;
+        }
+        return cachedSkillTable;
+    }
+
     private LevelTable GetLevelTable()
     {
         LevelTable table = DataManager.GetData<LevelTable>(Tables.Level);
@@ -905,6 +1129,8 @@ public class PlayerProgressionService : MonoBehaviour
 
         if (Data.HasFlag("HasSavedPlayerPosition"))
             player.transform.position = new Vector3(Data.playerX, Data.playerY, player.transform.position.z);
+
+        SyncPlayerSkillControllers();
     }
 
     private void FindPlayer()
@@ -936,6 +1162,7 @@ public class PlayerProgressionService : MonoBehaviour
         if (Data.inventory == null) Data.inventory = new List<InventoryEntry>();
         if (Data.storageContainers == null) Data.storageContainers = new List<StorageContainerData>();
         if (Data.unlockedSkills == null) Data.unlockedSkills = new List<string>();
+        if (Data.equippedSkills == null) Data.equippedSkills = new List<EquippedSkillData>();
         if (Data.flags == null) Data.flags = new List<string>();
         if (Data.collectedWorldItems == null) Data.collectedWorldItems = new List<string>();
         if (Data.worldDrops == null) Data.worldDrops = new List<CollectedWorldItemData>();
@@ -944,6 +1171,7 @@ public class PlayerProgressionService : MonoBehaviour
         if (Data.pendingStorySpawnerIds == null) Data.pendingStorySpawnerIds = new List<string>();
         if (Data.battleSnapshots == null) Data.battleSnapshots = new List<SpawnerBattleSnapshot>();
         if (Data.skillCooldowns == null) Data.skillCooldowns = new List<SkillCooldownSnapshot>();
+        if (string.IsNullOrWhiteSpace(Data.languageCode)) Data.languageCode = "vn";
         if (string.IsNullOrWhiteSpace(Data.currentScene)) Data.currentScene = "Zone1";
         if (Data.lastEvent != null)
         {

@@ -15,17 +15,20 @@ MonoBehaviour:
   sessionId: 15B
   npcName: "Th\u1EA7y H\u1EA1o"
   nodes:
-  - text: "V\xF2ng l\u1EB7p s\u1EBD lu\xF4n t\xECm \u0111\u01B0\u1EE3c ng\u01B0\u1EDDi
-      k\u1EBF ti\u1EBFp th\xF4i..."
+  - text: "DIALOGUE_SESSION_15B_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 15B
       choiceId: 15B
-      label: "L\u1EB7ng l\u1EBD r\u1EDDi kh\u1ECFi h\u1EA7m m\u1ED9"
+      label: "DIALOGUE_SESSION_15B_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "Kh\u1EA3i r\u1EDDi \u0111i trong im l\u1EB7ng. C\xE1nh c\u1EEDa
-        \u0111\xF3ng l\u1EA1i, \u0111\u1EC3 v\xF2ng l\u1EB7p t\xECm ng\u01B0\u1EDDi
-        k\u1EBF ti\u1EBFp."
+      resultText: "DIALOGUE_SESSION_15B_LINE_01_CHOICE_01_RESULT"
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
+      resultTextIsLocalizationKey: 1
+      labelIsLocalizationKey: 1
+    textIsLocalizationKey: 1

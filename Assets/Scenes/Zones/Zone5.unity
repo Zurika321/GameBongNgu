@@ -1556,10 +1556,8 @@ MonoBehaviour:
   npcName: "D\xE2n L\xE0ng (t\u1ED5ng h\u1EE3p)"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "C\u1EADu \u1EA5y \u0111\xE3 c\u1EE9u ch\xFAng ta..."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 5f266e072c314d348ea04c8aab43c18a, type: 2}
+  dialogue: []
 --- !u!1 &726890282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,11 +1605,8 @@ MonoBehaviour:
   npcName: "H\u1ED3n Ma N\u1EA1n Nh\xE2n C\u0169"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "N\u01A1i n\xE0y l\u01B0u gi\u1EEF nh\u1EEFng ng\u01B0\u1EDDi \u0111\xE3
-      b\u1ECB v\xF2ng l\u1EB7p qu\xEAn l\xE3ng."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 76656f2d03c84089bb869310335d6501, type: 2}
+  dialogue: []
 --- !u!1 &796592695
 GameObject:
   m_ObjectHideFlags: 0

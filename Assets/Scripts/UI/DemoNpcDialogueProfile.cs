@@ -4,14 +4,14 @@ using UnityEngine;
 [Serializable]
 public class DemoDialogueChoice
 {
-    public string sessionId;
+    [RegistryId(RegistryIdType.Session)] public string sessionId;
     public string choiceId;
     [Tooltip("Tick when label contains a key from Assets/transitions/<language>.json; otherwise it is displayed as written.")]
     public bool labelIsLocalizationKey;
     public string label;
-    public string requiredFlag;
+    [RegistryId(RegistryIdType.Flag)] public string requiredFlag;
     [Tooltip("Ẩn lựa chọn nếu người chơi không có vật phẩm này trong inventory. Để trống nếu không yêu cầu vật phẩm.")]
-    public string requiredItemName;
+    [RegistryId(RegistryIdType.Item)] public string requiredItemName;
     [Min(1), Tooltip("Minimum inventory quantity required to show this choice.")]
     public int requiredItemAmount = 1;
     [TextArea, Tooltip("Optional line shown after selecting this choice.")] public string resultText;

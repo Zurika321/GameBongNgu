@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class StoryLootChest : MonoBehaviour
 {
-    [SerializeField] private string itemName = "Nhật Ký Nạn Nhân";
-    [SerializeField] private string requiredFlag = "AtticStairsOpen";
-    [SerializeField] private string openedFlag = "AtticChestOpened";
+    [RegistryId(RegistryIdType.Item), SerializeField] private string itemName = "Nhật Ký Nạn Nhân";
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag = "AtticStairsOpen";
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string openedFlag = "AtticChestOpened";
     [SerializeField] private StoryEventDirector storyEvents;
     [SerializeField] private string onOpenedEventId = "DiaryFound";
     [SerializeField, Min(0.1f)] private float interactionRange = 2f;

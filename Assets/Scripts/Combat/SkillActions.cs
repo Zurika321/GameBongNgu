@@ -128,6 +128,11 @@ public class SkillActions : MonoBehaviour
         return skill != null ? skill : gameObject.AddComponent<T>();
     }
 
+    public bool HasRegisteredSkill(string skillName)
+    {
+        return !string.IsNullOrWhiteSpace(skillName) && skillMap.ContainsKey(skillName);
+    }
+
     /// <summary>
     /// Gọi hàm này từ Player hoặc Enemy để kích hoạt skill theo tên.
     /// Không tìm thấy skill -> chỉ Debug.Log ra, không văng lỗi.

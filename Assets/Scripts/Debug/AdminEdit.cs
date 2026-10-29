@@ -1,0 +1,1004 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Reflection;
+using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
+/// <summary>
+/// Debug / Cheat menu chạy trong Play Mode (CHỈ trong Editor). Bấm F1 để bật/tắt.
+/// - Khung trái: danh sách mục cần chỉnh (Player, Teleport, Flags, Cốt truyện, Inventory, Skills, Events, Extra Objects, Enemy).
+/// - Khung phải: chi tiết + chỉnh thông số của mục đang chọn.
+/// Tự quét TẤT CẢ scene đang load (main + additive) mỗi giây để tìm Player / Enemy / Portal / Spawner / StoryEventDirector.
+/// Đặt script này lên 1 GameObject bất kỳ trong scene chính (vd: "AdminEdit").
+/// Trong build thật, toàn bộ nội dung bị #if loại bỏ => class rỗng.
+/// </summary>
+public class AdminEdit : MonoBehaviour
+{
+#if UNITY_EDITOR
+    private enum Tab { Player, Teleport, Flags, Story, Inventory, Skills, Events, Enemy, Extra }
+
+    [Header("Cấu hình")]
+    [SerializeField] private KeyCode toggleKey = KeyCode.F1;
+    [SerializeField] private float refreshInterval = 1f;
+    [SerializeField, Range(0.8f, 2.5f)] private float guiScale = 1f;
+    [Tooltip("Mở menu thì đóng băng game (GameplayPause) và tạm tắt DemoPauseMenu để Esc/Tab không xung đột.")]
+    [SerializeField] private bool freezeGameWhenOpen = true;
+    [Tooltip("Kéo thêm GameObject bất kỳ vào đây để chỉnh nhanh (bật/tắt, sửa field).")]
+    [SerializeField] private List<GameObject> extraObjects = new List<GameObject>();
+
+    [Tooltip("Danh sách skill đã đăng ký (khớp UnlockSkillsForLevel). Skill trong bảng Skill cũng tự được thêm.")]
+    [SerializeField] private string[] registeredSkills =
+    {
+        "Chém Cơ Bản", "Né Tránh Nhanh", "Đỡ Đòn", "Đòn Xuyên", "Combo 2 Đòn Liên Tiếp",
+        "Kháng Choáng Nhẹ", "Nộ Khí", "Ném Vũ Khí Phụ", "Cường Hóa Vũ Khí Cận Chiến",
+        "Kháng Hiệu Ứng Độc/Chảy Máu", "Đòn Chí Mạng Cận Chiến", "Phá Giáp Hoàn Toàn",
+        "Tập Trung Tinh Thần", "Phản Đòn Hoàn Hảo", "Bộc Phát Cận Chiến", "Tinh Thông Đạn Bạc",
+        "Ý Chí Sắt Đá", "Song Kiếm Hợp Bích", "Trực Giác Sinh Tồn", "Hoàn Thiện Bản Thân"
+    };
+
+    private const BindingFlags AllInstance = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+    private const string EventFlagPrefix = "StoryEventCompleted:";
+
+    private bool visible;
+    private Tab tab = Tab.Player;
+    private GameObject selectedObject;
+    private Vector2 leftScroll, rightScroll;
+    private float nextRefresh;
+    private string status = "";
+    private bool showPrivateFields;
+
+    private GameObject player;
+    private StoryEventDirector storyDirector;
+    private readonly List<EnemyController> enemies = new List<EnemyController>();
+    private readonly List<FlaggedScenePortal> portals = new List<FlaggedScenePortal>();
+    private readonly List<ZoneEnemySpawner> spawners = new List<ZoneEnemySpawner>();
+    private string[] sceneNames = Array.Empty<string>();
+
+    // bảng data thiết kế (cache, nạp lại bằng nút "Quét lại")
+    private SessionTable sessionTable;
+    private ItemTable itemTable;
+    private SkillTable skillTable;
+    private LevelTable levelTable;
+
+    // đóng băng game
+    private bool ownsPause;
+    private readonly List<Behaviour> disabledMenus = new List<Behaviour>();
+
+    private readonly Dictionary<string, string> buffers = new Dictionary<string, string>();
+    private readonly Dictionary<string, bool> foldouts = new Dictionary<string, bool>();
+
+    private string flagInput = "", flagFilter = "";
+    private string zoneInput = "";
+    private string sessionInput = "", nextSessionInput = "";
+    private string eventInput = "";
+    private string xInput = "0", yInput = "0";
+    private string levelInput = "";
+    private string itemInput = "", itemFilter = "", amountInput = "1";
+
+    // ------------------------------------------------------------------ lifecycle
+    private void Update()
+    {
+        if (Input.GetKeyDown(toggleKey))
+        {
+            if (visible) CloseMenu(); else OpenMenu();
+        }
+        if (!visible) return;
+
+        // Nếu script khác lỡ Resume() thì pause lại để giữ đóng băng
+        if (ownsPause && !GameplayPause.IsPaused) GameplayPause.Pause();
+        if (Time.unscaledTime >= nextRefresh) Refresh();
+    }
+
+    private void OnDisable() { ReleaseFreeze(); }
+
+    private void OpenMenu()
+    {
+        visible = true;
+        Refresh();
+        if (freezeGameWhenOpen) AcquireFreeze();
+    }
+
+    private void CloseMenu()
+    {
+        visible = false;
+        ReleaseFreeze();
+    }
+
+    /// <summary>
+    /// Chống xung đột Esc/Tab với DemoPauseMenu:
+    /// - Chỉ giữ pause khi game CHƯA bị pause (nếu menu pause đang mở sẵn thì không đụng vào).
+    /// - Tạm tắt component DemoPauseMenu => nó không đọc Esc/Tab, và không gọi Resume() làm hỏng pause của mình.
+    /// - Khi đóng: bật lại DemoPauseMenu rồi mới Resume().
+    /// Lưu ý: khi freeze, đừng bấm nút Menu trên UI (nút onClick vẫn chạy).
+    /// </summary>
+    private void AcquireFreeze()
+    {
+        if (ownsPause || GameplayPause.IsPaused) return;
+
+        foreach (DemoPauseMenu menu in FindObjectsByType<DemoPauseMenu>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+        {
+            if (menu == null || !menu.enabled) continue;
+            menu.enabled = false;
+            disabledMenus.Add(menu);
+        }
+        GameplayPause.Pause();
+        ownsPause = true;
+    }
+
+    private void ReleaseFreeze()
+    {
+        if (!ownsPause) return;
+        ownsPause = false;
+
+        foreach (Behaviour menu in disabledMenus)
+            if (menu != null) menu.enabled = true;
+        disabledMenus.Clear();
+        GameplayPause.Resume();
+    }
+
+    private void Refresh()
+    {
+        nextRefresh = Time.unscaledTime + Mathf.Max(0.2f, refreshInterval);
+
+        if (player == null)
+        {
+            try { player = GameObject.FindGameObjectWithTag("Player"); }
+            catch (UnityException) { player = null; }
+        }
+
+        // FindObjectsByType quét mọi scene đang load (main + additive)
+        enemies.Clear();
+        enemies.AddRange(FindObjectsByType<EnemyController>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+        portals.Clear();
+        portals.AddRange(FindObjectsByType<FlaggedScenePortal>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+        spawners.Clear();
+        spawners.AddRange(FindObjectsByType<ZoneEnemySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None));
+        if (storyDirector == null)
+            storyDirector = FindAnyObjectByType<StoryEventDirector>(FindObjectsInactive.Include);
+
+        List<string> names = new List<string>();
+        foreach (EditorBuildSettingsScene s in EditorBuildSettings.scenes)
+        {
+            if (s.enabled) names.Add(Path.GetFileNameWithoutExtension(s.path));
+        }
+        sceneNames = names.ToArray();
+
+        if (sessionTable == null) sessionTable = DataManager.GetData<SessionTable>(Tables.Session);
+        if (itemTable == null) itemTable = DataManager.GetData<ItemTable>(Tables.Item);
+        if (skillTable == null) skillTable = DataManager.GetData<SkillTable>(Tables.Skill);
+        if (levelTable == null) levelTable = DataManager.GetData<LevelTable>(Tables.Level);
+    }
+
+    // ------------------------------------------------------------------ root GUI
+    private void OnGUI()
+    {
+        if (!visible) return;
+
+        Matrix4x4 old = GUI.matrix;
+        GUI.matrix = Matrix4x4.Scale(new Vector3(guiScale, guiScale, 1f));
+
+        float h = Screen.height / guiScale - 20f;
+        float rightW = Mathf.Min(560f, Screen.width / guiScale - 290f);
+        DrawLeft(new Rect(10f, 10f, 250f, h));
+        DrawRight(new Rect(270f, 10f, rightW, h));
+
+        GUI.matrix = old;
+    }
+
+    private void DrawLeft(Rect rect)
+    {
+        GUI.Box(rect, GUIContent.none);
+        GUI.Box(rect, GUIContent.none);
+        GUILayout.BeginArea(new Rect(rect.x + 6, rect.y + 6, rect.width - 12, rect.height - 12));
+        GUILayout.Label("<b>ADMIN</b>  (" + toggleKey + " để đóng)", RichLabel());
+
+        bool freeze = GUILayout.Toggle(freezeGameWhenOpen, "Đóng băng game khi mở");
+        if (freeze != freezeGameWhenOpen)
+        {
+            freezeGameWhenOpen = freeze;
+            if (freeze) AcquireFreeze(); else ReleaseFreeze();
+        }
+
+        leftScroll = GUILayout.BeginScrollView(leftScroll);
+
+        if (SelectButton("Player", tab == Tab.Player)) SelectTab(Tab.Player);
+        if (SelectButton("Teleport / Zone", tab == Tab.Teleport)) SelectTab(Tab.Teleport);
+        if (SelectButton("Flags", tab == Tab.Flags)) SelectTab(Tab.Flags);
+        if (SelectButton("Tiến độ cốt truyện", tab == Tab.Story)) SelectTab(Tab.Story);
+        if (SelectButton("Inventory / Item", tab == Tab.Inventory)) SelectTab(Tab.Inventory);
+        if (SelectButton("Skills", tab == Tab.Skills)) SelectTab(Tab.Skills);
+        if (SelectButton("Story Events", tab == Tab.Events)) SelectTab(Tab.Events);
+
+        if (extraObjects.Count > 0)
+        {
+            GUILayout.Space(6);
+            GUILayout.Label("— Extra Objects —");
+            foreach (GameObject go in extraObjects)
+            {
+                if (go == null) continue;
+                bool on = tab == Tab.Extra && selectedObject == go;
+                if (SelectButton(go.name + (go.activeSelf ? "" : " (off)"), on))
+                {
+                    tab = Tab.Extra;
+                    selectedObject = go;
+                }
+            }
+        }
+
+        GUILayout.Space(6);
+        GUILayout.Label($"— Enemy ({enemies.Count}) —");
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Giết hết"))
+            ForEachEnemyHealth(hc => { hc.SetInvincible(false); hc.TakeDamage(999999f, gameObject); });
+        if (GUILayout.Button("Hồi hết"))
+            ForEachEnemyHealth(hc => hc.Heal(hc.MaxHealth));
+        GUILayout.EndHorizontal();
+
+        foreach (EnemyController e in enemies)
+        {
+            if (e == null) continue;
+            HealthController hc = e.GetComponent<HealthController>();
+            string label = $"{e.name} [{e.gameObject.scene.name}]";
+            if (hc != null)
+                label += hc.IsDead ? " ☠" : $" {Mathf.CeilToInt(hc.CurrentHealth)}/{Mathf.CeilToInt(hc.MaxHealth)}";
+            if (!e.gameObject.activeInHierarchy) label += " (off)";
+
+            bool on = tab == Tab.Enemy && selectedObject == e.gameObject;
+            if (SelectButton(label, on))
+            {
+                tab = Tab.Enemy;
+                selectedObject = e.gameObject;
+            }
+        }
+
+        GUILayout.EndScrollView();
+        if (GUILayout.Button("Quét lại scene + bảng data"))
+        {
+            sessionTable = null; itemTable = null; skillTable = null; levelTable = null;
+            Refresh();
+        }
+        GUILayout.EndArea();
+    }
+
+    private void DrawRight(Rect rect)
+    {
+        GUI.Box(rect, GUIContent.none);
+        GUI.Box(rect, GUIContent.none);
+        GUILayout.BeginArea(new Rect(rect.x + 8, rect.y + 6, rect.width - 16, rect.height - 12));
+        rightScroll = GUILayout.BeginScrollView(rightScroll);
+
+        PlayerProgressionService progress = PlayerProgressionService.Instance;
+        switch (tab)
+        {
+            case Tab.Player: DrawPlayerPanel(progress); break;
+            case Tab.Teleport: DrawTeleportPanel(progress); break;
+            case Tab.Flags: DrawFlagsPanel(progress); break;
+            case Tab.Story: DrawStoryPanel(progress); break;
+            case Tab.Inventory: DrawInventoryPanel(progress); break;
+            case Tab.Skills: DrawSkillsPanel(progress); break;
+            case Tab.Events: DrawEventsPanel(progress); break;
+            case Tab.Enemy:
+            case Tab.Extra:
+                if (selectedObject == null) GUILayout.Label("Object không còn tồn tại (đã bị huỷ / unload scene).");
+                else DrawTargetPanel(selectedObject);
+                break;
+        }
+
+        GUILayout.EndScrollView();
+        if (!string.IsNullOrEmpty(status)) GUILayout.Label("▶ " + status, RichLabel());
+        GUILayout.EndArea();
+    }
+
+    // ------------------------------------------------------------------ PLAYER
+    private void DrawPlayerPanel(PlayerProgressionService progress)
+    {
+        Header("PLAYER");
+        if (player == null) GUILayout.Label("Không tìm thấy GameObject tag 'Player'.");
+
+        if (progress != null)
+        {
+            PlayerSaveData d = progress.Data;
+            GUILayout.Label("<b>Tiến trình</b>", RichLabel());
+
+            if (string.IsNullOrEmpty(levelInput)) levelInput = d.level.ToString();
+            GUILayout.BeginHorizontal();
+            GUILayout.Label("Level (1-20)", GUILayout.Width(110));
+            levelInput = EditText("p.lv", levelInput);
+            if (GUILayout.Button("Áp dụng", GUILayout.Width(70)) && int.TryParse(levelInput, out int lv))
+            {
+                SetLevel(progress, lv);
+                levelInput = d.level.ToString();
+                status = $"Level = {d.level} (set EXP, mở skill, full máu)";
+            }
+            GUILayout.EndHorizontal();
+
+            d.exp = Mathf.Max(0, IntRow("EXP", "p.exp", d.exp));
+            d.lt = Mathf.Max(0, IntRow("LT (Lý Trí)", "p.lt", d.lt));
+            d.qt = Mathf.Max(0, IntRow("QT (Quỷ Tính)", "p.qt", d.qt));
+            d.rareAmmo = Mathf.Max(0, IntRow("Rare Ammo", "p.ammo", d.rareAmmo));
+
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("+100 EXP")) progress.AddExperience(100);
+            if (GUILayout.Button("+1000 EXP")) progress.AddExperience(1000);
+            if (GUILayout.Button("+10000 EXP")) progress.AddExperience(10000);
+            GUILayout.EndHorizontal();
+
+            GUILayout.Label($"ATK {progress.GetAttackPower()}   DEF {progress.GetDefensePower()}   MaxHP {progress.GetMaxHealth()}");
+            if (GUILayout.Button("Lưu game ngay")) { progress.Save(); status = "Đã lưu."; }
+            GUILayout.Space(8);
+        }
+
+        if (player != null) DrawTargetPanel(player);
+    }
+
+    private void SetLevel(PlayerProgressionService progress, int level)
+    {
+        PlayerSaveData d = progress.Data;
+        d.level = Mathf.Clamp(level, 1, 20);
+
+        LevelData ld = levelTable != null ? levelTable.levels.Find(l => l != null && l.lv == d.level) : null;
+        if (ld != null) d.exp = ld.expRequired;
+
+        // UnlockSkillsForLevel là private => gọi bằng reflection
+        MethodInfo unlock = typeof(PlayerProgressionService).GetMethod("UnlockSkillsForLevel", AllInstance);
+        if (unlock != null)
+        {
+            for (int l = 1; l <= d.level; l++) unlock.Invoke(progress, new object[] { l });
+        }
+
+        HealthController hc = player != null ? player.GetComponent<HealthController>() : null;
+        if (hc != null) hc.ConfigureHealth(progress.GetMaxHealth(), progress.GetMaxHealth());
+        progress.Save();
+    }
+
+    // ------------------------------------------------------------------ GENERIC TARGET (player / enemy / extra)
+    private void DrawTargetPanel(GameObject go)
+    {
+        Header(go.name);
+        GUILayout.Label($"Scene: {go.scene.name}   Pos: {go.transform.position.x:0.##}, {go.transform.position.y:0.##}");
+
+        bool active = GUILayout.Toggle(go.activeSelf, "Active (bật/tắt object)");
+        if (active != go.activeSelf) go.SetActive(active);
+
+        HealthController health = go.GetComponent<HealthController>();
+        if (health != null) DrawHealth(health);
+
+        if (player != null && go != player)
+        {
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Kéo object tới Player")) go.transform.position = player.transform.position;
+            if (GUILayout.Button("Player tele tới object")) TeleportPlayer(go.transform.position);
+            GUILayout.EndHorizontal();
+        }
+
+        showPrivateFields = GUILayout.Toggle(showPrivateFields, "Hiện cả field private (debug runtime)");
+        GUILayout.Space(4);
+
+        foreach (MonoBehaviour mb in go.GetComponents<MonoBehaviour>())
+        {
+            if (mb == null || mb is HealthController || mb is AdminEdit) continue;
+            DrawComponent(mb);
+        }
+    }
+
+    private void DrawHealth(HealthController hc)
+    {
+        GUILayout.Label("<b>Máu</b>" + (hc.IsDead ? "  <color=red>(ĐÃ CHẾT)</color>" : ""), RichLabel());
+        string id = hc.GetEntityId().ToString();
+
+        float newMax = FloatRow("Max HP", id + ".max", hc.MaxHealth);
+        if (!Mathf.Approximately(newMax, hc.MaxHealth) && newMax >= 1f)
+            hc.ConfigureHealth(newMax, Mathf.Min(hc.CurrentHealth, newMax));
+
+        float newCur = FloatRow("HP hiện tại", id + ".cur", hc.CurrentHealth);
+        if (!Mathf.Approximately(newCur, hc.CurrentHealth))
+            hc.ConfigureHealth(hc.MaxHealth, newCur);
+
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Full máu / Hồi sinh")) hc.Heal(hc.MaxHealth);
+        if (GUILayout.Button("Giết")) { hc.SetInvincible(false); hc.TakeDamage(999999f, gameObject); }
+        GUILayout.EndHorizontal();
+
+        bool inv = GUILayout.Toggle(hc.IsInvincible, "Bất tử");
+        if (inv != hc.IsInvincible) hc.SetInvincible(inv);
+        GUILayout.Space(6);
+    }
+
+    private void DrawComponent(MonoBehaviour c)
+    {
+        string foldKey = "fold." + c.GetEntityId().ToString();
+        foldouts.TryGetValue(foldKey, out bool open);
+
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button((open ? "▼ " : "▶ ") + c.GetType().Name, GUILayout.ExpandWidth(true)))
+            foldouts[foldKey] = open = !open;
+        bool enabled = GUILayout.Toggle(c.enabled, "on", GUILayout.Width(40));
+        if (enabled != c.enabled) c.enabled = enabled;
+        GUILayout.EndHorizontal();
+
+        if (!open) return;
+
+        for (Type t = c.GetType(); t != null && t != typeof(MonoBehaviour); t = t.BaseType)
+        {
+            foreach (FieldInfo f in t.GetFields(AllInstance | BindingFlags.DeclaredOnly))
+            {
+                if (IsEditable(f)) DrawField(c, f);
+            }
+        }
+        GUILayout.Space(4);
+    }
+
+    private bool IsEditable(FieldInfo f)
+    {
+        if (f.IsStatic || f.IsInitOnly || f.IsLiteral || f.IsNotSerialized) return false;
+        if (f.Name.Contains("<")) return false;
+        if (!showPrivateFields && !f.IsPublic && !f.IsDefined(typeof(SerializeField), true)) return false;
+        Type t = f.FieldType;
+        return t == typeof(float) || t == typeof(int) || t == typeof(bool) || t == typeof(string)
+            || t == typeof(Vector2) || t == typeof(Vector3) || t.IsEnum;
+    }
+
+    private void DrawField(Component c, FieldInfo f)
+    {
+        Type t = f.FieldType;
+        object v = f.GetValue(c);
+        string key = c.GetEntityId().ToString() + "." + f.Name;
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label(ObjectNames.NicifyVariableName(f.Name), GUILayout.Width(150));
+
+        if (t == typeof(bool))
+        {
+            bool nb = GUILayout.Toggle((bool)v, "");
+            if (nb != (bool)v) f.SetValue(c, nb);
+        }
+        else if (t == typeof(float))
+        {
+            string cur = FormatFloat((float)v);
+            string e = EditText(key, cur);
+            if (e != cur && TryParseFloat(e, out float r)) f.SetValue(c, r);
+        }
+        else if (t == typeof(int))
+        {
+            string cur = ((int)v).ToString();
+            string e = EditText(key, cur);
+            if (e != cur && int.TryParse(e, out int r)) f.SetValue(c, r);
+        }
+        else if (t == typeof(string))
+        {
+            string cur = (string)v ?? "";
+            string e = EditText(key, cur);
+            if (e != cur) f.SetValue(c, e);
+        }
+        else if (t == typeof(Vector2))
+        {
+            Vector2 vec = (Vector2)v;
+            bool changed = false;
+            changed |= VecComponent(key + ".x", ref vec.x);
+            changed |= VecComponent(key + ".y", ref vec.y);
+            if (changed) f.SetValue(c, vec);
+        }
+        else if (t == typeof(Vector3))
+        {
+            Vector3 vec = (Vector3)v;
+            bool changed = false;
+            changed |= VecComponent(key + ".x", ref vec.x);
+            changed |= VecComponent(key + ".y", ref vec.y);
+            changed |= VecComponent(key + ".z", ref vec.z);
+            if (changed) f.SetValue(c, vec);
+        }
+        else if (t.IsEnum)
+        {
+            if (GUILayout.Button(v.ToString()))
+            {
+                Array values = Enum.GetValues(t);
+                int idx = Array.IndexOf(values, v);
+                f.SetValue(c, values.GetValue((idx + 1) % values.Length));
+            }
+        }
+        GUILayout.EndHorizontal();
+    }
+
+    private bool VecComponent(string key, ref float value)
+    {
+        string cur = FormatFloat(value);
+        string e = EditText(key, cur);
+        if (e != cur && TryParseFloat(e, out float r)) { value = r; return true; }
+        return false;
+    }
+
+    private void ForEachEnemyHealth(Action<HealthController> action)
+    {
+        foreach (EnemyController e in enemies)
+        {
+            if (e == null) continue;
+            HealthController hc = e.GetComponent<HealthController>();
+            if (hc != null) action(hc);
+        }
+    }
+
+    // ------------------------------------------------------------------ TELEPORT / ZONE
+    private void DrawTeleportPanel(PlayerProgressionService progress)
+    {
+        Header("TELEPORT / ZONE");
+        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
+
+        PlayerSaveData d = progress.Data;
+        GUILayout.Label($"Hiện tại: scene = {d.currentScene}   zone = {d.currentZone}");
+
+        if (string.IsNullOrEmpty(zoneInput)) zoneInput = d.currentZone ?? "";
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Zone đích", GUILayout.Width(80));
+        zoneInput = EditText("tp.zone", zoneInput);
+        if (GUILayout.Button("Chỉ set Zone", GUILayout.Width(100)))
+        {
+            progress.SetCurrentZone(zoneInput);
+            status = "currentZone = " + zoneInput;
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.Label("<b>Chuyển Scene (LoadSceneByZone)</b>", RichLabel());
+        foreach (string sceneName in sceneNames)
+        {
+            if (GUILayout.Button("→ " + sceneName))
+            {
+                progress.LoadSceneByZone(sceneName, zoneInput);
+                status = $"LoadSceneByZone({sceneName}, {zoneInput})";
+            }
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label("<b>Dịch chuyển tới toạ độ</b>", RichLabel());
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("X", GUILayout.Width(15));
+        xInput = EditText("tp.x", xInput);
+        GUILayout.Label("Y", GUILayout.Width(15));
+        yInput = EditText("tp.y", yInput);
+        GUILayout.EndHorizontal();
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Tele"))
+        {
+            if (TryParseFloat(xInput, out float x) && TryParseFloat(yInput, out float y))
+                TeleportPlayer(new Vector2(x, y));
+            else status = "Toạ độ không hợp lệ.";
+        }
+        if (GUILayout.Button("Lấy vị trí Player") && player != null)
+        {
+            xInput = FormatFloat(player.transform.position.x);
+            yInput = FormatFloat(player.transform.position.y);
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.Space(8);
+        GUILayout.Label($"<b>Portal ({portals.Count})</b>  (tele lệch xuống 1.5 để không kích portal)", RichLabel());
+        foreach (FlaggedScenePortal portal in portals)
+        {
+            if (portal == null) continue;
+            string dest = ReadString(portal, "destinationScene");
+            string zone = ReadString(portal, "destinationZone");
+            string flag = ReadString(portal, "requiredFlag");
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"{portal.name} [{portal.gameObject.scene.name}] → {dest}/{zone}"
+                + (string.IsNullOrWhiteSpace(flag) ? "" : $" (cần {flag})"));
+            if (GUILayout.Button("Tele", GUILayout.Width(50)))
+                TeleportPlayer((Vector2)portal.transform.position + Vector2.down * 1.5f);
+            if (GUILayout.Button("Dùng", GUILayout.Width(50)) && !string.IsNullOrWhiteSpace(dest))
+            {
+                progress.LoadSceneByZone(dest, zone);
+                status = $"Dùng portal {portal.name} → {dest}";
+            }
+            GUILayout.EndHorizontal();
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label($"<b>Spawner ({spawners.Count})</b>", RichLabel());
+        foreach (ZoneEnemySpawner sp in spawners)
+        {
+            if (sp == null) continue;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"{sp.name} [{sp.gameObject.scene.name}]"
+                + (sp.IsCleared ? " ✔cleared" : sp.HasSpawned ? " ⚔spawned" : ""));
+            if (GUILayout.Button("Tele", GUILayout.Width(50))) TeleportPlayer(sp.transform.position);
+            if (GUILayout.Button("Spawn", GUILayout.Width(55))) sp.Spawn();
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    private void TeleportPlayer(Vector2 position)
+    {
+        if (player == null) { status = "Không có Player."; return; }
+        player.transform.position = new Vector3(position.x, position.y, player.transform.position.z);
+        Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = Vector2.zero;
+        status = $"Tele Player tới {position.x:0.##}, {position.y:0.##}";
+    }
+
+    // ------------------------------------------------------------------ FLAGS
+    private void DrawFlagsPanel(PlayerProgressionService progress)
+    {
+        Header("FLAGS");
+        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Thêm flag", GUILayout.Width(80));
+        flagInput = EditText("flag.add", flagInput);
+        if (GUILayout.Button("Thêm", GUILayout.Width(60)) && !string.IsNullOrWhiteSpace(flagInput))
+        {
+            progress.SetFlag(flagInput.Trim());
+            status = "Đã thêm flag: " + flagInput.Trim();
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Lọc", GUILayout.Width(80));
+        flagFilter = EditText("flag.filter", flagFilter);
+        GUILayout.EndHorizontal();
+
+        List<string> flags = progress.Data.flags != null ? new List<string>(progress.Data.flags) : new List<string>();
+        GUILayout.Label($"Tổng: {flags.Count} flag");
+        foreach (string flag in flags)
+        {
+            if (!string.IsNullOrEmpty(flagFilter)
+                && flag.IndexOf(flagFilter, StringComparison.OrdinalIgnoreCase) < 0) continue;
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(flag);
+            if (GUILayout.Button("Xoá", GUILayout.Width(50)))
+            {
+                progress.RemoveFlag(flag);
+                status = "Đã xoá flag: " + flag;
+            }
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    // ------------------------------------------------------------------ STORY PROGRESS
+    private void DrawStoryPanel(PlayerProgressionService progress)
+    {
+        Header("TIẾN ĐỘ CỐT TRUYỆN");
+        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
+        PlayerSaveData d = progress.Data;
+
+        GUILayout.Label($"currentSession = <b>{d.currentSession}</b>   zone = {d.currentZone}   scene = {d.currentScene}", RichLabel());
+
+        if (string.IsNullOrEmpty(sessionInput)) sessionInput = d.currentSession ?? "";
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Session", GUILayout.Width(80));
+        sessionInput = EditText("st.session", sessionInput);
+        if (GUILayout.Button("Đặt currentSession", GUILayout.Width(140)) && !string.IsNullOrWhiteSpace(sessionInput))
+        {
+            d.currentSession = sessionInput.Trim();
+            progress.Save();
+            status = "currentSession = " + d.currentSession;
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Next", GUILayout.Width(80));
+        nextSessionInput = EditText("st.next", nextSessionInput);
+        if (GUILayout.Button("Hoàn thành → Next", GUILayout.Width(140))
+            && !string.IsNullOrWhiteSpace(sessionInput) && !string.IsNullOrWhiteSpace(nextSessionInput))
+        {
+            string id = sessionInput.Trim();
+            progress.CompleteSession(id, nextSessionInput.Trim());
+            progress.SetFlag("Session" + id + "Complete");
+            status = $"Hoàn thành session {id} → {nextSessionInput.Trim()}";
+        }
+        GUILayout.EndHorizontal();
+
+        if (GUILayout.Button("Nạp lại zone hiện tại (áp dụng thay đổi)"))
+        {
+            progress.Save();
+            progress.LoadSceneByZone(d.currentScene, d.currentZone);
+            status = "Đã nạp lại " + d.currentScene;
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label("<b>Nhảy cóc tới session</b>  (session đứng trước = hoàn thành, từ nó trở đi = chưa; theo thứ tự trong bảng Session)", RichLabel());
+        if (sessionTable != null)
+        {
+            foreach (SessionData sd in sessionTable.sessions)
+            {
+                if (sd == null || string.IsNullOrWhiteSpace(sd.id)) continue;
+                bool current = d.currentSession == sd.id;
+                GUILayout.BeginHorizontal();
+                GUILayout.Label((current ? "▶ " : "") + sd.id + " - " + sd.name);
+                if (GUILayout.Button("Nhảy tới", GUILayout.Width(70)))
+                {
+                    JumpToSession(progress, sd.id);
+                    sessionInput = sd.id;
+                    status = "Đã nhảy tới session " + sd.id + " (bấm 'Nạp lại zone' để áp dụng)";
+                }
+                GUILayout.EndHorizontal();
+            }
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label("<b>Completed sessions</b>", RichLabel());
+        List<string> done = new List<string>(d.completedSessions ?? new List<string>());
+        foreach (string s in done)
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.Label(s);
+            if (GUILayout.Button("Bỏ", GUILayout.Width(50)))
+            {
+                d.completedSessions.Remove(s);
+                progress.RemoveFlag("Session" + s + "Complete");
+                progress.Save();
+                status = $"Bỏ completed session {s}";
+            }
+            GUILayout.EndHorizontal();
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label("<b>Lựa chọn đã chọn (choices)</b>  (xoá không hoàn lại LT/QT)", RichLabel());
+        foreach (ChoiceRecord choice in new List<ChoiceRecord>(d.choices ?? new List<ChoiceRecord>()))
+        {
+            if (choice == null) continue;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"Session {choice.sessionId} → {choice.choiceId}");
+            if (GUILayout.Button("Xoá", GUILayout.Width(50)))
+            {
+                d.choices.Remove(choice);
+                progress.Save();
+                status = $"Xoá choice {choice.sessionId}/{choice.choiceId}";
+            }
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    private void JumpToSession(PlayerProgressionService progress, string id)
+    {
+        List<SessionData> list = sessionTable != null ? sessionTable.sessions : null;
+        int target = list != null ? list.FindIndex(x => x != null && x.id == id) : -1;
+        if (target < 0) return;
+
+        PlayerSaveData d = progress.Data;
+        progress.BeginStoryEventBatch();
+        try
+        {
+            d.currentSession = id;
+            for (int i = 0; i < list.Count; i++)
+            {
+                string sid = list[i] != null ? list[i].id : null;
+                if (string.IsNullOrWhiteSpace(sid)) continue;
+                string flag = "Session" + sid + "Complete";
+                if (i < target)
+                {
+                    if (!d.completedSessions.Contains(sid)) d.completedSessions.Add(sid);
+                    progress.SetFlag(flag);
+                }
+                else
+                {
+                    d.completedSessions.Remove(sid);
+                    progress.RemoveFlag(flag);
+                }
+            }
+        }
+        finally
+        {
+            progress.EndStoryEventBatch();
+        }
+    }
+
+    // ------------------------------------------------------------------ INVENTORY
+    private void DrawInventoryPanel(PlayerProgressionService progress)
+    {
+        Header("INVENTORY / ITEM");
+        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
+        PlayerSaveData d = progress.Data;
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Item", GUILayout.Width(50));
+        itemInput = EditText("inv.item", itemInput);
+        GUILayout.Label("SL", GUILayout.Width(25));
+        amountInput = EditText("inv.amount", amountInput);
+        if (GUILayout.Button("Thêm", GUILayout.Width(55)) && int.TryParse(amountInput, out int amount))
+        {
+            bool ok = progress.AddItem(itemInput.Trim(), amount);
+            status = ok ? $"+{amount} {itemInput.Trim()}" : "Không thêm được (đầy túi / tên sai).";
+        }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Lọc DB", GUILayout.Width(50));
+        itemFilter = EditText("inv.filter", itemFilter);
+        GUILayout.EndHorizontal();
+
+        if (itemTable != null && !string.IsNullOrEmpty(itemFilter))
+        {
+            int shown = 0;
+            foreach (ItemData it in itemTable.items)
+            {
+                if (it == null || string.IsNullOrEmpty(it.name)) continue;
+                if (it.name.IndexOf(itemFilter, StringComparison.OrdinalIgnoreCase) < 0) continue;
+                if (GUILayout.Button($"{it.name}  ({it.type})")) itemInput = it.name;
+                if (++shown >= 20) break;
+            }
+        }
+
+        GUILayout.Space(8);
+        GUILayout.Label($"<b>Túi đồ ({d.inventory.Count}/{PlayerSaveData.InventoryCapacity})</b>", RichLabel());
+        foreach (InventoryEntry entry in new List<InventoryEntry>(d.inventory))
+        {
+            if (entry == null) continue;
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"[{entry.slotIndex}] {entry.itemName} x{entry.amount}");
+            if (GUILayout.Button("+1", GUILayout.Width(35))) progress.AddItem(entry.itemName, 1);
+            if (GUILayout.Button("-1", GUILayout.Width(35))) progress.RemoveItem(entry.itemName, 1);
+            if (GUILayout.Button("Xoá", GUILayout.Width(45))) progress.RemoveItem(entry.itemName, entry.amount);
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    // ------------------------------------------------------------------ SKILLS
+    private void DrawSkillsPanel(PlayerProgressionService progress)
+    {
+        Header("SKILLS");
+        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
+
+        List<string> unlocked = progress.Data.unlockedSkills;
+        List<string> names = new List<string>(registeredSkills ?? Array.Empty<string>());
+        if (skillTable != null)
+        {
+            foreach (SkillData sk in skillTable.skills)
+                if (sk != null && !string.IsNullOrWhiteSpace(sk.name) && !names.Contains(sk.name)) names.Add(sk.name);
+        }
+        foreach (string s in unlocked)
+            if (!names.Contains(s)) names.Add(s);
+
+        GUILayout.BeginHorizontal();
+        if (GUILayout.Button("Mở tất cả"))
+        {
+            foreach (string s in names) if (!unlocked.Contains(s)) unlocked.Add(s);
+            progress.Save();
+        }
+        if (GUILayout.Button("Xoá tất cả"))
+        {
+            unlocked.Clear();
+            progress.Save();
+        }
+        GUILayout.EndHorizontal();
+
+        foreach (string skill in names)
+        {
+            bool has = unlocked.Contains(skill);
+            bool now = GUILayout.Toggle(has, skill);
+            if (now == has) continue;
+
+            if (now) unlocked.Add(skill); else unlocked.Remove(skill);
+            progress.Save();
+            status = (now ? "Thêm skill: " : "Xoá skill: ") + skill;
+        }
+        GUILayout.Label("Lưu ý: khi load game, skill theo level sẽ được mở lại tự động.");
+    }
+
+    // ------------------------------------------------------------------ STORY EVENTS
+    private void DrawEventsPanel(PlayerProgressionService progress)
+    {
+        Header("STORY EVENTS");
+        if (storyDirector == null) { GUILayout.Label("Không tìm thấy StoryEventDirector."); return; }
+
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Event ID", GUILayout.Width(80));
+        eventInput = EditText("ev.input", eventInput);
+        if (GUILayout.Button("Chạy", GUILayout.Width(60)) && !string.IsNullOrWhiteSpace(eventInput))
+            RunEvent(eventInput.Trim());
+        GUILayout.EndHorizontal();
+
+        FieldInfo f = typeof(StoryEventDirector).GetField("events", AllInstance);
+        StoryEventDefinition[] defs = f != null ? f.GetValue(storyDirector) as StoryEventDefinition[] : null;
+        if (defs == null) return;
+
+        GUILayout.Label($"<b>Đã cấu hình ({defs.Length})</b>", RichLabel());
+        foreach (StoryEventDefinition def in defs)
+        {
+            if (def == null || string.IsNullOrWhiteSpace(def.eventId)) continue;
+            bool done = storyDirector.IsEventCompleted(def.eventId);
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label((done ? "✔ " : "• ") + def.eventId);
+            if (GUILayout.Button("Chạy", GUILayout.Width(55))) RunEvent(def.eventId);
+            if (GUILayout.Button("Reset", GUILayout.Width(55))) ResetEvent(def.eventId, progress);
+            GUILayout.EndHorizontal();
+        }
+    }
+
+    private void RunEvent(string eventId)
+    {
+        bool ok = storyDirector.TriggerEvent(eventId);
+        status = $"TriggerEvent('{eventId}') = {ok}";
+    }
+
+    private void ResetEvent(string eventId, PlayerProgressionService progress)
+    {
+        if (progress == null) return;
+        progress.Data.completedStoryEvents?.RemoveAll(id => id == eventId);
+        progress.RemoveFlag(EventFlagPrefix + eventId);
+
+        FieldInfo f = typeof(StoryEventDirector).GetField("completedEvents", AllInstance);
+        if (f != null && f.GetValue(storyDirector) is HashSet<string> set) set.Remove(eventId);
+
+        progress.Save();
+        status = $"Reset event '{eventId}'.";
+    }
+
+    // ------------------------------------------------------------------ helpers
+    private void SelectTab(Tab t)
+    {
+        tab = t;
+        selectedObject = null;
+        buffers.Clear();
+    }
+
+    private bool SelectButton(string label, bool on)
+    {
+        Color old = GUI.backgroundColor;
+        if (on) GUI.backgroundColor = new Color(0.4f, 0.8f, 1f);
+        bool clicked = GUILayout.Button(label, GUILayout.Height(24));
+        GUI.backgroundColor = old;
+        return clicked;
+    }
+
+    private static void Header(string text)
+    {
+        GUILayout.Label("<size=15><b>" + text + "</b></size>", RichLabel());
+    }
+
+    private static GUIStyle richLabel;
+    private static GUIStyle RichLabel()
+    {
+        if (richLabel == null)
+            richLabel = new GUIStyle(GUI.skin.label) { richText = true, wordWrap = true };
+        return richLabel;
+    }
+
+    /// <summary>TextField giữ chuỗi đang gõ khi đang focus, tránh bị format lại mỗi frame.</summary>
+    private string EditText(string key, string current)
+    {
+        GUI.SetNextControlName(key);
+        bool focused = GUI.GetNameOfFocusedControl() == key;
+        string shown = focused && buffers.TryGetValue(key, out string b) ? b : current;
+        string edited = GUILayout.TextField(shown, GUILayout.MinWidth(70));
+        if (focused) buffers[key] = edited; else buffers.Remove(key);
+        return edited;
+    }
+
+    private int IntRow(string label, string key, int value)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Label(label, GUILayout.Width(110));
+        string e = EditText(key, value.ToString());
+        GUILayout.EndHorizontal();
+        return int.TryParse(e, out int r) ? r : value;
+    }
+
+    private float FloatRow(string label, string key, float value)
+    {
+        GUILayout.BeginHorizontal();
+        GUILayout.Label(label, GUILayout.Width(110));
+        string e = EditText(key, FormatFloat(value));
+        GUILayout.EndHorizontal();
+        return TryParseFloat(e, out float r) ? r : value;
+    }
+
+    private static string FormatFloat(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
+
+    private static bool TryParseFloat(string s, out float result)
+    {
+        return float.TryParse(s.Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out result);
+    }
+
+    private static string ReadString(object target, string fieldName)
+    {
+        FieldInfo f = target.GetType().GetField(fieldName, AllInstance);
+        return f != null ? f.GetValue(target) as string ?? "" : "";
+    }
+#endif
+}

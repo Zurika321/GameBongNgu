@@ -15,28 +15,33 @@ MonoBehaviour:
   sessionId: 7B
   npcName: "V\xF4 Di\u1EC7n"
   nodes:
-  - text: "Ta kh\xF4ng mu\u1ED1n gi\u1EBFt ai c\u1EA3. Ta ch\u1EC9 mu\u1ED1n \u0111\u01B0\u1EE3c
-      s\u1ED1ng. \u0110\u1EC3 ta gi\xFAp ng\u01B0\u01A1i, v\xE0 kh\xF4ng ai ph\u1EA3i
-      ch\u1EBFt oan n\u1EEFa."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_7B_LINE_01"
+
+
     nextNodeIndex: -1
     choices:
     - sessionId: 7B
       choiceId: 7B1
-      label: "Ch\u1EA5p nh\u1EADn h\u1EE3p \u0111\u1ED3ng"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_7B_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "Kh\u1EA3i cho V\xF4 Di\u1EC7n m\u01B0\u1EE3n quy\u1EC1n ki\u1EC3m
-        so\xE1t khi nguy c\u1EA5p. M\u1ED9t d\u1EA5u \u1EA5n t\u1ED1i m\xE0u hi\u1EC7n
-        l\xEAn tr\xEAn tay anh."
+      resultText: "DIALOGUE_SESSION_7B_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 2
     - sessionId: 7B
       choiceId: 7B2
-      label: "T\u1EEB ch\u1ED1i th\u1ECFa hi\u1EC7p"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_7B_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Kh\u1EA3i kh\xF4ng trao cho V\xF4 Di\u1EC7n th\xEAm quy\u1EC1n
-        l\u1EF1c. B\xF3ng t\u1ED1i l\xF9i l\u1EA1i, nh\u01B0ng ch\u01B0a bi\u1EBFn
-        m\u1EA5t."
+      resultText: "DIALOGUE_SESSION_7B_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 1
       qtDelta: 0

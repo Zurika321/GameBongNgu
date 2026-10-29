@@ -15,6 +15,7 @@ public class DemoPauseMenu : MonoBehaviour
 
     [Header("World map")]
     [SerializeField] private MapZoneGraphic mapGraphic;
+    [SerializeField] private MiniMapCameraView miniMapCameraView;
     [SerializeField] private Transform mapTarget;
     [SerializeField, Min(1f)] private float mapCameraScale = 3f;
     [SerializeField] private bool mapEnabled = true;
@@ -22,11 +23,7 @@ public class DemoPauseMenu : MonoBehaviour
     private enum OverlayMode { None, Settings, Inventory }
     private OverlayMode mode;
     private bool menuButtonInitiallyInteractable;
-    private float mapRefreshTimer;
-    private Vector2 lastMapPlayerPosition;
-    private bool hasMapPlayerPosition;
     private PlayerStatusHUD playerStatusHUD;
-    private MiniMapCameraView miniMapCameraView;
     private Camera mainCamera;
 
     private void Awake()
@@ -40,16 +37,11 @@ public class DemoPauseMenu : MonoBehaviour
         openMenuButton.onClick.AddListener(OpenSettings);
         menuButtonInitiallyInteractable = openMenuButton.interactable;
         closeMenuButton.onClick.AddListener(CloseMenu);
-        EnsureLanguageManager();
 
         inventoryPanel.SetActive(false);
         settingsPanel.SetActive(false);
-        mapPanel.SetActive(mapEnabled);
-        if (mapEnabled)
-        {
-            ConfigureMapOverlay();
-            RefreshMap();
-        }
+        mapPanel.SetActive(false);
+
         playerStatusHUD = PlayerStatusHUD.Create(GetCanvas());
         if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
         menuRoot.SetActive(false);
@@ -61,31 +53,18 @@ public class DemoPauseMenu : MonoBehaviour
         if (openMenuButton != null)
             openMenuButton.interactable = menuButtonInitiallyInteractable && !StorageWindowUI.AnyOpen;
 
-        if (!StorageWindowUI.AnyOpen)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                if (mode == OverlayMode.Settings) CloseMenu();
-                else OpenSettings();
-            }
+        if (StorageWindowUI.AnyOpen) return;
 
-            if (Input.GetKeyDown(KeyCode.Tab))
-            {
-                if (mode == OverlayMode.Inventory) CloseMenu();
-                else OpenInventory();
-            }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (mode == OverlayMode.Settings) CloseMenu();
+            else OpenSettings();
         }
 
-        if (!mapEnabled) return;
-
-        mapRefreshTimer += Time.unscaledDeltaTime;
-        if (mapRefreshTimer >= 0.1f)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            mapRefreshTimer = 0f;
-            if (mapTarget == null) mapTarget = FindPlayer();
-            if (mapTarget != null && (!hasMapPlayerPosition ||
-                ((Vector2)mapTarget.position - lastMapPlayerPosition).sqrMagnitude >= 0.0025f))
-                RefreshMap();
+            if (mode == OverlayMode.Inventory) CloseMenu();
+            else OpenInventory();
         }
     }
 
@@ -97,6 +76,7 @@ public class DemoPauseMenu : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= HandleSceneLoaded;
+        if (mapPanel != null) mapPanel.SetActive(false);
         if (mode == OverlayMode.None) return;
         mode = OverlayMode.None;
         GameplayPause.Resume();
@@ -104,7 +84,6 @@ public class DemoPauseMenu : MonoBehaviour
 
     private bool HasRequiredReferences()
     {
-
         System.Collections.Generic.List<string> missing = new System.Collections.Generic.List<string>();
         if (openMenuButton == null) missing.Add("Open Menu Button");
         if (menuRoot == null) missing.Add("Paused Menu Overlay");
@@ -112,7 +91,8 @@ public class DemoPauseMenu : MonoBehaviour
         if (inventoryPanel == null) missing.Add("Inventory Content");
         if (mapPanel == null) missing.Add("Map Content");
         if (settingsPanel == null) missing.Add("Settings Content");
-        if (mapGraphic == null) missing.Add("Map Graphic");
+        if (mapEnabled && mapGraphic == null) missing.Add("Map Graphic");
+        if (mapEnabled && miniMapCameraView == null) missing.Add("MiniMap Camera View");
 
         if (missing.Count > 0)
         {
@@ -133,7 +113,7 @@ public class DemoPauseMenu : MonoBehaviour
 
     private void ConfigureMapOverlay()
     {
-        mapPanel.SetActive(true);
+        if (!mapEnabled || miniMapCameraView == null) return;
 
         Image panelImage = mapPanel.GetComponent<Image>();
         if (panelImage != null)
@@ -142,73 +122,24 @@ public class DemoPauseMenu : MonoBehaviour
             panelImage.raycastTarget = false;
         }
 
-        Transform viewport = mapPanel.transform.Find("Map Viewport");
-        if (viewport == null)
-        {
-            GameObject viewportObject = new GameObject("Map Viewport", typeof(RectTransform), typeof(RectMask2D), typeof(Image));
-            viewport = viewportObject.transform;
-            viewport.SetParent(mapPanel.transform, false);
-        }
-        RectTransform viewportRect = viewport.GetComponent<RectTransform>();
-        viewportRect.anchorMin = Vector2.zero;
-        viewportRect.anchorMax = Vector2.one;
-        viewportRect.offsetMin = Vector2.zero;
-        viewportRect.offsetMax = Vector2.zero;
-        RectMask2D viewportMask = viewport.GetComponent<RectMask2D>();
-        if (viewportMask == null) viewportMask = viewport.gameObject.AddComponent<RectMask2D>();
-        viewportMask.padding = Vector4.zero;
-        Image viewportImage = viewport.GetComponent<Image>();
-        if (viewportImage != null)
-        {
-            viewportImage.enabled = false;
-            viewportImage.raycastTarget = false;
-        }
-
-        Transform imageTransform = viewport.Find("Map Camera Image");
-        if (imageTransform == null)
-        {
-            GameObject imageObject = new GameObject("Map Camera Image", typeof(RectTransform), typeof(CanvasRenderer), typeof(RawImage));
-            imageTransform = imageObject.transform;
-            imageTransform.SetParent(viewport, false);
-        }
-        RectTransform imageRect = imageTransform.GetComponent<RectTransform>();
-        imageRect.anchorMin = Vector2.zero;
-        imageRect.anchorMax = Vector2.one;
-        imageRect.offsetMin = Vector2.zero;
-        imageRect.offsetMax = Vector2.zero;
-        imageTransform.SetAsFirstSibling();
-
-        mapGraphic.transform.SetParent(viewport, false);
-        RectTransform graphicRect = mapGraphic.rectTransform;
-        graphicRect.anchorMin = Vector2.zero;
-        graphicRect.anchorMax = Vector2.one;
-        graphicRect.offsetMin = Vector2.zero;
-        graphicRect.offsetMax = Vector2.zero;
-        mapGraphic.transform.SetAsLastSibling();
-        mapGraphic.raycastTarget = false;
-
-        RawImage mapImage = imageTransform.GetComponent<RawImage>();
-        miniMapCameraView = mapPanel.GetComponent<MiniMapCameraView>();
-        if (miniMapCameraView == null) miniMapCameraView = mapPanel.AddComponent<MiniMapCameraView>();
+        if (mapTarget == null) mapTarget = FindPlayer();
         mainCamera = Camera.main;
         if (mainCamera == null) mainCamera = FindFirstObjectByType<Camera>();
-        miniMapCameraView.Configure(mainCamera, mapTarget != null ? mapTarget : FindPlayer(), mapImage, mapCameraScale);
+
+        miniMapCameraView.Configure(mainCamera, mapTarget, mapCameraScale);
     }
 
     private void RefreshMap()
     {
-        if (!mapEnabled || mapGraphic == null) return;
+        if (!mapEnabled || mode != OverlayMode.Inventory || mapGraphic == null) return;
         if (mapTarget == null) mapTarget = FindPlayer();
         if (miniMapCameraView != null) miniMapCameraView.SetTarget(mapTarget);
+
         float radius = mainCamera != null && mainCamera.orthographic
             ? mainCamera.orthographicSize * mapCameraScale : 32f;
-        if (mapTarget != null)
-        {
-            lastMapPlayerPosition = mapTarget.position;
-            hasMapPlayerPosition = true;
-        }
         mapGraphic.Refresh(mapTarget, radius);
     }
+
     private Transform FindPlayer()
     {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -217,18 +148,12 @@ public class DemoPauseMenu : MonoBehaviour
 
     private void HandleSceneLoaded(Scene scene, LoadSceneMode loadMode)
     {
-        if (!mapEnabled) return;
+        if (!mapEnabled || mode != OverlayMode.Inventory) return;
+
         mapTarget = FindPlayer();
         if (mapGraphic != null) mapGraphic.InvalidateCache();
-        if (miniMapCameraView != null) miniMapCameraView.SetTarget(mapTarget);
+        ConfigureMapOverlay();
         RefreshMap();
-    }
-
-    private void EnsureLanguageManager()
-    {
-        if (transition.IsReady) return;
-        transition existing = FindFirstObjectByType<transition>(FindObjectsInactive.Include);
-        if (existing == null) new GameObject("Language Manager").AddComponent<transition>();
     }
 
     private void ShowOverlay(OverlayMode nextMode)
@@ -239,10 +164,19 @@ public class DemoPauseMenu : MonoBehaviour
         mode = nextMode;
         menuRoot.SetActive(true);
         inventoryPanel.SetActive(nextMode == OverlayMode.Inventory);
-        if (playerStatusHUD != null) playerStatusHUD.SetVisible(nextMode == OverlayMode.Inventory);
         settingsPanel.SetActive(nextMode == OverlayMode.Settings);
-        if (nextMode == OverlayMode.Inventory && inventoryGridUI != null)
-            inventoryGridUI.RefreshInventory();
+        mapPanel.SetActive(mapEnabled && nextMode == OverlayMode.Inventory);
+        if (playerStatusHUD != null) playerStatusHUD.SetVisible(nextMode == OverlayMode.Inventory);
+
+        if (nextMode == OverlayMode.Inventory)
+        {
+            if (mapEnabled)
+            {
+                ConfigureMapOverlay();
+                RefreshMap();
+            }
+            if (inventoryGridUI != null) inventoryGridUI.RefreshInventory();
+        }
     }
 
     private void OpenSettings()
@@ -259,6 +193,7 @@ public class DemoPauseMenu : MonoBehaviour
     {
         if (mode == OverlayMode.None) return;
         mode = OverlayMode.None;
+        mapPanel.SetActive(false);
         menuRoot.SetActive(false);
         inventoryPanel.SetActive(false);
         settingsPanel.SetActive(false);
@@ -266,11 +201,3 @@ public class DemoPauseMenu : MonoBehaviour
         GameplayPause.Resume();
     }
 }
-
-
-
-
-
-
-
-

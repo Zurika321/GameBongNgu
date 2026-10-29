@@ -15,25 +15,30 @@ MonoBehaviour:
   sessionId: 13B
   npcName: "V\xF4 Di\u1EC7n"
   nodes:
-  - text: "Ng\u01B0\u01A1i th\u1EAFng r\u1ED3i \u0111\u1EA5y... nh\u01B0ng ng\u01B0\u01A1i
-      c\xF3 ch\u1EAFc ph\u1EA7n \u2018ng\u01B0\u01A1i\u2019 c\xF2n th\u1EAFng kh\xF4ng?"
+  - text: "DIALOGUE_SESSION_13B_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 13B
       choiceId: 13B_Cat
-      label: "C\u1EAFt \u0111\u1EE9t ho\xE0n to\xE0n s\u1EE9c m\u1EA1nh qu\u1EF7"
+      label: "DIALOGUE_SESSION_13B_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "Kh\u1EA3i ch\u1EB7t \u0111\u1EE9t li\xEAn k\u1EBFt v\u1EDBi V\xF4
-        Di\u1EC7n, d\xF9 bi\u1EBFt m\xECnh s\u1EBD y\u1EBFu \u0111i v\u0129nh vi\u1EC5n."
+      resultText: "DIALOGUE_SESSION_13B_LINE_01_CHOICE_01_RESULT"
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
+      resultTextIsLocalizationKey: 1
+      labelIsLocalizationKey: 1
     - sessionId: 13B
       choiceId: 13B_Giu
-      label: "Gi\u1EEF l\u1EA1i m\u1ED9t ph\u1EA7n s\u1EE9c m\u1EA1nh"
+      label: "DIALOGUE_SESSION_13B_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Kh\u1EA3i gi\u1EEF l\u1EA1i s\u1EE9c m\u1EA1nh c\xF2n s\xF3t.
-        Ranh gi\u1EDBi gi\u1EEFa hai \xFD th\u1EE9c v\u1EABn ch\u01B0a r\xF5 r\xE0ng."
+      resultText: "DIALOGUE_SESSION_13B_LINE_01_CHOICE_02_RESULT"
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
+      resultTextIsLocalizationKey: 1
+      labelIsLocalizationKey: 1
+    textIsLocalizationKey: 1

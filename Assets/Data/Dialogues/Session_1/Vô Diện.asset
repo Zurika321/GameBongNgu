@@ -14,25 +14,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DemoDialogueAsset
   sessionId: 1
   npcName: "V\xF4 Di\u1EC7n"
-  postDialogueText: aaaa
+  postDialogueText: DIALOGUE_VO_DIEN_POST_DIALOGUE
+  postDialogueTextIsLocalizationKey: 1
   nodes:
-  - speakerId: 
-    text: "Kh\u1EA3i nh\xECn v\xE0o g\u01B0\u01A1ng v\u1EE1, m\u1EB7t ph\u1EA3n chi\u1EBFu
-      b\u1ECB m\u1EA5t. Gi\u1ECDng th\xEC th\u1EA7m: \u2018D\u1EADy r\u1ED3i \xE0...
-      M\xE1u tr\xEAn tay ng\u01B0\u01A1i v\u1EABn c\xF2n \u1EA5m. Ng\u01B0\u01A1i
-      kh\xF4ng mu\u1ED1n bi\u1EBFt \u0111\xEAm qua ai \u0111\xE3 c\u1EA7m con dao
-      n\xE0y sao?\u2019"
+  - speakerId: player
+    textIsLocalizationKey: 1
+    text: DIALOGUE_VO_DIEN_LINE_01
     nextNodeIndex: -1
     choices:
-    - sessionId: 1
+    - sessionId: 
       choiceId: 1.5
-      label: "Ng\u01B0\u01A1i l\xE0 ai?"
+      labelIsLocalizationKey: 1
+      label: DIALOGUE_VO_DIEN_LINE_01_CHOICE_01
       requiredFlag: 
       requiredItemName: 
-      requiredItemAmount: 1
-      resultText: "V\xF4 Di\u1EC7n \u0111\xE1p: \u2018M\u1ED9t k\u1EBB chia s\u1EBB
-        gi\u01B0\u1EDDng v\u1EDBi ng\u01B0\u01A1i. Nh\xECn xu\u1ED1ng \u0111\u1EA5t
-        \u0111i. M\xF9i m\xE1u \u0111\xE3 g\u1ECDi ch\xFAng t\u1EDBi.\u2019"
+      requiredItemAmount: 0
+      resultText: DIALOGUE_VO_DIEN_LINE_01_CHOICE_01_RESULT
+      resultTextIsLocalizationKey: 1
       resultSpeakerId: 
       nextNodeIndex: -1
       ltDelta: 0

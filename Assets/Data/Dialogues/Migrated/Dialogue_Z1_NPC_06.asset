@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40ed51c39cfc83d4c968c32f57874512, type: 3}
+  m_Name: "Dialogue_Z1_NPC_06"
+  m_EditorClassIdentifier: 
+  sessionId: ""
+  npcName: "Thầy Trừ Tà Hạo"
+  postDialogueText: ""
+  postDialogueTextIsLocalizationKey: 0
+  nodes:
+  - speakerId: ""
+    textIsLocalizationKey: 1
+    text: "Z1_NPC_06_LINE_01"
+    nextNodeIndex: 1
+    choices: []
+  - speakerId: ""
+    textIsLocalizationKey: 1
+    text: "Z1_NPC_06_LINE_02"
+    nextNodeIndex: -1
+    choices:
+    - sessionId: "3"
+      choiceId: "A"
+      labelIsLocalizationKey: 1
+      label: "Z1_NPC_06_LINE_02_CHOICE_01"
+      requiredFlag: "Session3Ready"
+      requiredItemName: ""
+      requiredItemAmount: 1
+      resultText: "Z1_NPC_06_LINE_02_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+      resultSpeakerId: ""
+      nextNodeIndex: 2
+      ltDelta: 2
+      qtDelta: -1
+    - sessionId: "3"
+      choiceId: "B"
+      labelIsLocalizationKey: 1
+      label: "Z1_NPC_06_LINE_02_CHOICE_02"
+      requiredFlag: "Session3Ready"
+      requiredItemName: ""
+      requiredItemAmount: 1
+      resultText: "Z1_NPC_06_LINE_02_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+      resultSpeakerId: ""
+      nextNodeIndex: 2
+      ltDelta: 0
+      qtDelta: 1
+  - speakerId: ""
+    textIsLocalizationKey: 1
+    text: "Z1_NPC_06_LINE_03"
+    nextNodeIndex: -1
+    choices: []
+  m_AssetBundleName: 
+  m_AssetBundleVariant: 

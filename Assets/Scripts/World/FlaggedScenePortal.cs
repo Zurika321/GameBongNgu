@@ -5,7 +5,7 @@ public class FlaggedScenePortal : MonoBehaviour
 {
     [SerializeField] private string destinationScene;
     [SerializeField] private string destinationZone;
-    [SerializeField] private string requiredFlag;
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
     private bool transitionStarted;
 
     private void Reset() { GetComponent<Collider2D>().isTrigger = true; }

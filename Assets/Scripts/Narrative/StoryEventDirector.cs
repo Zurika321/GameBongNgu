@@ -10,21 +10,21 @@ public class StoryEventAction
     public GameObject[] activateObjects = Array.Empty<GameObject>();
     public GameObject[] deactivateObjects = Array.Empty<GameObject>();
     public ZoneEnemySpawner[] spawnSpawners = Array.Empty<ZoneEnemySpawner>();
-    public string[] flagsToSet = Array.Empty<string>();
-    public string[] flagsToRemove = Array.Empty<string>();
+    [RegistryId(RegistryIdType.Flag)] public string[] flagsToSet = Array.Empty<string>();
+    [RegistryId(RegistryIdType.Flag)] public string[] flagsToRemove = Array.Empty<string>();
     [Tooltip("Item added when this event or choice action runs.")]
-    public string itemToAdd;
+    [RegistryId(RegistryIdType.Item)] public string itemToAdd;
     [Min(1), Tooltip("Quantity to add for this action.")]
     public int itemToAddAmount = 1;
     [Tooltip("Item removed when this event or choice action runs.")]
-    public string itemToRemove;
+    [RegistryId(RegistryIdType.Item)] public string itemToRemove;
     [Min(1), Tooltip("Quantity to remove for this action.")]
     public int itemToRemoveAmount = 1;
-    public string readableItemToOpen;
+    [RegistryId(RegistryIdType.Item)] public string readableItemToOpen;
 
     [Header("Complete Session (bỏ trống nếu không dùng)")]
-    public string completeSessionId;
-    public string nextSessionId;
+    [RegistryId(RegistryIdType.Session)] public string completeSessionId;
+    [RegistryId(RegistryIdType.Session)] public string nextSessionId;
 }
 
 [Serializable]
@@ -32,6 +32,8 @@ public class StoryEventChoiceAction
 {
     public string choiceId;
     public StoryEventAction action = new StoryEventAction();
+    [Tooltip("Khi có action hợp lệ ở đây, danh sách module thay thế action cũ phía trên.")]
+    [SerializeReference] public List<IStoryAction> actions = new List<IStoryAction>();
 }
 
 [Serializable]
@@ -41,6 +43,10 @@ public class StoryEventDefinition
     public bool oneShot = true;
     public DemoNpcDialogueProfile dialogueProfile;
     public StoryEventAction onTriggered = new StoryEventAction();
+    [Tooltip("Điều kiện phải đạt trước khi sự kiện chạy; tất cả điều kiện trong danh sách đều phải đạt.")]
+    [SerializeReference] public List<IStoryCondition> conditions = new List<IStoryCondition>();
+    [Tooltip("Khi có action hợp lệ ở đây, danh sách module thay thế action cũ phía trên.")]
+    [SerializeReference] public List<IStoryAction> onTriggeredActions = new List<IStoryAction>();
     public StoryEventChoiceAction[] choices = Array.Empty<StoryEventChoiceAction>();
 }
 
@@ -57,6 +63,7 @@ public class StoryEventDirector : MonoBehaviour
     [SerializeField] private TMP_Text itemChangeText;
 
     private readonly HashSet<string> completedEvents = new HashSet<string>();
+    private readonly HashSet<string> invalidConditionWarnings = new HashSet<string>();
     private DemoNpcDialogueController dialogueController;
     private string activeDialogueEventId;
     private string pendingReadableItem;
@@ -146,6 +153,8 @@ public class StoryEventDirector : MonoBehaviour
             Debug.LogWarning($"[StoryEventDirector] Cannot start '{eventId}' while '{activeDialogueEventId}' is awaiting a choice.", this);
             return false;
         }
+        if (!AreConditionsMet(definition)) return false;
+
         if (definition.dialogueProfile != null
             && DemoNpcDialogueController.HasSessionChoices(definition.dialogueProfile)
             && !hasPendingChoice)
@@ -161,7 +170,11 @@ public class StoryEventDirector : MonoBehaviour
         progress.BeginStoryEventBatch();
         try
         {
-            ApplyAction(definition.onTriggered);
+            StoryEventAction actionSnapshot = definition.onTriggered;
+            if (HasConfiguredActions(definition.onTriggeredActions))
+                actionSnapshot = ExecuteActionModules(definition.onTriggeredActions, false);
+            else
+                ApplyAction(definition.onTriggered);
 
             bool pendingChoice = false;
             if (definition.dialogueProfile != null)
@@ -185,7 +198,7 @@ public class StoryEventDirector : MonoBehaviour
             }
 
             if (!pendingChoice) CompleteEvent(definition);
-            RecordLastEvent(eventId, string.Empty, definition.onTriggered,
+            RecordLastEvent(eventId, string.Empty, actionSnapshot,
                 definition.dialogueProfile, pendingChoice);
             return true;
         }
@@ -230,15 +243,22 @@ public class StoryEventDirector : MonoBehaviour
         foreach (StoryEventChoiceAction choiceAction in definition.choices ?? Array.Empty<StoryEventChoiceAction>())
         {
             if (choiceAction == null || choiceAction.choiceId != choice.choiceId) continue;
-            if (choiceAction.action != null)
+            StoryEventAction actionSnapshot;
+            if (HasConfiguredActions(choiceAction.actions))
             {
-                pendingReadableItem = choiceAction.action.readableItemToOpen;
-                choiceAction.action.readableItemToOpen = string.Empty;
+                pendingReadableItem = string.Empty;
+                actionSnapshot = ExecuteActionModules(choiceAction.actions, true);
             }
-            ApplyAction(choiceAction.action);
+            else
+            {
+                if (choiceAction.action != null)
+                    pendingReadableItem = choiceAction.action.readableItemToOpen;
+                actionSnapshot = CreateChoiceActionSnapshot(choiceAction.action);
+                ApplyAction(actionSnapshot);
+            }
             CompleteEvent(definition);
             activeDialogueEventId = null;
-            RecordLastEvent(definition.eventId, choice.choiceId, choiceAction.action,
+            RecordLastEvent(definition.eventId, choice.choiceId, actionSnapshot,
                 null, false, profile, choice.sessionId);
             return;
         }
@@ -317,6 +337,118 @@ public class StoryEventDirector : MonoBehaviour
         {
             if (spawner != null) spawner.Spawn();
         }
+    }
+
+    internal PlayerProgressionService CurrentProgress => progress ?? PlayerProgressionService.Instance;
+
+    private bool HasConfiguredActions(List<IStoryAction> actions)
+    {
+        if (actions == null) return false;
+        foreach (IStoryAction action in actions)
+            if (action != null) return true;
+        return false;
+    }
+
+    private bool AreConditionsMet(StoryEventDefinition definition)
+    {
+        if (definition == null || definition.conditions == null || definition.conditions.Count == 0)
+            return true;
+
+        StoryEventContext context = new StoryEventContext(this, progress, false);
+        foreach (IStoryCondition condition in definition.conditions)
+        {
+            if (condition == null)
+            {
+                if (invalidConditionWarnings.Add(definition.eventId ?? string.Empty))
+                    Debug.LogError(
+                        $"[StoryEventDirector] Event '{definition.eventId}' has a missing condition module; the event is blocked.",
+                        this);
+                return false;
+            }
+
+            if (!condition.IsMet(context)) return false;
+        }
+
+        return true;
+    }
+
+    private StoryEventAction ExecuteActionModules(List<IStoryAction> actions, bool deferReadableItem)
+    {
+        StoryEventAction snapshot = new StoryEventAction();
+        StoryEventContext context = new StoryEventContext(this, progress, deferReadableItem);
+        foreach (IStoryAction action in actions)
+        {
+            if (action == null) continue;
+            action.Execute(context);
+            if (action is IStoryActionSnapshot snapshotAction)
+                snapshotAction.AppendToLegacySnapshot(snapshot, deferReadableItem);
+        }
+        return snapshot;
+    }
+
+    private static StoryEventAction CreateChoiceActionSnapshot(StoryEventAction source)
+    {
+        if (source == null) return null;
+        return new StoryEventAction
+        {
+            activateObjects = source.activateObjects,
+            deactivateObjects = source.deactivateObjects,
+            spawnSpawners = source.spawnSpawners,
+            flagsToSet = source.flagsToSet,
+            flagsToRemove = source.flagsToRemove,
+            itemToAdd = source.itemToAdd,
+            itemToAddAmount = source.itemToAddAmount,
+            itemToRemove = source.itemToRemove,
+            itemToRemoveAmount = source.itemToRemoveAmount,
+            readableItemToOpen = string.Empty,
+            completeSessionId = source.completeSessionId,
+            nextSessionId = source.nextSessionId
+        };
+    }
+
+    internal void SetObjectsActiveFromModule(GameObject[] objects, bool active)
+    {
+        SetObjectsActive(objects, active);
+    }
+
+    internal void CompleteSessionFromModule(string sessionId, string nextSessionId)
+    {
+        CompleteSessionOnce(sessionId, nextSessionId);
+    }
+
+    internal void AddItemFromModule(string itemName, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(itemName) || progress == null) return;
+        amount = Mathf.Max(1, amount);
+        if (progress.AddItem(itemName, amount))
+            ItemChangeNotifier.Show(itemChangeText, itemName, amount, true);
+        else
+            Debug.LogWarning($"[StoryEventDirector] Could not add '{itemName}' to the inventory.", this);
+    }
+
+    internal void RemoveItemFromModule(string itemName, int amount)
+    {
+        if (string.IsNullOrWhiteSpace(itemName) || progress == null) return;
+        amount = Mathf.Max(1, amount);
+        if (progress.RemoveItem(itemName, amount))
+            ItemChangeNotifier.Show(itemChangeText, itemName, amount, false);
+        else
+            Debug.LogWarning($"[StoryEventDirector] Could not remove '{itemName}' from the inventory.", this);
+    }
+
+    internal void OpenReadableItemFromModule(string itemName)
+    {
+        if (string.IsNullOrWhiteSpace(itemName)) return;
+        InventoryGridUI inventory = FindAnyObjectByType<InventoryGridUI>(FindObjectsInactive.Include);
+        if (inventory == null)
+            Debug.LogError("[StoryEventDirector] Cannot open a book: InventoryGridUI is missing.", this);
+        else if (!inventory.OpenReadableItem(itemName))
+            Debug.LogError($"[StoryEventDirector] '{itemName}' is not a readable item.", this);
+    }
+
+    internal void DeferReadableItemFromModule(string itemName)
+    {
+        pendingReadableItem = itemName;
     }
 
     private void CompleteSessionOnce(string sessionId, string nextSessionId)

@@ -7,7 +7,7 @@ public class DoorTransition : MonoBehaviour
 
     [SerializeField] private PolygonCollider2D newBounds;
     [SerializeField] private Transform destinationPosition;
-    [SerializeField] private string requiredFlag;
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
     [SerializeField] private Direction direction;
     [SerializeField] private float pushDistance = 2f;
 

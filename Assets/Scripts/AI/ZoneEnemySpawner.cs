@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 [Serializable]
 public class ZoneDropDefinition
 {
-    public string itemName;
+    [RegistryId(RegistryIdType.Item)] public string itemName;
     [Min(1)] public int amount = 1;
     [FormerlySerializedAs("chance")]
     [Range(0f, 1f), Tooltip("Per-item drop probability from 0 to 1; this is separate from enemy EXP.")]
@@ -26,13 +26,17 @@ public class ZoneEnemySpawner : MonoBehaviour
     [SerializeField, Min(0), Tooltip("EXP awarded per defeated enemy. Never store drop percentages here.")] private int experiencePerEnemy = 15;
     [SerializeField] private bool spawnWhenPlayerNearby;
     [SerializeField, Min(0.1f)] private float activationRadius = 5f;
-    [SerializeField] private string requiredFlag;
+    [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
     [SerializeField] private StoryEventDirector storyEventDirector;
     [SerializeField] private string eventIdOnCleared;
     [SerializeField, Tooltip("Only commit defeated-enemy progress after this whole encounter is clear. Snapshots are still saved during combat.")]
     private bool saveOnBattleClear;
-    [SerializeField, Tooltip("Stable ID for this encounter. Leave empty to derive it from the scene and hierarchy path.")]
+    [UniqueId, SerializeField, Tooltip("Stable ID for this encounter; assigned automatically in the Editor.")]
     private string persistentSpawnerId;
+
+#if UNITY_EDITOR
+    private void OnValidate() => UniqueIdUtility.EnsureIds(this);
+#endif
 
     private readonly List<SpawnedEnemy> spawnedEnemies = new List<SpawnedEnemy>();
     private bool hasSpawned;

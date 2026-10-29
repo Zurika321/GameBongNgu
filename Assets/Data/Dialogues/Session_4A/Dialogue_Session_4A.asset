@@ -15,26 +15,31 @@ MonoBehaviour:
   sessionId: 4A
   npcName: "V\xF4 Di\u1EC7n"
   nodes:
-  - text: "Ng\u01B0\u01A1i ngh\u0129 kh\xF3a \u0111\u01B0\u1EE3c ta sao? Ta ch\u1EC9
-      \u0111ang... ngh\u1EC9 ng\u01A1i."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_4A_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 4A
       choiceId: 4A1
-      label: "L\u1EAFng nghe gi\u1ECDng n\xF3i"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_4A_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "V\xF4 Di\u1EC7n b\u1EADt c\u01B0\u1EDDi kh\u1EBD. Trong g\u01B0\u01A1ng,
-        c\xE1i b\xF3ng d\u01B0\u1EDDng nh\u01B0 \u0111ang ch\u1EDD Kh\u1EA3i h\u1ECFi
-        th\xEAm."
+      resultText: "DIALOGUE_SESSION_4A_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 1
     - sessionId: 4A
       choiceId: 4A2
-      label: "Ch\u1ED1ng l\u1EA1i n\xF3"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_4A_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Kh\u1EA3i quay m\u1EB7t kh\u1ECFi nh\u1EEFng t\u1EA5m g\u01B0\u01A1ng
-        v\xE0 ti\u1EBFp t\u1EE5c b\u01B0\u1EDBc qua h\xE0nh lang."
+      resultText: "DIALOGUE_SESSION_4A_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
       nextNodeIndex: -1
       ltDelta: 1
       qtDelta: 0

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
@@ -55,6 +55,7 @@ public sealed class transition : MonoBehaviour
 
         // Load now so a missing language is reported early. UI components also refresh in OnEnable.
         LoadLanguage(currentLanguage);
+        OnLanguageChanged?.Invoke(currentLanguage);
     }
 
     private void OnDestroy()
@@ -104,6 +105,8 @@ public sealed class transition : MonoBehaviour
 
         instance.currentLanguage = code;
         PlayerPrefs.SetString(LanguagePrefsKey, code);
+        PlayerPrefs.Save();
+        PlayerProgressionService.PersistLanguagePreference(code);
         LanguageCache.Remove(code);
         LoadLanguage(code);
         OnLanguageChanged?.Invoke(code);

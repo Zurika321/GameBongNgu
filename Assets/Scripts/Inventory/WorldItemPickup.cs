@@ -9,7 +9,7 @@ public class WorldItemPickup : MonoBehaviour
     private static Sprite shadowSprite;
 
     [SerializeField] private string itemId;
-    [SerializeField] private string itemName;
+    [RegistryId(RegistryIdType.Item), SerializeField] private string itemName;
     [SerializeField] private ItemDefinition itemDefinition;
     [SerializeField, Min(1)] private int amount = 1;
     [SerializeField, Range(0f, 1f)] private float spawnChance = 1f;

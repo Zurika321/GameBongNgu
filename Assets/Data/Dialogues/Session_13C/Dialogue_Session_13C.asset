@@ -15,7 +15,8 @@ MonoBehaviour:
   sessionId: 13C
   npcName: "V\xF4 Di\u1EC7n"
   nodes:
-  - text: "C\u1EA3m \u01A1n v\xEC \u0111\xE3 cho ta m\u01B0\u1EE3n th\xE2n x\xE1c
-      n\xE0y l\xE2u \u0111\u1EBFn v\u1EADy."
+  - text: "DIALOGUE_SESSION_13C_LINE_01"
+
     nextNodeIndex: -1
     choices: []
+    textIsLocalizationKey: 1

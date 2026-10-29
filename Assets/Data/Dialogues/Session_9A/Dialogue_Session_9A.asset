@@ -15,26 +15,31 @@ MonoBehaviour:
   sessionId: 9A
   npcName: "\u1EA8n S\u0129 M\xF9"
   nodes:
-  - text: "M\xE1u t\u1EF1 nguy\u1EC7n kh\xE1c m\xE1u c\u01B0\u1EE1ng \xE9p. Nghi
-      l\u1EC5 s\u1EBD bi\u1EBFt s\u1EF1 kh\xE1c bi\u1EC7t \u0111\xF3, con trai \xE0."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_9A_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 9A
       choiceId: 9A1
-      label: "T\xECm ng\u01B0\u1EDDi t\u1EF1 nguy\u1EC7n hi\u1EBFn m\xE1u"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_9A_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "\u1EA8n S\u0129 ch\u1EA5p nh\u1EADn v\u1EADt hi\u1EBFn t\u1EBF
-        s\u1EA1ch. Nghi l\u1EC5 c\xF3 c\u01A1 h\u1ED9i gi\u1EA3i tho\xE1t nh\u1EEFng
-        linh h\u1ED3n b\u1ECB m\u1EAFc k\u1EB9t."
+      resultText: "DIALOGUE_SESSION_9A_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 2
       qtDelta: 0
     - sessionId: 9A
       choiceId: 9A2
-      label: "C\u01B0\u1EE1ng \xE9p l\u1EA5y m\xE1u"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_9A_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Nghi th\u1EE9c v\u1EABn ti\u1EBFp t\u1EE5c, nh\u01B0ng nh\u1EEFng
-        k\xFD t\u1EF1 tr\xEAn \u0111\xE1 chuy\u1EC3n sang m\xE0u \u0111en."
+      resultText: "DIALOGUE_SESSION_9A_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 2

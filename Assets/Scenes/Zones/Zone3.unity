@@ -1271,11 +1271,8 @@ MonoBehaviour:
   npcName: "Th\u1EA7y H\u1EA1o"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "Con \u0111ang bi\u1EBFn th\xE0nh th\u1EE9 m\xE0 con t\u1EEBng s\u1EE3
-      h\xE3i nh\u1EA5t \u0111\u1EA5y."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 6cd3e50c4a9643319d60e52e20f7d40d, type: 2}
+  dialogue: []
 --- !u!1 &592071175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,11 +2409,8 @@ MonoBehaviour:
   npcName: "\u1EA8n S\u0129 M\xF9"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "Ta kh\xF4ng c\u1EA7n \u0111\xF4i m\u1EAFt \u0111\u1EC3 nghe th\u1EA5y
-      th\u1EE9 \u0111ang b\xE1m theo con."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: b91b2b90780444baacffd3cd30070308, type: 2}
+  dialogue: []
 --- !u!1 &1062003127
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,11 +3033,8 @@ MonoBehaviour:
   npcName: "B\xF3ng Ma N\u1EA1n Nh\xE2n \u0110\u1EA7u Ti\xEAn"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "Ta ch\u1EC9 mu\u1ED1n ng\u1EE7 y\xEAn... nh\u01B0ng n\xF3 kh\xF4ng cho
-      ta ng\u1EE7..."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: d602620d7da64771a66009eed9cf0d0f, type: 2}
+  dialogue: []
 --- !u!1 &1250175223
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,12 +3186,8 @@ MonoBehaviour:
   npcName: "L\xE3o R\xE8n C\u1ED1c"
   portraitFrames: []
   portraitFrameRate: 4
-  dialogue:
-  - text: "Mu\u1ED1n r\xE8n v\u0169 kh\xED th\xEC mang \u0111\u1EE7 v\u1EADt li\u1EC7u
-      \u0111\u1EBFn \u0111\xE2y. \u0110\u1EEBng \u0111\u1EC3 l\u1EDDi nguy\u1EC1n
-      \u0111i\u1EC1u khi\u1EC3n tay con."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 0ec28b8a9c2848339f8d30a86b07a25b, type: 2}
+  dialogue: []
 --- !u!1 &1311326331
 GameObject:
   m_ObjectHideFlags: 0

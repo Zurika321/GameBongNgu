@@ -15,27 +15,32 @@ MonoBehaviour:
   sessionId: 10
   npcName: Nhi
   nodes:
-  - text: "D\xF9 ng\xE0y mai c\xF3 chuy\u1EC7n g\xEC, t\xF4i v\u1EABn \u1EDF \u0111\xE2y.
-      Anh kh\xF4ng ph\u1EA3i m\u1ED9t m\xECnh \u0111\xE2u."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_10_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 10
       choiceId: 10A
-      label: "Ng\u1EE7 v\xE0 g\u1EB7p V\xF4 Di\u1EC7n trong m\u01A1"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_10_LINE_01_CHOICE_01"
       requiredFlag: 
-      resultText: "Kh\u1EA3i kh\xE9p m\u1EAFt. Trong gi\u1EA5c m\u01A1, c\u0103n
-        ph\xF2ng tr\u1EAFng \u0111\u1EA7y nh\u1EEFng m\u1EA3nh k\xFD \u1EE9c \u0111ang
-        ch\u1EDD anh."
+      resultText: "DIALOGUE_SESSION_10_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
     - sessionId: 10
       choiceId: 10B
-      label: "Th\u1EE9c tr\u1EAFng chu\u1EA9n b\u1ECB v\u0169 kh\xED"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_10_LINE_01_CHOICE_02"
       requiredFlag: 
-      resultText: "Kh\u1EA3i ki\u1EC3m tra l\u1EA1i v\u0169 kh\xED v\xE0 v\u1EADt
-        ph\u1EA9m \u0111\u1EBFn g\u1EA7n s\xE1ng. Kh\xF4ng c\xF2n th\u1EDDi gian
-        \u0111\u1EC3 do d\u1EF1."
+      resultText: "DIALOGUE_SESSION_10_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0

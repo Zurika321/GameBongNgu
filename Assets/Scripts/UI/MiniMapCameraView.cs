@@ -1,14 +1,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>Renders a bounded, transparent world view only when its center moves.</summary>
+/// <summary>Renders a bounded, transparent world view only while its inventory panel is active.</summary>
 public sealed class MiniMapCameraView : MonoBehaviour
 {
     private const int TextureResolution = 512;
+
+    [SerializeField] private Camera mapCamera;
+    [SerializeField] private RawImage destination;
+
     private Camera mainCamera;
-    private Camera mapCamera;
     private RenderTexture renderTexture;
-    private RawImage destination;
     private Transform target;
     private float viewScale = 3f;
     private Vector3 lastRenderedPosition;
@@ -16,13 +18,17 @@ public sealed class MiniMapCameraView : MonoBehaviour
     private float nextRenderTime;
     private bool dirty = true;
 
-    public void Configure(Camera sourceCamera, Transform followTarget, RawImage output, float scale)
+    public void Configure(Camera sourceCamera, Transform followTarget, float scale)
     {
         mainCamera = sourceCamera;
         target = followTarget;
-        destination = output;
         viewScale = Mathf.Max(1f, scale);
-        if (mainCamera == null || destination == null) return;
+
+        if (mainCamera == null || mapCamera == null || destination == null)
+        {
+            Debug.LogError("[MiniMapCameraView] Assign the main camera, prebuilt map camera, and map RawImage in the scene.", this);
+            return;
+        }
 
         if (renderTexture == null)
         {
@@ -34,12 +40,6 @@ public sealed class MiniMapCameraView : MonoBehaviour
                 antiAliasing = 1
             };
             renderTexture.Create();
-        }
-
-        if (mapCamera == null)
-        {
-            GameObject cameraObject = new GameObject("MiniMap Camera");
-            mapCamera = cameraObject.AddComponent<Camera>();
         }
 
         mapCamera.orthographic = true;
@@ -70,7 +70,10 @@ public sealed class MiniMapCameraView : MonoBehaviour
         dirty = true;
     }
 
-    private void LateUpdate() => RenderIfNeeded(false);
+    private void LateUpdate()
+    {
+        RenderIfNeeded(false);
+    }
 
     private void RenderIfNeeded(bool force)
     {
@@ -96,14 +99,12 @@ public sealed class MiniMapCameraView : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (mapCamera != null) Destroy(mapCamera.gameObject);
-        if (renderTexture != null)
-        {
-            if (destination != null && destination.texture == renderTexture)
-                destination.texture = null;
-            renderTexture.Release();
-            Destroy(renderTexture);
-        }
+        if (mapCamera != null) mapCamera.targetTexture = null;
+        if (destination != null && destination.texture == renderTexture)
+            destination.texture = null;
+        if (renderTexture == null) return;
+
+        renderTexture.Release();
+        Destroy(renderTexture);
     }
 }
-

@@ -1,0 +1,64 @@
+# NewUpdate2 — Nâng cấp animation, điều kiện trang bị và Player Hub
+
+**Trạng thái:** kế hoạch cho công đoạn tiếp theo; tài liệu này chưa yêu cầu sửa code hoặc scene ngay.  
+**Mục tiêu:** hoàn thiện animation có thể cân chỉnh từng frame, ràng buộc skill với vũ khí, SFX riêng cho từng skill, và biến panel bên phải Inventory thành Player Hub.
+
+## Hiện trạng cần giữ trong đầu
+
+- CharacterAnimation.AnimClip hiện có một frameRate chung cho cả mảng sprite. PlayCustom cũng nhận một tốc độ chung; BasicMeleeSkill tự chia đều thời lượng cast cho các frame. Chưa chỉnh thời lượng riêng từng frame được.
+- Save hiện có equippedItemName cho một món đang trang bị. ItemDefinition đã có icon, loại item và chỉ số cộng ATK/DEF/HP. Chưa có hai ô vũ khí theo tay.
+- Skill loadout vừa được thêm: tối đa 3 skill, lưu tên và phím; Inventory có tab Kỹ năng. BasicSlash và DodgeRoll là hai hành động hiện được ánh xạ từ skill data; những hành động mới vẫn cần code.
+- SkillRegistration trong SkillActions hiện đăng ký tên skill và sprite; chưa chứa icon hoặc AudioClip.
+- Kiểm tra lại luồng lưu trang bị trước khi mở rộng: NormalizeData() hiện có lệnh gán equippedItemName = string.Empty; cần xác nhận và sửa có chủ đích để trang bị không bị mất khi load.
+- Giữ nguyên cốt lõi LastEventData và dữ liệu truyện hiện có. Không tạo layout UI khi chạy game; UI mới phải được thêm trong scene/prefab theo ../AI_QuyTac.md.
+
+## 1. Cho phép chỉnh thời lượng từng frame animation
+
+- Bổ sung dữ liệu thời lượng cho từng frame của animation, cấu hình được trong Inspector; không chỉ dùng một frameRate cho cả clip.
+- Hỗ trợ các hướng down/up/left/right và animation riêng skill. Người làm game có thể giữ sprite và chỉnh thời gian từng frame mà không phải sửa logic phát.
+- Nâng cấp CharacterAnimation để chuyển frame theo thời lượng đã cấu hình, xử lý loop và non-loop đúng.
+- Giữ tương thích cho các clip cũ: nếu chưa có thời lượng riêng, tiếp tục dùng frameRate hiện tại. Không làm mất sprite reference đã lưu trong scene/prefab.
+- Kiểm tra các skill dùng PlayCustom, đặc biệt Chém Cơ Bản, để từng frame có thời gian riêng và tổng animation vẫn khớp thời gian khóa hành động.
+
+## 2. Thêm điều kiện vũ khí cho skill và tự gỡ khi mất điều kiện
+
+- Thêm cấu hình điều kiện vũ khí vào dữ liệu/định nghĩa skill: loại vũ khí được chấp nhận và/hoặc danh sách weapon ID cụ thể. Tránh so chuỗi viết cứng trong gameplay.
+- Ví dụ: Chém Cơ Bản chỉ trang bị/kích hoạt được khi tay phải đang cầm dao hoặc kiếm hợp lệ.
+- Kiểm tra điều kiện khi người chơi trang bị skill và ngay trước khi skill được kích hoạt.
+- Nếu người chơi gỡ, đổi, chuyển vào rương hoặc mất món vũ khí khiến điều kiện không còn đúng, tự gỡ skill đó khỏi loadout, đồng bộ lại PlayerSkillController và lưu save.
+- Mở rộng save/equipment thành hai ô vũ khí: tay phải và tay trái. Có migration từ equippedItemName cũ để không làm mất trang bị trong save hiện tại.
+- Cập nhật tính ATK/DEF/HP để cộng bonus từ hai ô theo quy tắc rõ ràng, không cộng trùng cùng một món. Giữ nguyên trang bị hợp lệ khi Continue/load.
+
+## 3. Gắn SFX theo từng skill trong SkillActions
+
+- Mở rộng mỗi SkillRegistration để kéo thả icon và AudioClip của skill trong Inspector. Có thể có nhiều cue nếu hành vi cần âm cast, dash, hit hoặc kết thúc.
+- Dùng AudioSource/reference được cấu hình trên GameObject SkillActions; không tự tạo GameObject/audio source lúc chạy.
+- Cung cấp cách để code skill yêu cầu phát cue đã đăng ký. Từng skill gọi âm thanh tại đúng thời điểm trong hành vi của nó; không tự phát cùng một tiếng cho mọi skill vì timing và cách dùng khác nhau.
+- Skill nào không có SFX thì phải hoạt động bình thường. Kiểm tra null/missing clip mà không làm hỏng cast.
+
+## 4. Đổi panel thông tin bên phải Inventory thành Player Hub
+_sửa PlayerStatusHUD lại không phải tạo khi hiển thị inventory nữa mà thêm trực tiếp vào scene luôn để t điều chỉnh edit lại 
+- Bố trí Player Hub trong scene/prefab, thay panel thông tin vật phẩm hiện tại ở bên phải.
+- Hub luôn thể hiện 3 ô skill và 2 ô vũ khí tay phải/tay trái. Hiển thị icon skill/vũ khí; dùng icon vũ khí từ ItemDefinition và icon skill từ cấu hình SkillActions/skill definition.
+- Hiển thị HP hiện tại/tối đa, sát thương và phòng thủ; lấy giá trị đã tính từ progression và bonus của cả hai ô vũ khí.
+- Khi trang bị/gỡ skill hoặc vũ khí, cập nhật hub và save ngay. Khu vực danh sách vật phẩm/skill bên trái tiếp tục dùng để chọn nội dung; hub bên phải là trạng thái tổng quan người chơi, không còn là bảng mô tả món đang chọn.
+- Không tạo UI bằng code lúc runtime; gán reference trong scene/Inspector.
+_panel thông tin cũ hiện khi player chạm (click trái chuột) vào phẩm hoặc skill , hiển thị dưới dạng panel nổi , nếu player sài pc thì cho thêm sự kiện mousemovein (mouse trong vùng ô nào thì ô đó tự hiện thông tin nếu có đồ tron ô và tự ẩn khi mouse left)
+
+## Thứ tự triển khai gợi ý
+
+1. Mở project trong Unity, xử lý compile/import lỗi của phần skill Inventory hiện tại rồi kiểm tra luồng trang bị và phím.
+2. Hoàn thiện lưu hai ô vũ khí và migration save cũ.
+3. Thêm điều kiện vũ khí cho skill, tự gỡ skill không còn hợp lệ, đồng bộ AttackController.
+4. Nâng cấp dữ liệu/playback animation theo thời lượng từng frame, giữ tương thích clip cũ.
+5. Thêm cấu hình SFX vào SkillActions, rồi gọi SFX từ từng code skill theo đúng nhịp hành vi.
+6. Dựng Player Hub trong scene và nối icon, phím, HP, ATK, DEF.
+
+## Tiêu chí hoàn thành
+
+- Clip cũ vẫn phát như trước nếu chưa cấu hình timing từng frame; clip mới chỉnh được thời gian từng frame trong Inspector.
+- Skill bị chặn khi thiếu vũ khí yêu cầu; nếu vũ khí bị gỡ hoặc thay bằng loại không hợp lệ thì skill tự rời loadout và không còn trong PlayerSkillController.
+- Mỗi skill có thể dùng SFX riêng; âm chỉ phát khi code hành vi gọi đúng cue.
+- Save/load giữ được hai ô vũ khí, tối đa ba skill và phím đã chọn; save cũ được chuyển đổi mà không làm mất trang bị.
+- Player Hub hiển thị đúng 3 skill, 2 vũ khí, icon, HP, ATK và DEF sau khi load và sau mỗi thay đổi trang bị.
+- LastEventData và tiến trình truyện cũ vẫn được giữ nguyên.

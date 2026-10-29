@@ -115,6 +115,16 @@ public class SkillData
     public string unlockCondition;
     public string requires;
     public string effect;
+    public string activeSkillId;
+    public float cooldown = 1f;
+    public float damage;
+    public Vector2 skillSize = Vector2.one;
+    public float range = 1f;
+    public float speed;
+    public float duration = 0.2f;
+    public float stunTime;
+    public bool debug = true;
+    public bool canPierce;
 }
 
 [Serializable]
@@ -232,13 +242,23 @@ public class LastEventData
 }
 
 [Serializable]
+public class EquippedSkillData
+{
+    public int slotIndex;
+    public string skillName;
+    public string inputKey;
+}
+
+[Serializable]
 public class PlayerSaveData
 {
     public const int InventoryCapacity = 24;
+    public const int EquippedSkillCapacity = 3;
     // Tiến trình
     public string currentSession = "1";
     public string currentZone = "Nhà Hoang";
     public string currentScene = "Zone1";
+    public string languageCode = "vn";
     public float playerX;
     public float playerY;
     public bool manualSaveOverridesLastEventPosition;
@@ -261,6 +281,7 @@ public class PlayerSaveData
     public List<InventoryEntry> inventory = new List<InventoryEntry>();
     public List<StorageContainerData> storageContainers = new List<StorageContainerData>();
     public List<string> unlockedSkills = new List<string>();
+    public List<EquippedSkillData> equippedSkills = new List<EquippedSkillData>();
     public List<string> collectedWorldItems = new List<string>();
 
     // Cờ cốt truyện, ví dụ "NhiTrust", "DiaryRead", "HaoAlive"

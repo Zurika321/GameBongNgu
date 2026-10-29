@@ -736,13 +736,8 @@ MonoBehaviour:
   interactionRange: 2.25
   portraitFrames: []
   portraitFrameRate: 4
-  dialogueAsset: {fileID: 0}
-  dialogue:
-  - text: "T\xF4i kh\xF4ng s\u1EE3 anh. T\xF4i ch\u1EC9 s\u1EE3 anh t\u1EF1 h\u1EE7y
-      ho\u1EA1i m\xECnh tr\u01B0\u1EDBc khi \u0111\u1EC3 t\xF4i gi\xFAp."
-    nextNodeIndex: -1
-    choices: []
---- !u!4 &236695262 stripped
+  dialogueAsset: {fileID: 11400000, guid: 55752c9cdd784f34b4b3307b87409879, type: 2}
+  dialogue: []
 Transform:
   m_CorrespondingSourceObject: {fileID: 6177327137142896848, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
   m_PrefabInstance: {fileID: 1762871518}
@@ -3190,12 +3185,8 @@ MonoBehaviour:
   interactionRange: 2.25
   portraitFrames: []
   portraitFrameRate: 4
-  dialogueAsset: {fileID: 0}
-  dialogue:
-  - text: "T\xF4i kh\xF4ng s\u1EE3 anh. T\xF4i ch\u1EC9 s\u1EE3 anh t\u1EF1 h\u1EE7y
-      ho\u1EA1i m\xECnh tr\u01B0\u1EDBc khi \u0111\u1EC3 t\xF4i gi\xFAp."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: a5b65ea15cbc401fa42fdae021624894, type: 2}
+  dialogue: []
 --- !u!1 &1128391061
 GameObject:
   m_ObjectHideFlags: 0
@@ -3596,12 +3587,8 @@ MonoBehaviour:
   interactionRange: 2.25
   portraitFrames: []
   portraitFrameRate: 4
-  dialogueAsset: {fileID: 0}
-  dialogue:
-  - text: "Ch\u1ECB con bi\u1EBFn m\u1EA5t r\u1ED3i. Ch\xFA gi\xFAp con t\xECm ch\u1ECB
-      \u1EA5y \u0111\u01B0\u1EE3c kh\xF4ng?"
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 1e1f7d4797784ef4bc790a087775e077, type: 2}
+  dialogue: []
 --- !u!1 &1325890816
 GameObject:
   m_ObjectHideFlags: 0
@@ -3754,12 +3741,8 @@ MonoBehaviour:
   interactionRange: 2.25
   portraitFrames: []
   portraitFrameRate: 4
-  dialogueAsset: {fileID: 0}
-  dialogue:
-  - text: "T\xF4i s\u1EBD canh cho t\u1EDBi s\xE1ng. D\xF9 c\xF3 chuy\u1EC7n g\xEC,
-      t\xF4i c\u0169ng kh\xF4ng m\u1EDF c\u1EEDa \u0111\xE2u."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: e24eb16414fc4053ae19bafcebf30c24, type: 2}
+  dialogue: []
 --- !u!1 &1362122310
 GameObject:
   m_ObjectHideFlags: 0
@@ -4548,12 +4531,8 @@ MonoBehaviour:
   interactionRange: 2.25
   portraitFrames: []
   portraitFrameRate: 4
-  dialogueAsset: {fileID: 0}
-  dialogue:
-  - text: "C\u1EADu m\xE0 \u0111\xE1nh lui \u0111\u01B0\u1EE3c l\u0169 qu\xE1i \u0111\xEAm
-      nay, c\u1EA3 th\u1ECB tr\u1EA5n n\xE0y mang \u01A1n c\u1EADu su\u1ED1t \u0111\u1EDDi."
-    nextNodeIndex: -1
-    choices: []
+  dialogueAsset: {fileID: 11400000, guid: 5a557e79dc504fe39b2162d0e53242a3, type: 2}
+  dialogue: []
 --- !u!1001 &1641003893
 PrefabInstance:
   m_ObjectHideFlags: 0

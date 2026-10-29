@@ -62,6 +62,8 @@ public class CharacterAnimation : MonoBehaviour
     private int frameIndex;
     private float frameTimer;
     private bool playingCustom;
+    private FacingDirection appliedFacingDirection;
+    private bool hasAppliedPlayback;
 
     public AnimState CurrentState => currentState;
 
@@ -95,6 +97,13 @@ public class CharacterAnimation : MonoBehaviour
     /// <summary>Phát animation theo state đã đăng ký sẵn trong mảng clips (Inspector).</summary>
     public void Play(AnimState state)
     {
+        if (spriteRenderer != null
+            && currentState == state
+            && !playingCustom
+            && hasAppliedPlayback
+            && appliedFacingDirection == facingDirection)
+            return;
+
         AnimClip clip = clips == null ? null : System.Array.Find(clips, c => c != null && c.state == state);
         if (clip == null)
         {
@@ -115,6 +124,8 @@ public class CharacterAnimation : MonoBehaviour
         if (currentState == state && !playingCustom && currentFrames == frames)
         {
             spriteRenderer.flipX = flipX;
+            appliedFacingDirection = facingDirection;
+            hasAppliedPlayback = true;
             return;
         }
 
@@ -122,6 +133,8 @@ public class CharacterAnimation : MonoBehaviour
         playingCustom = false;
         spriteRenderer.flipX = flipX;
         SetFrames(frames, clip.frameRate, clip.loop);
+        appliedFacingDirection = facingDirection;
+        hasAppliedPlayback = true;
     }
 
     /// <summary>

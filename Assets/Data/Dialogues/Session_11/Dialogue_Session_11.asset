@@ -15,37 +15,44 @@ MonoBehaviour:
   sessionId: 11
   npcName: "V\xF4 Di\u1EC7n"
   nodes:
-  - text: "Ng\u01B0\u01A1i v\xE0 ta... v\u1ED1n d\u0129 \u0111\xE2u kh\xE1c nhau
-      l\xE0 m\u1EA5y."
+  - textIsLocalizationKey: 1
+    text: "DIALOGUE_SESSION_11_LINE_01"
+
     nextNodeIndex: -1
     choices:
     - sessionId: 11
       choiceId: 11A_Ok
-      label: "Th\u1EA5u hi\u1EC3u n\u1ED7i \u0111au c\u1EE7a h\u1EAFn, \u0111\u1EC1
-        ngh\u1ECB c\u1ED9ng sinh"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_11_LINE_01_CHOICE_01"
+
       requiredFlag: CanBang
-      resultText: "Kh\u1EA3i nh\xECn th\u1EA5y k\xFD \u1EE9c c\u1EE7a k\u1EBB b\xEAn
-        trong m\xECnh. L\u1EA7n \u0111\u1EA7u ti\xEAn, c\u1EA3 hai c\xF9ng im l\u1EB7ng."
+      resultText: "DIALOGUE_SESSION_11_LINE_01_CHOICE_01_RESULT"
+      resultTextIsLocalizationKey: 1
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
     - sessionId: 11
       choiceId: 11A_Fail
-      label: "Th\u1EA5u hi\u1EC3u n\u1ED7i \u0111au c\u1EE7a h\u1EAFn, \u0111\u1EC1
-        ngh\u1ECB c\u1ED9ng sinh"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_11_LINE_01_CHOICE_02"
+
       requiredFlag: NotBalanced
-      resultText: "V\xF4 Di\u1EC7n l\u1EAFc \u0111\u1EA7u: \u2018Ng\u01B0\u01A1i
-        ch\u01B0a hi\u1EC3u g\xEC c\u1EA3.\u2019 C\u0103n ph\xF2ng tr\u1EAFng b\u1EAFt
-        \u0111\u1EA7u tan \u0111i."
+      resultText: "DIALOGUE_SESSION_11_LINE_01_CHOICE_02_RESULT"
+      resultTextIsLocalizationKey: 1
+
+
       nextNodeIndex: -1
       ltDelta: 0
       qtDelta: 0
     - sessionId: 11
       choiceId: 11B
-      label: "C\u1EF1 tuy\u1EC7t, kh\u1EB3ng \u0111\u1ECBnh \xFD ch\xED"
+      labelIsLocalizationKey: 1
+      label: "DIALOGUE_SESSION_11_LINE_01_CHOICE_03"
       requiredFlag: 
-      resultText: "Kh\u1EA3i kh\u1EB3ng \u0111\u1ECBnh \xFD ch\xED c\u1EE7a m\xECnh.
-        V\xF4 Di\u1EC7n l\xF9i v\xE0o b\xF3ng t\u1ED1i trong c\u0103n ph\xF2ng tr\u1EAFng."
+      resultText: "DIALOGUE_SESSION_11_LINE_01_CHOICE_03_RESULT"
+      resultTextIsLocalizationKey: 1
+
       nextNodeIndex: -1
       ltDelta: 3
       qtDelta: 0

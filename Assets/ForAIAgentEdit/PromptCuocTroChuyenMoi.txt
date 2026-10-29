@@ -1,0 +1,32 @@
+PROMPT DÙNG CHO CUỘC TRÒ CHUYỆN MỚI — DỰ ÁN BÓNG NGỦ
+
+Mình đang phát triển game Bóng Ngủ bằng Unity 6, game 2D top-down.
+Project: D:\UnitiProject\My project
+Thư mục Assets: D:\UnitiProject\My project\Assets
+
+Hãy làm việc trực tiếp dựa trên code và asset thực tế của project. Trước khi kết luận hoặc sửa, đọc các script, dữ liệu, scene/prefab liên quan và tài liệu:
+- Assets/ForAIAgentEdit/CLAUDE.md — cấu trúc, trạng thái và quy ước làm việc.
+- Assets/ForAIAgentEdit/Tiến trình tạo code game mở rộng.md — tiến độ đã rà soát.
+- Assets/ForAIAgentEdit/NewUpdate.txt và NewUpdate2.txt — các kế hoạch đã ghi; chỉ làm phần mình yêu cầu hiện tại.
+- Assets/AI_QuyTac.md — quy tắc bắt buộc khi sửa scene/UI/GameObject.
+Nếu thông tin trong tài liệu cũ khác code hiện tại, kiểm tra code và scene thật trước khi quyết định. Tài liệu tham khảo không tự động là yêu cầu sửa tất cả.
+
+Cách làm việc:
+- Trả lời bằng tiếng Việt, rõ ràng và gọn.
+- Đọc phần code liên quan trước khi đưa kết luận hay chỉnh sửa.
+- Sửa tối thiểu, giữ kiến trúc, gameplay, dữ liệu save và chức năng hiện có.
+- Ưu tiên cấu hình Inspector, asset và scene/prefab; không hardcode dữ liệu/UI có thể cấu hình.
+- Tuân thủ AI_QuyTac.md: UI/GameObject được thiết lập trong scene/prefab; khi sửa scene chỉ thêm, trừ khi mình chỉ rõ object cần xóa. Không xóa tài nguyên khi chưa xác định chính xác việc không còn được tham chiếu.
+- Giữ nguyên cốt lõi LastEventData, Choice ID, session ID và tiến trình truyện. Nếu đổi schema save, phải bảo toàn và chuyển dữ liệu cũ có chủ đích.
+- Làm từng phần theo yêu cầu, không tự triển khai toàn bộ kế hoạch trong NewUpdate2 cùng lúc.
+- Khi xong, nêu file đã sửa, lý do, cấu hình Inspector cần làm và phần nào đã/chưa được kiểm tra. Không nói đã xác nhận trong Unity nếu chưa mở/chạy Unity.
+
+Trạng thái gần nhất:
+- Inventory đã có tab Vật phẩm/Kỹ năng. Skill mở khóa được lưu riêng với skill đang trang bị; tối đa 3 ô skill, dùng phím 1–9/Space. PlayerSkillController đồng bộ các skill đang trang bị. BasicSlash và DodgeRoll là hai mapping hành động hiện được ghi nhận.
+- Phần này chưa được xác nhận compile hoặc chạy trong Unity Editor/Play Mode. Đọc code hiện tại trước khi thay đổi.
+- Công đoạn tiếp theo nằm trong Assets/ForAIAgentEdit/NewUpdate2.txt: chỉnh thời lượng từng frame animation; hai ô vũ khí và điều kiện vũ khí cho skill; tự gỡ skill nếu mất điều kiện; cấu hình SFX từng skill trong SkillActions và gọi âm thanh từ code skill.
+- Player Hub cần được đặt trực tiếp trong scene để chỉnh bằng Inspector, không được tự tạo khi mở Inventory. Hub có 3 ô skill, 2 ô vũ khí, icon, HP/ATK/DEF.
+- Panel thông tin vật phẩm/skill mở khi click; trên PC, hover vào ô có vật phẩm/skill thì hiện panel, rời ô thì ẩn.
+- Bảo toàn save cũ và LastEventData. Hãy đọc NewUpdate2.txt cùng các script/scene liên quan trước khi sửa.
+
+Khi cập nhật xong, báo cụ thể file nào đã đổi và những gì còn cần kiểm tra trong Unity.

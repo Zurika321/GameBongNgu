@@ -21,6 +21,7 @@ public class InventoryGridUI : MonoBehaviour
     [SerializeField] private Text bookReadText;
     [SerializeField] private Button closeBookButton;
     [SerializeField] private Text inventoryStatus;
+    [SerializeField] private Button skillTabButton;
 
     [Header("Slot appearance / layout")]
     [Tooltip("Sprite khung dùng cho mọi ô inventory. Để trống để dùng nền màu mặc định.")]
@@ -40,6 +41,7 @@ public class InventoryGridUI : MonoBehaviour
     private readonly InventorySlotView[] slots = new InventorySlotView[SlotCount];
     private int selectedSlot = -1;
     private bool initialized;
+    private bool showingSkills;
 
     private void Awake()
     {
@@ -51,8 +53,10 @@ public class InventoryGridUI : MonoBehaviour
         if (useButton != null) useButton.onClick.AddListener(UseSelected);
         if (readBookButton != null) readBookButton.onClick.AddListener(ReadSelectedBook);
         if (closeBookButton != null) closeBookButton.onClick.AddListener(CloseBook);
+        if (skillTabButton != null) skillTabButton.onClick.AddListener(ToggleInventoryTab);
         if (bookReadPanel != null) bookReadPanel.SetActive(false);
         initialized = true;
+        UpdateTabButtonLabel();
         Refresh();
     }
 
@@ -74,7 +78,7 @@ public class InventoryGridUI : MonoBehaviour
     public bool HasItemAt(int slotIndex)
     {
         PlayerProgressionService progress = PlayerProgressionService.Instance;
-        return progress != null && progress.Data.inventory != null
+        return !showingSkills && progress != null && progress.Data.inventory != null
             && progress.Data.inventory.Exists(entry => entry.slotIndex == slotIndex && entry.amount > 0);
     }
 
@@ -88,7 +92,7 @@ public class InventoryGridUI : MonoBehaviour
     public void MoveItem(int fromSlot, int toSlot)
     {
         PlayerProgressionService progress = PlayerProgressionService.Instance;
-        if (progress == null || !progress.Data.MoveInventoryItem(fromSlot, toSlot)) return;
+        if (showingSkills || progress == null || !progress.Data.MoveInventoryItem(fromSlot, toSlot)) return;
         selectedSlot = toSlot;
         progress.Save();
         Refresh();
@@ -158,8 +162,12 @@ public class InventoryGridUI : MonoBehaviour
         if (progress == null || progress.Data == null) return;
         if (progress.Data.inventory == null) progress.Data.inventory = new List<InventoryEntry>();
 
+        if (showingSkills)
+        {
+            RefreshSkillGrid(progress);
+            return;
+        }
         if (selectedSlot >= 0 && !HasItemAt(selectedSlot)) selectedSlot = -1;
-
         for (int i = 0; i < SlotCount; i++)
         {
             InventoryEntry entry = progress.Data.inventory.Find(item => item.slotIndex == i);
@@ -167,12 +175,43 @@ public class InventoryGridUI : MonoBehaviour
             bool isEquipped = entry != null && entry.itemName == progress.Data.equippedItemName;
             slots[i].SetItem(definition, entry != null ? entry.amount : 0, isEquipped, selectedSlot == i);
         }
-
         RefreshSelectedItem(progress);
+    }
+
+    private void RefreshSkillGrid(PlayerProgressionService progress)
+    {
+        List<string> unlockedSkills = progress.Data.unlockedSkills;
+        for (int i = 0; i < SlotCount; i++)
+        {
+            if (i < PlayerSaveData.EquippedSkillCapacity)
+            {
+                EquippedSkillData equipped = progress.GetEquippedSkillAtSlot(i);
+                string title = equipped != null ? equipped.skillName : $"Ô KỸ NĂNG {i + 1}";
+                string badge = equipped != null ? $"PHÍM {equipped.inputKey.ToUpperInvariant()}" : "TRỐNG";
+                slots[i].SetSkill(title, badge, equipped != null, selectedSlot == i);
+                continue;
+            }
+            int skillIndex = i - PlayerSaveData.EquippedSkillCapacity;
+            if (unlockedSkills != null && skillIndex < unlockedSkills.Count
+                && !string.IsNullOrWhiteSpace(unlockedSkills[skillIndex]))
+            {
+                string skillName = unlockedSkills[skillIndex];
+                bool equipped = progress.GetEquippedSkillIndex(skillName) >= 0;
+                slots[i].SetSkill(skillName, equipped ? "ĐÃ TRANG BỊ" : string.Empty, true, selectedSlot == i);
+            }
+            else
+                slots[i].SetSkill(string.Empty, string.Empty, false, selectedSlot == i);
+        }
+        RefreshSelectedSkill(progress);
     }
 
     private void RefreshSelectedItem(PlayerProgressionService progress)
     {
+        if (showingSkills)
+        {
+            RefreshSelectedSkill(progress);
+            return;
+        }
         InventoryEntry entry = selectedSlot >= 0
             ? progress.Data.inventory.Find(item => item.slotIndex == selectedSlot)
             : null;
@@ -220,6 +259,112 @@ public class InventoryGridUI : MonoBehaviour
         }
     }
 
+    private string GetSelectedSkillName(PlayerProgressionService progress)
+    {
+        if (progress == null || selectedSlot < 0 || selectedSlot >= SlotCount) return null;
+        if (selectedSlot < PlayerSaveData.EquippedSkillCapacity)
+            return progress.GetEquippedSkillAtSlot(selectedSlot)?.skillName;
+        int skillIndex = selectedSlot - PlayerSaveData.EquippedSkillCapacity;
+        List<string> unlockedSkills = progress.Data.unlockedSkills;
+        return unlockedSkills != null && skillIndex < unlockedSkills.Count ? unlockedSkills[skillIndex] : null;
+    }
+
+    private void RefreshSelectedSkill(PlayerProgressionService progress)
+    {
+        string skillName = GetSelectedSkillName(progress);
+        bool hasSelection = !string.IsNullOrWhiteSpace(skillName);
+        SkillData definition = hasSelection ? progress.GetSkillDefinition(skillName) : null;
+        int equippedSlot = hasSelection ? progress.GetEquippedSkillIndex(skillName) : -1;
+        EquippedSkillData equipped = equippedSlot >= 0 ? progress.GetEquippedSkillAtSlot(equippedSlot) : null;
+        if (selectedItemIcon != null) { selectedItemIcon.sprite = null; selectedItemIcon.enabled = false; }
+        if (selectedItemName != null) selectedItemName.text = hasSelection ? skillName : "Chọn kỹ năng";
+        if (selectedItemDescription != null)
+        {
+            if (!hasSelection)
+                selectedItemDescription.text = "Ba ô đầu là ô trang bị. Chọn kỹ năng đã mở khóa bên dưới rồi bấm TRANG BỊ.";
+            else
+            {
+                string description = definition != null && !string.IsNullOrWhiteSpace(definition.effect)
+                    ? definition.effect : "Kỹ năng đã được mở khóa.";
+                if (equipped == null && !progress.CanEquipSkill(skillName))
+                    description += "\nChưa có hành động chiến đấu được cấu hình cho kỹ năng này.";
+                if (equipped == null && progress.GetEquippedSkillCount() >= PlayerSaveData.EquippedSkillCapacity
+                    && progress.CanEquipSkill(skillName))
+                    description += "\nBa ô đã đầy. Gỡ một kỹ năng trước khi trang bị thêm.";
+                selectedItemDescription.text = description;
+            }
+        }
+        if (selectedItemStats != null)
+        {
+            if (definition == null)
+                selectedItemStats.text = equipped != null
+                    ? $"Đang trang bị ở ô {equippedSlot + 1} | Phím: {equipped.inputKey.ToUpperInvariant()}"
+                    : "Chưa có mô tả bổ sung.";
+            else
+            {
+                selectedItemStats.text = $"{definition.branch} | {definition.tier}\nMở khóa: {definition.unlockCondition}";
+                selectedItemStats.text += equipped != null
+                    ? $"\nÔ trang bị: {equippedSlot + 1} | Phím: {equipped.inputKey.ToUpperInvariant()}"
+                    : "\nChưa trang bị";
+            }
+            if (equipped != null)
+                selectedItemStats.text += "\nBấm nút PHÍM để đổi phím (1-9, SPACE).";
+        }
+        if (equippedWeaponLabel != null)
+            equippedWeaponLabel.text = $"KỸ NĂNG ĐÃ TRANG BỊ: {progress.GetEquippedSkillCount()}/{PlayerSaveData.EquippedSkillCapacity}";
+        bool canEquip = hasSelection && progress.CanEquipSkill(skillName);
+        if (equipButton != null)
+        {
+            equipButton.gameObject.SetActive(hasSelection && (equipped != null || (canEquip && progress.GetEquippedSkillCount() < PlayerSaveData.EquippedSkillCapacity)));
+            Text label = equipButton.GetComponentInChildren<Text>(true);
+            if (label != null) label.text = equipped != null ? "GỠ KỸ NĂNG" : "TRANG BỊ";
+        }
+        if (useButton != null)
+        {
+            useButton.gameObject.SetActive(equipped != null);
+            Text label = useButton.GetComponentInChildren<Text>(true);
+            if (label != null) label.text = equipped != null ? $"PHÍM: {equipped.inputKey.ToUpperInvariant()}" : "CHỌN PHÍM";
+        }
+        if (readBookButton != null) readBookButton.gameObject.SetActive(false);
+        if (inventoryStatus != null)
+            inventoryStatus.text = $"KỸ NĂNG: {progress.Data.unlockedSkills?.Count ?? 0} ĐÃ MỞ | TỐI ĐA 3 Ô | PHÍM 1-9 / SPACE";
+    }
+
+    private void ToggleInventoryTab()
+    {
+        showingSkills = !showingSkills;
+        selectedSlot = -1;
+        if (bookReadPanel != null) bookReadPanel.SetActive(false);
+        UpdateTabButtonLabel();
+        Refresh();
+    }
+
+    private void UpdateTabButtonLabel()
+    {
+        if (skillTabButton == null) return;
+        Text label = skillTabButton.GetComponentInChildren<Text>(true);
+        if (label != null) label.text = showingSkills ? "VẬT PHẨM" : "KỸ NĂNG";
+    }
+
+    private void ToggleSelectedSkillEquipment()
+    {
+        PlayerProgressionService progress = PlayerProgressionService.Instance;
+        string skillName = GetSelectedSkillName(progress);
+        if (progress == null || string.IsNullOrWhiteSpace(skillName)) return;
+        if (progress.GetEquippedSkillIndex(skillName) >= 0) progress.UnequipSkill(skillName);
+        else progress.EquipSkill(skillName);
+        Refresh();
+    }
+
+    private void CycleSelectedSkillKey()
+    {
+        PlayerProgressionService progress = PlayerProgressionService.Instance;
+        string skillName = GetSelectedSkillName(progress);
+        if (progress != null && !string.IsNullOrWhiteSpace(skillName))
+            progress.CycleEquippedSkillKey(skillName);
+        Refresh();
+    }
+
     private static string FormatStats(ItemDefinition definition)
     {
         List<string> stats = new List<string>();
@@ -233,6 +378,7 @@ public class InventoryGridUI : MonoBehaviour
 
     private void EquipSelected()
     {
+        if (showingSkills) { ToggleSelectedSkillEquipment(); return; }
         if (selectedSlot < 0) return;
         PlayerProgressionService.Instance.ToggleEquipAtSlot(selectedSlot);
         Refresh();
@@ -240,6 +386,7 @@ public class InventoryGridUI : MonoBehaviour
 
     private void UseSelected()
     {
+        if (showingSkills) { CycleSelectedSkillKey(); return; }
         if (selectedSlot < 0) return;
         PlayerProgressionService.Instance.UseItemAtSlot(selectedSlot);
         Refresh();
@@ -247,6 +394,7 @@ public class InventoryGridUI : MonoBehaviour
 
     private void ReadSelectedBook()
     {
+        if (showingSkills) return;
         InventoryEntry entry = GetSelectedEntry();
         if (entry != null) OpenReadableItem(entry.itemName);
     }
@@ -259,6 +407,8 @@ public class InventoryGridUI : MonoBehaviour
             || progress.Data.GetItemAmount(itemName) <= 0)
             return false;
 
+        showingSkills = false;
+        UpdateTabButtonLabel();
         DemoPauseMenu menu = FindAnyObjectByType<DemoPauseMenu>();
         if (menu == null)
         {
