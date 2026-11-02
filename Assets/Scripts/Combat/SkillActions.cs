@@ -9,13 +9,25 @@ public class SkillRegistration
 
     [Tooltip("Sprite riêng cho skill: FlyAttack/DashAttack2 theo thứ tự Down, Up, Left, Right; Fireball gồm 6 frame bay rồi 6 frame nổ.")]
     public Sprite[] skillSprites;
+
+    [Header("Âm thanh SFX (tuỳ chọn, để trống thì không phát)")]
+    [Tooltip("Phát khi bắt đầu gồng chiêu (chỉ skill có chargeTime > 0). Tự dừng khi ra chiêu hoặc huỷ.")]
+    public AudioClip chargeSfx;
+    [Tooltip("Phát lúc vung / ra chiêu.")]
+    public AudioClip castSfx;
+    [Tooltip("Phát khi chiêu trúng mục tiêu (gọi SkillActions.Instance.PlayHitSfx(skillName) ở chỗ gây damage).")]
+    public AudioClip hitSfx;
+    [Range(0f, 1f)]
+    [Tooltip("Hệ số âm lượng riêng của skill này, nhân với âm lượng SFX trong cài đặt.")]
+    public float sfxVolume = 1f;
 }
 
 /// <summary>
 /// Đặt 1 GameObject duy nhất chứa script này trong scene (vd tên "SkillActions").
 /// Player hoặc Enemy chỉ cần gọi:
 ///     SkillActions.Instance.Activate("ArcAttack", context);
-/// Sprite của từng skill được cấu hình theo tên ở skillRegistrations, không truyền qua SkillContext.
+/// Sprite và SFX của từng skill được cấu hình theo tên ở skillRegistrations, không truyền qua SkillContext.
+/// SFX đi qua VolumeManager (kênh SFX) nên chịu ảnh hưởng của thanh âm lượng / mute trong cài đặt.
 /// </summary>
 public class SkillActions : MonoBehaviour
 {
@@ -37,6 +49,11 @@ public class SkillActions : MonoBehaviour
     public static SkillActions Instance { get; private set; }
 
     private readonly Dictionary<string, ISkill> skillMap = new Dictionary<string, ISkill>();
+    private readonly Dictionary<string, SkillRegistration> registrationMap = new Dictionary<string, SkillRegistration>();
+
+    private AudioSource sfxSource;     // cast + hit (one-shot)
+    private AudioSource chargeSource;  // riêng cho tiếng gồng để dừng được khi ra chiêu / huỷ
+    private string chargingSkillName;
 
     private void Awake()
     {
@@ -48,7 +65,24 @@ public class SkillActions : MonoBehaviour
 
         Instance = this;
         if (transform.parent == null) DontDestroyOnLoad(gameObject);
+        SetupAudio();
         RegisterSkills();
+    }
+
+    private void SetupAudio()
+    {
+        sfxSource = CreateSfxSource();
+        chargeSource = CreateSfxSource();
+    }
+
+    private AudioSource CreateSfxSource()
+    {
+        AudioSource source = gameObject.AddComponent<AudioSource>();
+        source.playOnAwake = false;
+        source.loop = false;
+        source.spatialBlend = 0f;
+        VolumeManager.RegisterSFXSource(source); // volume theo cài đặt SFX
+        return source;
     }
 
     private void RegisterSkills()
@@ -90,6 +124,7 @@ public class SkillActions : MonoBehaviour
             }
 
             skillMap.Add(registration.skillName, skill);
+            registrationMap[registration.skillName] = registration;
         }
     }
 
@@ -133,6 +168,53 @@ public class SkillActions : MonoBehaviour
         return !string.IsNullOrWhiteSpace(skillName) && skillMap.ContainsKey(skillName);
     }
 
+    // ------------------------------------------------------------------ SFX
+    /// <summary>Gọi khi bắt đầu gồng chiêu. Tự dừng khi ra chiêu (Activate) hoặc khi gọi StopChargeSfx.</summary>
+    public void PlayChargeSfx(string skillName)
+    {
+        if (GameplayPause.IsPaused || chargeSource == null) return;
+        if (!TryGetRegistration(skillName, out SkillRegistration registration) || registration.chargeSfx == null) return;
+
+        chargeSource.Stop();
+        chargingSkillName = skillName;
+        chargeSource.PlayOneShot(registration.chargeSfx, registration.sfxVolume);
+    }
+
+    /// <summary>Dừng tiếng gồng của skill này (gọi khi ra chiêu hoặc huỷ gồng).</summary>
+    public void StopChargeSfx(string skillName)
+    {
+        if (chargeSource == null || chargingSkillName != skillName) return;
+        chargeSource.Stop();
+        chargingSkillName = null;
+    }
+
+    /// <summary>Tiếng vung / ra chiêu. Activate tự gọi, thường không cần gọi tay.</summary>
+    public void PlayCastSfx(string skillName)
+    {
+        PlayOneShot(skillName, registration => registration.castSfx);
+    }
+
+    /// <summary>Tiếng chiêu trúng mục tiêu. Gọi ở chỗ skill gây damage.</summary>
+    public void PlayHitSfx(string skillName)
+    {
+        PlayOneShot(skillName, registration => registration.hitSfx);
+    }
+
+    private void PlayOneShot(string skillName, System.Func<SkillRegistration, AudioClip> getClip)
+    {
+        if (GameplayPause.IsPaused || sfxSource == null) return;
+        if (!TryGetRegistration(skillName, out SkillRegistration registration)) return;
+
+        AudioClip clip = getClip(registration);
+        if (clip != null) sfxSource.PlayOneShot(clip, registration.sfxVolume);
+    }
+
+    private bool TryGetRegistration(string skillName, out SkillRegistration registration)
+    {
+        registration = null;
+        return !string.IsNullOrWhiteSpace(skillName) && registrationMap.TryGetValue(skillName, out registration);
+    }
+
     /// <summary>
     /// Gọi hàm này từ Player hoặc Enemy để kích hoạt skill theo tên.
     /// Không tìm thấy skill -> chỉ Debug.Log ra, không văng lỗi.
@@ -155,6 +237,8 @@ public class SkillActions : MonoBehaviour
 
         if (skillMap.TryGetValue(skillName, out ISkill skill))
         {
+            StopChargeSfx(skillName);
+            PlayCastSfx(skillName);
             skill.Execute(context);
         }
         else
@@ -167,6 +251,9 @@ public class SkillActions : MonoBehaviour
     {
         if (Instance == this) Instance = null;
 
+        VolumeManager.UnregisterSFXSource(sfxSource);
+        VolumeManager.UnregisterSFXSource(chargeSource);
         skillMap.Clear();
+        registrationMap.Clear();
     }
 }

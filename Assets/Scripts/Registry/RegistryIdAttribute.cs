@@ -4,7 +4,9 @@ public enum RegistryIdType
 {
     Flag,
     Item,
-    Session
+    Session,
+    Skill,
+    Weapon
 }
 
 [System.AttributeUsage(System.AttributeTargets.Field)]

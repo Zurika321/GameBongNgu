@@ -17,7 +17,7 @@ public enum DetectionShape
 public class EnemySkillSlot
 {
     [Header("Tên skill (khớp với tên đăng ký trong SkillActions)")]
-    public string skillName;
+    [RegistryId(RegistryIdType.Skill)]public string skillName;
 
     [Header("Hồi chiêu")]
     public float cooldown = 2f;
@@ -36,9 +36,12 @@ public class EnemySkillSlot
     public float duration = 0.2f;
     [Min(0f)] public float stunTime;
 
-    [Header("Sprite animation của Enemy")]
+    [Header("Sprite animation của Enemy theo hướng")]
     [FormerlySerializedAs("imageSkill")]
-    public Sprite[] characterAnimationSprites; // frames animation của Enemy khi cast skill
+    public Sprite[] downFrames;
+    public Sprite[] upFrames;
+    public Sprite[] rightFrames;
+    public Sprite[] leftFrames;
 
     [Header("Debug")]
     public bool debug = true;   // true = skill hiện hitbox debug (LineRenderer) trực tiếp trong Game
@@ -279,7 +282,10 @@ private void IgnorePhysicalCollisionWithPlayer()
             Duration = slot.duration,
             StunTime = slot.stunTime,
             Debug = slot.debug,
-            CharacterAnimationSprites = slot.characterAnimationSprites,
+            downFrames = slot.downFrames,
+            upFrames = slot.upFrames,
+            rightFrames = slot.rightFrames,
+            leftFrames = slot.leftFrames,
             CanPierce = slot.canPierce,
             DotConfig = slot.dotConfig
         };

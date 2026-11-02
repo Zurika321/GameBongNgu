@@ -25,6 +25,14 @@ public class PlayerProgressionService : MonoBehaviour
     [Header("Zone Scene Transition")]
     [SerializeField] private GameObject transitionFade;
 
+    [Header("Lv config")]
+    [Tooltip("Asset LvConfig chứa dữ liệu level và unlock skill theo cấp. Nếu null thì tự load từ Resources/LvConfig.")]
+    [SerializeField] private LvConfig lvConfig;
+
+    [Header("Skill config")]
+    [Tooltip("Asset SkillConfig chứa định nghĩa skill (tên Việt -> activeSkillId). Nếu null thì tự load từ Resources/SkillConfig.")]
+    [SerializeField] private SkillConfig skillConfig;
+
     private GameObject player;
     private HealthController playerHealth;
     private float autoSaveTimer;
@@ -33,13 +41,34 @@ public class PlayerProgressionService : MonoBehaviour
     private bool continueRestorePending;
     private string loadedMapSceneName;
     private bool saveDataInvalid;
-    private SkillTable cachedSkillTable;
-    private bool skillTableLoaded;
 
     private static readonly string[] SkillInputKeys =
     {
         "1", "2", "3", "4", "5", "6", "7", "8", "9", "space"
     };
+
+    // Phím người chơi được phép gán cho skill: 1-9, a-z, space
+    private static readonly string[] AllowedSkillInputKeys = BuildAllowedSkillInputKeys();
+
+    public static IReadOnlyList<string> AllowedKeys => AllowedSkillInputKeys;
+
+    private static string[] BuildAllowedSkillInputKeys()
+    {
+        List<string> keys = new List<string>();
+        for (char c = '1'; c <= '9'; c++) keys.Add(c.ToString());
+        for (char c = 'a'; c <= 'z'; c++) keys.Add(c.ToString());
+        keys.Add("space");
+        return keys.ToArray();
+    }
+
+    /// <summary>Chuẩn hoá chữ người chơi nhập thành tên phím hợp lệ; trả về "" nếu không hợp lệ.</summary>
+    public static string ParseSkillInputKey(string raw)
+    {
+        if (raw == " ") return "space";
+        if (string.IsNullOrWhiteSpace(raw)) return string.Empty;
+        string candidate = raw.Trim().ToLowerInvariant();
+        return Array.IndexOf(AllowedSkillInputKeys, candidate) >= 0 ? candidate : string.Empty;
+    }
 
     private static bool continueRestoreRequested;
 
@@ -348,6 +377,71 @@ public class PlayerProgressionService : MonoBehaviour
         return true;
     }
 
+    /// <summary>Bỏ trang bị vật phẩm đang trang bị (kéo vũ khí ra khỏi ô vũ khí).</summary>
+    public bool UnequipItem()
+    {
+        if (Data == null || string.IsNullOrEmpty(Data.equippedItemName)) return false;
+
+        int previousMaxHealth = GetMaxHealth();
+        Data.equippedItemName = string.Empty;
+        int healthDelta = GetMaxHealth() - previousMaxHealth;
+        if (playerHealth != null)
+        {
+            playerHealth.ConfigureHealth(GetMaxHealth(),
+                Mathf.Clamp(playerHealth.CurrentHealth + healthDelta, 0f, GetMaxHealth()));
+            Data.hp = Mathf.CeilToInt(playerHealth.CurrentHealth);
+        }
+
+        Save();
+        return true;
+    }
+
+    /// <summary>
+    /// Dồn vật phẩm lên đầu túi, không để ô trống ở giữa (giữ nguyên thứ tự).
+    /// Trả về true nếu có thay đổi (caller tự Save).
+    /// </summary>
+    public bool CompactInventory()
+    {
+        List<InventoryEntry> items = Data != null ? Data.inventory : null;
+        if (items == null || items.Count == 0) return false;
+
+        items.Sort((a, b) => a.slotIndex.CompareTo(b.slotIndex));
+        bool changed = false;
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].slotIndex == i) continue;
+            items[i].slotIndex = i;
+            changed = true;
+        }
+        return changed;
+    }
+
+    /// <summary>
+    /// Đổi chỗ 2 kỹ năng trong danh sách đã mở khóa; thả vào ô trống thì đưa xuống cuối danh sách.
+    /// </summary>
+    public bool MoveUnlockedSkill(int fromIndex, int toIndex)
+    {
+        List<string> skills = Data != null ? Data.unlockedSkills : null;
+        if (skills == null || fromIndex < 0 || fromIndex >= skills.Count || toIndex < 0) return false;
+        if (fromIndex == toIndex) return true;
+
+        if (toIndex >= skills.Count)
+        {
+            string moved = skills[fromIndex];
+            skills.RemoveAt(fromIndex);
+            skills.Add(moved);
+        }
+        else
+        {
+            string temp = skills[fromIndex];
+            skills[fromIndex] = skills[toIndex];
+            skills[toIndex] = temp;
+        }
+
+        Save();
+        return true;
+    }
+
     public bool UseItemAtSlot(int slotIndex)
     {
         InventoryEntry entry = Data.inventory.Find(item => item.slotIndex == slotIndex);
@@ -376,11 +470,126 @@ public class PlayerProgressionService : MonoBehaviour
     public SkillData GetSkillDefinition(string skillName)
     {
         if (string.IsNullOrWhiteSpace(skillName)) return null;
-        SkillTable table = GetSkillTable();
-        return table.skills != null
-            ? table.skills.Find(skill => skill != null
-                && string.Equals(skill.name, skillName, StringComparison.OrdinalIgnoreCase))
-            : null;
+        return ResolveSkillConfig().GetSkill(skillName);
+    }
+
+    /// <summary>Ảnh skill trong SkillConfig (null nếu chưa gán).</summary>
+    public Sprite GetSkillIcon(string skillName)
+    {
+        SkillConfigEntry entry = ResolveSkillConfig().GetEntry(skillName);
+        return entry != null ? entry.icon : null;
+    }
+
+    /// <summary>
+    /// Đưa skill vào đúng ô trang bị (kéo thả).
+    /// - Skill chưa trang bị: vào ô đó; nếu ô đang có skill khác thì skill mới thay chỗ và dùng phím của skill cũ.
+    /// - Skill đã trang bị: chuyển sang ô đó; nếu ô đó có skill khác thì hai skill đổi chỗ cho nhau.
+    /// </summary>
+    public bool EquipSkillAtSlot(string skillName, int targetSlot, out string message)
+    {
+        message = null;
+        if (Data == null || string.IsNullOrWhiteSpace(skillName)
+            || targetSlot < 0 || targetSlot >= PlayerSaveData.EquippedSkillCapacity)
+        {
+            message = "Ô kỹ năng không hợp lệ.";
+            return false;
+        }
+        if (Data.equippedSkills == null) Data.equippedSkills = new List<EquippedSkillData>();
+
+        string name = skillName.Trim();
+        EquippedSkillData existing = Data.equippedSkills.Find(skill => skill != null
+            && string.Equals(skill.skillName, name, StringComparison.OrdinalIgnoreCase));
+        EquippedSkillData occupant = Data.equippedSkills.Find(skill => skill != null && skill.slotIndex == targetSlot);
+
+        if (existing == null)
+        {
+            string block = GetEquipBlockReason(name);
+            if (block != null) { message = block; return false; }
+
+            string key;
+            if (occupant != null)
+            {
+                key = occupant.inputKey;
+                Data.equippedSkills.Remove(occupant);
+            }
+            else
+            {
+                HashSet<string> usedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+                foreach (EquippedSkillData skill in Data.equippedSkills)
+                    if (skill != null && !string.IsNullOrWhiteSpace(skill.inputKey)) usedKeys.Add(skill.inputKey);
+                key = FindAvailableSkillInputKey(usedKeys);
+            }
+
+            if (string.IsNullOrWhiteSpace(key)) { message = "Không còn phím trống cho kỹ năng này."; return false; }
+            Data.equippedSkills.Add(new EquippedSkillData { slotIndex = targetSlot, skillName = name, inputKey = key });
+        }
+        else if (existing != occupant)
+        {
+            int oldSlot = existing.slotIndex;
+            existing.slotIndex = targetSlot;
+            if (occupant != null) occupant.slotIndex = oldSlot; // hoán đổi chỗ
+        }
+        else
+        {
+            return true; // thả lại đúng ô cũ
+        }
+
+        NormalizeEquippedSkills();
+        SyncPlayerSkillControllers();
+        Save();
+        return true;
+    }
+
+    /// <summary>Entry của skill theo activeSkillId (ID tiếng Anh). Null nếu không có trong SkillConfig.</summary>
+    public SkillConfigEntry GetSkillEntryById(string activeSkillId)
+    {
+        return ResolveSkillConfig().GetEntryById(activeSkillId);
+    }
+
+    /// <summary>Entry đầy đủ của skill theo tên tiếng Việt (có chargeTime, endTime, dotConfig).</summary>
+    public SkillConfigEntry GetSkillEntry(string skillName)
+    {
+        return ResolveSkillConfig().GetEntry(skillName);
+    }
+
+    /// <summary>
+    /// Animation (charge/attack/end) của skill theo activeSkillId + vũ khí, lấy từ SkillConfig.
+    /// Trả về null nếu skill không có trong SkillConfig.
+    /// </summary>
+    public SkillAnimationSet GetSkillAnimationSet(string activeSkillId, string weaponName)
+    {
+        SkillConfig config = ResolveSkillConfig();
+        SkillConfigEntry entry = config.GetEntryById(activeSkillId);
+        return entry != null ? config.GetAnimationSet(entry.activeSkillId, weaponName) : null;
+    }
+
+    /// <summary>
+    /// Tạo SkillContext cho 1 skill theo activeSkillId (vd "BasicSlash"), thay cho SkillContextLibrary.GetContext.
+    /// Thông số lấy từ SkillConfig; Damage = GetAttackPower() (level + vũ khí đang trang bị);
+    /// animation chọn theo skill + weaponName (fallback Punch).
+    /// Trả về null nếu skill không có trong SkillConfig. Luôn trả về instance mới.
+    /// </summary>
+    public SkillContext GetSkillContext(string activeSkillId, string weaponName)
+    {
+        SkillConfig config = ResolveSkillConfig();
+        SkillConfigEntry entry = config.GetEntryById(activeSkillId);
+        if (entry == null) return null;
+
+        return new SkillContext
+        {
+            Damage = GetAttackPower(),
+            Size = entry.skillSize,
+            Range = entry.range,
+            Speed = entry.speed,
+            Duration = entry.duration,
+            StunTime = entry.stunTime,
+            ChargeTime = entry.chargeTime,
+            EndTime = entry.endTime,
+            CanPierce = entry.canPierce,
+            Debug = entry.debug,
+            DotConfig = entry.dotConfig != null ? entry.dotConfig : new DameDotConfig(),
+            AnimationSet = config.GetAnimationSet(entry.activeSkillId, weaponName)
+        };
     }
 
     public EquippedSkillData GetEquippedSkillAtSlot(int slotIndex)
@@ -405,12 +614,23 @@ public class PlayerProgressionService : MonoBehaviour
 
     public bool CanEquipSkill(string skillName)
     {
-        if (!HasUnlockedSkill(skillName)) return false;
+        return GetEquipBlockReason(skillName) == null;
+    }
+
+    /// <summary>Trả về null nếu equip được; ngược lại là lý do không equip được (hiển thị trên UI).</summary>
+    public string GetEquipBlockReason(string skillName)
+    {
+        if (!HasUnlockedSkill(skillName)) return "Kỹ năng chưa được mở khóa.";
         SkillData definition = GetSkillDefinition(skillName);
-        return definition != null
-            && !string.IsNullOrWhiteSpace(definition.activeSkillId)
-            && SkillActions.Instance != null
-            && SkillActions.Instance.HasRegisteredSkill(definition.activeSkillId);
+        if (definition == null)
+            return $"Không tìm thấy '{skillName}' trong SkillConfig (tên phải khớp từng chữ với Level.json).";
+        if (string.IsNullOrWhiteSpace(definition.activeSkillId))
+            return $"Skill '{skillName}' trong SkillConfig chưa có activeSkillId.";
+        if (SkillActions.Instance == null)
+            return "Không có SkillActions trong scene.";
+        if (!SkillActions.Instance.HasRegisteredSkill(definition.activeSkillId))
+            return $"activeSkillId '{definition.activeSkillId}' chưa được đăng ký trong SkillActions.";
+        return null;
     }
 
     public bool EquipSkill(string skillName)
@@ -483,6 +703,46 @@ public class PlayerProgressionService : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// Đổi phím của skill đang trang bị. Chỉ nhận 1-9, a-z, space.
+    /// Nếu phím đã dùng cho skill khác hoặc không hợp lệ thì giữ phím cũ, trả về false kèm message.
+    /// </summary>
+    public bool TrySetEquippedSkillKey(string skillName, string rawKey, out string message)
+    {
+        message = null;
+        int slotIndex = GetEquippedSkillIndex(skillName);
+        EquippedSkillData equipped = GetEquippedSkillAtSlot(slotIndex);
+        if (equipped == null)
+        {
+            message = "Kỹ năng chưa được trang bị.";
+            return false;
+        }
+
+        string key = ParseSkillInputKey(rawKey);
+        if (key.Length == 0)
+        {
+            message = "Phím chỉ được là 1-9, A-Z hoặc SPACE. Giữ phím cũ.";
+            return false;
+        }
+
+        if (string.Equals(NormalizeSkillInputKey(equipped.inputKey), key, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+        EquippedSkillData other = Data.equippedSkills.Find(skill => skill != null
+            && skill.slotIndex != slotIndex
+            && string.Equals(NormalizeSkillInputKey(skill.inputKey), key, StringComparison.OrdinalIgnoreCase));
+        if (other != null)
+        {
+            message = $"Phím {key.ToUpperInvariant()} đã dùng cho '{other.skillName}'. Giữ phím cũ.";
+            return false;
+        }
+
+        equipped.inputKey = key;
+        SyncPlayerSkillControllers();
+        Save();
+        return true;
+    }
+
     private void SyncPlayerSkillControllers()
     {
         if (player == null) FindPlayer();
@@ -497,7 +757,7 @@ public class PlayerProgressionService : MonoBehaviour
     {
         if (string.IsNullOrWhiteSpace(inputKey)) return string.Empty;
         string candidate = inputKey.Trim().ToLowerInvariant();
-        return Array.Exists(SkillInputKeys, key => key == candidate) ? candidate : string.Empty;
+        return Array.IndexOf(AllowedSkillInputKeys, candidate) >= 0 ? candidate : string.Empty;
     }
 
     private static string FindAvailableSkillInputKey(HashSet<string> usedKeys)
@@ -698,32 +958,25 @@ public class PlayerProgressionService : MonoBehaviour
 
     private void UnlockSkillsForLevel(int level)
     {
-        string skill = null;
-        switch (level)
+        if (Data == null) return;
+        if (Data.unlockedSkills == null) Data.unlockedSkills = new List<string>();
+
+        string[] skillsToUnlock = ResolveLvConfig() != null ? ResolveLvConfig().GetSkillsForLevel(level) : System.Array.Empty<string>();
+        if (skillsToUnlock == null || skillsToUnlock.Length == 0)
         {
-            case 1: skill = "Chém Cơ Bản"; break;
-            case 2: skill = "Né Tránh Nhanh"; break;
-            case 3: skill = "Đỡ Đòn"; break;
-            case 4: skill = "Đòn Xuyên"; break;
-            case 5: skill = "Combo 2 Đòn Liên Tiếp"; break;
-            case 6: skill = "Kháng Choáng Nhẹ"; break;
-            case 7: skill = "Nộ Khí"; break;
-            case 8: skill = "Ném Vũ Khí Phụ"; break;
-            case 9: skill = "Cường Hóa Vũ Khí Cận Chiến"; break;
-            case 10: skill = "Kháng Hiệu Ứng Độc/Chảy Máu"; break;
-            case 11: skill = "Đòn Chí Mạng Cận Chiến"; break;
-            case 12: skill = "Phá Giáp Hoàn Toàn"; break;
-            case 13: skill = "Tập Trung Tinh Thần"; break;
-            case 14: skill = "Phản Đòn Hoàn Hảo"; break;
-            case 15: skill = "Bộc Phát Cận Chiến"; break;
-            case 16: skill = "Tinh Thông Đạn Bạc"; break;
-            case 17: skill = "Ý Chí Sắt Đá"; break;
-            case 18: skill = "Song Kiếm Hợp Bích"; break;
-            case 19: skill = "Trực Giác Sinh Tồn"; break;
-            case 20: skill = "Hoàn Thiện Bản Thân"; break;
+            Debug.LogWarning($"[PlayerProgressionService] Không có cấu hình unlock skill cho level {level}. Hãy gán asset LvConfig hoặc tạo Assets/Resources/LvConfig.asset.");
+            return;
         }
-        if (!string.IsNullOrWhiteSpace(skill) && !HasUnlockedSkill(skill))
-            Data.unlockedSkills.Add(skill);
+
+        foreach (string skill in skillsToUnlock)
+        {
+            if (string.IsNullOrWhiteSpace(skill))
+                continue;
+
+            string normalizedSkill = skill.Trim();
+            if (!HasUnlockedSkill(normalizedSkill))
+                Data.unlockedSkills.Add(normalizedSkill);
+        }
     }
 
     public bool MarkEnemyDefeated(string enemyId)
@@ -1081,28 +1334,69 @@ public class PlayerProgressionService : MonoBehaviour
 
     private SkillTable GetSkillTable()
     {
-        if (!skillTableLoaded)
+        return ResolveSkillConfig().ToSkillTable();
+    }
+
+    private SkillConfig ResolveSkillConfig()
+    {
+        if (skillConfig != null)
+            return skillConfig;
+
+        skillConfig = Resources.Load<SkillConfig>("SkillConfig");
+        if (skillConfig == null)
         {
-            cachedSkillTable = DataManager.GetData<SkillTable>(Tables.Skill);
-            if (cachedSkillTable.skills == null) cachedSkillTable.skills = new List<SkillData>();
-            skillTableLoaded = true;
+            Debug.LogWarning("[PlayerProgressionService] Chưa có SkillConfig. Hãy tạo Assets/Resources/SkillConfig.asset (Create > Bóng Ngủ > Skill Config). Đang dùng skill mặc định.");
+            skillConfig = ScriptableObject.CreateInstance<SkillConfig>();
+            skillConfig.EnsureDefaultEntries();
         }
-        return cachedSkillTable;
+        else if (skillConfig.Skills == null || skillConfig.Skills.Count == 0)
+        {
+            skillConfig.EnsureDefaultEntries();
+        }
+
+        return skillConfig;
+    }
+
+    private LvConfig ResolveLvConfig()
+    {
+        if (lvConfig != null)
+            return lvConfig;
+
+        lvConfig = Resources.Load<LvConfig>("LvConfig");
+        if (lvConfig == null)
+        {
+            lvConfig = ScriptableObject.CreateInstance<LvConfig>();
+            lvConfig.EnsureDefaultEntries();
+        }
+
+        return lvConfig;
     }
 
     private LevelTable GetLevelTable()
     {
-        LevelTable table = DataManager.GetData<LevelTable>(Tables.Level);
-        if (table.levels != null && table.levels.Count > 0) return table;
-        int[] xp = { 0, 120, 280, 480, 740, 1050, 1420, 1860, 2380, 2980, 3660, 4440, 5320, 6320, 7440, 8700, 10100, 11660, 13400, 15340 };
-        int[] hp = { 60, 72, 85, 98, 112, 126, 142, 158, 175, 193, 212, 232, 253, 276, 300, 326, 354, 384, 416, 450 };
-        int[] atk = { 8, 10, 12, 14, 17, 19, 22, 25, 28, 31, 35, 39, 43, 48, 54, 60, 67, 74, 82, 91 };
-        int[] def = { 3, 4, 5, 6, 7, 8, 9, 10, 12, 13, 15, 16, 18, 20, 22, 24, 27, 30, 33, 36 };
-        int[] ammo = { 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 12 };
-        table.levels = new List<LevelData>();
-        for (int i = 0; i < xp.Length; i++)
-            table.levels.Add(new LevelData { lv = i + 1, expRequired = xp[i], maxHp = hp[i], atk = atk[i], def = def[i], maxRareAmmo = ammo[i] });
-        return table;
+        LvConfig config = ResolveLvConfig();
+        if (config != null)
+        {
+            LevelTable table = config.ToLevelTable();
+            if (table.levels != null && table.levels.Count > 0)
+            {
+                DataManager.SetData(Tables.Level, table);
+                return table;
+            }
+        }
+
+        LevelTable savedTable = DataManager.GetData<LevelTable>(Tables.Level);
+        if (savedTable.levels != null && savedTable.levels.Count > 0)
+            return savedTable;
+
+        LevelTable fallbackTable = new LvConfig().ToLevelTable();
+        if (fallbackTable.levels != null && fallbackTable.levels.Count > 0)
+        {
+            DataManager.SetData(Tables.Level, fallbackTable);
+            return fallbackTable;
+        }
+
+        return new LevelTable();
     }
     private static LevelData FindLevel(LevelTable table, int level)
     {

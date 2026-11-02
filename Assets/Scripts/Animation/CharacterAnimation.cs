@@ -27,6 +27,10 @@ public class AnimClip
     public Sprite[] upFrames;
     public Sprite[] rightFrames;
     public Sprite[] leftFrames;
+    public float[] downFrameDurations;
+    public float[] upFrameDurations;
+    public float[] rightFrameDurations;
+    public float[] leftFrameDurations;
     public float frameRate = 10f;
     public bool loop = true;
 }
@@ -57,12 +61,14 @@ public class CharacterAnimation : MonoBehaviour
     private AnimState currentState = AnimState.Idle;
     private FacingDirection facingDirection = FacingDirection.Down;
     private Sprite[] currentFrames;
+    private float[] currentFrameDurations;
     private float frameRate = 10f;
     private bool loop = true;
     private int frameIndex;
     private float frameTimer;
     private bool playingCustom;
     private FacingDirection appliedFacingDirection;
+    private bool appliedFlipX;
     private bool hasAppliedPlayback;
 
     public AnimState CurrentState => currentState;
@@ -78,31 +84,44 @@ public class CharacterAnimation : MonoBehaviour
     {
         if (currentFrames == null || currentFrames.Length == 0 || spriteRenderer == null) return;
 
-        frameTimer += Time.deltaTime;
-        float frameDuration = frameRate > 0f ? 1f / frameRate : 0.1f;
-
-        if (frameTimer < frameDuration) return;
-
-        frameTimer = 0f;
-        frameIndex++;
-
-        if (frameIndex >= currentFrames.Length)
+        if (!loop && frameIndex >= currentFrames.Length - 1)
         {
-            frameIndex = loop ? 0 : currentFrames.Length - 1;
+            spriteRenderer.sprite = currentFrames[currentFrames.Length - 1];
+            return;
         }
 
-        spriteRenderer.sprite = currentFrames[frameIndex];
+        frameTimer += Time.deltaTime;
+        float frameDuration = GetFrameDuration(frameIndex);
+
+        while (frameTimer >= frameDuration)
+        {
+            frameTimer -= frameDuration;
+            frameIndex++;
+
+            if (frameIndex >= currentFrames.Length)
+            {
+                if (loop)
+                {
+                    frameIndex = 0;
+                }
+                else
+                {
+                    frameIndex = currentFrames.Length - 1;
+                    spriteRenderer.sprite = currentFrames[frameIndex];
+                    frameTimer = 0f;
+                    return;
+                }
+            }
+
+            spriteRenderer.sprite = currentFrames[frameIndex];
+            frameDuration = GetFrameDuration(frameIndex);
+        }
     }
 
     /// <summary>Phát animation theo state đã đăng ký sẵn trong mảng clips (Inspector).</summary>
     public void Play(AnimState state)
     {
-        if (spriteRenderer != null
-            && currentState == state
-            && !playingCustom
-            && hasAppliedPlayback
-            && appliedFacingDirection == facingDirection)
-            return;
+        if (playingCustom) return;
 
         AnimClip clip = clips == null ? null : System.Array.Find(clips, c => c != null && c.state == state);
         if (clip == null)
@@ -111,7 +130,7 @@ public class CharacterAnimation : MonoBehaviour
             return;
         }
 
-        Sprite[] frames = GetFrames(clip, facingDirection, out bool flipX);
+        Sprite[] frames = GetFrames(clip, facingDirection, out float[] durations, out bool flipX);
         if (frames == null || frames.Length == 0)
         {
             Debug.LogWarning(
@@ -119,21 +138,21 @@ public class CharacterAnimation : MonoBehaviour
             return;
         }
 
+        bool sameStateAndFacing = currentState == state
+            && !playingCustom
+            && hasAppliedPlayback
+            && appliedFacingDirection == facingDirection
+            && appliedFlipX == flipX
+            && ReferenceEquals(currentFrames, frames);
+        if (spriteRenderer != null && sameStateAndFacing) return;
         if (spriteRenderer == null) return;
-
-        if (currentState == state && !playingCustom && currentFrames == frames)
-        {
-            spriteRenderer.flipX = flipX;
-            appliedFacingDirection = facingDirection;
-            hasAppliedPlayback = true;
-            return;
-        }
 
         currentState = state;
         playingCustom = false;
         spriteRenderer.flipX = flipX;
-        SetFrames(frames, clip.frameRate, clip.loop);
+        SetFrames(frames, durations, clip.frameRate, clip.loop);
         appliedFacingDirection = facingDirection;
+        appliedFlipX = flipX;
         hasAppliedPlayback = true;
     }
 
@@ -144,10 +163,25 @@ public class CharacterAnimation : MonoBehaviour
     /// </summary>
     public void PlayCustom(Sprite[] frames, float customFrameRate = 10f, bool customLoop = false)
     {
+        PlayCustom(frames, null, customFrameRate, customLoop);
+    }
+
+    public void StopCustomPlayback()
+    {
+        playingCustom = false;
+    }
+
+    /// <summary>Phát clip custom với thời lượng tùy chọn cho từng frame.</summary>
+    public void PlayCustom(
+        Sprite[] frames,
+        float[] frameDurations,
+        float customFrameRate = 10f,
+        bool customLoop = false)
+    {
         if (frames == null || frames.Length == 0) return;
 
         playingCustom = true;
-        SetFrames(frames, customFrameRate, customLoop);
+        SetFrames(frames, frameDurations, customFrameRate, customLoop);
     }
 
     /// <summary>Chọn một trong bốn hướng top-down dựa trên trục di chuyển trội.</summary>
@@ -161,36 +195,76 @@ public class CharacterAnimation : MonoBehaviour
             facingDirection = direction.y < 0f ? FacingDirection.Down : FacingDirection.Up;
     }
 
-    private static Sprite[] GetFrames(AnimClip clip, FacingDirection direction, out bool flipX)
+    private static Sprite[] GetFrames(
+        AnimClip clip,
+        FacingDirection direction,
+        out float[] durations,
+        out bool flipX)
     {
+        durations = null;
         flipX = false;
+
         switch (direction)
         {
             case FacingDirection.Up:
-                return FirstAvailable(clip.upFrames, clip.downFrames, clip.rightFrames, clip.leftFrames);
+                return FirstAvailable(clip, out durations, FacingDirection.Up, FacingDirection.Down,
+                    FacingDirection.Right, FacingDirection.Left);
             case FacingDirection.Right:
-                return FirstAvailable(clip.rightFrames, clip.downFrames, clip.upFrames, clip.leftFrames);
+                return FirstAvailable(clip, out durations, FacingDirection.Right, FacingDirection.Down,
+                    FacingDirection.Up, FacingDirection.Left);
             case FacingDirection.Left:
-                if (HasFrames(clip.leftFrames)) return clip.leftFrames;
-                if (HasFrames(clip.rightFrames))
+                Sprite[] leftFrames = GetFramesForDirection(clip, FacingDirection.Left, out durations);
+                if (HasFrames(leftFrames)) return leftFrames;
+
+                Sprite[] rightFrames = GetFramesForDirection(clip, FacingDirection.Right, out durations);
+                if (HasFrames(rightFrames))
                 {
                     flipX = true;
-                    return clip.rightFrames;
+                    return rightFrames;
                 }
-                return FirstAvailable(clip.downFrames, clip.upFrames);
+
+                return FirstAvailable(clip, out durations, FacingDirection.Down, FacingDirection.Up);
             default:
-                return FirstAvailable(clip.downFrames, clip.upFrames, clip.rightFrames, clip.leftFrames);
+                return FirstAvailable(clip, out durations, FacingDirection.Down, FacingDirection.Up,
+                    FacingDirection.Right, FacingDirection.Left);
         }
     }
 
-    private static Sprite[] FirstAvailable(params Sprite[][] candidates)
+    private static Sprite[] FirstAvailable(
+        AnimClip clip,
+        out float[] durations,
+        params FacingDirection[] candidates)
     {
-        foreach (Sprite[] frames in candidates)
+        durations = null;
+        foreach (FacingDirection candidate in candidates)
         {
-            if (HasFrames(frames)) return frames;
+            Sprite[] frames = GetFramesForDirection(clip, candidate, out float[] candidateDurations);
+            if (!HasFrames(frames)) continue;
+
+            durations = candidateDurations;
+            return frames;
         }
 
         return null;
+    }
+
+    private static Sprite[] GetFramesForDirection(AnimClip clip, FacingDirection direction, out float[] durations)
+    {
+        switch (direction)
+        {
+            case FacingDirection.Up:
+                durations = clip.upFrameDurations;
+                return clip.upFrames;
+            case FacingDirection.Right:
+                durations = clip.rightFrameDurations;
+                return clip.rightFrames;
+            case FacingDirection.Left:
+                durations = clip.leftFrameDurations;
+                return clip.leftFrames;
+            default:
+                durations = clip.downFrameDurations;
+                return clip.downFrames;
+        }
     }
 
     private static bool HasFrames(Sprite[] frames)
@@ -198,9 +272,28 @@ public class CharacterAnimation : MonoBehaviour
         return frames != null && frames.Length > 0;
     }
 
-    private void SetFrames(Sprite[] frames, float newFrameRate, bool newLoop)
+    private float GetFrameDuration(int index)
+    {
+        if (currentFrameDurations != null
+            && index >= 0
+            && index < currentFrameDurations.Length)
+        {
+            float duration = currentFrameDurations[index];
+            if (IsFinite(duration) && duration > 0f) return duration;
+        }
+
+        return IsFinite(frameRate) && frameRate > 0f ? 1f / frameRate : 0.1f;
+    }
+
+    private static bool IsFinite(float value)
+    {
+        return !float.IsNaN(value) && !float.IsInfinity(value);
+    }
+
+    private void SetFrames(Sprite[] frames, float[] durations, float newFrameRate, bool newLoop)
     {
         currentFrames = frames;
+        currentFrameDurations = durations;
         frameRate = newFrameRate;
         loop = newLoop;
         frameIndex = 0;

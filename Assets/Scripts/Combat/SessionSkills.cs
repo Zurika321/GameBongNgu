@@ -11,60 +11,46 @@ public class BasicMeleeSkill : ISkill
         Right = 3
     }
 
-    public void Execute(SkillContext context)
+     public void Execute(SkillContext context)
     {
         if (context == null || context.Caster == null) return;
-
         ArcAttackSkill.CreateHitbox(context);
-        PlayerController controller = context.Caster.GetComponent<PlayerController>();
-        CharacterAnimation animation = context.Caster.GetComponentInChildren<CharacterAnimation>();
-        Sprite[] animationFrames = GetDirectionalFrames(context.CharacterAnimationSprites, context.Direction);
-        float duration = context.Duration > 0f ? context.Duration : 0.2f;
-
-        if (SkillActions.Instance != null)
-        {
-            SkillActions.Instance.StartCoroutine(AttackRoutine(
-                controller, animation, animationFrames, duration));
-        }
-        else if (controller != null)
-        {
-            Debug.LogWarning("[BasicMeleeSkill] SkillActions is missing; cannot play the attack animation or unlock movement.", context.Caster);
-        }
+        SkillAnimationPlayer.Play(context);
     }
 
-    private static IEnumerator AttackRoutine(
-        PlayerController controller,
-        CharacterAnimation animation,
-        Sprite[] frames,
-        float duration)
-    {
-        if (controller != null) controller.LockMovement(true);
-        if (animation != null && frames.Length > 0)
-            animation.PlayCustom(frames, frames.Length / duration, false);
+    // private static IEnumerator AttackRoutine(
+    //     PlayerController controller,
+    //     CharacterAnimation animation,
+    //     Sprite[] frames,
+    //     float duration)
+    // {
+    //     if (controller != null) controller.LockMovement(true);
+    //     if (animation != null && frames.Length > 0)
+    //         animation.PlayCustom(frames, frames.Length / duration, false);
 
-        yield return new WaitForSeconds(duration);
-        if (controller != null) controller.LockMovement(false);
-    }
+    //     yield return new WaitForSeconds(duration);
+    //     if (controller != null) controller.LockMovement(false);
+    // }
 
-    private static Sprite[] GetDirectionalFrames(Sprite[] sprites, Vector2 direction)
-    {
-        if (sprites == null || sprites.Length < 4 || sprites.Length % 4 != 0)
-            return System.Array.Empty<Sprite>();
+    // private static Sprite[] GetDirectionalFrames(Sprite[] sprites, Vector2 direction)
+    // {
+    //     if (sprites == null || sprites.Length < 4 || sprites.Length % 4 != 0)
+    //         return System.Array.Empty<Sprite>();
 
-        int framesPerDirection = sprites.Length / 4;
-        int startIndex = ResolveDirectionBlock(direction) * framesPerDirection;
-        Sprite[] frames = new Sprite[framesPerDirection];
-        System.Array.Copy(sprites, startIndex, frames, 0, framesPerDirection);
-        return frames;
-    }
+    //     int framesPerDirection = sprites.Length / 4;
+    //     int startIndex = ResolveDirectionBlock(direction) * framesPerDirection;
+    //     Sprite[] frames = new Sprite[framesPerDirection];
+    //     System.Array.Copy(sprites, startIndex, frames, 0, framesPerDirection);
+    //     return frames;
+    // }
 
-    private static int ResolveDirectionBlock(Vector2 direction)
-    {
-        if (direction.sqrMagnitude < 0.001f) return (int)DirectionBlock.Down;
-        if (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x))
-            return direction.y >= 0f ? (int)DirectionBlock.Up : (int)DirectionBlock.Down;
-        return direction.x >= 0f ? (int)DirectionBlock.Right : (int)DirectionBlock.Left;
-    }
+    // private static int ResolveDirectionBlock(Vector2 direction)
+    // {
+    //     if (direction.sqrMagnitude < 0.001f) return (int)DirectionBlock.Down;
+    //     if (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x))
+    //         return direction.y >= 0f ? (int)DirectionBlock.Up : (int)DirectionBlock.Down;
+    //     return direction.x >= 0f ? (int)DirectionBlock.Right : (int)DirectionBlock.Left;
+    // }
 }
 
 public class DodgeRollSkill : ISkill

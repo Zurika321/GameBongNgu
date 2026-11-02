@@ -40,8 +40,16 @@ public class SkillContext
     [Header("Debug")]
     public bool Debug;         // true = skill hiện hitbox debug (LineRenderer) trực tiếp trong Game
 
-    [Header("Sprite animation của Player/Enemy")]
-    public Sprite[] CharacterAnimationSprites; // frames animation của Player/Enemy khi skill được cast
+    [Header("Animation của Player/Enemy (3 pha)")]
+    [Min(0f)] public float ChargeTime;   // pha 1: tích chiêu, 0 = ra skill ngay
+    [Min(0f)] public float EndTime;      // pha 3: thời gian animation kết thúc
+    public SkillAnimationSet AnimationSet;
+
+    [Header("Sprite animation theo hướng")]
+    public Sprite[] downFrames;
+    public Sprite[] upFrames;
+    public Sprite[] rightFrames;
+    public Sprite[] leftFrames;
 
     [Header("Tuỳ chọn xuyên (dùng cho skill đạn bay)")]
     public bool CanPierce = false; // true = xuyên qua mục tiêu, false = dính là dừng+xoá

@@ -13,116 +13,183 @@ MonoBehaviour:
   m_Name: GameIdRegistry
   m_EditorClassIdentifier: Assembly-CSharp::GameIdRegistry
   flags:
-  - "AtticChestOpened"
-  - "AtticStairsOpen"
-  - "CanBang"
-  - "DiaryBurned"
-  - "DiaryChoiceHandled"
-  - "DiaryRead"
-  - "dieutranhahoang"
-  - "exithouse"
-  - "HasOre3"
-  - "HasSavedPlayerPosition"
-  - "HasTram"
-  - "HouseExitOpen"
-  - "KhoaCuaNhaHoang"
-  - "LT_Cao"
-  - "NhiTrust"
-  - "NotBalanced"
-  - "PlazaCrowsCleared"
-  - "PlazaUndeadCleared"
-  - "QT_Cao"
-  - "SecretEligible"
-  - "Session13AComplete"
-  - "Session15AComplete"
-  - "Session1Ready"
-  - "Session1RouteA"
-  - "Session1RouteB"
-  - "Session2AReady"
-  - "Session2BComplete"
-  - "Session2BReady"
-  - "Session3Ready"
-  - "Session3Unlocked"
-  - "Session4AReady"
-  - "Session4AUnlocked"
-  - "Session4BReady"
-  - "Session4BUnlocked"
-  - "Session5Complete"
-  - "Session5Ready"
-  - "Session5Unlocked"
-  - "Session9AComplete"
-  - "SpawnerRat"
-  - "StoryEventCompleted:CorpseDecision"
-  - "StoryEventCompleted:CuaKhoa"
-  - "StoryEventCompleted:CuaKhoadieutra"
-  - "StoryEventCompleted:equipDen"
-  - "StoryEventCompleted:S1_GuongThiThau"
-  - "StoryEventCompleted:TinhDayTrongMau"
+  - AtticChestOpened
+  - AtticStairsOpen
+  - CanBang
+  - DiaryBurned
+  - DiaryChoiceHandled
+  - DiaryRead
+  - dieutranhahoang
+  - exithouse
+  - HasOre3
+  - HasSavedPlayerPosition
+  - HasTram
+  - HouseExitOpen
+  - KhoaCuaNhaHoang
+  - LT_Cao
+  - NhiTrust
+  - NotBalanced
+  - PlazaCrowsCleared
+  - PlazaUndeadCleared
+  - QT_Cao
+  - SecretEligible
+  - Session13AComplete
+  - Session15AComplete
+  - Session1Ready
+  - Session1RouteA
+  - Session1RouteB
+  - Session2AReady
+  - Session2BComplete
+  - Session2BReady
+  - Session3Ready
+  - Session3Unlocked
+  - Session4AReady
+  - Session4AUnlocked
+  - Session4BReady
+  - Session4BUnlocked
+  - Session5Complete
+  - Session5Ready
+  - Session5Unlocked
+  - Session9AComplete
+  - SpawnerRat
+  - StoryEventCompleted:CorpseDecision
+  - StoryEventCompleted:CuaKhoa
+  - StoryEventCompleted:CuaKhoadieutra
+  - StoryEventCompleted:equipDen
+  - StoryEventCompleted:S1_GuongThiThau
+  - StoryEventCompleted:TinhDayTrongMau
+  - StoryEventCompleted:Session1SpawerRat
+  - StoryEventCompleted:Session1RatsCleared
+  - StoryEventCompleted:DiaryFound
+  - StoryEventCompleted:AtticSpidersCleared
+  - StoryEventCompleted:VillageHoundCleared
+  - StoryEventCompleted:ShrineCrowsCleared
+  - StoryEventCompleted:DreamShadesCleared
+  - StoryEventCompleted:WarehouseBatsCleared
+  - StoryEventCompleted:PlazaUndeadCleared
+  - StoryEventCompleted:PlazaCrowsCleared
+  - StoryEventCompleted:S5_BossDefeated
+  - StoryEventCompleted:S9A_CaveWardenDefeated
+  - StoryEventCompleted:S13A_ConfrontationComplete
+  - StoryEventCompleted:S15A_HaoSecretDefeated
+  - Session1Complete
+  - Session1.5Complete
+  - Session2AComplete
+  - Session3Complete
+  - Session4AComplete
+  - Session4BComplete
+  - Session6AComplete
+  - Session6BComplete
+  - Session7AComplete
+  - Session7BComplete
+  - Session8AComplete
+  - Session8BComplete
+  - Session9BComplete
+  - Session10Complete
+  - Session11Complete
+  - Session12Complete
+  - Session13BComplete
+  - Session13CComplete
+  - Session14Complete
+  - Session15BComplete
   itemIds:
-  - "Băng Đạn Bạc"
-  - "Băng Đạn Cũ"
-  - "Băng Đạn Đồng"
-  - "Bùa Hộ Mệnh Rách"
-  - "Bùa Hồi Máu"
-  - "Bùa Khóa Quỷ"
-  - "Cánh Dơi"
-  - "Cánh Dơi Máu"
-  - "Da Cháy Xém"
-  - "Đá Nguyền Cổ"
-  - "Da Sói Đầu Đàn"
-  - "Da Sói Sương"
-  - "Dao Găm Gỉ"
-  - "Dấu Ấn Hợp Đồng"
-  - "Đồng Xu Cũ"
-  - "Kiếm Khắc Quỷ"
-  - "Lõi Đá Cổ"
-  - "Lõi Vòng Lặp"
-  - "Lông Quạ Dị"
-  - "Lông Thối"
-  - "Mảnh Gương Nứt"
-  - "Mảnh Gương Vỡ"
-  - "Mảnh Tinh Thể"
-  - "Máu Đóng Băng"
-  - "Máu Tự Nguyện"
-  - "Móng Vuốt Quỷ"
-  - "Nanh Chó Ma"
-  - "Ngọc Bóng Tối"
-  - "Nhật Ký Nạn Nhân"
-  - "Nhật Ký Tội Ác"
-  - "Nhựa Cổ Thụ"
-  - "Quặng Quỷ"
-  - "Rễ Cây Độc"
-  - "Rìu Cầm Tay"
-  - "Thảo Dược An Thần"
-  - "Tơ Nhện Độc"
-  - "Trâm Cài Kỷ Vật"
-  - "Vải Băng Bó"
-  - "Vải Rách"
-  - "Vải Vụn"
-  - "Xích Sắt Gia Cố"
+  - "B\u0103ng \u0110\u1EA1n B\u1EA1c"
+  - "B\u0103ng \u0110\u1EA1n C\u0169"
+  - "B\u0103ng \u0110\u1EA1n \u0110\u1ED3ng"
+  - "B\xF9a H\u1ED9 M\u1EC7nh R\xE1ch"
+  - "B\xF9a H\u1ED3i M\xE1u"
+  - "B\xF9a Kh\xF3a Qu\u1EF7"
+  - "C\xE1nh D\u01A1i"
+  - "C\xE1nh D\u01A1i M\xE1u"
+  - "Da Ch\xE1y X\xE9m"
+  - "\u0110\xE1 Nguy\u1EC1n C\u1ED5"
+  - "Da S\xF3i \u0110\u1EA7u \u0110\xE0n"
+  - "Da S\xF3i S\u01B0\u01A1ng"
+  - "Dao G\u0103m G\u1EC9"
+  - "D\u1EA5u \u1EA4n H\u1EE3p \u0110\u1ED3ng"
+  - "\u0110\u1ED3ng Xu C\u0169"
+  - "Ki\u1EBFm Kh\u1EAFc Qu\u1EF7"
+  - "L\xF5i \u0110\xE1 C\u1ED5"
+  - "L\xF5i V\xF2ng L\u1EB7p"
+  - "L\xF4ng Qu\u1EA1 D\u1ECB"
+  - "L\xF4ng Th\u1ED1i"
+  - "M\u1EA3nh G\u01B0\u01A1ng N\u1EE9t"
+  - "M\u1EA3nh G\u01B0\u01A1ng V\u1EE1"
+  - "M\u1EA3nh Tinh Th\u1EC3"
+  - "M\xE1u \u0110\xF3ng B\u0103ng"
+  - "M\xE1u T\u1EF1 Nguy\u1EC7n"
+  - "M\xF3ng Vu\u1ED1t Qu\u1EF7"
+  - "Nanh Ch\xF3 Ma"
+  - "Ng\u1ECDc B\xF3ng T\u1ED1i"
+  - "Nh\u1EADt K\xFD N\u1EA1n Nh\xE2n"
+  - "Nh\u1EADt K\xFD T\u1ED9i \xC1c"
+  - "Nh\u1EF1a C\u1ED5 Th\u1EE5"
+  - "Qu\u1EB7ng Qu\u1EF7"
+  - "R\u1EC5 C\xE2y \u0110\u1ED9c"
+  - "R\xECu C\u1EA7m Tay"
+  - "Th\u1EA3o D\u01B0\u1EE3c An Th\u1EA7n"
+  - "T\u01A1 Nh\u1EC7n \u0110\u1ED9c"
+  - "Tr\xE2m C\xE0i K\u1EF7 V\u1EADt"
+  - "V\u1EA3i B\u0103ng B\xF3"
+  - "V\u1EA3i R\xE1ch"
+  - "V\u1EA3i V\u1EE5n"
+  - "X\xEDch S\u1EAFt Gia C\u1ED1"
   sessionIds:
-  - "1"
-  - "1.5"
-  - "2A"
-  - "2B"
-  - "3"
-  - "4A"
-  - "4B"
-  - "5"
-  - "6A"
-  - "6B"
-  - "7A"
-  - "7B"
-  - "8A"
-  - "8B"
-  - "9A"
-  - "9B"
-  - "10"
-  - "11"
-  - "12"
-  - "13A"
-  - "13B"
-  - "13C"
-  - "14"
-  - "15A"
-  - "15B"
+  - 1
+  - 1.5
+  - 2A
+  - 2B
+  - 3
+  - 4A
+  - 4B
+  - 5
+  - 6A
+  - 6B
+  - 7A
+  - 7B
+  - 8A
+  - 8B
+  - 9A
+  - 9B
+  - 10
+  - 11
+  - 12
+  - 13A
+  - 13B
+  - 13C
+  - 14
+  - 15A
+  - 15B
+  skillIds:
+  - BasicSlash
+  - "Ch\xE9m c\u01A1 b\u1EA3n"
+  - "Combo 2 \u0111\xF2n"
+  - "\u0110\xF2n xuy\xEAn gi\xE1p"
+  - "Ph\u1EA3n \u0111\xF2n ho\xE0n h\u1EA3o"
+  - "B\u1ED9c ph\xE1t 5 \u0111\xF2n"
+  - "Song \u0111ao h\u1EE3p b\xEDch"
+  - DodgeRoll
+  - "N\xE9 tr\xE1nh nhanh"
+  - "\u0110\u1EE1 \u0111\xF2n (parry)"
+  - "Kh\xE1ng cho\xE1ng"
+  - "Kh\xE1ng \u0111\u1ED9c/m\xE1u"
+  - "T\u0129nh t\xE2m"
+  - "\xDD ch\xED s\u1EAFt \u0111\xE1"
+  - "N\u1ED9 kh\xED"
+  - "N\xE9m v\u0169 kh\xED ph\u1EE5"
+  - "S\u1EE9c m\u1EA1nh vay m\u01B0\u1EE3n"
+  - "M\xF3ng vu\u1ED1t qu\u1EF7"
+  - "\u0110\u1ED3ng h\xF3a ng\u01B0\u1EE3c"
+  - "C\u1ED9ng sinh"
+  - RatBleedBite
+  - HoundRush
+  - SpiderPoisonBite
+  - ArcAttack
+  - NormalAttack
+  - FlyAttack
+  - Fireball
+  - DashAttack2
+  - "N\xE9 Tr\xE1nh Nhanh"
+  weaponIds:
+  - "Dao G\u0103m G\u1EC9"
+  - "R\xECu C\u1EA7m Tay"

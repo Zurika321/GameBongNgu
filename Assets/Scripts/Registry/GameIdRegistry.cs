@@ -19,6 +19,12 @@ public sealed class GameIdRegistry : ScriptableObject
     [Header("Session ID đồng bộ từ JSON và nội dung thoại")]
     public List<string> sessionIds = new List<string>();
 
+    [Header("Skill ID / tên skill dùng trong hệ thống unlock, equip và skill registry")]
+    public List<string> skillIds = new List<string>();
+
+    [Header("Weapon ID / tên vũ khí dùng trong hệ thống equipment và damage data")]
+    public List<string> weaponIds = new List<string>();
+
     public List<string> GetList(RegistryIdType type)
     {
         switch (type)
@@ -26,6 +32,8 @@ public sealed class GameIdRegistry : ScriptableObject
             case RegistryIdType.Flag: return flags ?? (flags = new List<string>());
             case RegistryIdType.Item: return itemIds ?? (itemIds = new List<string>());
             case RegistryIdType.Session: return sessionIds ?? (sessionIds = new List<string>());
+            case RegistryIdType.Skill: return skillIds ?? (skillIds = new List<string>());
+            case RegistryIdType.Weapon: return weaponIds ?? (weaponIds = new List<string>());
             default: return new List<string>();
         }
     }
@@ -35,17 +43,23 @@ public sealed class GameIdRegistry : ScriptableObject
     [Serializable] private sealed class ItemJsonRow { public string name; }
     [Serializable] private sealed class SessionJsonTable { public SessionJsonRow[] sessions; }
     [Serializable] private sealed class SessionJsonRow { public string id; }
+    [Serializable] private sealed class SkillJsonTable { public SkillJsonRow[] skills; }
+    [Serializable] private sealed class SkillJsonRow { public string name; public string activeSkillId; }
 
     public void SyncFromProject()
     {
         flags ??= new List<string>();
         itemIds ??= new List<string>();
         sessionIds ??= new List<string>();
+        skillIds ??= new List<string>();
+        weaponIds ??= new List<string>();
 
         bool loadedItemJson = false;
         bool loadedSessionJson = false;
+        bool loadedSkillJson = false;
         TextAsset itemJson = Resources.Load<TextAsset>("Data/Item");
         TextAsset sessionJson = Resources.Load<TextAsset>("Data/Session");
+        TextAsset skillJson = Resources.Load<TextAsset>("Data/Skill");
 
         if (itemJson != null)
         {
@@ -66,6 +80,32 @@ public sealed class GameIdRegistry : ScriptableObject
                 foreach (SessionJsonRow row in table.sessions)
                     if (row != null) AddUnique(sessionIds, row.id);
                 loadedSessionJson = true;
+            }
+        }
+
+        if (skillJson != null)
+        {
+            SkillJsonTable table = JsonUtility.FromJson<SkillJsonTable>(skillJson.text);
+            if (table != null && table.skills != null)
+            {
+                foreach (SkillJsonRow row in table.skills)
+                {
+                    if (row == null) continue;
+                    if (!string.IsNullOrWhiteSpace(row.activeSkillId)) AddUnique(skillIds, row.activeSkillId);
+                    if (!string.IsNullOrWhiteSpace(row.name)) AddUnique(skillIds, row.name);
+                }
+                loadedSkillJson = true;
+            }
+        }
+
+        foreach (ItemDefinition definition in Resources.LoadAll<ItemDefinition>("ItemDefinitions"))
+        {
+            if (definition == null) continue;
+            if (!string.IsNullOrWhiteSpace(definition.itemName))
+            {
+                AddUnique(itemIds, definition.itemName);
+                if (definition.category == ItemCategory.Weapon)
+                    AddUnique(weaponIds, definition.itemName);
             }
         }
 
@@ -97,9 +137,10 @@ public sealed class GameIdRegistry : ScriptableObject
 
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssets();
-        Debug.Log($"[GameIdRegistry] Registry: {flags.Count} flags, {itemIds.Count} items, {sessionIds.Count} sessions. "
+        Debug.Log($"[GameIdRegistry] Registry: {flags.Count} flags, {itemIds.Count} items, {sessionIds.Count} sessions, {skillIds.Count} skills, {weaponIds.Count} weapons. "
             + (loadedItemJson ? "Item.json đã đọc; " : "Không đọc được Item.json; ")
-            + (loadedSessionJson ? "Session.json đã đọc." : "Không đọc được Session.json."));
+            + (loadedSessionJson ? "Session.json đã đọc; " : "Không đọc được Session.json; ")
+            + (loadedSkillJson ? "Skill.json đã đọc." : "Không đọc được Skill.json."));
     }
 
     private void CollectSerializedIds(string text)
@@ -107,6 +148,8 @@ public sealed class GameIdRegistry : ScriptableObject
         AddScalarValues(text, "requiredFlag|openedFlag", flags);
         AddArrayValues(text, "flagsToSet|flagsToRemove", flags);
         AddScalarValues(text, "itemName|requiredItemName|itemToAdd|itemToRemove|readableItemToOpen", itemIds);
+        AddScalarValues(text, "weaponName|equippedItemName", weaponIds);
+        AddScalarValues(text, "skillName|requiredUnlockSkill|activeSkillId|currentSkillId", skillIds);
         AddScalarValues(text, "completeSessionId|nextSessionId|sessionId", sessionIds, true);
         AddScalarValues(text, "eventId", flags, false, "StoryEventCompleted:");
     }

@@ -2,15 +2,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotView : MonoBehaviour, IPointerClickHandler, IBeginDragHandler,
-    IEndDragHandler, IDropHandler
+/// <summary>
+/// 1 ô trong lưới inventory. Bấm chọn do Button của InventoryGridUI xử lý;
+/// ở đây xử lý rê chuột (xem nhanh) và kéo thả (vật phẩm / kỹ năng).
+/// </summary>
+public class InventorySlotView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
+    IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     [SerializeField] private Image iconImage;
     [SerializeField] private Text countText;
     [SerializeField] private Text equippedText;
     private InventoryGridUI inventory;
     private int slotIndex;
-    private static InventorySlotView draggedSlot;
+    private bool dragging;
     private RectTransform countRect;
     private Vector2 itemCountAnchorMin, itemCountAnchorMax, itemCountPosition, itemCountSize;
     private int itemCountFontSize;
@@ -59,15 +63,18 @@ public class InventorySlotView : MonoBehaviour, IPointerClickHandler, IBeginDrag
         if (background != null) background.color = inventory != null ? inventory.GetSlotColor(hasItem, isSelected) : Color.white;
     }
 
-    public void SetSkill(string label, string badge, bool hasSkill, bool isSelected)
+    /// <summary>Có ảnh (icon) thì hiện ảnh; chưa có ảnh thì hiện tên skill như cũ.</summary>
+    public void SetSkill(string label, string badge, bool hasSkill, bool isSelected, Sprite icon = null)
     {
         CaptureCountStyle();
-        if (iconImage != null) { iconImage.enabled = false; iconImage.sprite = null; }
+        bool showIcon = hasSkill && icon != null;
+        if (iconImage != null) { iconImage.enabled = showIcon; iconImage.sprite = showIcon ? icon : null; }
         if (countText != null && countRect != null)
         {
             countRect.anchorMin = Vector2.zero; countRect.anchorMax = Vector2.one;
             countRect.offsetMin = new Vector2(4f, 20f); countRect.offsetMax = new Vector2(-4f, -4f);
-            countText.text = label ?? string.Empty; countText.fontSize = 11;
+            countText.text = showIcon ? string.Empty : (label ?? string.Empty);
+            countText.fontSize = 11;
             countText.alignment = TextAnchor.MiddleCenter;
             countText.horizontalOverflow = HorizontalWrapMode.Wrap;
             countText.verticalOverflow = VerticalWrapMode.Overflow;
@@ -77,28 +84,36 @@ public class InventorySlotView : MonoBehaviour, IPointerClickHandler, IBeginDrag
         if (background != null) background.color = inventory != null ? inventory.GetSlotColor(hasSkill, isSelected) : Color.white;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    // Rê chuột để hiện panel xem nhanh trên PC
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (inventory != null && eventData.button == PointerEventData.InputButton.Left) inventory.SelectSlot(slotIndex);
+        if (inventory != null) inventory.SetHoverSlot(slotIndex);
     }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (inventory != null) inventory.ClearHoverSlot(slotIndex);
+    }
+
+    // Kéo thả: phải có IDragHandler thì Unity mới phát sự kiện kéo
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (inventory == null || !inventory.HasItemAt(slotIndex)) return;
-        draggedSlot = this;
-        if (iconImage != null) iconImage.raycastTarget = false;
+        dragging = inventory != null && inventory.BeginDragFromGrid(slotIndex);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (dragging && inventory != null) inventory.UpdateDrag(eventData);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (iconImage != null) iconImage.raycastTarget = false;
-        if (draggedSlot == this) draggedSlot = null;
+        if (dragging && inventory != null) inventory.EndDrag();
+        dragging = false;
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (draggedSlot == null || inventory == null || draggedSlot.inventory != inventory) return;
-        inventory.MoveItem(draggedSlot.slotIndex, slotIndex);
-        draggedSlot = null;
+        if (inventory != null) inventory.DropOnGridSlot(slotIndex);
     }
 }

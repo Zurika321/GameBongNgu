@@ -33,7 +33,7 @@ public class StoryEventChoiceAction
     public string choiceId;
     public StoryEventAction action = new StoryEventAction();
     [Tooltip("Khi có action hợp lệ ở đây, danh sách module thay thế action cũ phía trên.")]
-    [SerializeReference] public List<IStoryAction> actions = new List<IStoryAction>();
+    [SerializeReference,SubclassSelector] public List<IStoryAction> actions = new List<IStoryAction>();
 }
 
 [Serializable]
@@ -44,9 +44,9 @@ public class StoryEventDefinition
     public DemoNpcDialogueProfile dialogueProfile;
     public StoryEventAction onTriggered = new StoryEventAction();
     [Tooltip("Điều kiện phải đạt trước khi sự kiện chạy; tất cả điều kiện trong danh sách đều phải đạt.")]
-    [SerializeReference] public List<IStoryCondition> conditions = new List<IStoryCondition>();
+    [SerializeReference,SubclassSelector] public List<IStoryCondition> conditions = new List<IStoryCondition>();
     [Tooltip("Khi có action hợp lệ ở đây, danh sách module thay thế action cũ phía trên.")]
-    [SerializeReference] public List<IStoryAction> onTriggeredActions = new List<IStoryAction>();
+    [SerializeReference,SubclassSelector] public List<IStoryAction> onTriggeredActions = new List<IStoryAction>();
     public StoryEventChoiceAction[] choices = Array.Empty<StoryEventChoiceAction>();
 }
 

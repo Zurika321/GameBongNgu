@@ -1,7 +1,10 @@
+using System.Collections;
+using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Serialization;
+
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -34,7 +37,7 @@ public enum MouseButtonSelect
 public class PlayerSkillSlot
 {
     [Header("Tên skill (khớp với tên đăng ký trong SkillActions)")]
-    public string skillName;
+    [RegistryId(RegistryIdType.Skill)]public string skillName;
 
     [Tooltip("Để trống nếu skill đã mở từ đầu; có thể nhập tên trong danh sách kỹ năng đã mở khóa của save.")]
     public string requiredUnlockSkill;
@@ -59,10 +62,13 @@ public class PlayerSkillSlot
     public float duration = 0.2f;
     [Min(0f)] public float stunTime;
 
-    [Header("Sprite animation của Player")]
-    [FormerlySerializedAs("imageSkill")]
-    public Sprite[] characterAnimationSprites; // frames animation của Player khi cast skill
+    [Header("Animation của Player (3 pha)")]
+    [Min(0f)] public float chargeTime = 0f;   // 0 = ra skill ngay khi bấm
+    [Min(0f)] public float endTime = 0.15f;   // thời gian animation kết thúc
+    public SkillAnimationSet animationSet = new SkillAnimationSet();
 
+[System.NonSerialized] public bool isCharging;
+[System.NonSerialized] public bool uiHeld;
     [Header("Debug")]
     public bool debug = true;   // true = skill hiện hitbox debug (LineRenderer) trực tiếp trong Game
 
@@ -175,7 +181,7 @@ public class PlayerSkillController : MonoBehaviour
                 slot.uiButton = null;
                 slot.mouseButton = MouseButtonSelect.None;
                 slot.cooldown = definition.cooldown > 0f ? definition.cooldown : slot.cooldown;
-                slot.damage = definition.damage;
+                slot.damage = PlayerProgressionService.Instance != null ? PlayerProgressionService.Instance.GetAttackPower() : definition.damage;
                 slot.skillSize = definition.skillSize;
                 slot.range = definition.range;
                 slot.speed = definition.speed;
@@ -185,6 +191,15 @@ public class PlayerSkillController : MonoBehaviour
                 slot.canPierce = definition.canPierce;
                 slot.lastUsedTime = -999f;
                 slot.pcKeyInvalid = false;
+                SkillConfigEntry configEntry = PlayerProgressionService.Instance != null
+                    ? PlayerProgressionService.Instance.GetSkillEntry(equipped.skillName)
+                    : null;
+                if (configEntry != null)
+                {
+                    slot.chargeTime = configEntry.chargeTime;
+                    slot.endTime = configEntry.endTime;
+                    slot.dotConfig = configEntry.dotConfig != null ? configEntry.dotConfig : new DameDotConfig();
+                }
                 runtimeSlots.Add(slot);
             }
         }
@@ -218,7 +233,9 @@ public class PlayerSkillController : MonoBehaviour
             speed = source.speed,
             duration = source.duration,
             stunTime = source.stunTime,
-            characterAnimationSprites = source.characterAnimationSprites,
+            chargeTime = source.chargeTime,
+            endTime = source.endTime,
+            animationSet = source.animationSet,
             debug = source.debug,
             canPierce = source.canPierce,
             dotConfig = source.dotConfig,
@@ -266,18 +283,26 @@ public class PlayerSkillController : MonoBehaviour
     private void BindUiButtons()
     {
         if (skillSlots == null) return;
-
         for (int i = 0; i < skillSlots.Length; i++)
         {
-            if (skillSlots[i] == null) continue;
+            PlayerSkillSlot slot = skillSlots[i];
+            if (slot == null || slot.uiButton == null) continue;
 
-            int capturedIndex = i; // tránh lỗi closure khi dùng biến vòng lặp trong lambda
-            Button btn = skillSlots[i].uiButton;
-            if (btn != null)
-            {
-                btn.onClick.AddListener(() => TryActivateSlot(capturedIndex));
-            }
+            int capturedIndex = i;
+            EventTrigger trigger = slot.uiButton.GetComponent<EventTrigger>();
+            if (trigger == null) trigger = slot.uiButton.gameObject.AddComponent<EventTrigger>();
+
+            AddTrigger(trigger, EventTriggerType.PointerDown, () => { slot.uiHeld = true; TryActivateSlot(capturedIndex); });
+            AddTrigger(trigger, EventTriggerType.PointerUp, () => slot.uiHeld = false);
+            AddTrigger(trigger, EventTriggerType.PointerExit, () => slot.uiHeld = false);
         }
+    }
+
+    private static void AddTrigger(EventTrigger trigger, EventTriggerType type, UnityEngine.Events.UnityAction action)
+    {
+        EventTrigger.Entry entry = new EventTrigger.Entry { eventID = type };
+        entry.callback.AddListener(_ => action());
+        trigger.triggers.Add(entry);
     }
 
     private void Update()
@@ -341,52 +366,113 @@ public class PlayerSkillController : MonoBehaviour
     /// Có thể gọi trực tiếp từ bên ngoài (VD script AI, test, hoặc UI khác) nếu cần.
     /// </summary>
     public void TryActivateSlot(int index)
+{
+    if (!CanActivate(index, out PlayerSkillSlot slot)) return;
+
+    float chargeTime = GetChargeTime(slot);
+    if (chargeTime > 0f) StartCoroutine(ChargeAndFire(slot, chargeTime));
+    else FireSlot(slot);
+}
+
+// chargeTime ưu tiên lấy từ SkillConfig (đọc trực tiếp lúc bấm); skill không có trong SkillConfig thì dùng giá trị trong slot
+private float GetChargeTime(PlayerSkillSlot slot)
+{
+    if (PlayerProgressionService.Instance != null)
     {
-        if (GameplayPause.IsPaused || skillSlots == null || index < 0 || index >= skillSlots.Length) return;
-        if (playerController != null && playerController.IsActionLocked) return;
+        SkillConfigEntry entry = PlayerProgressionService.Instance.GetSkillEntryById(slot.skillName);
+        if (entry != null) return entry.chargeTime;
+    }
+    return slot.chargeTime;
+}
 
-        if (health != null && health.IsDead)
-        {
-            return;
-        }
+private bool CanActivate(int index, out PlayerSkillSlot slot)
+{
+    slot = null;
+    if (GameplayPause.IsPaused || skillSlots == null || index < 0 || index >= skillSlots.Length) return false;
+    if (playerController != null && playerController.IsActionLocked) return false;
+    if (health != null && health.IsDead) return false;
 
-        PlayerSkillSlot slot = skillSlots[index];
-        if (slot == null) return;
+    slot = skillSlots[index];
+    if (slot == null || slot.isCharging) return false;
 
-        if (!string.IsNullOrWhiteSpace(slot.requiredUnlockSkill)
-            && (PlayerProgressionService.Instance == null
-                || !PlayerProgressionService.Instance.HasUnlockedSkill(slot.requiredUnlockSkill)))
-        {
-            return;
-        }
+    if (!string.IsNullOrWhiteSpace(slot.requiredUnlockSkill)
+        && (PlayerProgressionService.Instance == null
+            || !PlayerProgressionService.Instance.HasUnlockedSkill(slot.requiredUnlockSkill)))
+        return false;
 
-        if (string.IsNullOrWhiteSpace(slot.skillName))
-        {
-            Debug.LogWarning($"[PlayerSkillController] Skill name is empty at slot {index}.", this);
-            return;
-        }
+    if (string.IsNullOrWhiteSpace(slot.skillName))
+    {
+        Debug.LogWarning($"[PlayerSkillController] Skill name is empty at slot {index}.", this);
+        return false;
+    }
 
-        if (Time.time - slot.lastUsedTime < slot.cooldown)
-        {
-            float remain = slot.cooldown - (Time.time - slot.lastUsedTime);
-            Debug.Log($"[PlayerSkillController] Skill '{slot.skillName}' còn hồi chiêu {remain:F1}s.");
-            return;
-        }
+    if (Time.time - slot.lastUsedTime < slot.cooldown) return false;
 
-        if (SkillActions.Instance == null)
-        {
-            Debug.LogWarning("[PlayerSkillController] Chưa có SkillActions trong scene.");
-            return;
-        }
+    if (SkillActions.Instance == null)
+    {
+        Debug.LogWarning("[PlayerSkillController] Chưa có SkillActions trong scene.");
+        return false;
+    }
+    return true;
+}
 
-        slot.lastUsedTime = Time.time;
+private IEnumerator ChargeAndFire(PlayerSkillSlot slot, float chargeTime)
+{
+    slot.isCharging = true;
+    bool completed = false;
+    if (SkillActions.Instance != null) SkillActions.Instance.PlayChargeSfx(slot.skillName);
 
-        Vector2 direction = facingProvider != null ? facingProvider.FacingDirection : Vector2.right;
-        float damage = slot.damage;
-        if (slot.skillName == "BasicSlash" && PlayerProgressionService.Instance != null)
-            damage = PlayerProgressionService.Instance.GetAttackPower();
+    // Animation charge lấy từ SkillConfig (cùng nguồn với attack/end); không có thì dùng set trong slot
+    SkillAnimationSet chargeSet = PlayerProgressionService.Instance != null
+        ? PlayerProgressionService.Instance.GetSkillAnimationSet(slot.skillName, GetCurrentWeaponName())
+        : null;
+    if (chargeSet == null) chargeSet = slot.animationSet;
 
-        SkillContext context = new SkillContext
+    yield return SkillAnimationPlayer.ChargeRoutine(
+        ownerRoot,
+        chargeTime,
+        chargeSet,
+        () => facingProvider != null ? facingProvider.FacingDirection : Vector2.right,
+        () => IsSlotHeld(slot),
+        () => health != null && health.IsDead,
+        result => completed = result);
+
+    slot.isCharging = false;
+    if (!completed && SkillActions.Instance != null) SkillActions.Instance.StopChargeSfx(slot.skillName); // huỷ gồng thì tắt tiếng
+    if (completed) FireSlot(slot);
+}
+
+private bool IsSlotHeld(PlayerSkillSlot slot)
+{
+    if (slot.uiHeld) return true;
+    if (slot.mouseButton != MouseButtonSelect.None
+        && Input.GetMouseButton((int)slot.mouseButton - 1)) return true;
+    if (!string.IsNullOrEmpty(slot.pcKey) && !slot.pcKeyInvalid)
+    {
+        try { return Input.GetKey(slot.pcKey); }
+        catch (System.ArgumentException) { slot.pcKeyInvalid = true; }
+    }
+    return false;
+}
+
+private void FireSlot(PlayerSkillSlot slot)
+{
+    slot.lastUsedTime = Time.time;
+
+    Vector2 direction = facingProvider != null ? facingProvider.FacingDirection : Vector2.right;
+    string weaponName = GetCurrentWeaponName();
+
+    // Context lấy từ SkillConfig qua PlayerProgressionService (damage = level + vũ khí)
+    SkillContext context = PlayerProgressionService.Instance != null
+        ? PlayerProgressionService.Instance.GetSkillContext(slot.skillName, weaponName)
+        : null;
+
+    if (context == null)
+    {
+        Debug.LogWarning($"[PlayerSkillController] Không tìm thấy skill trong SkillConfig, không tạo được context cho skill '{slot.skillName}'. Dùng fallback từ slot hiện tại.", this);
+        float damage = PlayerProgressionService.Instance != null ? PlayerProgressionService.Instance.GetAttackPower() : slot.damage;
+
+        context = new SkillContext
         {
             Caster = ownerRoot,
             CasterType = SkillCasterType.Player,
@@ -399,13 +485,48 @@ public class PlayerSkillController : MonoBehaviour
             Duration = slot.duration,
             StunTime = slot.stunTime,
             Debug = slot.debug,
-            CharacterAnimationSprites = slot.characterAnimationSprites,
+            ChargeTime = slot.chargeTime,
+            EndTime = slot.endTime,
+            AnimationSet = slot.animationSet,
             CanPierce = slot.canPierce,
             DotConfig = slot.dotConfig
         };
-
-        SkillActions.Instance.Activate(slot.skillName, context);
     }
+    else
+    {
+        context.Caster = ownerRoot;
+        context.CasterType = SkillCasterType.Player;
+        context.Position = ownerRoot.transform.position;
+        context.Direction = direction;
+    }
+
+    SkillActions.Instance.Activate(slot.skillName, context);
+}
+
+private string GetCurrentWeaponName()
+{
+    if (PlayerProgressionService.Instance != null && PlayerProgressionService.Instance.Data != null)
+    {
+        string weaponName = PlayerProgressionService.Instance.Data.equippedItemName;
+        if (!string.IsNullOrWhiteSpace(weaponName)
+            && !weaponName.Equals("none", System.StringComparison.OrdinalIgnoreCase)
+            && !weaponName.Equals("null", System.StringComparison.OrdinalIgnoreCase))
+        {
+            return weaponName.Trim();
+        }
+    }
+
+    return "Punch";
+}
+
+private void OnDisable()
+{
+    if (skillSlots == null) return;
+    bool wasCharging = false;
+    foreach (PlayerSkillSlot s in skillSlots)
+        if (s != null && s.isCharging) { s.isCharging = false; wasCharging = true; }
+    if (wasCharging && playerController != null) playerController.LockMovement(false);
+}
 
 #if ENABLE_INPUT_SYSTEM
     /// <summary>

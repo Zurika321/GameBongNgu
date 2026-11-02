@@ -106,7 +106,10 @@ public class FireballAttackSkill : MonoBehaviour, ISkill, ISkillSpriteConfigurab
             StunTime = context.StunTime,
             OverrideTargetTag = context.OverrideTargetTag,
             Debug = context.Debug,
-            CharacterAnimationSprites = context.CharacterAnimationSprites,
+            downFrames = context.downFrames,
+            upFrames = context.upFrames,
+            rightFrames = context.rightFrames,
+            leftFrames = context.leftFrames,
             CanPierce = context.CanPierce,
             DotConfig = context.DotConfig,
             OnHitCallback = context.OnHitCallback
@@ -125,6 +128,8 @@ public class FireballAttackSkill : MonoBehaviour, ISkill, ISkillSpriteConfigurab
         // to hơn context.Size (overload mới CreateHitbox(context, overridePosition, overrideSize)).
         Vector2 baseSize = context.Size.sqrMagnitude > 0.001f ? context.Size : new Vector2(1f, 1f);
         Vector2 explosionSize = baseSize * EXPLOSION_SIZE_MULTIPLIER;
+
+        SkillActions.Instance?.PlayHitSfx("Fireball");
 
         GameObject hitboxObj = ArcAttackSkill.CreateHitbox(
             context,
