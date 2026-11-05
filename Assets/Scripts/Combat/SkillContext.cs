@@ -21,6 +21,11 @@ public class SkillContext
     public GameObject Caster;
     public SkillCasterType CasterType;
 
+    [Header("Nhận diện skill (PlayerSkillController / GetSkillContext tự điền)")]
+    public string SkillId;          // ID duy nhất của skill trong SkillConfig, ví dụ BasicAttack_Dagger
+    public string ActionId;         // ID class thực thi trong SkillActions, ví dụ NormalAttack
+    public string WeaponId;         // vũ khí đang cầm lúc cast ("Punch" = tay không)
+
     [Header("Vị trí & hướng")]
     public Vector2 Position;        // vị trí gốc phát skill (thường = transform.position của caster)
     public Vector2 Direction;       // hướng đánh, dạng (x,y) - 1 trong 8 hướng đã chuẩn hoá (vd (1,0), (1,1).normalized...)
@@ -36,6 +41,14 @@ public class SkillContext
 
     [Header("Tuỳ chọn nâng cao")]
     public string OverrideTargetTag; // để trống thì tự suy ra theo CasterType, set tay nếu muốn ép tag khác
+
+    [Header("Âm thanh theo skill / context")]
+    public AudioClip ChargeSfx;
+    public AudioClip CastSfx;
+    public AudioClip HitSfx;
+    [Range(0f, 1f)] public float SfxVolume = 1f;
+    [Tooltip("Nếu true và chargeTime nhỏ hơn thời lượng clip, cắt clip còn đúng bằng thời gian charge.")]
+    public bool CutChargeSfxToChargeTime;
 
     [Header("Debug")]
     public bool Debug;         // true = skill hiện hitbox debug (LineRenderer) trực tiếp trong Game

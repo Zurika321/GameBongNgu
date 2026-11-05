@@ -1,37 +1,22 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class SkillRegistration
 {
-    [Tooltip("Tên skill phải khớp với skillName trong PlayerSkillSlot/EnemySkillSlot.")]
+    [Tooltip("Phải khớp actionId trong SkillConfigEntry. Không phải skillId.")]
     public string skillName;
-
-    [Tooltip("Sprite riêng cho skill: FlyAttack/DashAttack2 theo thứ tự Down, Up, Left, Right; Fireball gồm 6 frame bay rồi 6 frame nổ.")]
     public Sprite[] skillSprites;
-
-    [Header("Âm thanh SFX (tuỳ chọn, để trống thì không phát)")]
-    [Tooltip("Phát khi bắt đầu gồng chiêu (chỉ skill có chargeTime > 0). Tự dừng khi ra chiêu hoặc huỷ.")]
-    public AudioClip chargeSfx;
-    [Tooltip("Phát lúc vung / ra chiêu.")]
-    public AudioClip castSfx;
-    [Tooltip("Phát khi chiêu trúng mục tiêu (gọi SkillActions.Instance.PlayHitSfx(skillName) ở chỗ gây damage).")]
-    public AudioClip hitSfx;
-    [Range(0f, 1f)]
-    [Tooltip("Hệ số âm lượng riêng của skill này, nhân với âm lượng SFX trong cài đặt.")]
-    public float sfxVolume = 1f;
 }
 
 /// <summary>
-/// Đặt 1 GameObject duy nhất chứa script này trong scene (vd tên "SkillActions").
-/// Player hoặc Enemy chỉ cần gọi:
-///     SkillActions.Instance.Activate("ArcAttack", context);
-/// Sprite và SFX của từng skill được cấu hình theo tên ở skillRegistrations, không truyền qua SkillContext.
-/// SFX đi qua VolumeManager (kênh SFX) nên chịu ảnh hưởng của thanh âm lượng / mute trong cài đặt.
+/// Registry class thực thi. Nhiều skillId có thể cùng gọi một actionId, ví dụ
+/// BasicAttack_Dagger và BasicAttack_Punch đều gọi NormalAttack.
 /// </summary>
 public class SkillActions : MonoBehaviour
 {
-    [Header("Skill registry - tên phải khớp với PlayerSkillSlot/EnemySkillSlot")]
+    [Header("Action registry - nhập actionId, không nhập skillId")]
     [SerializeField] private SkillRegistration[] skillRegistrations =
     {
         new SkillRegistration { skillName = "BasicSlash" },
@@ -48,12 +33,12 @@ public class SkillActions : MonoBehaviour
 
     public static SkillActions Instance { get; private set; }
 
-    private readonly Dictionary<string, ISkill> skillMap = new Dictionary<string, ISkill>();
-    private readonly Dictionary<string, SkillRegistration> registrationMap = new Dictionary<string, SkillRegistration>();
-
-    private AudioSource sfxSource;     // cast + hit (one-shot)
-    private AudioSource chargeSource;  // riêng cho tiếng gồng để dừng được khi ra chiêu / huỷ
+    private readonly Dictionary<string, ISkill> skillMap = new Dictionary<string, ISkill>(StringComparer.OrdinalIgnoreCase);
+    private readonly Dictionary<string, SkillRegistration> registrationMap = new Dictionary<string, SkillRegistration>(StringComparer.OrdinalIgnoreCase);
+    private AudioSource sfxSource;
+    private AudioSource chargeSource;
     private string chargingSkillName;
+    private Coroutine chargeCutRoutine;
 
     private void Awake()
     {
@@ -81,79 +66,63 @@ public class SkillActions : MonoBehaviour
         source.playOnAwake = false;
         source.loop = false;
         source.spatialBlend = 0f;
-        VolumeManager.RegisterSFXSource(source); // volume theo cài đặt SFX
+        VolumeManager.RegisterSFXSource(source);
         return source;
     }
 
     private void RegisterSkills()
     {
-        if (skillRegistrations == null || skillRegistrations.Length == 0)
-        {
-            Debug.LogWarning("[SkillActions] Chưa cấu hình skillRegistrations trong Inspector.", this);
-            return;
-        }
+        skillMap.Clear();
+        registrationMap.Clear();
+        if (skillRegistrations == null) return;
 
         foreach (SkillRegistration registration in skillRegistrations)
         {
             if (registration == null || string.IsNullOrWhiteSpace(registration.skillName))
             {
-                Debug.LogWarning("[SkillActions] Bỏ qua đăng ký skill không có tên.", this);
+                Debug.LogWarning("[SkillActions] Bỏ qua registration không có actionId.", this);
                 continue;
             }
 
-            if (skillMap.ContainsKey(registration.skillName))
+            string actionId = registration.skillName.Trim();
+            if (skillMap.ContainsKey(actionId))
             {
-                Debug.LogWarning($"[SkillActions] Tên skill '{registration.skillName}' bị đăng ký trùng.", this);
+                Debug.LogWarning($"[SkillActions] actionId '{actionId}' bị đăng ký trùng.", this);
                 continue;
             }
 
-            ISkill skill = CreateSkill(registration.skillName);
+            ISkill skill = CreateSkill(actionId);
             if (skill == null)
             {
-                Debug.LogWarning($"[SkillActions] Không có class skill được hỗ trợ cho '{registration.skillName}'.", this);
+                Debug.LogWarning($"[SkillActions] Không có class thực thi cho actionId '{actionId}'.", this);
                 continue;
             }
 
             if (skill is ISkillSpriteConfigurable configurable)
-            {
                 configurable.SetSkillSprites(registration.skillSprites);
-            }
             else if (registration.skillSprites != null && registration.skillSprites.Length > 0)
-            {
-                Debug.LogWarning($"[SkillActions] Skill '{registration.skillName}' không nhận cấu hình sprite skill.", this);
-            }
+                Debug.LogWarning($"[SkillActions] '{actionId}' không nhận cấu hình sprite.", this);
 
-            skillMap.Add(registration.skillName, skill);
-            registrationMap[registration.skillName] = registration;
+            skillMap.Add(actionId, skill);
+            registrationMap.Add(actionId, registration);
         }
     }
 
-    private ISkill CreateSkill(string skillName)
+    private ISkill CreateSkill(string actionId)
     {
-        switch (skillName)
+        switch (actionId)
         {
-            case "BasicSlash":
-                return new BasicMeleeSkill();
-            case "DodgeRoll":
-                return new DodgeRollSkill();
-            case "RatBleedBite":
-                return new RatBleedBiteSkill();
-            case "HoundRush":
-                return new HoundRushSkill();
-            case "SpiderPoisonBite":
-                return new SpiderPoisonBiteSkill();
-            case "ArcAttack":
-                return GetOrAddSkill<ArcAttackSkill>();
-            case "NormalAttack":
-                return GetOrAddSkill<NormalAttackSkill>();
-            case "FlyAttack":
-                return GetOrAddSkill<FlyAttackSkill>();
-            case "Fireball":
-                return GetOrAddSkill<FireballAttackSkill>();
-            case "DashAttack2":
-                return new DashAttackSkill2();
-            default:
-                return null;
+            case "BasicSlash": return new BasicMeleeSkill();
+            case "DodgeRoll": return new DodgeRollSkill();
+            case "RatBleedBite": return new RatBleedBiteSkill();
+            case "HoundRush": return new HoundRushSkill();
+            case "SpiderPoisonBite": return new SpiderPoisonBiteSkill();
+            case "ArcAttack": return GetOrAddSkill<ArcAttackSkill>();
+            case "NormalAttack": return GetOrAddSkill<NormalAttackSkill>();
+            case "FlyAttack": return GetOrAddSkill<FlyAttackSkill>();
+            case "Fireball": return GetOrAddSkill<FireballAttackSkill>();
+            case "DashAttack2": return new DashAttackSkill2();
+            default: return null;
         }
     }
 
@@ -163,96 +132,141 @@ public class SkillActions : MonoBehaviour
         return skill != null ? skill : gameObject.AddComponent<T>();
     }
 
-    public bool HasRegisteredSkill(string skillName)
+    public bool HasRegisteredSkill(string actionId)
     {
-        return !string.IsNullOrWhiteSpace(skillName) && skillMap.ContainsKey(skillName);
-    }
-
-    // ------------------------------------------------------------------ SFX
-    /// <summary>Gọi khi bắt đầu gồng chiêu. Tự dừng khi ra chiêu (Activate) hoặc khi gọi StopChargeSfx.</summary>
-    public void PlayChargeSfx(string skillName)
-    {
-        if (GameplayPause.IsPaused || chargeSource == null) return;
-        if (!TryGetRegistration(skillName, out SkillRegistration registration) || registration.chargeSfx == null) return;
-
-        chargeSource.Stop();
-        chargingSkillName = skillName;
-        chargeSource.PlayOneShot(registration.chargeSfx, registration.sfxVolume);
-    }
-
-    /// <summary>Dừng tiếng gồng của skill này (gọi khi ra chiêu hoặc huỷ gồng).</summary>
-    public void StopChargeSfx(string skillName)
-    {
-        if (chargeSource == null || chargingSkillName != skillName) return;
-        chargeSource.Stop();
-        chargingSkillName = null;
-    }
-
-    /// <summary>Tiếng vung / ra chiêu. Activate tự gọi, thường không cần gọi tay.</summary>
-    public void PlayCastSfx(string skillName)
-    {
-        PlayOneShot(skillName, registration => registration.castSfx);
-    }
-
-    /// <summary>Tiếng chiêu trúng mục tiêu. Gọi ở chỗ skill gây damage.</summary>
-    public void PlayHitSfx(string skillName)
-    {
-        PlayOneShot(skillName, registration => registration.hitSfx);
-    }
-
-    private void PlayOneShot(string skillName, System.Func<SkillRegistration, AudioClip> getClip)
-    {
-        if (GameplayPause.IsPaused || sfxSource == null) return;
-        if (!TryGetRegistration(skillName, out SkillRegistration registration)) return;
-
-        AudioClip clip = getClip(registration);
-        if (clip != null) sfxSource.PlayOneShot(clip, registration.sfxVolume);
-    }
-
-    private bool TryGetRegistration(string skillName, out SkillRegistration registration)
-    {
-        registration = null;
-        return !string.IsNullOrWhiteSpace(skillName) && registrationMap.TryGetValue(skillName, out registration);
+        return !string.IsNullOrWhiteSpace(actionId) && skillMap.ContainsKey(actionId.Trim());
     }
 
     /// <summary>
-    /// Gọi hàm này từ Player hoặc Enemy để kích hoạt skill theo tên.
-    /// Không tìm thấy skill -> chỉ Debug.Log ra, không văng lỗi.
+    /// Danh sách actionId đã khai báo trong Inspector (không cần Play). SkillConfigValidator dùng để
+    /// kiểm tra actionId trong SkillConfig đã được đăng ký.
     /// </summary>
-    public void Activate(string skillName, SkillContext context)
+    public List<string> GetConfiguredActionIds()
+    {
+        List<string> ids = new List<string>();
+        if (skillRegistrations == null) return ids;
+        foreach (SkillRegistration registration in skillRegistrations)
+        {
+            if (registration != null && !string.IsNullOrWhiteSpace(registration.skillName))
+                ids.Add(registration.skillName.Trim());
+        }
+        return ids;
+    }
+
+    public void PlayChargeSfx(string actionId)
+    {
+        // Compatibility no-op: charge audio now belongs to SkillContext and is played from the skill execution path.
+    }
+
+    public void PlayChargeSfx(SkillContext context)
+    {
+        if (GameplayPause.IsPaused || context == null || chargeSource == null || context.ChargeSfx == null) return;
+
+        float cutDuration = 0f;
+        if (context.CutChargeSfxToChargeTime && context.ChargeTime > 0f)
+            cutDuration = Mathf.Min(context.ChargeTime, context.ChargeSfx.length);
+
+        chargeSource.Stop();
+        if (chargeCutRoutine != null)
+        {
+            StopCoroutine(chargeCutRoutine);
+            chargeCutRoutine = null;
+        }
+
+        chargingSkillName = context.ActionId;
+        chargeSource.clip = context.ChargeSfx;
+        chargeSource.volume = Mathf.Clamp01(context.SfxVolume);
+        chargeSource.pitch = 1f;
+        chargeSource.loop = false;
+        chargeSource.Play();
+
+        if (cutDuration > 0.05f)
+            chargeCutRoutine = StartCoroutine(TrimChargeSfxAfterSeconds(cutDuration));
+    }
+
+    public void StopChargeSfx(string actionId)
+    {
+        if (chargeSource == null || !string.Equals(chargingSkillName, actionId, StringComparison.OrdinalIgnoreCase)) return;
+        if (chargeCutRoutine != null)
+        {
+            StopCoroutine(chargeCutRoutine);
+            chargeCutRoutine = null;
+        }
+        chargeSource.Stop();
+        chargeSource.clip = null;
+        chargingSkillName = null;
+    }
+
+    public void PlayCastSfx(string actionId)
+    {
+        // Compatibility no-op: the actual cast audio is driven from SkillContext.
+    }
+
+    public void PlayCastSfx(SkillContext context)
+    {
+        if (GameplayPause.IsPaused || context == null || sfxSource == null || context.CastSfx == null) return;
+        sfxSource.PlayOneShot(context.CastSfx, Mathf.Clamp01(context.SfxVolume));
+    }
+
+    public void PlayHitSfx(string actionId)
+    {
+        // Compatibility no-op: the actual hit audio is handled by the skill instance that triggers the hit.
+    }
+
+    public void PlayHitSfx(SkillContext context)
+    {
+        if (GameplayPause.IsPaused || context == null || sfxSource == null || context.HitSfx == null) return;
+        sfxSource.PlayOneShot(context.HitSfx, Mathf.Clamp01(context.SfxVolume));
+    }
+
+    private System.Collections.IEnumerator TrimChargeSfxAfterSeconds(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        if (chargeSource != null && string.IsNullOrEmpty(chargingSkillName) == false)
+            chargeSource.Stop();
+        chargeSource.clip = null;
+        chargingSkillName = null;
+        chargeCutRoutine = null;
+    }
+
+    private bool TryGetRegistration(string actionId, out SkillRegistration registration)
+    {
+        registration = null;
+        return !string.IsNullOrWhiteSpace(actionId) && registrationMap.TryGetValue(actionId.Trim(), out registration);
+    }
+
+    /// <summary>actionId chọn class; context chứa thông số của skillId cụ thể.</summary>
+    public void Activate(string actionId, SkillContext context)
     {
         if (GameplayPause.IsPaused) return;
-
-        if (string.IsNullOrWhiteSpace(skillName))
+        if (string.IsNullOrWhiteSpace(actionId))
         {
-            Debug.LogWarning("[SkillActions] Không thể kích hoạt skill khi tên bị trống.", this);
+            Debug.LogWarning("[SkillActions] actionId bị trống.", this);
             return;
         }
-
         if (context == null)
         {
-            Debug.LogWarning($"[SkillActions] SkillContext null khi gọi skill '{skillName}'.");
+            Debug.LogWarning($"[SkillActions] SkillContext null khi gọi '{actionId}'.", this);
             return;
         }
 
-        if (skillMap.TryGetValue(skillName, out ISkill skill))
+        actionId = actionId.Trim();
+        if (!skillMap.TryGetValue(actionId, out ISkill skill))
         {
-            StopChargeSfx(skillName);
-            PlayCastSfx(skillName);
-            skill.Execute(context);
+            Debug.LogWarning($"[SkillActions] Không tìm thấy actionId '{actionId}'.", this);
+            return;
         }
-        else
-        {
-            Debug.LogWarning($"[SkillActions] Không tìm thấy skill có tên '{skillName}'.", this);
-        }
+
+        StopChargeSfx(actionId);
+        PlayCastSfx(context);
+        skill.Execute(context);
     }
 
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;
-
-        VolumeManager.UnregisterSFXSource(sfxSource);
-        VolumeManager.UnregisterSFXSource(chargeSource);
+        if (sfxSource != null) VolumeManager.UnregisterSFXSource(sfxSource);
+        if (chargeSource != null) VolumeManager.UnregisterSFXSource(chargeSource);
         skillMap.Clear();
         registrationMap.Clear();
     }

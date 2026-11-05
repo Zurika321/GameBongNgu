@@ -947,6 +947,7 @@ GameObject:
   - component: {fileID: 115020591}
   - component: {fileID: 115020590}
   - component: {fileID: 115020589}
+  - component: {fileID: 115020595}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -969,6 +970,9 @@ Transform:
   m_Children:
   - {fileID: 738300294}
   - {fileID: 1595856656}
+  - {fileID: 453117857}
+  - {fileID: 1004837933}
+  - {fileID: 1227800527}
   - {fileID: 1287590271}
   - {fileID: 14299424}
   m_Father: {fileID: 0}
@@ -1207,6 +1211,103 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!82 &115020595
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115020587}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &124309381
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,6 +3430,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438073741}
   m_CullTransparentMesh: 1
+--- !u!1 &453117856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 453117857}
+  - component: {fileID: 453117858}
+  m_Layer: 0
+  m_Name: SkillBuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &453117857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453117856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115020588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &453117858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 453117856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b3342277ab13a43be3ee3603e6b9e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBuffController
 --- !u!1 &473190948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,7 +4065,10 @@ MonoBehaviour:
   bookReadText: {fileID: 1349517825}
   closeBookButton: {fileID: 1960386385}
   inventoryStatus: {fileID: 0}
+  itemTabButton: {fileID: 0}
   skillTabButton: {fileID: 2100000005}
+  tabSelectedColor: {r: 0.7, g: 0.48, b: 0.2, a: 1}
+  tabUnselectedColor: {r: 0.24, g: 0.22, b: 0.2, a: 1}
   equippedWeaponImage: {fileID: 357513144}
   equippedSkillSlots:
   - {fileID: 1208728779}
@@ -4923,6 +5071,8 @@ MonoBehaviour:
   transitionFade: {fileID: 169466824}
   lvConfig: {fileID: 11400000, guid: abce89cc514fb6449a9cf405eec6058d, type: 2}
   skillConfig: {fileID: 11400000, guid: 239d10d556205af4fa37320e5199d836, type: 2}
+  autoAttachSkillComponents: 1
+  validateSkillSetupOnStart: 1
 --- !u!1 &825528501
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,56 +5373,24 @@ MonoBehaviour:
   skillRegistrations:
   - skillName: BasicSlash
     skillSprites: []
-    chargeSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
-    castSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
-    hitSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
-    sfxVolume: 1
   - skillName: DodgeRoll
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: RatBleedBite
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: HoundRush
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: SpiderPoisonBite
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: ArcAttack
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: NormalAttack
     skillSprites: []
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: FlyAttack
     skillSprites:
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: Fireball
     skillSprites:
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
@@ -5287,20 +5405,12 @@ MonoBehaviour:
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
   - skillName: DashAttack2
     skillSprites:
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
     - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    chargeSfx: {fileID: 0}
-    castSfx: {fileID: 0}
-    hitSfx: {fileID: 0}
-    sfxVolume: 1
 --- !u!4 &905247634
 Transform:
   m_ObjectHideFlags: 0
@@ -5746,6 +5856,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 994474656}
   m_CullTransparentMesh: 1
+--- !u!1 &1004837932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1004837933}
+  - component: {fileID: 1004837934}
+  m_Layer: 0
+  m_Name: SkillPassive
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1004837933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004837932}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115020588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1004837934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1004837932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e6c90b298cfc14f8fbe66f90402756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerPassiveSkillController
+  skillConfig: {fileID: 0}
+  ownerOverride: {fileID: 115020587}
+  passiveSkills: []
+  initialPassiveSkillIds: []
 --- !u!1 &1064298605
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,6 +6743,59 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222807281}
   m_CullTransparentMesh: 1
+--- !u!1 &1227800526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1227800527}
+  - component: {fileID: 1227800528}
+  m_Layer: 0
+  m_Name: SkillBasic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1227800527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227800526}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115020588}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1227800528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227800526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc2da61d9c64ce74987cbe592536369e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBasicAttackController
+  skillConfig: {fileID: 0}
+  ownerOverride: {fileID: 0}
+  mouseButton: 1
+  pcKey: 
+  uiButton: {fileID: 0}
+  currentWeaponId: 
+  currentSkillId: 
+  currentActionId: 
+  inputImported: 1
 --- !u!1 &1234354535
 GameObject:
   m_ObjectHideFlags: 0
@@ -8269,7 +8480,7 @@ GameObject:
   - component: {fileID: 1595856656}
   - component: {fileID: 1595856657}
   m_Layer: 0
-  m_Name: AttackController
+  m_Name: SkillAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8302,8 +8513,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28c73a1fc8483447a5721605c9a25d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSkillController
+  skillConfig: {fileID: 0}
   skillSlots:
-  - skillName: NormalAttack
+  - skillId: NormalAttack
+    actionId: 
     requiredUnlockSkill: 
     cooldown: 0.35
     pcKey: j
@@ -8344,7 +8557,8 @@ MonoBehaviour:
       zoneShape: 0
       zoneSize: {x: 0, y: 0}
       zoneLifetime: 0
-  - skillName: DodgeRoll
+  - skillId: DodgeRoll
+    actionId: 
     requiredUnlockSkill: "N\xE9 Tr\xE1nh Nhanh"
     cooldown: 1
     pcKey: space
@@ -8382,6 +8596,10 @@ MonoBehaviour:
       zoneSize: {x: 0, y: 0}
       zoneLifetime: 0
   ownerOverride: {fileID: 0}
+  autoBasicAttack: 1
+  basicAttackPcKey: 
+  basicAttackMouseButton: 1
+  basicAttackUiButton: {fileID: 0}
 --- !u!1 &1608114942
 GameObject:
   m_ObjectHideFlags: 0

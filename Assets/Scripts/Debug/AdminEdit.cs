@@ -343,11 +343,12 @@ public class AdminEdit : MonoBehaviour
         LevelData ld = levelTable != null ? levelTable.levels.Find(l => l != null && l.lv == d.level) : null;
         if (ld != null) d.exp = ld.expRequired;
 
-        // UnlockSkillsForLevel là private => gọi bằng reflection
+        // UnlockSkillsForLevel là private => gọi bằng reflection với đúng số tham số
         MethodInfo unlock = typeof(PlayerProgressionService).GetMethod("UnlockSkillsForLevel", AllInstance);
         if (unlock != null)
         {
-            for (int l = 1; l <= d.level; l++) unlock.Invoke(progress, new object[] { l });
+            for (int l = 1; l <= d.level; l++)
+                unlock.Invoke(progress, new object[] { l, true });
         }
 
         HealthController hc = player != null ? player.GetComponent<HealthController>() : null;

@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb611e72605dd140b2b04c2a9f9c7c1, type: 3}
+  m_Name: AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::AudioConfig
+  musics:
+  - id: menu
+    clip: {fileID: 8300000, guid: e472823fdd149b14ca59cb1ca34645f9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    stopAfterSeconds: 0
+  sfx:
+  - id: footstep
+    clip: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
+    volume: 1
+    pitch: 0.2

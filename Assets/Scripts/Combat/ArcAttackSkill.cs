@@ -58,9 +58,12 @@ public class ArcAttackSkill : MonoBehaviour, ISkill
     private static void OnHit(SkillContext context, GameObject hitGO, Vector2 hitPos)
     {
         IDamage damageable = hitGO.GetComponentInParent<IDamage>();
+        bool targetDied = false;
         if (damageable != null)
         {
             damageable.TakeDamage(context.Damage, context.Caster, context.StunTime);
+            HealthController health = hitGO.GetComponentInParent<HealthController>();
+            targetDied = health != null && health.IsDead;
         }
         else
         {
@@ -72,6 +75,7 @@ public class ArcAttackSkill : MonoBehaviour, ISkill
             DameDotEffect.ApplyOrRefresh(hitGO, context.Caster, context.DotConfig);
         }
 
+        SkillCombatEvents.ReportHit(context, hitGO, targetDied);
         context.OnHitCallback?.Invoke(hitGO, hitPos);
     }
 }

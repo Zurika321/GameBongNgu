@@ -25,6 +25,12 @@ public sealed class GameIdRegistry : ScriptableObject
     [Header("Weapon ID / tên vũ khí dùng trong hệ thống equipment và damage data")]
     public List<string> weaponIds = new List<string>();
 
+    [Header("Music ID / tên nhạc nền dùng trong hệ thống âm thanh")]
+    public List<string> musicIds = new List<string>();
+
+    [Header("SFX ID / tên hiệu ứng âm thanh dùng trong hệ thống âm thanh")]
+    public List<string> sfxIds = new List<string>();
+
     public List<string> GetList(RegistryIdType type)
     {
         switch (type)
@@ -34,6 +40,8 @@ public sealed class GameIdRegistry : ScriptableObject
             case RegistryIdType.Session: return sessionIds ?? (sessionIds = new List<string>());
             case RegistryIdType.Skill: return skillIds ?? (skillIds = new List<string>());
             case RegistryIdType.Weapon: return weaponIds ?? (weaponIds = new List<string>());
+            case RegistryIdType.Music: return musicIds ?? (musicIds = new List<string>());
+            case RegistryIdType.Sfx: return sfxIds ?? (sfxIds = new List<string>());
             default: return new List<string>();
         }
     }
@@ -53,6 +61,8 @@ public sealed class GameIdRegistry : ScriptableObject
         sessionIds ??= new List<string>();
         skillIds ??= new List<string>();
         weaponIds ??= new List<string>();
+        musicIds ??= new List<string>();
+        sfxIds ??= new List<string>();
 
         bool loadedItemJson = false;
         bool loadedSessionJson = false;

@@ -21,7 +21,62 @@ MonoBehaviour:
     effect: "\u0110\xF2n c\u1EADn chi\u1EBFn \u0111\u01A1n, s\xE1t th\u01B0\u01A1ng
       c\u01A1 b\u1EA3n, kh\xF4ng h\u1ED3i chi\xEAu, d\xF9ng \u0111\u01B0\u1EE3c v\u1EDBi
       m\u1ECDi v\u0169 kh\xED c\u1EADn chi\u1EBFn."
-    activeSkillId: BasicSlash
+    icon: {fileID: 2649847697073447219, guid: 6eb2d73eab62b5d498a203ebb3d8dd3a, type: 3}
+    skillId: BasicSlash
+    actionId: BasicSlash
+    type: 0
+    weaponId: 
+    defaultContext:
+      skillSize: {x: 1.25, y: 1}
+      range: 0.8
+      speed: 0
+      duration: 0.1
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0.35
+      chargeTime: 0.2
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
+      castSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
+      hitSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 1
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 5
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 1
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
     cooldown: 0.35
     skillSize: {x: 1.25, y: 1}
     range: 0.8
@@ -40,6 +95,7 @@ MonoBehaviour:
       zoneShape: 1
       zoneSize: {x: 2, y: 2}
       zoneLifetime: 5
+    legacyContextMigrated: 1
   animationVariants:
   - skillName: BasicSlash
     weaponName: 

@@ -6,7 +6,9 @@ public enum RegistryIdType
     Item,
     Session,
     Skill,
-    Weapon
+    Weapon,
+    Music,
+    Sfx
 }
 
 [System.AttributeUsage(System.AttributeTargets.Field)]

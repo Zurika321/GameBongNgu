@@ -1,0 +1,37 @@
+HOOK CHIẾN ĐẤU CHO PASSIVE (OnHit / OnKill / OnDamageTaken) + CHÍ MẠNG
+=======================================================================
+Passive theo trigger chỉ phản ứng khi code gây damage báo sự kiện. Cần thêm 2 chỗ trong code của dự án
+(không nằm trong gói vì file damage / HealthController không được gửi kèm).
+
+1) Khi một đòn TRÚNG mục tiêu và damage đã được trừ thành công (hitbox / skill hit):
+
+       SkillCombatEvents.ReportHit(context, targetObject, targetDied);
+
+   - context     : SkillContext của đòn vừa đánh (context.Caster = người đánh).
+   - targetObject: GameObject của mục tiêu bị trúng.
+   - targetDied  : true nếu mục tiêu chết ngay do đòn này -> tự bắn thêm OnKill.
+   - Gọi 1 lần cho mỗi mục tiêu bị trúng, SAU KHI đã trừ máu.
+   Ví dụ, ngay sau chỗ đang gọi enemyHealth.TakeDamage(...):
+
+       enemyHealth.TakeDamage(finalDamage);
+       SkillCombatEvents.ReportHit(context, enemyObject, enemyHealth.IsDead);
+
+   Gọi cho cả đòn của Enemy cũng được: passive chỉ phản ứng khi người đánh là Player.
+
+2) Khi Player bị trừ máu (trong HealthController, nhánh của Player):
+
+       SkillCombatEvents.RaiseDamageTaken(gameObject, finalDamage);
+
+3) Chí mạng (tuỳ chọn). Nếu muốn modifier CriticalChance / CriticalDamage có tác dụng,
+   trước khi trừ máu của đòn do Player đánh:
+
+       float damage = PlayerProgressionService.Instance.ApplyCritical(context.Damage, out bool isCrit);
+
+   Tỉ lệ chí mạng gốc 0, hệ số gốc 1.5; chỉnh bằng modifier (PlayerStatType.CriticalChance / CriticalDamage).
+
+Lưu ý
+-----
+- Passive chỉ hoạt động khi nằm trong danh sách của PlayerPassiveSkillController
+  (đã mở khóa và thỏa điều kiện vũ khí). Xem danh sách ở Inspector khi đang Play.
+- Passive OnHit / OnKill / OnDamageTaken cần duration > 0 và chance > 0 (validator sẽ cảnh báo).
+- Không gọi ReportHit cho từng tick DOT nếu không muốn passive kích hoạt liên tục.

@@ -42,9 +42,12 @@ public class SkillHitbox : MonoBehaviour
         hitTargets.Add(other);
 
         IDamage damageable = other.GetComponentInParent<IDamage>();
+        bool targetDied = false;
         if (damageable != null)
         {
             damageable.TakeDamage(damage, owner, stunTime);
+            HealthController health = other.GetComponentInParent<HealthController>();
+            targetDied = health != null && health.IsDead;
         }
         else
         {
@@ -55,6 +58,20 @@ public class SkillHitbox : MonoBehaviour
         if (dotConfig != null && dotConfig.activationType == DotActivationType.Immediate)
         {
             DameDotEffect.ApplyOrRefresh(other.gameObject, owner, dotConfig);
+        }
+
+        if (owner != null)
+        {
+            SkillContext fakeContext = new SkillContext
+            {
+                Caster = owner,
+                Direction = Vector2.right,
+                Position = transform.position,
+                Damage = damage,
+                StunTime = stunTime,
+                OverrideTargetTag = targetTag
+            };
+            SkillCombatEvents.ReportHit(fakeContext, other.gameObject, targetDied);
         }
     }
 }

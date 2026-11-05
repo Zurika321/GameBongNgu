@@ -62,11 +62,13 @@ public class HealthController : MonoBehaviour, IDamage, IHealth
     {
         if (damage <= 0f || IsDead || IsInvincible) return;
 
+        float finalDamage = damage;
         if (GetComponent<PlayerController>() != null && PlayerProgressionService.Instance != null)
-            damage = Mathf.Max(1f, damage - PlayerProgressionService.Instance.GetDefensePower());
+            finalDamage = Mathf.Max(1f, damage - PlayerProgressionService.Instance.GetDefensePower());
 
-        currentHealth = Mathf.Max(0f, currentHealth - damage);
+        currentHealth = Mathf.Max(0f, currentHealth - finalDamage);
         UpdateHealthBar();
+        SkillCombatEvents.RaiseDamageTaken(gameObject, finalDamage);
 
         if (IsDead)
         {

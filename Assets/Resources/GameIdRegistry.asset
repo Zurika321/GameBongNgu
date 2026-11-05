@@ -193,3 +193,8 @@ MonoBehaviour:
   weaponIds:
   - "Dao G\u0103m G\u1EC9"
   - "R\xECu C\u1EA7m Tay"
+  musicIds:
+  - menu
+  sfxIds:
+  - footstep
+  - hit
