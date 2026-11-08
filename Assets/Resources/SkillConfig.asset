@@ -12,21 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56366ea2ebb8bd04a8acd7f6d3f03fac, type: 3}
   m_Name: SkillConfig
   m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
+  fallbackSkillIcon: {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
   skills:
-  - branch: "C\u1EADn Chi\u1EBFn (C\xF4ng)"
+  - branch: "C\u1EADn Chi\u1EBFn"
     tier: T1
     name: "Ch\xE9m c\u01A1 b\u1EA3n"
-    unlockCondition: "M\u1EB7c \u0111\u1ECBnh t\u1EEB \u0111\u1EA7u game"
+    unlockCondition: "\u0110\u1EA1t Lv1 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
     requires: "\u2014"
     effect: "\u0110\xF2n c\u1EADn chi\u1EBFn \u0111\u01A1n, s\xE1t th\u01B0\u01A1ng
-      c\u01A1 b\u1EA3n, kh\xF4ng h\u1ED3i chi\xEAu, d\xF9ng \u0111\u01B0\u1EE3c v\u1EDBi
-      m\u1ECDi v\u0169 kh\xED c\u1EADn chi\u1EBFn."
+      c\u01A1 b\u1EA3n, d\xF9ng \u0111\u01B0\u1EE3c v\u1EDBi m\u1ECDi v\u0169 kh\xED
+      c\u1EADn chi\u1EBFn. T\u1ED1c \u0111\u1ED9 \u0111\xE1nh theo ch\u1EC9 s\u1ED1
+      attack speed."
     icon: {fileID: 2649847697073447219, guid: 6eb2d73eab62b5d498a203ebb3d8dd3a, type: 3}
     skillId: BasicSlash
-    actionId: BasicSlash
+    actionId: ACT_MELEE_1
     type: 0
     weaponId: 
     defaultContext:
+      animationName: 
       skillSize: {x: 1.25, y: 1}
       range: 0.8
       speed: 0
@@ -51,6 +58,83 @@ MonoBehaviour:
       hitSfx: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
       sfxVolume: 1
       cutChargeSfxToChargeTime: 1
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
       animationSet:
         chargeDown: []
         chargeUp: []
@@ -96,9 +180,4298 @@ MonoBehaviour:
       zoneSize: {x: 2, y: 2}
       zoneLifetime: 5
     legacyContextMigrated: 1
+  - branch: "C\u1EADn Chi\u1EBFn"
+    tier: T2
+    name: "Combo 2 \u0111\xF2n"
+    unlockCondition: "\u0110\u1EA1t Lv5 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "Ch\xE9m c\u01A1 b\u1EA3n"
+    effect: "N\u1ED1i li\u1EC1n 2 \u0111\xF2n trong 1 l\u1EA7n b\u1EA5m, t\u1ED5ng
+      s\xE1t th\u01B0\u01A1ng cao h\u01A1n ~20% so v\u1EDBi \u0111\xE1nh r\u1EDDi."
+    icon: {fileID: 0}
+    skillId: ComboSlash
+    actionId: ACT_MELEE_2
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.3, y: 1}
+      range: 0.9
+      speed: 0
+      duration: 0.12
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "C\u1EADn Chi\u1EBFn"
+    tier: T3
+    name: "\u0110\xF2n xuy\xEAn gi\xE1p"
+    unlockCondition: "\u0110\u1EA1t Lv4 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "Combo 2 \u0111\xF2n"
+    effect: "\u0110\xF2n \u0111\u1EB7c bi\u1EC7t ph\xE1 30% gi\xE1p/khi\xEAn qu\xE1i
+      th\u01B0\u1EDDng. Kh\xF4ng ph\xE1 \u0111\u01B0\u1EE3c khi\xEAn boss (c\u1EA7n
+      \u0111\u1EA1n b\u1EA1c)."
+    icon: {fileID: 0}
+    skillId: ArmorPiercing
+    actionId: ACT_THRUST_PIERCE
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.8, y: 0.5}
+      range: 1.1
+      speed: 0
+      duration: 0.12
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 4
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "C\u1EADn Chi\u1EBFn"
+    tier: T4
+    name: "Ph\u1EA3n \u0111\xF2n ho\xE0n h\u1EA3o"
+    unlockCondition: "\u0110\u1EA1t Lv14 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "\u0110\xF2n xuy\xEAn gi\xE1p"
+    effect: "S\xE1t th\u01B0\u01A1ng ph\u1EA3n g\u1EA5p \u0111\xF4i \u0111\xF2n th\u01B0\u1EDDng
+      n\u1EBFu b\u1EA5m \u0111\u1EE1 \u0111\xFAng th\u1EDDi \u0111i\u1EC3m."
+    icon: {fileID: 0}
+    skillId: PerfectParry
+    actionId: ACT_PARRY_COUNTER
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.5, y: 1.1}
+      range: 1
+      speed: 0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 2
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "C\u1EADn Chi\u1EBFn"
+    tier: T5
+    name: "B\u1ED9c ph\xE1t 5 \u0111\xF2n"
+    unlockCondition: "\u0110\u1EA1t Lv15 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "Ph\u1EA3n \u0111\xF2n ho\xE0n h\u1EA3o"
+    effect: "Combo 5 \u0111\xF2n kh\xF4ng ng\u1EAFt qu\xE3ng n\u1EBFu m\u1ED7i \u0111\xF2n
+      \u0111\u1EC1u tr\xFAng; \u0111\xF2n cu\u1ED1i g\xE2y cho\xE1ng nh\u1EB9."
+    icon: {fileID: 0}
+    skillId: BurstCombo
+    actionId: ACT_MELEE_5_STUN_FINISH
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.3, y: 1}
+      range: 0.9
+      speed: 0
+      duration: 0.1
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 10
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "C\u1EADn Chi\u1EBFn"
+    tier: T6 (Ultimate)
+    name: "Song \u0111ao h\u1EE3p b\xEDch"
+    unlockCondition: "\u0110\u1EA1t Lv18 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "B\u1ED9c ph\xE1t 5 \u0111\xF2n"
+    effect: "D\xF9ng c\xF9ng l\xFAc 2 v\u0169 kh\xED c\u1EADn chi\u1EBFn, t\u1ED1c
+      \u0111\u1ED9 \u0111\xE1nh +25%, ph\xF2ng th\u1EE7 -15% trong l\xFAc thi tri\u1EC3n."
+    icon: {fileID: 0}
+    skillId: DualBlades
+    actionId: ACT_BUFF_DUAL_BLADE
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 30
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T1
+    name: "N\xE9 tr\xE1nh nhanh"
+    unlockCondition: "\u0110\u1EA1t Lv2 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "\u2014"
+    effect: "Dodge roll ng\u1EAFn n\xE9 \u0111\u01B0\u1EE3c h\u1EA7u h\u1EBFt \u0111\xF2n
+      \u0111\xE1nh th\u01B0\u1EDDng (c\xF3 khung b\u1EA5t t\u1EED ng\u1EAFn)."
+    icon: {fileID: 0}
+    skillId: DodgeRoll
+    actionId: ACT_DODGE_ROLL
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T2
+    name: "\u0110\u1EE1 \u0111\xF2n (parry)"
+    unlockCondition: "\u0110\u1EA1t Lv3 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "N\xE9 tr\xE1nh nhanh"
+    effect: "\u0110\u1EE1 \u0111\u01B0\u1EE3c \u0111\xF2n c\u1EADn chi\u1EBFn c\u1EE7a
+      qu\xE1i/boss n\u1EBFu b\u1EA5m \u0111\xFAng th\u1EDDi \u0111i\u1EC3m; m\u1EDF
+      kh\xF3a Ph\u1EA3n \u0111\xF2n ho\xE0n h\u1EA3o."
+    icon: {fileID: 0}
+    skillId: Parry
+    actionId: ACT_PARRY
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T3
+    name: "Kh\xE1ng cho\xE1ng"
+    unlockCondition: "\u0110\u1EA1t Lv6 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "\u0110\u1EE1 \u0111\xF2n (parry)"
+    effect: "Gi\u1EA3m 20% th\u1EDDi l\u01B0\u1EE3ng cho\xE1ng t\u1EEB m\u1ECDi ngu\u1ED3n
+      (k\u1EC3 c\u1EA3 N\u1EC7n \u0110\u1EA5t)."
+    icon: {fileID: 0}
+    skillId: StunResistance
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers:
+      - stat: 7
+        modifierType: 0
+        value: 0.2
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T4
+    name: "Kh\xE1ng \u0111\u1ED9c/m\xE1u"
+    unlockCondition: "\u0110\u1EA1t Lv10 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "Kh\xE1ng cho\xE1ng"
+    effect: "Gi\u1EA3m 30% s\xE1t th\u01B0\u01A1ng theo th\u1EDDi gian t\u1EEB \u0111\u1ED9c
+      v\xE0 ch\u1EA3y m\xE1u."
+    icon: {fileID: 0}
+    skillId: DotResistance
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers:
+      - stat: 8
+        modifierType: 0
+        value: 0.3
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T5
+    name: "T\u0129nh t\xE2m"
+    unlockCondition: "\u0110\u1EA1t Lv13 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "Kh\xE1ng \u0111\u1ED9c/m\xE1u"
+    effect: "\u0110\u1EE9ng y\xEAn trong t\u01B0 th\u1EBF ph\xF2ng th\u1EE7 \u0111\u1EC3
+      h\u1ED3i nh\u1EB9 L\xFD Tr\xED theo th\u1EDDi gian."
+    icon: {fileID: 0}
+    skillId: CalmMind
+    actionId: ACT_HEAL_LT_CHANNEL
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Sinh T\u1ED3n"
+    tier: T6 (Ultimate)
+    name: "\xDD ch\xED s\u1EAFt \u0111\xE1"
+    unlockCondition: "\u0110\u1EA1t Lv17 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n c\u1EDD LT cao xuy\xEAn su\u1ED1t game v\xE0 c\u1EA5p c\u1EDD
+      mi\u1EC5n nhi\u1EC5m d\xF9ng 1 l\u1EA7n cho ChallengeMeter; Excel ch\u01B0a
+      n\xEAu ng\u01B0\u1EE1ng LT."
+    requires: "T\u0129nh t\xE2m"
+    effect: "Mi\u1EC5n nhi\u1EC5m ho\xE0n to\xE0n 1 l\u1EA7n v\u1EDBi hi\u1EC7u \u1EE9ng
+      \u0110\u1ED3ng H\xF3a c\u1EE7a V\xF4 Di\u1EC7n \u1EDF Phase 3."
+    icon: {fileID: 0}
+    skillId: IronWill
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T1
+    name: "N\u1ED9 kh\xED"
+    unlockCondition: "\u0110\u1EA1t Lv7 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "G\xE1n Modules/Condition: HitCount, Required Count, Within Seconds;
+      Excel ch\u01B0a ch\u1ED1t s\u1ED1 \u0111\xF2n t\xEDch n\u1ED9."
+    requires: "\u2014"
+    effect: "T\xEDch l\u0169y \u0111\xF2n tr\xFAng \u0111\u1EC3 k\xEDch ho\u1EA1t
+      buff +20% s\xE1t th\u01B0\u01A1ng trong 8s."
+    icon: {fileID: 0}
+    skillId: Rage
+    actionId: ACT_BUFF_ATK_TIMED
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 6
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 0
+          withinSeconds: 0
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T2
+    name: "N\xE9m v\u0169 kh\xED ph\u1EE5"
+    unlockCondition: "\u0110\u1EA1t Lv8 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "N\u1ED9 kh\xED"
+    effect: "T\u1EA5n c\xF4ng t\u1EA7m ng\u1EAFn kh\xF4ng t\u1ED1n \u0111\u1EA1n
+      hi\u1EBFm, s\xE1t th\u01B0\u01A1ng th\u1EA5p nh\u01B0ng c\xF3 th\u1EC3 spam."
+    icon: {fileID: 0}
+    skillId: ThrowWeapon
+    actionId: ACT_PROJ_1
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0.2, y: 0.2}
+      range: 0.6
+      speed: 6
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides:
+      - stepIndex: 0
+        damagePercents:
+        - 40
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T3
+    name: "S\u1EE9c m\u1EA1nh vay m\u01B0\u1EE3n"
+    unlockCondition: "Ch\u1ECDn l\u1EF1a ch\u1ECDn A \u1EDF Session 7B (ch\u1EA5p
+      nh\u1EADn h\u1EE3p \u0111\u1ED3ng v\u1EDBi V\xF4 Di\u1EC7n)"
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n n\u1ED1i l\u1EF1a ch\u1ECDn A Session 7B; +15% CH\u1EC8
+      c\u1EADn chi\u1EBFn v\xE0 QT +1 m\u1ED7i 3 tr\u1EADn c\u1EA7n adapter theo
+      v\xF2ng \u0111\u1EDDi tr\u1EADn."
+    requires: "N\xE9m v\u0169 kh\xED ph\u1EE5"
+    effect: "T\u0103ng 15% s\xE1t th\u01B0\u01A1ng c\u1EADn chi\u1EBFn v\u0129nh
+      vi\u1EC5n; Qu\u1EF7 T\xEDnh t\u1EF1 +1 sau m\u1ED7i 3 tr\u1EADn \u0111\xE1nh."
+    icon: {fileID: 0}
+    skillId: BorrowedPower
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T4
+    name: "M\xF3ng vu\u1ED1t qu\u1EF7"
+    unlockCondition: "Ch\u1ECDn l\u1EF1a ch\u1ECDn B \u1EDF Session 8B (d\xF9ng s\u1EE9c
+      m\u1EA1nh \u0111\u1EC3 tr\u1EA3 th\xF9)"
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "S\u1EE9c m\u1EA1nh vay m\u01B0\u1EE3n"
+    effect: "S\xE1t th\u01B0\u01A1ng r\u1EA5t cao, t\u1EF1 g\xE2y 5% s\xE1t th\u01B0\u01A1ng
+      l\xEAn b\u1EA3n th\xE2n m\u1ED7i \u0111\xF2n."
+    icon: {fileID: 0}
+    skillId: DemonClaw
+    actionId: ACT_MELEE_1_SELFCOST
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.2, y: 0.9}
+      range: 0.9
+      speed: 0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T5
+    name: "\u0110\u1ED3ng h\xF3a ng\u01B0\u1EE3c"
+    unlockCondition: "\u0110\u1EA1t Lv14 v\xE0 Qu\u1EF7 T\xEDnh v\u01B0\u1EE3t ng\u01B0\u1EE1ng
+      cao"
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: "M\xF3ng vu\u1ED1t qu\u1EF7"
+    effect: "M\u01B0\u1EE3n t\u1EA1m s\u1EE9c m\u1EA1nh V\xF4 Di\u1EC7n 10s: t\u0103ng
+      m\u1EA1nh ATK/t\u1ED1c \u0111\u1ED9, nh\u01B0ng thao t\xE1c n\xE9 tr\xE1nh
+      m\u1EA5t ki\u1EC3m so\xE1t m\u1ED9t ph\u1EA7n."
+    icon: {fileID: 0}
+    skillId: ReverseAssimilation
+    actionId: ACT_BUFF_BORROW_POWER
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 60
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "Qu\u1EF7 T\xEDnh"
+    tier: T6 (Ultimate)
+    name: "C\u1ED9ng sinh"
+    unlockCondition: "Ch\u1EC9 d\xF9ng \u0111\u01B0\u1EE3c n\u1EBFu \u0111i v\xE0o
+      Ending C\u1ED9ng Sinh (Session 11-A)"
+    needsInspectorSetup: 1
+    setupNotes: "Excel ch\u01B0a x\xE1c \u0111\u1ECBnh action/gameplay; c\u1EA7n
+      c\u1EDD Ending C\u1ED9ng Sinh v\xE0 NG+."
+    requires: "\u0110\u1ED3ng h\xF3a ng\u01B0\u1EE3c"
+    effect: "H\u1EE3p nh\u1EA5t k\u1EF9 n\u0103ng c\u1EADn chi\u1EBFn v\xE0 Qu\u1EF7
+      T\xEDnh, m\u1EDF kh\xF3a ri\xEAng cho New Game+ (vai tr\xF2 Kh\u1EA3i C\u1ED9ng
+      Sinh)."
+    icon: {fileID: 0}
+    skillId: Symbiosis
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv9
+    name: "C\u01B0\u1EDDng H\xF3a V\u0169 Kh\xED C\u1EADn Chi\u1EBFn +1 b\u1EADc"
+    unlockCondition: "\u0110\u1EA1t Lv9 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "Excel ch\u01B0a c\xF3 c\xF4ng th\u1EE9c n\xE2ng 1 b\u1EADc v\xE0
+      b\u1EA3ng ch\u1EC9 s\u1ED1 v\u0169 kh\xED theo b\u1EADc."
+    requires: 
+    effect: "N\xE2ng v\u0169 kh\xED c\u1EADn chi\u1EBFn l\xEAn 1 b\u1EADc."
+    icon: {fileID: 0}
+    skillId: WeaponUpgrade
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv11
+    name: "\u0110\xF2n Ch\xED M\u1EA1ng C\u1EADn Chi\u1EBFn"
+    unlockCondition: "\u0110\u1EA1t Lv11 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "\u0110\xE3 \u0111\u0103ng k\xFD +15% CriticalChance. H\u1EC7 damage
+      hi\u1EC7n ch\u01B0a roll ch\xED m\u1EA1ng c\u1EADn chi\u1EBFn; c\u1EA7n n\u1ED1i
+      consumer tr\u01B0\u1EDBc khi b\u1EADt passive."
+    requires: 
+    effect: "+15% t\u1EC9 l\u1EC7 ch\xED m\u1EA1ng c\u1EADn chi\u1EBFn."
+    icon: {fileID: 0}
+    skillId: MeleeCritical
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers:
+      - stat: 4
+        modifierType: 0
+        value: 0.15
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv12
+    name: "Ph\xE1 Gi\xE1p Ho\xE0n To\xE0n"
+    unlockCondition: "\u0110\u1EA1t Lv12 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n c\u1ED5ng gi\u1EDBi h\u1EA1n 1 l\u1EA7n/tr\u1EADn; Excel
+      ch\u01B0a \u0111\u1ECBnh ngh\u0129a ranh gi\u1EDBi tr\u1EADn, kh\xF4ng cho
+      spam ph\xE1 khi\xEAn."
+    requires: 
+    effect: "V\xF4 hi\u1EC7u khi\xEAn qu\xE1i 1 l\u1EA7n/tr\u1EADn."
+    icon: {fileID: 0}
+    skillId: GuardBreak
+    actionId: ACT_THRUST_PIERCE
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 1.8, y: 0.5}
+      range: 1.1
+      speed: 0
+      duration: 0.12
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 1
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv16
+    name: "Tinh Th\xF4ng \u0110\u1EA1n B\u1EA1c"
+    unlockCondition: "\u0110\u1EA1t Lv16 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n consumer ph\xE2n lo\u1EA1i \u0111\u1EA1n b\u1EA1c/boss
+      \u0111\u1EC3 c\u1ED9ng 25% \u0111\xFAng m\u1EE5c ti\xEAu."
+    requires: 
+    effect: "\u0110\u1EA1n hi\u1EBFm g\xE2y th\xEAm 25% s\xE1t th\u01B0\u01A1ng l\xEAn
+      Boss."
+    icon: {fileID: 0}
+    skillId: SilverMastery
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv19
+    name: "Tr\u1EF1c Gi\xE1c Sinh T\u1ED3n"
+    unlockCondition: "\u0110\u1EA1t Lv19 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n metadata nh\u1EADn \u0111\xF2n ch\xED m\u1EA1ng \u0111\u1EC3
+      t\u1EF1 n\xE9 10%; kh\xF4ng bi\u1EBFn th\xE0nh active n\xE9 th\u1EE7 c\xF4ng."
+    requires: 
+    effect: "T\u1EF1 \u0111\u1ED9ng n\xE9 \u0111\xF2n ch\xED m\u1EA1ng v\u1EDBi x\xE1c
+      su\u1EA5t 10%."
+    icon: {fileID: 0}
+    skillId: SurvivalInstinct
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "T\u1EEB b\u1EA3ng Level"
+    tier: Lv20
+    name: "Ho\xE0n Thi\u1EC7n B\u1EA3n Th\xE2n"
+    unlockCondition: "\u0110\u1EA1t Lv20 \u2014 theo He Thong Level (\u01B0u ti\xEAn
+      m\u1ED1c n\xE0y khi c\xE2y k\u1EF9 n\u0103ng l\u1EC7ch)."
+    needsInspectorSetup: 0
+    setupNotes: "Ngu\u1ED3n: Skill Player / He Thong Level. Cooldown c\xF3 d\u1EA5u
+      ~ l\xE0 \u0111\u1EC1 xu\u1EA5t trong Excel."
+    requires: 
+    effect: "M\u1EDF to\xE0n b\u1ED9 c\xE2y k\u1EF9 n\u0103ng."
+    icon: {fileID: 0}
+    skillId: SelfPerfection
+    actionId: 
+    type: 2
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0, y: 0}
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "V\u0169 kh\xED t\u1EA7m xa"
+    tier: 
+    name: "B\u1EAFn \u0111\u1EA1n C\u0169"
+    unlockCondition: 
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n g\xE1n lo\u1EA1i v\u0169 kh\xED/\u0111\u1EA1n v\xE0 n\u1ED1i
+      ti\xEAu hao \u0111\u1EA1n tr\u01B0\u1EDBc khi b\u1EADt; kh\xF4ng cho b\u1EAFn
+      mi\u1EC5n ph\xED."
+    requires: 
+    effect: "Ti\xEAu hao 1 vi\xEAn \u0111\u1EA1n; 120% ATK (\u0111\u1EC1 xu\u1EA5t
+      Excel)."
+    icon: {fileID: 0}
+    skillId: ShotOld
+    actionId: ACT_PROJ_1
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0.2, y: 0.2}
+      range: 0.6
+      speed: 6
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides:
+      - stepIndex: 0
+        damagePercents:
+        - 120
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "V\u0169 kh\xED t\u1EA7m xa"
+    tier: 
+    name: "B\u1EAFn \u0111\u1EA1n \u0110\u1ED3ng"
+    unlockCondition: 
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n g\xE1n lo\u1EA1i v\u0169 kh\xED/\u0111\u1EA1n v\xE0 n\u1ED1i
+      ti\xEAu hao \u0111\u1EA1n tr\u01B0\u1EDBc khi b\u1EADt; kh\xF4ng cho b\u1EAFn
+      mi\u1EC5n ph\xED."
+    requires: 
+    effect: "Ti\xEAu hao 1 vi\xEAn \u0111\u1EA1n; 160% ATK (\u0111\u1EC1 xu\u1EA5t
+      Excel)."
+    icon: {fileID: 0}
+    skillId: ShotCopper
+    actionId: ACT_PROJ_1
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0.2, y: 0.2}
+      range: 0.6
+      speed: 6
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides:
+      - stepIndex: 0
+        damagePercents:
+        - 160
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
+  - branch: "V\u0169 kh\xED t\u1EA7m xa"
+    tier: 
+    name: "B\u1EAFn \u0111\u1EA1n B\u1EA1c"
+    unlockCondition: 
+    needsInspectorSetup: 1
+    setupNotes: "C\u1EA7n g\xE1n lo\u1EA1i v\u0169 kh\xED/\u0111\u1EA1n v\xE0 n\u1ED1i
+      ti\xEAu hao \u0111\u1EA1n tr\u01B0\u1EDBc khi b\u1EADt; kh\xF4ng cho b\u1EAFn
+      mi\u1EC5n ph\xED."
+    requires: 
+    effect: "Ti\xEAu hao 1 vi\xEAn \u0111\u1EA1n; 220% ATK (\u0111\u1EC1 xu\u1EA5t
+      Excel)."
+    icon: {fileID: 0}
+    skillId: ShotSilver
+    actionId: ACT_PROJ_1
+    type: 1
+    weaponId: 
+    defaultContext:
+      animationName: 
+      skillSize: {x: 0.2, y: 0.2}
+      range: 0.6
+      speed: 6
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+        dotDuration: 3
+        tickInterval: 1
+        damagePerTick: 1
+        zoneShape: 1
+        zoneSize: {x: 2, y: 2}
+        zoneLifetime: 5
+      chargeSfx: {fileID: 0}
+      castSfx: {fileID: 0}
+      hitSfx: {fileID: 0}
+      sfxVolume: 1
+      cutChargeSfxToChargeTime: 0
+      actionDamageOverrides:
+      - stepIndex: 0
+        damagePercents:
+        - 220
+      breaksGuard: 1
+      bypassesMeleeResistance: 0
+      modules:
+        status:
+          kind: 0
+          duration: 1
+          strength: 0.4
+          statusId: Curse
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 4
+          radius: 1
+          lifetime: 10
+          ownerHealthFraction: 0.5
+        movement:
+          invincible: 0
+          invincibleStart: 0
+          invincibleEnd: 0
+        resource:
+          resource: 0
+          amountMode: 0
+          amount: 0
+          ticks: 1
+          interval: 1
+          cancelOnMove: 0
+          cancelOnDamage: 0
+          moveTolerance: 0.1
+          persist: 0
+        defense:
+          mode: 0
+          duration: 0.5
+          fraction: 0.2
+          counterActionId: 
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+        screen:
+          strength: 0.7
+          fadeSeconds: 0.5
+          duration: 5
+        challenge:
+          mode: 0
+          duration: 6
+          initialValue: 0.5
+          requiredValue: 0.5
+          drainPerSecond: 0.1
+          gainPerInput: 0.1
+          failureGraceSeconds: 3
+          immunityFlag: 
+          consumeImmunity: 0
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+        condition:
+          kind: 0
+          threshold: 0.5
+          wallMask:
+            serializedVersion: 2
+            m_Bits: 0
+          wallDistance: 0.5
+          flag: 
+          requiredCount: 1
+          withinSeconds: 5
+          invert: 0
+          passActionId: 
+          failActionId: 
+        selfBuff:
+          duration: 5
+          modifiers: []
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+      animationSet:
+        chargeDown: []
+        chargeUp: []
+        chargeLeft: []
+        chargeRight: []
+        attackDown: []
+        attackUp: []
+        attackLeft: []
+        attackRight: []
+        endDown: []
+        endUp: []
+        endLeft: []
+        endRight: []
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    executeActionAfterBuff: 0
+    weaponRequirement:
+      acceptedTypes: 
+      acceptedWeaponIds: []
+    cooldown: 1
+    skillSize: {x: 1.5, y: 1}
+    range: 1
+    speed: 10
+    duration: 0.2
+    stunTime: 0
+    chargeTime: 0
+    endTime: 0.15
+    canPierce: 0
+    debug: 1
+    dotConfig:
+      activationType: 0
+      dotDuration: 3
+      tickInterval: 1
+      damagePerTick: 1
+      zoneShape: 1
+      zoneSize: {x: 2, y: 2}
+      zoneLifetime: 5
+    legacyContextMigrated: 1
   animationVariants:
   - skillName: BasicSlash
-    weaponName: 
+    weaponName: null
     animationSet:
       chargeDown:
       - {fileID: 4035959289877228764, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}

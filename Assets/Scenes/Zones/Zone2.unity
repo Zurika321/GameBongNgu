@@ -1875,35 +1875,46 @@ Transform:
 --- !u!114 &590969311
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 590969309}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 590969309
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone2:Qu\u1EA3ng Tr\u01B0\u1EDDng Trung T\xE2m"
+  sessionId: Zone2:Quảng Trường Trung Tâm
   enemyIdPrefix: TOWNUNDEAD
-  enemyDisplayName: "X\xE1c S\u1ED1ng Th\u1ECB D\xE2n"
+  enemyDisplayName: Xác Sống Thị Dân
   spawnCount: 4
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 7664073485512630456, guid: 88f2fff007e477548820fd19168c0d65, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "V\u1EA3i V\u1EE5n"
-    amount: 1
-    dropChance: 0.5
-  - itemName: "\u0110\u1ED3ng Xu C\u0169"
-    amount: 1
-    dropChance: 0.3
-  experiencePerEnemy: 15
+  enemyPrefab:
+    fileID: 7664073485512630456
+    guid: 88f2fff007e477548820fd19168c0d65
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
+  experiencePerEnemy: 20
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 39d77bd8c03c452d8499e98a98109cf9
+    type: 2
 --- !u!1 &620108875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,35 +2985,46 @@ Transform:
 --- !u!114 &1086400224
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086400222}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1086400222
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone2:Qu\u1EA3ng Tr\u01B0\u1EDDng Trung T\xE2m"
-  enemyIdPrefix: "BOSS_QU\u1EA2NG TR\u01AF\u1EDCNG TRUNG T\xC2M"
-  enemyDisplayName: "\u0110\xE0n S\xF3i S\u01B0\u01A1ng M\xF9"
+  sessionId: Zone2:Quảng Trường Trung Tâm
+  enemyIdPrefix: BOSS_QUẢNG TRƯỜNG TRUNG TÂM
+  enemyDisplayName: Đàn Sói Sương Mù
   spawnCount: 1
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "Da S\xF3i \u0110\u1EA7u \u0110\xE0n"
-    amount: 1
-    dropChance: 0.5
-  - itemName: "B\xF9a H\u1ED3i M\xE1u"
-    amount: 1
-    dropChance: 0.3
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 200
   spawnWhenPlayerNearby: 1
   activationRadius: 7
-  requiredFlag: 
-  storyEventDirector: {fileID: 675047555}
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 675047555
   eventIdOnCleared: S5_BossDefeated
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: a3859e44924f4121b68712c8d4a8ea61
+    type: 2
 --- !u!1 &1092185915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,32 +3060,46 @@ Transform:
 --- !u!114 &1092185917
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1092185915}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1092185915
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone2:Qu\u1EA3ng Tr\u01B0\u1EDDng Trung T\xE2m"
+  sessionId: Zone2:Quảng Trường Trung Tâm
   enemyIdPrefix: MUTATEDCROW
-  enemyDisplayName: "Qu\u1EA1 X\xE1c Th\u1ED1i"
+  enemyDisplayName: Quạ Xác Thối
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 8222547389300622407, guid: 240368a3c5bbd684daf0315bd444b9fe, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "L\xF4ng Th\u1ED1i"
-    amount: 1
-    dropChance: 0.2
+  enemyPrefab:
+    fileID: 8222547389300622407
+    guid: 240368a3c5bbd684daf0315bd444b9fe
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 20
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: cf508fa437e6465d9d05a85f520c2adc
+    type: 2
 --- !u!1001 &1094512550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5538,35 +5574,46 @@ Transform:
 --- !u!114 &2007985690
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2007985688}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 2007985688
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone2:Nh\xE0 Kho \u0110\xE1"
+  sessionId: Zone2:Nhà Kho Đá
   enemyIdPrefix: BLOODBAT
-  enemyDisplayName: "D\u01A1i M\xE1u"
+  enemyDisplayName: Dơi Máu
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 1816911878248931231, guid: b47b5d18781100648999fae63fe25372, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "C\xE1nh D\u01A1i"
-    amount: 1
-    dropChance: 0.2
-  - itemName: "M\xE1u \u0110\xF3ng B\u0103ng"
-    amount: 1
-    dropChance: 0.15
-  experiencePerEnemy: 18
+  enemyPrefab:
+    fileID: 1816911878248931231
+    guid: b47b5d18781100648999fae63fe25372
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
+  experiencePerEnemy: 20
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 25ab7f32c8e246328028242551315978
+    type: 2
 --- !u!1 &2042212217
 GameObject:
   m_ObjectHideFlags: 0
@@ -5733,32 +5780,46 @@ Transform:
 --- !u!114 &2044490088
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2044490086}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 2044490086
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone2:Con \u0110\u01B0\u1EDDng R\u1EEBng S\u01B0\u01A1ng"
+  sessionId: Zone2:Con Đường Rừng Sương
   enemyIdPrefix: GHOSTHOUND
-  enemyDisplayName: "S\xF3i S\u01B0\u01A1ng \u0110\u01A1n \u0110\u1ED9c"
+  enemyDisplayName: Sói Sương Đơn Độc
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 541762737326365193, guid: 866a13f341769814e96fe066bc871f6f, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "Da S\xF3i S\u01B0\u01A1ng"
-    amount: 1
-    dropChance: 0.3
+  enemyPrefab:
+    fileID: 541762737326365193
+    guid: 866a13f341769814e96fe066bc871f6f
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 24
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 829bb1e9d9b1485780363e7ac7dca823
+    type: 2
 --- !u!4 &2103928995 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6177327137142896848, guid: 16314a09178c8004aac87bb8113999ff, type: 3}

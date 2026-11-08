@@ -1,0 +1,4 @@
+1.Thêm 4 nút UI trong scene CoreCombatDemo và trong playerskillcontroller thêm 3 biến nối với 3 nút ui này khi tung chiêu xong sẽ hiển thị thời gian hồi chiêu như mấy game đối kháng và basicplayercontroller cho 1 ui mặc định luôn , bên inventory ping api qua kèm thứ tự cho player skill controller , playercontroller tự biết mà gán phím ui 
+2.Làm cái ui hiện máu khi đánh trúng enemy cho player hiện trong 3s từ lần cuối đánh quái và lấy ảnh icon quái từ enemy conbat config(chưa có biến icon image thì tạo)
+3.Sửa lại file excel trong skill enemy và skill player ghi phần chú thích là t đã thêm ảnh skill vào chưa hay thiếu animation skill đó trong unity edit
+4.

@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, IFacingProvider
     private const float DefaultHurtDuration = 0.1f;
 
     public Vector2 FacingDirection => facingDirection;
+    public float BaseMoveSpeed => moveSpeed;
     public bool IsActionLocked => isLocked || hitReactionRemaining > 0f;
 
     private void Awake()
@@ -102,7 +103,9 @@ public class PlayerController : MonoBehaviour, IFacingProvider
 
     private void Move(Vector2 direction)
     {
-        rb.linearVelocity = direction * moveSpeed;
+        float effectiveMoveSpeed = PlayerProgressionService.Instance != null
+            ? PlayerProgressionService.Instance.ModifyStat(PlayerStatType.MoveSpeed, moveSpeed) : moveSpeed;
+        rb.linearVelocity = direction * Mathf.Max(0f, effectiveMoveSpeed) * ApplyStatus.MovementMultiplier(gameObject);
 
         if (direction.sqrMagnitude > 0.01f)
         {

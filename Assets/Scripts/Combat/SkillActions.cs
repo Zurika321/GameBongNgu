@@ -7,7 +7,6 @@ public class SkillRegistration
 {
     [Tooltip("Phải khớp actionId trong SkillConfigEntry. Không phải skillId.")]
     public string skillName;
-    public Sprite[] skillSprites;
 }
 
 /// <summary>
@@ -28,17 +27,24 @@ public class SkillActions : MonoBehaviour
         new SkillRegistration { skillName = "NormalAttack" },
         new SkillRegistration { skillName = "FlyAttack" },
         new SkillRegistration { skillName = "Fireball" },
-        new SkillRegistration { skillName = "DashAttack2" }
+        new SkillRegistration { skillName = "DashAttack2" },
+        new SkillRegistration { skillName = "ApplyStatus" },
+        new SkillRegistration { skillName = "SelfBuff" },
+        new SkillRegistration { skillName = "SummonEntity" },
+        new SkillRegistration { skillName = "CasterMove" },
+        new SkillRegistration { skillName = "ModifyResource" },
+        new SkillRegistration { skillName = "DefenseWindow" },
+        new SkillRegistration { skillName = "ScreenEffect" },
+        new SkillRegistration { skillName = "ChallengeMeter" },
+        new SkillRegistration { skillName = "ReplayAction" },
+        new SkillRegistration { skillName = "ConditionGate" }
     };
+
+    [SerializeField] private SkillActionCatalog actionCatalog;
 
     public static SkillActions Instance { get; private set; }
 
     private readonly Dictionary<string, ISkill> skillMap = new Dictionary<string, ISkill>(StringComparer.OrdinalIgnoreCase);
-    private readonly Dictionary<string, SkillRegistration> registrationMap = new Dictionary<string, SkillRegistration>(StringComparer.OrdinalIgnoreCase);
-    private AudioSource sfxSource;
-    private AudioSource chargeSource;
-    private string chargingSkillName;
-    private Coroutine chargeCutRoutine;
 
     private void Awake()
     {
@@ -50,31 +56,13 @@ public class SkillActions : MonoBehaviour
 
         Instance = this;
         if (transform.parent == null) DontDestroyOnLoad(gameObject);
-        SetupAudio();
         RegisterSkills();
-    }
-
-    private void SetupAudio()
-    {
-        sfxSource = CreateSfxSource();
-        chargeSource = CreateSfxSource();
-    }
-
-    private AudioSource CreateSfxSource()
-    {
-        AudioSource source = gameObject.AddComponent<AudioSource>();
-        source.playOnAwake = false;
-        source.loop = false;
-        source.spatialBlend = 0f;
-        VolumeManager.RegisterSFXSource(source);
-        return source;
     }
 
     private void RegisterSkills()
     {
         skillMap.Clear();
-        registrationMap.Clear();
-        if (skillRegistrations == null) return;
+        if (skillRegistrations == null) skillRegistrations = Array.Empty<SkillRegistration>();
 
         foreach (SkillRegistration registration in skillRegistrations)
         {
@@ -98,13 +86,24 @@ public class SkillActions : MonoBehaviour
                 continue;
             }
 
-            if (skill is ISkillSpriteConfigurable configurable)
-                configurable.SetSkillSprites(registration.skillSprites);
-            else if (registration.skillSprites != null && registration.skillSprites.Length > 0)
-                Debug.LogWarning($"[SkillActions] '{actionId}' không nhận cấu hình sprite.", this);
-
             skillMap.Add(actionId, skill);
-            registrationMap.Add(actionId, registration);
+        }
+        if (actionCatalog != null)
+        {
+            List<string> errors = actionCatalog.Validate();
+            foreach (string error in errors) Debug.LogError("[SkillActions] " + error, actionCatalog);
+            if (errors.Count > 0) return;
+            foreach (var definition in actionCatalog.actions)
+            {
+                if (definition == null || !definition.enabled || string.IsNullOrWhiteSpace(definition.actionId)) continue;
+                string id = definition.actionId.Trim();
+                if (skillMap.TryGetValue(id, out ISkill existing))
+                {
+                    if (!(existing is ConfiguredSkillAction)) Debug.LogError("[SkillActions] Catalog ID conflicts with a legacy action: " + id, this);
+                    continue;
+                }
+                skillMap.Add(id, new ConfiguredSkillAction(definition, this));
+            }
         }
     }
 
@@ -117,12 +116,24 @@ public class SkillActions : MonoBehaviour
             case "RatBleedBite": return new RatBleedBiteSkill();
             case "HoundRush": return new HoundRushSkill();
             case "SpiderPoisonBite": return new SpiderPoisonBiteSkill();
-            case "ArcAttack": return GetOrAddSkill<ArcAttackSkill>();
+            case "ArcAttack": return GetOrAddSkill<StaticDamageZone>();
             case "NormalAttack": return GetOrAddSkill<NormalAttackSkill>();
-            case "FlyAttack": return GetOrAddSkill<FlyAttackSkill>();
+            case "FlyAttack": return GetOrAddSkill<MovingHitbox>();
             case "Fireball": return GetOrAddSkill<FireballAttackSkill>();
             case "DashAttack2": return new DashAttackSkill2();
-            default: return null;
+            case "ApplyStatus": return GetOrAddSkill<ApplyStatus>();
+            case "SelfBuff": return new SelfBuffAction();
+            case "SummonEntity": return GetOrAddSkill<SummonEntity>();
+            case "CasterMove": return GetOrAddSkill<CasterMove>();
+            case "ModifyResource": return GetOrAddSkill<ModifyResource>();
+            case "DefenseWindow": return GetOrAddSkill<DefenseWindow>();
+            case "ScreenEffect": return GetOrAddSkill<ScreenEffect>();
+            case "ChallengeMeter": return GetOrAddSkill<ChallengeMeter>();
+            case "ReplayAction": return GetOrAddSkill<ReplayAction>();
+            case "ConditionGate": return GetOrAddSkill<ConditionGate>();
+            default:
+                SkillActionDefinition definition = actionCatalog != null ? actionCatalog.Find(actionId) : null;
+                return definition != null && definition.enabled ? new ConfiguredSkillAction(definition, this) : null;
         }
     }
 
@@ -131,6 +142,21 @@ public class SkillActions : MonoBehaviour
         T skill = GetComponent<T>();
         return skill != null ? skill : gameObject.AddComponent<T>();
     }
+
+    public T GetModule<T>() where T : MonoBehaviour, ISkill => GetOrAddSkill<T>();
+    public void CancelAction(string actionId, GameObject caster)
+    {
+        if (!string.IsNullOrWhiteSpace(actionId) && skillMap.TryGetValue(actionId, out ISkill action) && action is ConfiguredSkillAction configured) configured.Cancel(caster);
+    }
+
+    public void RemoveActionBuffs(string actionId, GameObject caster)
+    {
+        CancelAction(actionId, caster);
+        DefenseWindow.RemoveForAction(caster, actionId);
+        if (caster != null) caster.GetComponentInChildren<SelfBuff>(true)?.RemoveActionSources(actionId);
+    }
+
+    public bool IsActionRunning(string actionId, GameObject caster) => !string.IsNullOrWhiteSpace(actionId) && skillMap.TryGetValue(actionId, out ISkill action) && action is ConfiguredSkillAction configured && configured.IsRunning(caster);
 
     public bool HasRegisteredSkill(string actionId)
     {
@@ -144,95 +170,16 @@ public class SkillActions : MonoBehaviour
     public List<string> GetConfiguredActionIds()
     {
         List<string> ids = new List<string>();
+        if (actionCatalog?.actions != null)
+            foreach (var action in actionCatalog.actions)
+                if (action != null && action.enabled && !string.IsNullOrWhiteSpace(action.actionId) && !ids.Contains(action.actionId)) ids.Add(action.actionId);
         if (skillRegistrations == null) return ids;
         foreach (SkillRegistration registration in skillRegistrations)
         {
             if (registration != null && !string.IsNullOrWhiteSpace(registration.skillName))
-                ids.Add(registration.skillName.Trim());
+                if (!ids.Exists(id => string.Equals(id, registration.skillName.Trim(), StringComparison.OrdinalIgnoreCase))) ids.Add(registration.skillName.Trim());
         }
         return ids;
-    }
-
-    public void PlayChargeSfx(string actionId)
-    {
-        // Compatibility no-op: charge audio now belongs to SkillContext and is played from the skill execution path.
-    }
-
-    public void PlayChargeSfx(SkillContext context)
-    {
-        if (GameplayPause.IsPaused || context == null || chargeSource == null || context.ChargeSfx == null) return;
-
-        float cutDuration = 0f;
-        if (context.CutChargeSfxToChargeTime && context.ChargeTime > 0f)
-            cutDuration = Mathf.Min(context.ChargeTime, context.ChargeSfx.length);
-
-        chargeSource.Stop();
-        if (chargeCutRoutine != null)
-        {
-            StopCoroutine(chargeCutRoutine);
-            chargeCutRoutine = null;
-        }
-
-        chargingSkillName = context.ActionId;
-        chargeSource.clip = context.ChargeSfx;
-        chargeSource.volume = Mathf.Clamp01(context.SfxVolume);
-        chargeSource.pitch = 1f;
-        chargeSource.loop = false;
-        chargeSource.Play();
-
-        if (cutDuration > 0.05f)
-            chargeCutRoutine = StartCoroutine(TrimChargeSfxAfterSeconds(cutDuration));
-    }
-
-    public void StopChargeSfx(string actionId)
-    {
-        if (chargeSource == null || !string.Equals(chargingSkillName, actionId, StringComparison.OrdinalIgnoreCase)) return;
-        if (chargeCutRoutine != null)
-        {
-            StopCoroutine(chargeCutRoutine);
-            chargeCutRoutine = null;
-        }
-        chargeSource.Stop();
-        chargeSource.clip = null;
-        chargingSkillName = null;
-    }
-
-    public void PlayCastSfx(string actionId)
-    {
-        // Compatibility no-op: the actual cast audio is driven from SkillContext.
-    }
-
-    public void PlayCastSfx(SkillContext context)
-    {
-        if (GameplayPause.IsPaused || context == null || sfxSource == null || context.CastSfx == null) return;
-        sfxSource.PlayOneShot(context.CastSfx, Mathf.Clamp01(context.SfxVolume));
-    }
-
-    public void PlayHitSfx(string actionId)
-    {
-        // Compatibility no-op: the actual hit audio is handled by the skill instance that triggers the hit.
-    }
-
-    public void PlayHitSfx(SkillContext context)
-    {
-        if (GameplayPause.IsPaused || context == null || sfxSource == null || context.HitSfx == null) return;
-        sfxSource.PlayOneShot(context.HitSfx, Mathf.Clamp01(context.SfxVolume));
-    }
-
-    private System.Collections.IEnumerator TrimChargeSfxAfterSeconds(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        if (chargeSource != null && string.IsNullOrEmpty(chargingSkillName) == false)
-            chargeSource.Stop();
-        chargeSource.clip = null;
-        chargingSkillName = null;
-        chargeCutRoutine = null;
-    }
-
-    private bool TryGetRegistration(string actionId, out SkillRegistration registration)
-    {
-        registration = null;
-        return !string.IsNullOrWhiteSpace(actionId) && registrationMap.TryGetValue(actionId.Trim(), out registration);
     }
 
     /// <summary>actionId chọn class; context chứa thông số của skillId cụ thể.</summary>
@@ -257,17 +204,23 @@ public class SkillActions : MonoBehaviour
             return;
         }
 
-        StopChargeSfx(actionId);
-        PlayCastSfx(context);
+        CharacterAnimation animation = context.Caster != null ? context.Caster.GetComponentInChildren<CharacterAnimation>() : null;
+        if (animation != null)
+        {
+            animation.SetFacing(context.Direction);
+            string animationName = string.IsNullOrWhiteSpace(context.AnimationName) ? context.SkillId : context.AnimationName.Trim();
+            if (!animation.IsPlayingSkill(animationName)) animation.PlayAnimationSkill(animationName);
+            animation.BeginSkillCast();
+        }
+        context.ActionId = actionId;
         skill.Execute(context);
+        ReplayAction.Record(actionId, context);
     }
 
     private void OnDestroy()
     {
+        foreach (var action in skillMap.Values) if (action is ConfiguredSkillAction configured) configured.Shutdown();
         if (Instance == this) Instance = null;
-        if (sfxSource != null) VolumeManager.UnregisterSFXSource(sfxSource);
-        if (chargeSource != null) VolumeManager.UnregisterSFXSource(chargeSource);
         skillMap.Clear();
-        registrationMap.Clear();
     }
 }

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script:
+    fileID: 11500000
+    guid: 3d50080d75604a64813ccb6280b99526
+    type: 3
+  m_Name: Summon_DanSoiSuongMu
+  m_EditorClassIdentifier: ''
+  actorId: Summon_DanSoiSuongMu
+  displayName: Sói con
+  boss: 0
+  maxHealth: 0
+  attack: 0
+  needsHealth: 1
+  needsAttack: 1
+  invincible: 0
+  setupNotes: 'Bản triệu hồi: không có kỹ năng triệu hồi. ATK nhận từ chủ khi spawn;
+    HP nhận theo recipe hoặc cần gán nếu Excel chưa nêu.
+
+    Cần gán CharacterAnimation/Unity Json Asset và ảnh skill cast/end. Chưa có art
+    enemy/boss đã xác nhận trong dự án.
+
+    '
+  phases: []
+  skills:
+  - skillId: Summon_DanSoiSuongMu_DanhThuong
+    skillName: ACT_MELEE_1
+    trigger: 0
+    phases: []
+    minimumDistance: 0
+    initialDelay: 0
+    priority: 0
+    oncePerCombat: 0
+    requiresAttack: 1
+    needsInspectorSetup: 0
+    setupNotes: ''
+    castCondition:
+      kind: 0
+    castLockSeconds: 0.44999999999999996
+    cooldown: 0
+    shape: 1
+    detectionSize:
+      x: 1.5
+      y: 1.5
+    detectionOffset:
+      x: 0
+      y: 0
+    detectTag: HitBoxPlayer
+    damage: 0
+  drops: []

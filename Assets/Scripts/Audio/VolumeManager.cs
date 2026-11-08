@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -22,10 +22,6 @@ public sealed class VolumeManager : MonoBehaviour
     [Header("Optional startup music")]
     [SerializeField] private bool playStartupMusic = false;
     [SerializeField, RegistryId(RegistryIdType.Music)] private string startupMusicId = "menu";
-
-    [Header("Footsteps")]
-    [Tooltip("ID SFX mặc định gán cho Player nếu chưa có FootstepAudioPlayer được cấu hình sẵn.")]
-    [SerializeField, RegistryId(RegistryIdType.Sfx)] private string defaultFootstepSfxId = "footstep";
 
     [Header("Default volume")]
     [Range(0f, 1f)] [SerializeField] private float defaultMaster = 1f;
@@ -89,13 +85,11 @@ public sealed class VolumeManager : MonoBehaviour
         if (audioConfig != null)
             audioConfig.EnsureDefaults();
 
-        SceneManager.sceneLoaded += OnSceneLoaded;
         Apply();
     }
 
     private void Start()
     {
-        AttachFootstepPlayers(SceneManager.GetActiveScene());
 
         if (playStartupMusic && !string.IsNullOrWhiteSpace(startupMusicId))
             ToggleMusicInternal(startupMusicId, true);
@@ -105,23 +99,6 @@ public sealed class VolumeManager : MonoBehaviour
     {
         UpdateMusicLifetime();
         UpdateSfxLoopLifetime();
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) => AttachFootstepPlayers(scene);
-
-    private void AttachFootstepPlayers(Scene scene)
-    {
-        if (!scene.IsValid() || !scene.isLoaded) return;
-
-        foreach (GameObject playerObject in GameObject.FindGameObjectsWithTag("Player"))
-        {
-            FootstepAudioPlayer footstep = playerObject.GetComponent<FootstepAudioPlayer>();
-            if (footstep == null)
-                footstep = playerObject.AddComponent<FootstepAudioPlayer>();
-
-            if (!string.IsNullOrWhiteSpace(defaultFootstepSfxId))
-                footstep.SetSfxId(defaultFootstepSfxId);
-        }
     }
 
     private void LoadSettings()
@@ -146,7 +123,6 @@ public sealed class VolumeManager : MonoBehaviour
     private void OnDestroy()
     {
         if (instance != this) return;
-        SceneManager.sceneLoaded -= OnSceneLoaded;
         instance = null;
         legacyMusicSources.Clear();
         legacySfxSources.Clear();

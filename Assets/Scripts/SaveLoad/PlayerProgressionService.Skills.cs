@@ -173,6 +173,7 @@ public partial class PlayerProgressionService
     {
         lastWatchedWeapon = Data != null ? (Data.equippedItemName ?? string.Empty) : string.Empty;
         skillStateVersion++;
+        SyncPlayerWeaponVisuals();
         RevalidateEquippedSkills(saveAfter);
     }
 
@@ -401,11 +402,11 @@ public partial class PlayerProgressionService
         return ResolveSkillConfig().GetSkill(skillIdOrName);
     }
 
-    /// <summary>Ảnh skill trong SkillConfig (null nếu chưa gán).</summary>
+    /// <summary>Icon riêng của skill, hoặc fallback được gán trong SkillConfig.</summary>
     public Sprite GetSkillIcon(string skillIdOrName)
     {
         SkillConfigEntry entry = ResolveSkillEntry(skillIdOrName);
-        return entry != null ? entry.icon : null;
+        return ResolveSkillConfig().GetIcon(entry);
     }
 
     /// <summary>Entry của skill theo skillId (hoặc tên). Null nếu không có trong SkillConfig.</summary>
@@ -460,12 +461,12 @@ public partial class PlayerProgressionService
             CanPierce = contextConfig.canPierce,
             Debug = contextConfig.debug,
             DotConfig = contextConfig.dotConfig != null ? contextConfig.dotConfig : new DameDotConfig(),
-            ChargeSfx = contextConfig.chargeSfx,
-            CastSfx = contextConfig.castSfx,
-            HitSfx = contextConfig.hitSfx,
-            SfxVolume = contextConfig.sfxVolume,
-            CutChargeSfxToChargeTime = contextConfig.cutChargeSfxToChargeTime,
-            AnimationSet = config.GetAnimationSet(entry.skillId, weaponName),
+            ActionDamageOverrides = contextConfig != null ? contextConfig.actionDamageOverrides : null,
+            BreaksGuard = contextConfig != null && contextConfig.breaksGuard,
+            BypassesMeleeResistance = contextConfig != null && contextConfig.bypassesMeleeResistance,
+            Modules = contextConfig.modules,
+            EffectAnimation = contextConfig.effectAnimation,
+            AnimationName = contextConfig.animationName,
             SkillId = entry.skillId,
             ActionId = entry.actionId,
             WeaponId = string.IsNullOrWhiteSpace(weaponName) ? GetCurrentWeaponId() : weaponName.Trim()
@@ -773,7 +774,22 @@ public partial class PlayerProgressionService
 
     // ------------------------------------------------------------------ Đồng bộ controller trên Player
 
-    /// <summary>Đẩy skill đã trang bị cho PlayerSkillController và passive đã mở khóa cho PlayerPassiveSkillController.</summary>
+    /// <summary>Đổi GroupBlock vũ khí và đòn đánh thường theo vật phẩm đang trang bị.</summary>
+    private void SyncPlayerWeaponVisuals()
+    {
+        if (player == null) FindPlayer();
+        if (player == null || Data == null) return;
+        var weaponIds = new List<string>();
+        foreach (var item in ItemDefinition.GetAll())
+            if (item != null && item.category == ItemCategory.Weapon) weaponIds.Add(item.itemName);
+        string weaponId = GetCurrentWeaponType() == WeaponType.Unarmed ? string.Empty : GetCurrentWeaponId();
+        foreach (var animation in player.GetComponentsInChildren<CharacterAnimation>(true))
+            animation.SyncEquippedWeapon(weaponId, weaponIds);
+        foreach (var basic in player.GetComponentsInChildren<PlayerBasicAttackController>(true))
+            basic.RefreshEquippedWeapon();
+    }
+
+    /// <summary>Đẩy skill đã trang bị và passive đã mở khóa sang controller trên Player.</summary>
     private void SyncPlayerSkillControllers()
     {
         if (player == null) FindPlayer();
@@ -784,6 +800,7 @@ public partial class PlayerProgressionService
         foreach (PlayerSkillController controller in controllers)
             if (controller != null) controller.SyncEquippedSkills(Data, table);
 
+        SyncPlayerWeaponVisuals();
         SyncPassiveSkills();
     }
 
@@ -821,7 +838,7 @@ public partial class PlayerProgressionService
     }
 
     /// <summary>
-    /// Tìm (hoặc tự thêm nếu autoAttachSkillComponents bật) RuntimeStatModifierStore, PlayerBuffController,
+    /// Tìm (hoặc tự thêm nếu autoAttachSkillComponents bật) RuntimeStatModifierStore, SelfBuff,
     /// PlayerPassiveSkillController trên Player. Chỉ chạy 1 lần cho mỗi instance Player.
     /// </summary>
     private void EnsurePlayerSkillComponents()
@@ -848,10 +865,10 @@ public partial class PlayerProgressionService
             host.AddComponent<PlayerBasicAttackController>();
             Debug.Log("[PlayerProgressionService] Đã tự thêm PlayerBasicAttackController (đánh thường theo vũ khí) lên '" + host.name + "'.", this);
         }
-        if (player.GetComponentInChildren<PlayerBuffController>(true) == null)
+        if (player.GetComponentInChildren<SelfBuff>(true) == null)
         {
-            player.AddComponent<PlayerBuffController>();
-            Debug.Log("[PlayerProgressionService] Đã tự thêm PlayerBuffController lên Player.", this);
+            player.AddComponent<SelfBuff>();
+            Debug.Log("[PlayerProgressionService] Đã tự thêm SelfBuff lên Player.", this);
         }
         if (player.GetComponentInChildren<PlayerPassiveSkillController>(true) == null)
         {

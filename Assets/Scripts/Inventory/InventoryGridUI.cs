@@ -50,6 +50,14 @@ public class InventoryGridUI : MonoBehaviour
     [SerializeField] private InputField skillKeyInput;
     [SerializeField] private bool moveSkillPopupToSlot = true;
     [SerializeField] private Vector2 skillPopupOffset = new Vector2(0f, 100f);
+    [SerializeField] private Image skillPopupIcon;
+    [SerializeField] private Text skillPopupTitle;
+    [SerializeField] private Text skillPopupDescription;
+    [SerializeField] private Button closeSkillPopupButton;
+
+    [Header("Thông số người chơi (UI đặt sẵn trong scene)")]
+    [SerializeField] private Button playerStatusButton;
+    [SerializeField] private PlayerStatusHUD playerStatusHUD;
 
     [Header("Kéo thả")]
     [SerializeField] private Vector2 dragGhostSize = new Vector2(56f, 56f);
@@ -104,6 +112,9 @@ public class InventoryGridUI : MonoBehaviour
         if (itemTabButton != null) itemTabButton.onClick.AddListener(OnItemTabClicked);
         if (skillTabButton != null) skillTabButton.onClick.AddListener(OnSkillTabClicked);
         SetupSkillSlotControls();
+        if (playerStatusButton != null) playerStatusButton.onClick.AddListener(TogglePlayerStatus);
+        if (closeSkillPopupButton != null) closeSkillPopupButton.onClick.AddListener(CloseSkillPopup);
+        if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
         if (bookReadPanel != null) bookReadPanel.SetActive(false);
         if (infoPanel != null) infoPanel.SetActive(false);
         initialized = true;
@@ -119,7 +130,23 @@ public class InventoryGridUI : MonoBehaviour
     private void OnDisable()
     {
         hoverSlot = -1;
+        CloseSkillPopup();
+        if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
         EndDrag();
+    }
+
+    public void TogglePlayerStatus()
+    {
+        if (playerStatusHUD == null) { Debug.LogWarning("[InventoryGridUI] Chưa gán Player Status HUD.", this); return; }
+        CloseSkillPopup();
+        playerStatusHUD.SetVisible(!playerStatusHUD.gameObject.activeSelf);
+        if (playerStatusHUD.gameObject.activeSelf) playerStatusHUD.transform.SetAsLastSibling();
+    }
+
+    private void CloseSkillPopup()
+    {
+        selectedSkillSlot = -1;
+        if (skillSlotPopup != null) skillSlotPopup.SetActive(false);
     }
 
     public void RefreshInventory()
@@ -357,13 +384,7 @@ public class InventoryGridUI : MonoBehaviour
                     icon = candidate;
                     break;
                 }
-                if (icon == null)
-                {
-                    icon = CreateImage(slotButton.transform, "Skill Icon", Vector2.zero, Vector2.zero);
-                    RectTransform iconRect = icon.rectTransform;
-                    iconRect.anchorMin = Vector2.zero; iconRect.anchorMax = Vector2.one;
-                    iconRect.offsetMin = new Vector2(6f, 6f); iconRect.offsetMax = new Vector2(-6f, -6f);
-                }
+                if (icon == null) { Debug.LogWarning("[InventoryGridUI] Gán Image con cho ô skill " + (i + 1), slotButton); continue; }
                 icon.preserveAspect = true;
                 icon.raycastTarget = false;
                 icon.enabled = false; // chỉ bật khi skill có ảnh, tránh che mất chữ
@@ -436,6 +457,7 @@ public class InventoryGridUI : MonoBehaviour
         }
         else
         {
+            if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
             selectedSkillSlot = slotIndex;
             if (moveSkillPopupToSlot && skillSlotPopup != null
                 && equippedSkillSlots != null && slotIndex < equippedSkillSlots.Length && equippedSkillSlots[slotIndex] != null)
@@ -451,6 +473,16 @@ public class InventoryGridUI : MonoBehaviour
         EquippedSkillData equipped = selectedSkillSlot >= 0 ? progress.GetEquippedSkillAtSlot(selectedSkillSlot) : null;
         if (equipped == null) selectedSkillSlot = -1;
         bool open = equipped != null;
+
+        if (open)
+        {
+            SkillConfigEntry entry = progress.GetSkillEntryById(equipped.skillName);
+            if (skillPopupTitle != null) skillPopupTitle.text = progress.GetSkillDisplayName(equipped.skillName);
+            if (skillPopupDescription != null)
+                skillPopupDescription.text = entry != null ? entry.effect + "\n" + progress.GetWeaponRequirementText(equipped.skillName) : string.Empty;
+            if (skillPopupIcon != null) { skillPopupIcon.sprite = progress.GetSkillIcon(equipped.skillName); skillPopupIcon.enabled = skillPopupIcon.sprite != null; }
+            if (skillSlotPopup != null) skillSlotPopup.transform.SetAsLastSibling();
+        }
 
         if (skillSlotPopup != null && skillSlotPopup.activeSelf != open) skillSlotPopup.SetActive(open);
         if (skillUnequipButton != null && skillUnequipButton.gameObject.activeSelf != open)

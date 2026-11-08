@@ -39,6 +39,7 @@ public class StoryEventChoiceAction
 [Serializable]
 public class StoryEventDefinition
 {
+    [RegistryId(RegistryIdType.Event.Scene)]
     public string eventId;
     public bool oneShot = true;
     public DemoNpcDialogueProfile dialogueProfile;
@@ -61,6 +62,27 @@ public class StoryEventDirector : MonoBehaviour
 
     [SerializeField] private StoryEventDefinition[] events = Array.Empty<StoryEventDefinition>();
     [SerializeField] private TMP_Text itemChangeText;
+    public IReadOnlyList<StoryEventDefinition> EventDefinitions => events ?? Array.Empty<StoryEventDefinition>();
+#if UNITY_EDITOR
+    public bool ResetEventForDebug(string eventId)
+    {
+        if (string.IsNullOrWhiteSpace(eventId)) return false;
+        if (!string.IsNullOrEmpty(activeDialogueEventId))
+        {
+            Debug.LogWarning("[StoryEventDirector] Đóng hội thoại đang chạy trước khi reset event.", this);
+            return false;
+        }
+        completedEvents.Remove(eventId);
+        var service = PlayerProgressionService.Instance;
+        if (service?.Data != null)
+        {
+            service.Data.completedStoryEvents?.RemoveAll(id => id == eventId);
+            service.RemoveFlag(EventFlagPrefix + eventId);
+            service.Save();
+        }
+        return true;
+    }
+#endif
 
     private readonly HashSet<string> completedEvents = new HashSet<string>();
     private readonly HashSet<string> invalidConditionWarnings = new HashSet<string>();

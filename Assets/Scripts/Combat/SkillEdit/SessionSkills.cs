@@ -1,0 +1,109 @@
+using System.Collections;
+using UnityEngine;
+
+public class BasicMeleeSkill : ISkill
+{
+    private enum DirectionBlock
+    {
+        Down = 0,
+        Up = 1,
+        Left = 2,
+        Right = 3
+    }
+
+     public void Execute(SkillContext context)
+    {
+        if (context == null || context.Caster == null) return;
+        StaticDamageZone.CreateHitbox(context);
+        SkillAnimationPlayer.Play(context);
+    }
+
+    // private static IEnumerator AttackRoutine(
+    //     PlayerController controller,
+    //     CharacterAnimation animation,
+    //     Sprite[] frames,
+    //     float duration)
+    // {
+    //     if (controller != null) controller.LockMovement(true);
+    //     if (animation != null && frames.Length > 0)
+    //         animation.PlayCustom(frames, frames.Length / duration, false);
+
+    //     yield return new WaitForSeconds(duration);
+    //     if (controller != null) controller.LockMovement(false);
+    // }
+
+    // private static Sprite[] GetDirectionalFrames(Sprite[] sprites, Vector2 direction)
+    // {
+    //     if (sprites == null || sprites.Length < 4 || sprites.Length % 4 != 0)
+    //         return System.Array.Empty<Sprite>();
+
+    //     int framesPerDirection = sprites.Length / 4;
+    //     int startIndex = ResolveDirectionBlock(direction) * framesPerDirection;
+    //     Sprite[] frames = new Sprite[framesPerDirection];
+    //     System.Array.Copy(sprites, startIndex, frames, 0, framesPerDirection);
+    //     return frames;
+    // }
+
+    // private static int ResolveDirectionBlock(Vector2 direction)
+    // {
+    //     if (direction.sqrMagnitude < 0.001f) return (int)DirectionBlock.Down;
+    //     if (Mathf.Abs(direction.y) >= Mathf.Abs(direction.x))
+    //         return direction.y >= 0f ? (int)DirectionBlock.Up : (int)DirectionBlock.Down;
+    //     return direction.x >= 0f ? (int)DirectionBlock.Right : (int)DirectionBlock.Left;
+    // }
+}
+
+public class DodgeRollSkill : ISkill
+{
+    public void Execute(SkillContext context) => CasterMove.Perform(context, true);
+}
+
+public class RatBleedBiteSkill : ISkill
+{
+    public void Execute(SkillContext context)
+    {
+        if (context != null) StaticDamageZone.CreateHitbox(context);
+    }
+}
+
+public class HoundRushSkill : ISkill
+{
+    public void Execute(SkillContext context)
+    {
+        if (context == null || context.Caster == null || SkillActions.Instance == null) return;
+        SkillActions.Instance.StartCoroutine(RushRoutine(context));
+    }
+
+    private static IEnumerator RushRoutine(SkillContext context)
+    {
+        GameObject caster = context.Caster;
+        Rigidbody2D body = caster.GetComponent<Rigidbody2D>();
+        if (body == null) yield break;
+
+        Vector2 direction = context.Direction.sqrMagnitude > 0.001f
+            ? context.Direction.normalized
+            : Vector2.right;
+        EnemyController controller = caster.GetComponent<EnemyController>();
+        if (controller != null)
+        {
+            controller.Dash(direction, context.Speed, context.Duration);
+        }
+        else
+        {
+            body.linearVelocity = direction * Mathf.Max(1f, context.Speed);
+        }
+        yield return new WaitForSeconds(Mathf.Max(0.08f, context.Duration));
+
+        if (controller == null && body != null) body.linearVelocity = Vector2.zero;
+        context.Position = caster.transform.position;
+        StaticDamageZone.CreateHitbox(context);
+    }
+}
+
+public class SpiderPoisonBiteSkill : ISkill
+{
+    public void Execute(SkillContext context)
+    {
+        if (context != null) StaticDamageZone.CreateHitbox(context);
+    }
+}

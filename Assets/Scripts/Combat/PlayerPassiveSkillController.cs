@@ -42,7 +42,7 @@ public class PlayerPassiveSkillController : MonoBehaviour
 
     private GameObject ownerRoot;
     private IStatModifierReceiver statReceiver;
-    private PlayerBuffController buffController;
+    private SelfBuff buffController;
     private int lastSeenStateVersion = -1;
     private int lastSeenUnlockedCount = -1;
 
@@ -57,7 +57,7 @@ public class PlayerPassiveSkillController : MonoBehaviour
             ? ownerOverride
             : playerController != null ? playerController.gameObject : transform.root.gameObject;
         statReceiver = FindStatReceiver();
-        buffController = ownerRoot.GetComponentInChildren<PlayerBuffController>(true);
+        buffController = ownerRoot.GetComponentInChildren<SelfBuff>(true);
         EnsureSkillConfig();
     }
 
@@ -113,13 +113,13 @@ public class PlayerPassiveSkillController : MonoBehaviour
         foreach (string skillId in progress.GetUnlockedPassiveSkillIds())
         {
             SkillConfigEntry entry = progress.ResolveSkillEntry(skillId);
-            bool weaponOk = progress.IsWeaponRequirementMet(entry);
+            bool weaponOk = progress.IsWeaponRequirementMet(entry) && !entry.needsInspectorSetup;
             passiveSkills.Add(new PassiveSkillInfo
             {
                 skillId = skillId,
                 displayName = progress.GetSkillDisplayName(skillId),
                 active = weaponOk,
-                note = weaponOk ? string.Empty : "Cần cầm: " + progress.GetWeaponRequirementText(skillId)
+                note = entry.needsInspectorSetup ? entry.setupNotes : weaponOk ? string.Empty : "Cần cầm: " + progress.GetWeaponRequirementText(skillId)
             });
             if (weaponOk) usable.Add(skillId);
         }
@@ -186,6 +186,7 @@ public class PlayerPassiveSkillController : MonoBehaviour
             return false;
         }
 
+        if (entry.needsInspectorSetup) return false;
         if (activePassives.ContainsKey(entry.skillId)) return true;
         activePassives.Add(entry.skillId, entry);
 
@@ -263,11 +264,11 @@ public class PlayerPassiveSkillController : MonoBehaviour
             if (UnityEngine.Random.value > Mathf.Clamp01(config.chance)) continue;
             if (config.modifiers == null || config.modifiers.Count == 0) continue;
 
-            if (buffController == null) buffController = ownerRoot.GetComponentInChildren<PlayerBuffController>(true);
+            if (buffController == null) buffController = ownerRoot.GetComponentInChildren<SelfBuff>(true);
             if (buffController != null)
                 buffController.ApplyModifiers("PASSIVE_TRIGGER:" + entry.skillId, config.duration, config.modifiers);
             else
-                Debug.LogWarning($"[PlayerPassiveSkillController] Passive '{entry.skillId}' cần PlayerBuffController để quản lý thời hạn.", this);
+                Debug.LogWarning($"[PlayerPassiveSkillController] Passive '{entry.skillId}' cần SelfBuff để quản lý thời hạn.", this);
         }
     }
 

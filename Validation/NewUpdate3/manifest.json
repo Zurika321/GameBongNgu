@@ -1,0 +1,357 @@
+{
+  "sources": {
+    "Enemy_ChuotCongBienDi": {
+      "sheet": "Database Quai",
+      "rowName": "Chuột Cống Biến Dị",
+      "location": "Zone 1 - Session 1",
+      "drops": [
+        {
+          "itemName": "Vải Rách",
+          "amount": 1,
+          "dropChance": 0.4,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_ChoSanMa": {
+      "sheet": "Database Quai",
+      "rowName": "Chó Săn Ma",
+      "location": "Zone 1 - Session 2A",
+      "drops": [
+        {
+          "itemName": "Vải Băng Bó",
+          "amount": 1,
+          "dropChance": 0.35,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Nanh Chó Ma",
+          "amount": 1,
+          "dropChance": 0.2,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_NhenBongToi": {
+      "sheet": "Database Quai",
+      "rowName": "Nhện Bóng Tối",
+      "location": "Zone 1 - Session 2B",
+      "drops": [
+        {
+          "itemName": "Tơ Nhện Độc",
+          "amount": 1,
+          "dropChance": 0.3,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_QuaDenDiDang": {
+      "sheet": "Database Quai",
+      "rowName": "Quạ Đen Dị Dạng",
+      "location": "Zone 1 - Session 3",
+      "drops": [
+        {
+          "itemName": "Lông Quạ Dị",
+          "amount": 1,
+          "dropChance": 0.25,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_BongGuong": {
+      "sheet": "Database Quai",
+      "rowName": "Bóng Gương",
+      "location": "Zone 2 - Session 4A",
+      "drops": [
+        {
+          "itemName": "Mảnh Gương Vỡ",
+          "amount": 1,
+          "dropChance": 0.35,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_DoiMau": {
+      "sheet": "Database Quai",
+      "rowName": "Dơi Máu",
+      "location": "Zone 2 - Session 4B",
+      "drops": [
+        {
+          "itemName": "Cánh Dơi",
+          "amount": 1,
+          "dropChance": 0.2,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Máu Đóng Băng",
+          "amount": 1,
+          "dropChance": 0.15,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_XacSongThiDan": {
+      "sheet": "Database Quai",
+      "rowName": "Xác Sống Thị Dân",
+      "location": "Zone 2 - Session 5",
+      "drops": [
+        {
+          "itemName": "Vải Vụn",
+          "amount": 1,
+          "dropChance": 0.5,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Đồng Xu Cũ",
+          "amount": 1,
+          "dropChance": 0.3,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_QuaXacThoi": {
+      "sheet": "Database Quai",
+      "rowName": "Quạ Xác Thối",
+      "location": "Zone 2 - Session 5",
+      "drops": [
+        {
+          "itemName": "Lông Thối",
+          "amount": 1,
+          "dropChance": 0.2,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_BongDemRinhRap": {
+      "sheet": "Database Quai",
+      "rowName": "Bóng Đêm Rình Rập",
+      "location": "Zone 2 - Session 6A",
+      "drops": [
+        {
+          "itemName": "Tinh Chất Bóng Tối",
+          "amount": 1,
+          "dropChance": 0.25,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_SoiSuongDonDoc": {
+      "sheet": "Database Quai",
+      "rowName": "Sói Sương Đơn Độc",
+      "location": "Zone 2 - Session 6B",
+      "drops": [
+        {
+          "itemName": "Da Sói Sương",
+          "amount": 1,
+          "dropChance": 0.3,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_ReCayQuyAm": {
+      "sheet": "Database Quai",
+      "rowName": "Rễ Cây Quỷ Ám",
+      "location": "Zone 3 - Session 8A",
+      "drops": [
+        {
+          "itemName": "Rễ Cây Độc",
+          "amount": 1,
+          "dropChance": 0.3,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Nhựa Cổ Thụ",
+          "amount": 1,
+          "dropChance": 0.15,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_ThuChayRung": {
+      "sheet": "Database Quai",
+      "rowName": "Thú Cháy Rừng",
+      "location": "Zone 3 - Session 8B",
+      "drops": [
+        {
+          "itemName": "Da Cháy Xém",
+          "amount": 1,
+          "dropChance": 0.25,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_TinhTheQuyAm": {
+      "sheet": "Database Quai",
+      "rowName": "Tinh Thể Quỷ Ám",
+      "location": "Zone 3 - Session 9A",
+      "drops": [
+        {
+          "itemName": "Mảnh Tinh Thể",
+          "amount": 1,
+          "dropChance": 0.4,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_QuyLunLoRen": {
+      "sheet": "Database Quai",
+      "rowName": "Quỷ Lùn Lò Rèn",
+      "location": "Zone 3 - Session 9B",
+      "drops": [
+        {
+          "itemName": "Quặng Quỷ",
+          "amount": 1,
+          "dropChance": 0.2,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Enemy_TaySaiVoDien": {
+      "sheet": "Database Quai",
+      "rowName": "Tay Sai Vô Diện",
+      "location": "Zone 4 - Session 12 (Boss Fight)",
+      "drops": []
+    },
+    "Enemy_HonMaNanNhanCu": {
+      "sheet": "Database Quai",
+      "rowName": "Hồn Ma Nạn Nhân Cũ",
+      "location": "Zone 5 - Session 15 (Secret)",
+      "drops": []
+    },
+    "Boss_BongGuongThuLinh": {
+      "sheet": "Database Boss",
+      "rowName": "Bóng Gương Thủ Lĩnh",
+      "location": "Session 4A",
+      "drops": [
+        {
+          "itemName": "Mảnh Gương Hoàn Hảo",
+          "amount": 1,
+          "dropChance": 0.6,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Boss_DanSoiSuongMu": {
+      "sheet": "Database Boss",
+      "rowName": "Đàn Sói Sương Mù",
+      "location": "Session 5",
+      "drops": [
+        {
+          "itemName": "Da Sói Đầu Đàn",
+          "amount": 1,
+          "dropChance": 0.5,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Bùa Hồi Máu",
+          "amount": 1,
+          "dropChance": 0.3,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Boss_VeBinhDaCo": {
+      "sheet": "Database Boss",
+      "rowName": "Vệ Binh Đá Cổ",
+      "location": "Session 8A",
+      "drops": [
+        {
+          "itemName": "Đá Nguyền Cổ",
+          "amount": 1,
+          "dropChance": 1.0,
+          "onlyIfMissing": 1
+        },
+        {
+          "itemName": "Lõi Đá Cổ",
+          "amount": 1,
+          "dropChance": 0.35,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Boss_NguoiGacHang": {
+      "sheet": "Database Boss",
+      "rowName": "Người Gác Hang",
+      "location": "Session 9A",
+      "drops": [
+        {
+          "itemName": "Ngọc Bóng Tối",
+          "amount": 1,
+          "dropChance": 0.4,
+          "onlyIfMissing": 0
+        },
+        {
+          "itemName": "Băng Đạn Bạc",
+          "amount": 1,
+          "dropChance": 0.25,
+          "onlyIfMissing": 0
+        }
+      ]
+    },
+    "Boss_VoDien": {
+      "sheet": "Database Boss",
+      "rowName": "VÔ DIỆN (Boss Chính)",
+      "location": "Session 12",
+      "drops": []
+    },
+    "Boss_ThayHao": {
+      "sheet": "Database Boss",
+      "rowName": "Thầy Hạo — Thật Diện Mạo",
+      "location": "Session 15A (Secret Boss)",
+      "drops": [
+        {
+          "itemName": "Lõi Vòng Lặp",
+          "amount": 1,
+          "dropChance": 1.0,
+          "onlyIfMissing": 0
+        }
+      ]
+    }
+  },
+  "prefabs": [
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_ChuotCongBienDi.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_ChoSanMa.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_NhenBongToi.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_QuaDenDiDang.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_BongGuong.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_DoiMau.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_XacSongThiDan.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_QuaXacThoi.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_BongDemRinhRap.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_SoiSuongDonDoc.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_ReCayQuyAm.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_ThuChayRung.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_TinhTheQuyAm.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_QuyLunLoRen.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_TaySaiVoDien.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Enemy_HonMaNanNhanCu.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_BongGuongThuLinh.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_DanSoiSuongMu.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_VeBinhDaCo.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_NguoiGacHang.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_VoDien.prefab",
+    "Assets\\Prefabs\\Spawer\\Spawner_Boss_ThayHao.prefab"
+  ],
+  "newItems": [
+    "Băng Đạn Bạc",
+    "Bùa Hồi Máu",
+    "Cánh Dơi",
+    "Da Cháy Xém",
+    "Đá Nguyền Cổ",
+    "Da Sói Đầu Đàn",
+    "Da Sói Sương",
+    "Đồng Xu Cũ",
+    "Lõi Đá Cổ",
+    "Lõi Vòng Lặp",
+    "Lông Thối",
+    "Mảnh Gương Hoàn Hảo",
+    "Mảnh Gương Vỡ",
+    "Mảnh Tinh Thể",
+    "Máu Đóng Băng",
+    "Ngọc Bóng Tối",
+    "Nhựa Cổ Thụ",
+    "Quặng Quỷ",
+    "Rễ Cây Độc",
+    "Tinh Chất Bóng Tối"
+  ]
+}

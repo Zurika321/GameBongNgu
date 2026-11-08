@@ -2523,32 +2523,46 @@ Transform:
 --- !u!114 &1338499740
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338499738}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1338499738
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone5:H\u1EA7m M\u1ED9 B\xED M\u1EADt"
-  enemyIdPrefix: "BOSS_H\u1EA6M M\u1ED8 B\xCD M\u1EACT"
-  enemyDisplayName: "Th\u1EA7y H\u1EA1o - Th\u1EADt Di\u1EC7n M\u1EA1o"
+  sessionId: Zone5:Hầm Mộ Bí Mật
+  enemyIdPrefix: BOSS_HẦM MỘ BÍ MẬT
+  enemyDisplayName: Thầy Hạo - Thật Diện Mạo
   spawnCount: 1
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "L\xF5i V\xF2ng L\u1EB7p"
-    amount: 1
-    dropChance: 1
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 200
   spawnWhenPlayerNearby: 1
   activationRadius: 7
-  requiredFlag: 
-  storyEventDirector: {fileID: 890108828}
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 890108828
   eventIdOnCleared: S15A_HaoSecretDefeated
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 910f11cbaa374a138261985857905d79
+    type: 2
 --- !u!1 &1369267163
 GameObject:
   m_ObjectHideFlags: 0
@@ -3424,6 +3438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225c84b96d2eb1643a6a1be63fc27263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillActions
+  actionCatalog: {fileID: 11400000, guid: f5688becd0b34a79a3a9dd0e0847584b, type: 2}
   skillRegistrations:
   - skillName: BasicSlash
     skillSprites: []
@@ -3445,6 +3460,16 @@ MonoBehaviour:
     skillSprites: []
   - skillName: DashAttack2
     skillSprites: []
+  - skillName: ApplyStatus
+  - skillName: SelfBuff
+  - skillName: SummonEntity
+  - skillName: CasterMove
+  - skillName: ModifyResource
+  - skillName: DefenseWindow
+  - skillName: ScreenEffect
+  - skillName: ChallengeMeter
+  - skillName: ReplayAction
+  - skillName: ConditionGate
 --- !u!4 &1780467477
 Transform:
   m_ObjectHideFlags: 0

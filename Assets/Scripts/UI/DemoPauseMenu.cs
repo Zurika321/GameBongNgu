@@ -23,7 +23,7 @@ public class DemoPauseMenu : MonoBehaviour
     private enum OverlayMode { None, Settings, Inventory }
     private OverlayMode mode;
     private bool menuButtonInitiallyInteractable;
-    private PlayerStatusHUD playerStatusHUD;
+    [SerializeField] private PlayerStatusHUD playerStatusHUD;
     private Camera mainCamera;
 
     private void Awake()
@@ -42,7 +42,6 @@ public class DemoPauseMenu : MonoBehaviour
         settingsPanel.SetActive(false);
         mapPanel.SetActive(false);
 
-        playerStatusHUD = PlayerStatusHUD.Create(GetCanvas());
         if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
         menuRoot.SetActive(false);
         mode = OverlayMode.None;
@@ -50,6 +49,9 @@ public class DemoPauseMenu : MonoBehaviour
 
     private void Update()
     {
+#if UNITY_EDITOR
+        if (AdminEdit.AnyOpen) return;
+#endif
         if (openMenuButton != null)
             openMenuButton.interactable = menuButtonInitiallyInteractable && !StorageWindowUI.AnyOpen;
 
@@ -166,7 +168,7 @@ public class DemoPauseMenu : MonoBehaviour
         inventoryPanel.SetActive(nextMode == OverlayMode.Inventory);
         settingsPanel.SetActive(nextMode == OverlayMode.Settings);
         mapPanel.SetActive(mapEnabled && nextMode == OverlayMode.Inventory);
-        if (playerStatusHUD != null) playerStatusHUD.SetVisible(nextMode == OverlayMode.Inventory);
+        if (playerStatusHUD != null) playerStatusHUD.SetVisible(false);
 
         if (nextMode == OverlayMode.Inventory)
         {

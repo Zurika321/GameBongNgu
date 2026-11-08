@@ -11,6 +11,8 @@ public class ZoneDropDefinition
     [FormerlySerializedAs("chance")]
     [Range(0f, 1f), Tooltip("Per-item drop probability from 0 to 1; this is separate from enemy EXP.")]
     public float dropChance = 0.4f;
+    [Tooltip("Chỉ rơi khi chưa có trong túi/rương và chưa có bản rơi chưa nhặt.")]
+    public bool onlyIfMissing;
 }
 
 public class ZoneEnemySpawner : MonoBehaviour
@@ -22,13 +24,14 @@ public class ZoneEnemySpawner : MonoBehaviour
     [SerializeField, Min(0f)] private float spawnRadius = 1.25f;
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject itemPickupPrefab;
-    [SerializeField] private ZoneDropDefinition[] drops = Array.Empty<ZoneDropDefinition>();
+    [SerializeField, Tooltip("Bảng vật phẩm rơi. Để trống sẽ lấy Combat Config của enemy prefab.")]
+    private EnemyCombatConfig enemyCombatConfig;
     [SerializeField, Min(0), Tooltip("EXP awarded per defeated enemy. Never store drop percentages here.")] private int experiencePerEnemy = 15;
     [SerializeField] private bool spawnWhenPlayerNearby;
     [SerializeField, Min(0.1f)] private float activationRadius = 5f;
     [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
     [SerializeField] private StoryEventDirector storyEventDirector;
-    [SerializeField] private string eventIdOnCleared;
+    [RegistryId(RegistryIdType.Event.Scene), SerializeField] private string eventIdOnCleared;
     [SerializeField, Tooltip("Only commit defeated-enemy progress after this whole encounter is clear. Snapshots are still saved during combat.")]
     private bool saveOnBattleClear;
     [UniqueId, SerializeField, Tooltip("Stable ID for this encounter; assigned automatically in the Editor.")]
@@ -390,49 +393,31 @@ public class ZoneEnemySpawner : MonoBehaviour
         eventIdOnCleared = eventId;
     }
 
-    private int GetExperienceReward()
-    {
-        string id = enemyIdPrefix != null ? enemyIdPrefix.Trim().ToUpperInvariant() : string.Empty;
-        string display = enemyDisplayName ?? string.Empty;
-        if (id == "RAT" || display.Contains("Chuột Cống")) return 15;
-        if (id == "HOUND" || display.Contains("Chó Săn Ma")) return 20;
-        if (id == "SPIDER" || display.Contains("Nhện Bóng Tối")) return 20;
-        if (id == "CROW" || display.Contains("Quạ Đen") || display.Contains("Quạ Xác Thối")) return 20;
-        if (id == "UNDEAD" || display.Contains("Xác Sống")) return 20;
-        if (id == "BAT" || display.Contains("Dơi Máu")) return 20;
-        if (id == "SHADE" || display.Contains("Bóng Gương")) return 25;
-        if (display.Contains("Hồn Ma")) return 0;
-        return experiencePerEnemy;
-    }
+    private int GetExperienceReward() => Mathf.Max(0, experiencePerEnemy);
 
-    private float GetDropChance(ZoneDropDefinition drop)
+    private bool HasRewardItem(ZoneDropDefinition drop, PlayerProgressionService progress)
     {
-        switch (drop.itemName)
-        {
-            case "Vải Rách": return 0.40f;
-            case "Vải Băng Bó": return 0.35f;
-            case "Nanh Chó Ma": return 0.20f;
-            case "Tơ Nhện Độc": return 0.30f;
-            case "Lông Quạ Dị": return 0.25f;
-            case "Lông Thối": return 0.20f;
-            case "Mảnh Gương Vỡ": return 0.35f;
-            case "Cánh Dơi": return 0.20f;
-            case "Máu Đóng Băng": return 0.15f;
-            case "Vải Vụn": return 0.50f;
-            case "Đồng Xu Cũ": return 0.30f;
-            case "Tinh Chất Bóng Tối": return 0.25f;
-            case "Da Sói Sương": return 0.30f;
-            case "Rễ Cây Độc": return 0.30f;
-            case "Nhựa Cổ Thụ": return 0.15f;
-            case "Da Cháy Xém": return 0.25f;
-            case "Mảnh Tinh Thể": return 0.40f;
-            case "Quặng Quỷ": return 0.20f;
-        }
-        return Mathf.Clamp01(drop.dropChance);
+        if (progress.Data.GetItemAmount(drop.itemName) > 0) return true;
+        if (progress.Data.storageContainers != null)
+            foreach (var storage in progress.Data.storageContainers)
+                if (storage?.items != null && storage.items.Exists(item => item != null && item.itemName == drop.itemName && item.amount > 0)) return true;
+        return progress.Data.worldDrops != null && progress.Data.worldDrops.Exists(item => item != null && item.itemName == drop.itemName && item.amount > 0 && !progress.HasCollectedWorldItem(item.itemId));
     }
 
     private void SpawnDrops(SpawnedEnemy enemy, PlayerProgressionService progress)
     {
+        EnemyCombatConfig config = enemyCombatConfig;
+        if (config == null)
+        {
+            EnemySkillController skills = enemy.Object != null ? enemy.Object.GetComponentInChildren<EnemySkillController>(true) : null;
+            config = skills != null ? skills.CombatConfig : null;
+        }
+        if (config == null)
+        {
+            Debug.LogWarning("[ZoneEnemySpawner] Chưa gán Enemy Combat Config để nhận bảng rơi đồ: " + enemyDisplayName, this);
+            return;
+        }
+        ZoneDropDefinition[] drops = config.drops;
         if (drops == null || drops.Length == 0) return;
         if (itemPickupPrefab == null)
         {
@@ -443,8 +428,10 @@ public class ZoneEnemySpawner : MonoBehaviour
         for (int i = 0; i < drops.Length; i++)
         {
             ZoneDropDefinition drop = drops[i];
-            if (drop == null || string.IsNullOrWhiteSpace(drop.itemName) || UnityEngine.Random.value >= GetDropChance(drop))
+            if (drop == null || string.IsNullOrWhiteSpace(drop.itemName) || drop.amount <= 0 || (drop.onlyIfMissing && HasRewardItem(drop, progress)))
                 continue;
+            float chance = Mathf.Clamp01(drop.dropChance);
+            if (chance <= 0f || (chance < 1f && UnityEngine.Random.value >= chance)) continue;
 
             string itemId = $"{enemy.Id}:DROP:{i}";
             if (progress.HasCollectedWorldItem(itemId)) continue;

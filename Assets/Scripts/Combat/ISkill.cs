@@ -6,11 +6,6 @@ public interface ISkill
     void Execute(SkillContext context);
 }
 
-public interface ISkillSpriteConfigurable
-{
-    void SetSkillSprites(Sprite[] sprites);
-}
-
 /// <summary>
 /// Contract mở rộng cho passive custom có lifecycle riêng.
 /// PassiveSkillController mặc định xử lý PassiveBuff bằng stat modifier;

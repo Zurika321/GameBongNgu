@@ -13,17 +13,19 @@ public class SkillConfigEntry
     [Tooltip("Tên hiển thị tiếng Việt, khớp tên skill trong Level.json nếu đang dùng hệ thống level cũ.")]
     public string name;
     public string unlockCondition;
+    [Tooltip("Excel còn thiếu cơ chế/tham số. Gán đủ rồi tắt để cho phép thi triển.")] public bool needsInspectorSetup;
+    [TextArea] public string setupNotes;
     public string requires;
     [TextArea] public string effect;
     public Sprite icon;
 
     [Header("Định danh")]
-    [RegistryId(RegistryIdType.Skill)]
     [Tooltip("ID duy nhất của skill. Dùng cho unlock, context, cooldown và save. Ví dụ BasicAttack_Dagger.")]
     public string skillId;
 
     [FormerlySerializedAs("activeSkillId")]
     [Tooltip("ID class thực thi đã đăng ký trong SkillActions. Nhiều skill được phép dùng chung actionId.")]
+    [RegistryId(RegistryIdType.Skill)]
     public string actionId;
 
     public SkillType type = SkillType.Active;
@@ -121,6 +123,9 @@ public class SkillAnimationVariant
 [CreateAssetMenu(menuName = "Bóng Ngủ/Skill Config", fileName = "SkillConfig")]
 public class SkillConfig : ScriptableObject
 {
+    [SerializeField, Tooltip("Icon dùng khi skill chưa có ảnh riêng. Có thể thay bằng icon chung của dự án.")]
+    private Sprite fallbackSkillIcon;
+    public Sprite GetIcon(SkillConfigEntry entry) => entry != null ? (entry.icon != null ? entry.icon : fallbackSkillIcon) : null;
     private const string DefaultWeaponName = "Punch";
 
     [Header("Danh sách skill")]

@@ -1,113 +1,63 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>Popup chỉ số dùng UI đặt sẵn trong scene, mở từ nút Thông số của inventory.</summary>
 public sealed class PlayerStatusHUD : MonoBehaviour
 {
-    private Image portrait;
-    private Text statusText;
+    [SerializeField] private Image portrait;
+    [SerializeField] private Text statusText;
+    [SerializeField] private Button closeButton;
+    [SerializeField, Min(0.02f)] private float refreshInterval = 0.15f;
+    [SerializeField] private GameObject player;
+    [SerializeField] private LvConfig levelConfig;
     private float refreshTimer;
-    private SpriteRenderer playerRenderer;
 
-    public void SetVisible(bool visible) => gameObject.SetActive(visible);
-
-    public static PlayerStatusHUD Create(Canvas canvas)
+    private void Awake()
     {
-        if (canvas == null) return null;
-        PlayerStatusHUD existing = canvas.GetComponentInChildren<PlayerStatusHUD>(true);
-        if (existing != null) return existing;
-
-        GameObject root = new GameObject("Player Status HUD",
-            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image), typeof(PlayerStatusHUD));
-        root.transform.SetParent(canvas.transform, false);
-        RectTransform rootRect = root.GetComponent<RectTransform>();
-        rootRect.anchorMin = rootRect.anchorMax = Vector2.zero;
-        rootRect.pivot = Vector2.zero;
-        rootRect.anchoredPosition = new Vector2(18f, 18f);
-        rootRect.sizeDelta = new Vector2(410f, 132f);
-
-        Image background = root.GetComponent<Image>();
-        background.color = new Color(0.025f, 0.04f, 0.07f, 0.9f);
-        background.raycastTarget = false;
-
-        PlayerStatusHUD hud = root.GetComponent<PlayerStatusHUD>();
-        hud.BuildContents(root.transform);
-        return hud;
+        if (closeButton != null) closeButton.onClick.AddListener(Close);
+        if (statusText == null) Debug.LogWarning("[PlayerStatusHUD] Gán Status Text trong Inspector.", this);
     }
-
-    private void BuildContents(Transform root)
-    {
-        GameObject portraitObject = new GameObject("Character Portrait",
-            typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
-        portraitObject.transform.SetParent(root, false);
-        RectTransform portraitRect = portraitObject.GetComponent<RectTransform>();
-        portraitRect.anchorMin = portraitRect.anchorMax = new Vector2(0f, 0.5f);
-        portraitRect.pivot = new Vector2(0f, 0.5f);
-        portraitRect.anchoredPosition = new Vector2(12f, 0f);
-        portraitRect.sizeDelta = new Vector2(108f, 108f);
-        portrait = portraitObject.GetComponent<Image>();
-        portrait.preserveAspect = true;
-        portrait.raycastTarget = false;
-
-        GameObject textObject = new GameObject("Player Stats",
-            typeof(RectTransform), typeof(CanvasRenderer), typeof(Text));
-        textObject.transform.SetParent(root, false);
-        RectTransform textRect = textObject.GetComponent<RectTransform>();
-        textRect.anchorMin = Vector2.zero;
-        textRect.anchorMax = Vector2.one;
-        textRect.offsetMin = new Vector2(132f, 8f);
-        textRect.offsetMax = new Vector2(-10f, -8f);
-        statusText = textObject.GetComponent<Text>();
-        statusText.font = Resources.GetBuiltinResource<Font>("LegacyRuntime.ttf");
-        if (statusText.font == null)
-            statusText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        statusText.fontSize = 17;
-        statusText.color = new Color(0.94f, 0.92f, 0.84f);
-        statusText.alignment = TextAnchor.MiddleLeft;
-        statusText.horizontalOverflow = HorizontalWrapMode.Wrap;
-        statusText.verticalOverflow = VerticalWrapMode.Truncate;
-        statusText.raycastTarget = false;
-    }
-
+    public void SetVisible(bool visible) { gameObject.SetActive(visible); if (visible) Refresh(); }
+    public void Close() => SetVisible(false);
+    private void OnEnable() { refreshTimer = 0f; Refresh(); }
     private void Update()
     {
         refreshTimer += Time.unscaledDeltaTime;
-        if (refreshTimer < 0.12f) return;
+        if (refreshTimer < refreshInterval) return;
         refreshTimer = 0f;
         Refresh();
     }
-
     private void Refresh()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null)
+        if (statusText == null) return;
+        var progress = PlayerProgressionService.Instance;
+        if (progress == null || progress.Data == null) { statusText.text = "Chưa có dữ liệu người chơi."; return; }
+        if (player == null) player = GameObject.FindGameObjectWithTag("Player");
+        var health = player != null ? player.GetComponent<HealthController>() : null;
+        var controller = player != null ? player.GetComponent<PlayerController>() : null;
+        var data = progress.Data;
+        float hp = health != null ? health.CurrentHealth : data.hp;
+        float maxHp = health != null ? health.MaxHealth : progress.GetMaxHealth();
+        string movement = controller != null ? (progress.ModifyStat(PlayerStatType.MoveSpeed, controller.BaseMoveSpeed) * ApplyStatus.MovementMultiplier(player)).ToString("0.##") : "—";
+        string equipment = string.IsNullOrWhiteSpace(data.equippedItemName) ? "Tay không" : data.equippedItemName;
+        var nextLevel = levelConfig != null ? levelConfig.GetLevelEntry(data.level + 1) : null;
+        string experience = nextLevel != null ? $"{data.exp} / {nextLevel.expRequired}" : data.exp.ToString();
+        statusText.text = $"CẤP {data.level}   •   EXP {experience}\n"
+            + $"HP  {hp:0.#} / {maxHp:0.#}\n"
+            + $"Tấn công  {progress.GetAttackPowerExact():0.##}    Phòng thủ  {progress.GetDefensePower()}\n"
+            + $"Di chuyển  {movement}    Tốc đánh  ×{progress.ModifyStat(PlayerStatType.AttackSpeed, 1f):0.##}\n"
+            + $"Chí mạng  {progress.GetCriticalChance():P0}    Sát thương CM  ×{progress.GetCriticalMultiplier():0.##}\n"
+            + $"Kháng choáng  {Mathf.Clamp01(progress.ModifyStat(PlayerStatType.StunResistance, 0f)):P0}\n"
+            + $"Kháng độc / chảy máu  {Mathf.Clamp01(progress.ModifyStat(PlayerStatType.DotResistance, 0f)):P0}\n"
+            + $"Lý trí  {data.lt}    Quỷ tính  {data.qt}    Đạn hiếm  {data.rareAmmo}\n"
+            + $"Trang bị  {equipment}\n"
+            + $"Skill đã mở  {data.unlockedSkills?.Count ?? 0}    Đang trang bị  {data.equippedSkills?.Count ?? 0}";
+        if (portrait != null && portrait.sprite == null && player != null)
         {
-            statusText.text = "KHÔNG TÌM THẤY PLAYER";
-            portrait.enabled = false;
-            return;
+            var renderer = player.GetComponent<SpriteRenderer>();
+            if (renderer != null) portrait.sprite = renderer.sprite;
         }
-
-        if (playerRenderer == null || playerRenderer.gameObject.scene != player.scene)
-            playerRenderer = player.GetComponentInChildren<SpriteRenderer>();
-        portrait.enabled = playerRenderer != null && playerRenderer.sprite != null;
-        if (portrait.enabled)
-        {
-            portrait.sprite = playerRenderer.sprite;
-            portrait.transform.localScale = new Vector3(playerRenderer.flipX ? -1f : 1f, 1f, 1f);
-        }
-
-        HealthController health = player.GetComponent<HealthController>();
-        PlayerProgressionService progress = PlayerProgressionService.Instance;
-        int attack = progress != null && progress.Data != null ? progress.GetAttackPower() : 0;
-        int defense = progress != null && progress.Data != null ? progress.GetDefensePower() : 0;
-        int currentHp = health != null ? Mathf.CeilToInt(health.CurrentHealth) : 0;
-        int maxHp = health != null ? Mathf.CeilToInt(health.MaxHealth)
-            : progress != null && progress.Data != null ? progress.GetMaxHealth() : 0;
-        string equipment = progress != null && progress.Data != null
-            && !string.IsNullOrWhiteSpace(progress.Data.equippedItemName)
-            ? progress.Data.equippedItemName : "Không có";
-
-        statusText.text = $"HP: {currentHp}/{maxHp}\nTấn công: {attack}   Phòng thủ: {defense}\nTrang bị: {equipment}";
+        if (portrait != null) portrait.enabled = portrait.sprite != null;
     }
+    private void OnDestroy() { if (closeButton != null) closeButton.onClick.RemoveListener(Close); }
 }
-
-

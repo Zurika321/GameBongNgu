@@ -23,4 +23,4 @@ MonoBehaviour:
   - id: footstep
     clip: {fileID: 8300000, guid: aef55f41e4820a84299b25979be0246d, type: 3}
     volume: 1
-    pitch: 0.2
+    pitch: 1

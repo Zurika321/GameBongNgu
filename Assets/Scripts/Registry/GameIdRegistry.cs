@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
 #if UNITY_EDITOR
@@ -8,7 +9,7 @@ using UnityEditor;
 #endif
 
 [CreateAssetMenu(fileName = "GameIdRegistry", menuName = "Bóng Ngủ/Flag & ID Registry")]
-public sealed class GameIdRegistry : ScriptableObject
+public sealed partial class GameIdRegistry : ScriptableObject
 {
     [Header("Flags được dùng trong scene, thoại và code")]
     public List<string> flags = new List<string>();
@@ -31,7 +32,7 @@ public sealed class GameIdRegistry : ScriptableObject
     [Header("SFX ID / tên hiệu ứng âm thanh dùng trong hệ thống âm thanh")]
     public List<string> sfxIds = new List<string>();
 
-    public List<string> GetList(RegistryIdType type)
+    public List<string> GetList(RegistryIdKind type)
     {
         switch (type)
         {
@@ -42,7 +43,7 @@ public sealed class GameIdRegistry : ScriptableObject
             case RegistryIdType.Weapon: return weaponIds ?? (weaponIds = new List<string>());
             case RegistryIdType.Music: return musicIds ?? (musicIds = new List<string>());
             case RegistryIdType.Sfx: return sfxIds ?? (sfxIds = new List<string>());
-            default: return new List<string>();
+            default: return GetEventList(type);
         }
     }
 
@@ -51,8 +52,6 @@ public sealed class GameIdRegistry : ScriptableObject
     [Serializable] private sealed class ItemJsonRow { public string name; }
     [Serializable] private sealed class SessionJsonTable { public SessionJsonRow[] sessions; }
     [Serializable] private sealed class SessionJsonRow { public string id; }
-    [Serializable] private sealed class SkillJsonTable { public SkillJsonRow[] skills; }
-    [Serializable] private sealed class SkillJsonRow { public string name; public string activeSkillId; }
 
     public void SyncFromProject()
     {
@@ -63,13 +62,12 @@ public sealed class GameIdRegistry : ScriptableObject
         weaponIds ??= new List<string>();
         musicIds ??= new List<string>();
         sfxIds ??= new List<string>();
+        for (int zone = 1; zone <= 5; zone++) CollectEventIdsFromZoneScene(zone);
 
         bool loadedItemJson = false;
         bool loadedSessionJson = false;
-        bool loadedSkillJson = false;
         TextAsset itemJson = Resources.Load<TextAsset>("Data/Item");
         TextAsset sessionJson = Resources.Load<TextAsset>("Data/Session");
-        TextAsset skillJson = Resources.Load<TextAsset>("Data/Skill");
 
         if (itemJson != null)
         {
@@ -93,20 +91,7 @@ public sealed class GameIdRegistry : ScriptableObject
             }
         }
 
-        if (skillJson != null)
-        {
-            SkillJsonTable table = JsonUtility.FromJson<SkillJsonTable>(skillJson.text);
-            if (table != null && table.skills != null)
-            {
-                foreach (SkillJsonRow row in table.skills)
-                {
-                    if (row == null) continue;
-                    if (!string.IsNullOrWhiteSpace(row.activeSkillId)) AddUnique(skillIds, row.activeSkillId);
-                    if (!string.IsNullOrWhiteSpace(row.name)) AddUnique(skillIds, row.name);
-                }
-                loadedSkillJson = true;
-            }
-        }
+        skillIds.Clear();
 
         foreach (ItemDefinition definition in Resources.LoadAll<ItemDefinition>("ItemDefinitions"))
         {
@@ -119,15 +104,20 @@ public sealed class GameIdRegistry : ScriptableObject
             }
         }
 
+        string actionScriptPath = AssetDatabase.FindAssets("SkillActions t:MonoScript")
+            .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
+            .FirstOrDefault(path => Path.GetFileName(path) == "SkillActions.cs");
+        string actionGuid = string.IsNullOrEmpty(actionScriptPath) ? null : AssetDatabase.AssetPathToGUID(actionScriptPath);
+
         string[] files = Directory.GetFiles(Application.dataPath, "*.unity", SearchOption.AllDirectories);
         string[] prefabs = Directory.GetFiles(Application.dataPath, "*.prefab", SearchOption.AllDirectories);
         string[] assets = Directory.GetFiles(Application.dataPath, "*.asset", SearchOption.AllDirectories);
         foreach (string path in files)
-            CollectSerializedIds(File.ReadAllText(path));
+            CollectSerializedIds(File.ReadAllText(path), actionGuid);
         foreach (string path in prefabs)
-            CollectSerializedIds(File.ReadAllText(path));
+            CollectSerializedIds(File.ReadAllText(path), actionGuid);
         foreach (string path in assets)
-            CollectSerializedIds(File.ReadAllText(path));
+            CollectSerializedIds(File.ReadAllText(path), actionGuid);
 
         string[] scripts = Directory.GetFiles(Application.dataPath, "*.cs", SearchOption.AllDirectories);
         foreach (string path in scripts)
@@ -150,16 +140,29 @@ public sealed class GameIdRegistry : ScriptableObject
         Debug.Log($"[GameIdRegistry] Registry: {flags.Count} flags, {itemIds.Count} items, {sessionIds.Count} sessions, {skillIds.Count} skills, {weaponIds.Count} weapons. "
             + (loadedItemJson ? "Item.json đã đọc; " : "Không đọc được Item.json; ")
             + (loadedSessionJson ? "Session.json đã đọc; " : "Không đọc được Session.json; ")
-            + (loadedSkillJson ? "Skill.json đã đọc." : "Không đọc được Skill.json."));
+            + "Skill IDs synchronized from SkillActions registrations.");
     }
 
-    private void CollectSerializedIds(string text)
+    private void CollectSerializedIds(string text, string actionGuid)
     {
         AddScalarValues(text, "requiredFlag|openedFlag", flags);
         AddArrayValues(text, "flagsToSet|flagsToRemove", flags);
         AddScalarValues(text, "itemName|requiredItemName|itemToAdd|itemToRemove|readableItemToOpen", itemIds);
         AddScalarValues(text, "weaponName|equippedItemName", weaponIds);
-        AddScalarValues(text, "skillName|requiredUnlockSkill|activeSkillId|currentSkillId", skillIds);
+        if (!string.IsNullOrEmpty(actionGuid))
+            foreach (string component in Regex.Split(text, @"(?m)^--- !u!"))
+                if (component.Contains("guid: " + actionGuid + ","))
+                {
+                    AddScalarValues(component, "skillName", skillIds);
+                    Match catalogReference = Regex.Match(component, @"actionCatalog:\s*\{[^}]*guid:\s*(?<guid>[a-fA-F0-9]+)");
+                    if (catalogReference.Success)
+                    {
+                        SkillActionCatalog catalog = AssetDatabase.LoadAssetAtPath<SkillActionCatalog>(AssetDatabase.GUIDToAssetPath(catalogReference.Groups["guid"].Value));
+                        if (catalog?.actions != null)
+                            foreach (var action in catalog.actions)
+                                if (action != null && action.enabled) AddUnique(skillIds, action.actionId);
+                    }
+                }
         AddScalarValues(text, "completeSessionId|nextSessionId|sessionId", sessionIds, true);
         AddScalarValues(text, "eventId", flags, false, "StoryEventCompleted:");
     }
@@ -198,7 +201,7 @@ public sealed class GameIdRegistry : ScriptableObject
     private static string ReadYamlValue(string value)
     {
         value = value.Trim();
-        if (value.Length == 0 || value == "[]" || value == "{}") return string.Empty;
+        if (value.Length == 0 || value == "[]" || value == "{}" || value == "null" || value == "~") return string.Empty;
         if (value.Length >= 2 && value[0] == '"' && value[value.Length - 1] == '"')
         {
             string inner = value.Substring(1, value.Length - 2);

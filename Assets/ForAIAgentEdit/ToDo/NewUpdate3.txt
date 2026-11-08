@@ -1,0 +1,59 @@
+NEWUPDATE3 — LỖI VẶT / TRẠNG THÁI TRIỂN KHAI
+Cập nhật: 08/11/2026. Các mục dưới đã sửa mã/cấu hình; chưa chạy Play Mode trực tiếp trong Unity.
+
+1. [ĐÃ SỬA] Sửa lại inventory nó ko hiện icon skill.
+   - SkillConfig có Fallback Skill Icon, đã gán ảnh SkillPlaceholder có sẵn cho skill thiếu icon riêng.
+   - Giữ icon đã gán; lưới hiện cả icon và tên để phân biệt skill dùng chung ảnh.
+   - Ô skill trang bị dùng Image con đặt sẵn; tắt Button thừa ở Image con để click/drag tới đúng ô.
+   - Chưa có bộ artwork riêng cho 26 skill: gán từng SkillConfigEntry.icon khi có ảnh.
+
+2. [ĐÃ SỬA SCENE + MÃ] Sửa lại popup skill của inventory lại cho đẹp.
+   - CoreCombatDemo: card nền tối 340×300, icon/tên/mô tả, ô đổi phím, nút gỡ và nút đóng.
+   - Dùng vị trí cố định thay vì card chồng lên ô skill; đưa popup lên trước khi mở.
+   - Đóng popup khi tắt inventory hoặc mở bảng thông số. Giữ chức năng đổi phím/gỡ skill hiện có.
+
+3. [ĐÃ SỬA] Sửa PlayerStatusHUD cho nó hiển thị đầy đủ hơn chỉ số.
+   - Cấp, EXP/mốc cấp tiếp, HP/maxHP, ATK, DEF, tốc độ di chuyển/tốc đánh,
+     tỉ lệ/hệ số chí mạng, kháng choáng, kháng độc/chảy máu, LT/QT, đạn hiếm, trang bị, số skill.
+   - Đọc giá trị thực của progression/modifier; refresh bằng unscaled time khi inventory pause game.
+   - HUD dùng UI đặt sẵn trong scene; bỏ tạo HUD bằng new GameObject lúc chạy.
+
+4. [ĐÃ THÊM VÀ NỐI SCENE] Thêm nút thông số trong panel inventory để nhấn vào hiện popup PlayerStatusHUD.
+   - Nút THÔNG SỐ trong CoreCombatDemo, popup có nút đóng, đã nối reference Inspector.
+   - Bảng chỉ số không tự mở cùng inventory nữa; bấm nút để mở/đóng.
+
+5. [ĐÃ CHUYỂN VÀ NHẬP EXCEL] Drop item chuyển từ ZoneEnemySpawner sang EnemyCombatConfig.
+   - EnemyCombatConfig.drops có itemName/amount/dropChance/onlyIfMissing.
+   - Đã nhập đúng bảng Database Quai (16 loại) + Database Boss (6 loại); các profile thêm/triệu hồi không có bảng thì để trống.
+   - Đá Nguyền Cổ: 100% nếu chưa có trong túi/rương hoặc một bản rơi chưa nhặt. Quái/boss ghi không rơi item có bảng trống.
+   - 22 spawner trong các scene Zone1–5 đã trỏ đúng config, xóa bảng drops cũ khỏi component spawner.
+   - Xóa bảng tỉ lệ rơi hard-code; dùng tỉ lệ chỉnh trong asset. ID save trận, event truyện và phục hồi worldDrops giữ nguyên.
+   - Thêm 20 ItemDefinition còn thiếu và bổ sung Item IDs vào Registry; giữ toàn bộ ID/asset cũ.
+   - EXP giờ đọc đúng Inspector; các encounter cũ được giữ mức thưởng thực tế trước sửa (thay cho bảng override theo tên trong code).
+
+6. [ĐÃ TẠO] Tạo prefab spawner theo Excel trong Assets/Prefabs/Spawer.
+   - Có 22 prefab, mỗi loại quái/boss trong hai bảng một prefab; gán enemy prefab, Combat Config và WorldItem pickup.
+   - Mặc định 1 con, spawn khi người chơi vào gần. Excel chưa có số lượng/bán kính mỗi đợt nên cần cân chỉnh Inspector.
+   - Không sao chép event truyện/ID trận cụ thể vào prefab. Khi đặt vào scene mới, gán Session/Required Flag/Clear Event phù hợp.
+   - EXP của Bóng Đêm Rình Rập và Bóng Gương Thủ Lĩnh để 0 vì chưa có mốc trong cấu hình cũ/Excel; nhập Inspector khi chốt.
+   - Hồn Ma Nạn Nhân Cũ giữ EXP 0, bất tử theo Excel.
+   - Giữ các trường thiếu HP/ATK/animation đã báo ở lần tạo enemy/boss trước; cần gán trước test.
+
+7. [ĐÃ SỬA] CharacterAnimation: animation lặp phát lại âm thanh, ví dụ AnimState.Run.
+   - Animation thường gọi lại SFX khi sang chu kỳ mới. Pause/dừng/non-loop không phát lặp.
+   - Animation combat tiếp tục dùng SFX theo Charge/Cast/End; không phát chồng SFX thường.
+
+CẦN TEST / GÁN THÊM TRONG UNITY
+- Dừng Play Mode, reload CoreCombatDemo và các scene Zone1–5 để nhận YAML mới, rồi mở inventory.
+- Kiểm tra icon skill, popup đổi phím/gỡ, nút THÔNG SỐ và nút đóng; thử Run qua nhiều vòng để nghe SFX.
+- Kéo prefab trong Prefabs/Spawer vào scene, kiểm tra khoảng kích hoạt và số lượng; gán JSON/HP/ATK còn thiếu trên enemy như ghi chú cũ.
+- Icon riêng của skill và ảnh các loot item mới chưa được cung cấp; gán Inspector khi có artwork.
+- Bùa Hồi Máu chỉ có tên/tỉ lệ rơi trong Excel, chưa có lượng hồi: đã để Consumable và Heal Amount = 0, cần nhập trước khi dùng. Không tự bịa lượng hồi.
+
+KIỂM TRA ĐÃ THỰC HIỆN
+- Build runtime + custom Editor bằng Unity references.
+- 26 kiểm tra logic Update/loot/EXP dùng source thật trích từ production và API doubles.
+- 1762 kiểm tra asset/reference: bảng loot, item/registry, 22 prefab, scene UI graph, GUID/fileID/parent-child.
+- 36 kiểm tra hồi quy enemy controller/scheduler/phase đã qua.
+- Không khẳng định đã chạy Unity Play Mode. Giữ chưa commit theo lựa chọn của người dùng.
+- Nhật ký chi tiết: ../doc/2026-11-08_newupdate3-loi-vat.md

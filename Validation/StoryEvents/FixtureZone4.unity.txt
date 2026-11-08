@@ -1,0 +1,5 @@
+  eventId: Plain
+  eventIdOnCleared: null
+  onOpenedEventId: ~
+  - eventId: "Escaped\u0111"
+  eventId: Plain

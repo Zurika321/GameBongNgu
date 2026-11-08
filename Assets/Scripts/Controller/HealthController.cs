@@ -33,6 +33,7 @@ public class HealthController : MonoBehaviour, IDamage, IHealth
     public float MaxHealth => maxHealth;
     public bool IsDead => currentHealth <= 0f;
     public bool IsInvincible { get; private set; }
+    public SkillDamageKind LastDamageKind { get; private set; }
 
     private void Awake()
     {
@@ -58,17 +59,36 @@ public class HealthController : MonoBehaviour, IDamage, IHealth
         TakeDamage(damage, source, 0f);
     }
 
-    public void TakeDamage(float damage, GameObject source, float stunTime)
+    public void TakeDamage(float damage, GameObject source, float stunTime) => ApplyDamage(damage, source, stunTime, null);
+
+    public void TakeSkillDamage(SkillContext context)
+    {
+        if (context != null) ApplyDamage(context.Damage, context.Caster, context.StunTime, context);
+    }
+
+    private void ApplyDamage(float damage, GameObject source, float stunTime, SkillContext context)
     {
         if (damage <= 0f || IsDead || IsInvincible) return;
 
+        var modifierStore = GetComponent<RuntimeStatModifierStore>();
+        if (modifierStore != null)
+        {
+            stunTime *= 1f - Mathf.Clamp01(modifierStore.GetFinalValue(PlayerStatType.StunResistance, 0f));
+            if (context != null && context.DamageKind == SkillDamageKind.DamageOverTime)
+                damage *= 1f - Mathf.Clamp01(modifierStore.GetFinalValue(PlayerStatType.DotResistance, 0f));
+        }
+        damage = DefenseWindow.FilterDamage(gameObject, source, damage, context);
+        if (damage <= 0f || IsDead) return;
         float finalDamage = damage;
         if (GetComponent<PlayerController>() != null && PlayerProgressionService.Instance != null)
-            finalDamage = Mathf.Max(1f, damage - PlayerProgressionService.Instance.GetDefensePower());
+            finalDamage = Mathf.Max(1f, damage - PlayerProgressionService.Instance.GetDefensePower() * (1f - Mathf.Clamp01(context?.ArmorPenetration ?? 0f)));
 
+        float receivedDamage = Mathf.Min(currentHealth, finalDamage);
+        LastDamageKind = context != null ? context.DamageKind : SkillDamageKind.Unknown;
         currentHealth = Mathf.Max(0f, currentHealth - finalDamage);
         UpdateHealthBar();
         SkillCombatEvents.RaiseDamageTaken(gameObject, finalDamage);
+        DefenseWindow.AfterDamage(gameObject, source, receivedDamage);
 
         if (IsDead)
         {

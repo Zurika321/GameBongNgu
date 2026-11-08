@@ -198,7 +198,9 @@ public class EnemyController : MonoBehaviour, IFacingProvider
 
     private void Move(Vector2 direction)
     {
-        rb.linearVelocity = direction * moveSpeed;
+        RuntimeStatModifierStore stats = GetComponent<RuntimeStatModifierStore>();
+        float effectiveMoveSpeed = stats != null ? stats.GetFinalValue(PlayerStatType.MoveSpeed, moveSpeed) : moveSpeed;
+        rb.linearVelocity = direction * Mathf.Max(0f, effectiveMoveSpeed) * ApplyStatus.MovementMultiplier(gameObject);
         facingDirection = direction;
 
         if (characterAnimation != null)

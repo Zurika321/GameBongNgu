@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script:
+    fileID: 11500000
+    guid: 3d50080d75604a64813ccb6280b99526
+    type: 3
+  m_Name: Enemy_HonMaNanNhanCu
+  m_EditorClassIdentifier: ''
+  actorId: Enemy_HonMaNanNhanCu
+  displayName: Hồn Ma Nạn Nhân Cũ
+  boss: 0
+  maxHealth: 0
+  attack: 0
+  needsHealth: 0
+  needsAttack: 0
+  invincible: 1
+  setupNotes: 'Không tấn công, chỉ cản đường và gây hiệu ứng giảm tốc nhẹ khi chạm.
+
+    Cần gán CharacterAnimation/Unity Json Asset và ảnh skill cast/end. Chưa có art
+    enemy/boss đã xác nhận trong dự án.
+
+    '
+  phases: []
+  skills:
+  - skillId: Enemy_HonMaNanNhanCu_ChamGiamToc
+    skillName: ACT_AURA_SLOW_CONTACT
+    trigger: 1
+    phases: []
+    minimumDistance: 0
+    initialDelay: 0
+    priority: 1
+    oncePerCombat: 1
+    requiresAttack: 0
+    needsInspectorSetup: 0
+    setupNotes: ''
+    castCondition:
+      kind: 0
+    castLockSeconds: 0
+    cooldown: 0
+    shape: 1
+    detectionSize:
+      x: 2
+      y: 2
+    detectionOffset:
+      x: 0
+      y: 0
+    detectTag: HitBoxPlayer
+    damage: 0
+  drops: []

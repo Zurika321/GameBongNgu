@@ -1,0 +1,3100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c298a7569c6f4e70801f8dbac66cd4a9, type: 3}
+  m_Name: SkillActionCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::SkillActionCatalog
+  actions:
+  - actionId: "ACT_MELEE_1"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: "
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_MELEE_2"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 2 nh\u00e1t li\u00ean ti\u1ebfp"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Kh\u1edbp 2 nh\u00e1t V r\u1ed3i X"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 2
+      interval: 0.25
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.3
+        y: 1.0
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.12
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 60.0
+      - 60.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_MELEE_3"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 3 nh\u00e1t li\u00ean ti\u1ebfp"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Combo 3 \u0111\u00f2n, nh\u00e1t sau r\u1ed9ng h\u01a1n nh\u00e1t tr\u01b0\u1edbc"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 3
+      interval: 0.3
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.3
+        y: 1.0
+      sizeGrowthPerRepeat: 0.15
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 60.0
+      - 60.0
+      - 60.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_MELEE_5_STUN_FINISH"
+    displayName: "Combo 5 \u0111\u00f2n, nh\u00e1t cu\u1ed1i g\u00e2y cho\u00e1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: H\u1ee5t 1 nh\u00e1t th\u00ec ng\u1eaft c\u1ea3 chu\u1ed7i | Cho\u00e1ng 0.5s"
+    steps:
+    - module: 13
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        condition:
+          kind: 0
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.2
+      repeatCount: 5
+      interval: 0.2
+      target: 1
+      requirePreviousHit: 1
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.3
+        y: 1.0
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.1
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 40.0
+      - 40.0
+      - 40.0
+      - 40.0
+      - 60.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 4
+      trigger: 1
+      sourceStep: 1
+      sourceIteration: 4
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 0
+          duration: 0.5
+          strength: 0.0
+          statusId: ""
+  - actionId: "ACT_MELEE_1_STUN"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t + cho\u00e1ng ng\u1eafn"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Cho\u00e1ng 1.0s n\u1ebfu tr\u00fang li\u00ean ti\u1ebfp"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 4
+      trigger: 1
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 2
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 0
+          duration: 1.0
+          strength: 0.0
+          statusId: ""
+  - actionId: "ACT_MELEE_1_POISON"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t + \u0111\u1ed9c"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: \u0110\u1ed9c 3s, nh\u1ecbp 1s, x\u00e1c su\u1ea5t 30%"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 2
+      trigger: 1
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 0.3
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 5.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+      dot:
+        activationType: 1
+        dotDuration: 3.0
+        tickInterval: 1.0
+        damagePerTick: 0.0
+        zoneShape: 0
+        zoneSize:
+          x: 0.0
+          y: 0.0
+        zoneLifetime: 0.0
+  - actionId: "ACT_MELEE_1_BLEED"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t + ch\u1ea3y m\u00e1u"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ea3y m\u00e1u 3s, nh\u1ecbp 1s"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 2
+      trigger: 1
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 5.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+      dot:
+        activationType: 1
+        dotDuration: 3.0
+        tickInterval: 1.0
+        damagePerTick: 0.0
+        zoneShape: 0
+        zoneSize:
+          x: 0.0
+          y: 0.0
+        zoneLifetime: 0.0
+  - actionId: "ACT_MELEE_1_LIFESTEAL"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t + h\u00fat m\u00e1u"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: H\u1ed3i HP b\u1eb1ng 50% s\u00e1t th\u01b0\u01a1ng g\u00e2y ra (HP ch\u1ee7 skill)"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 8
+      trigger: 1
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        resource:
+          resource: 0
+          amountMode: 2
+          amount: 0.5
+          ticks: 1
+          interval: 0.0
+          persist: 0
+  - actionId: "ACT_MELEE_1_SELFCOST"
+    displayName: "\u0110\u00f2n c\u1eadn chi\u1ebfn 1 nh\u00e1t + t\u1ef1 ch\u1ecbu s\u00e1t th\u01b0\u01a1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ee7 skill m\u1ea5t 5% m\u00e1u t\u1ed1i \u0111a m\u1ed7i \u0111\u00f2n"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.2
+        y: 0.9
+      forwardOffset: 0.9
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 250.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 8
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.3
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        resource:
+          resource: 0
+          amountMode: 1
+          amount: -0.05
+          ticks: 1
+          interval: 0.0
+          persist: 0
+  - actionId: "ACT_THRUST_PIERCE"
+    displayName: "\u0110\u00e2m xuy\u00ean gi\u00e1p"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Xuy\u00ean gi\u00e1p 30% (b\u1eadt c\u1edd ph\u00e1 khi\u00ean khi d\u00f9ng cho Ph\u00e1 Gi\u00e1p Ho\u00e0n To\u00e0n); B\u1eadt BreaksGuard theo t\u1eebng skill/v\u0169 kh\u00ed ph\u00e1 khi\u00ean."
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.25
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.8
+        y: 0.5
+      forwardOffset: 1.1
+      coneAngle: 180.0
+      lifetime: 0.12
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 130.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.3
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_AOE_CIRCLE_1"
+    displayName: "D\u1eadp \u0111\u1ea5t 1 l\u1ea7n quanh ch\u1ee7 skill"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 b\u00e1o hi\u1ec7u, kh\u00f4ng s\u00e1t th\u01b0\u01a1ng | \u0110\u1ea9y l\u00f9i 1 \u00f4"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 1.5
+        y: 1.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.5
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 1
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 1.5
+        y: 1.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 150.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 1.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_AOE_CIRCLE_1_STUN"
+    displayName: "D\u1eadp \u0111\u1ea5t 1 l\u1ea7n + cho\u00e1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 b\u00e1o hi\u1ec7u | Cho\u00e1ng 1.5s"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.5
+        y: 2.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.6
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 1
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.5
+        y: 2.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 4
+      trigger: 1
+      sourceStep: 1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 0
+          duration: 1.5
+          strength: 0.0
+          statusId: ""
+  - actionId: "ACT_AOE_PULSE_3X"
+    displayName: "D\u1eadm \u0111\u1ea5t 3 l\u1ea7n t\u1ea1o s\u00f3ng xung quanh (m\u1eabu theo y\u00eau c\u1ea7u)"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: C\u00e1ch nhau 1.0s c\u1ed1 \u0111\u1ecbnh; %ATK t\u1eebng l\u1ea7n ch\u1ec9nh \u0111\u01b0\u1ee3c"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 3
+      interval: 1.0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.0
+        y: 2.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 80.0
+      - 80.0
+      - 120.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_CONE_SWEEP_STUN"
+    displayName: "Qu\u00e9t h\u00ecnh n\u00f3n ph\u00eda tr\u01b0\u1edbc + cho\u00e1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 b\u00e1o hi\u1ec7u | Cho\u00e1ng 0.8s"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 2
+      size:
+        x: 2.0
+        y: 2.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.5
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 1
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 2
+      size:
+        x: 2.0
+        y: 2.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.3
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 160.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 4
+      trigger: 1
+      sourceStep: 1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 0
+          duration: 0.8
+          strength: 0.0
+          statusId: ""
+  - actionId: "ACT_SELF_EXPLODE"
+    displayName: "T\u1ef1 n\u1ed5 khi b\u1ecb c\u1eadn chi\u1ebfn h\u1ea1 g\u1ee5c"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 1
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: B\u1ecb h\u1ea1 b\u1eb1ng t\u1ea7m xa th\u00ec kh\u00f4ng n\u1ed5 | ATK g\u1ed1c = 0 n\u00ean d\u00f9ng ch\u1ebf \u0111\u1ed9 s\u00e1t th\u01b0\u01a1ng c\u1ed1 \u0111\u1ecbnh thay cho %ATK; b\u00e1o hi\u1ec7u: ch\u1edbp s\u00e1ng 0.4s; G\u1ecdi t\u1eeb event ch\u1ebft, y\u00eau c\u1ea7u LastDamageKind=Melee."
+    steps:
+    - module: 13
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        condition:
+          kind: 8
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.4
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.5
+        y: 2.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 20.0
+      fixedDamage: 20.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_POISON_THORNS"
+    displayName: "Gai \u0111\u1ed9c tr\u1ed3i t\u1eeb \u0111\u1ea5t"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 b\u00e1o hi\u1ec7u | \u0110\u1ed9c 3s"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.0
+        y: 2.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.6
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 1
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 2
+      interval: 0.5
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 2.0
+        y: 2.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 80.0
+      - 80.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 2
+      trigger: 1
+      sourceStep: 1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 5.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+      dot:
+        activationType: 1
+        dotDuration: 3.0
+        tickInterval: 1.0
+        damagePerTick: 0.0
+        zoneShape: 0
+        zoneSize:
+          x: 0.0
+          y: 0.0
+        zoneLifetime: 0.0
+  - actionId: "ACT_PROJ_1"
+    displayName: "\u0110\u1ea1n bay th\u1eb3ng 1 vi\u00ean"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: D\u00f9ng cho n\u00e9m v\u0169 kh\u00ed ph\u1ee5 v\u00e0 \u0111\u1ea1n t\u1ea7m xa"
+    steps:
+    - module: 1
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.4
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 0.2
+        y: 0.2
+      forwardOffset: 0.6
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 6.0
+      travelDistance: 8.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 2
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_PROJ_POISON"
+    displayName: "\u0110\u1ea1n \u0111\u1ed9c bay th\u1eb3ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: \u0110\u1ed9c 5s, nh\u1ecbp 1s; tr\u00fang l\u1ea1i th\u00ec l\u00e0m m\u1edbi"
+    steps:
+    - module: 1
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.8
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 0.3
+        y: 0.3
+      forwardOffset: 0.6
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 5.0
+      travelDistance: 8.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 120.0
+      fixedDamage: -1.0
+      damageKind: 2
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 2
+      trigger: 1
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 2
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 10.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+      dot:
+        activationType: 1
+        dotDuration: 5.0
+        tickInterval: 1.0
+        damagePerTick: 0.0
+        zoneShape: 0
+        zoneSize:
+          x: 0.0
+          y: 0.0
+        zoneLifetime: 0.0
+  - actionId: "ACT_PROJ_EXPLOSIVE"
+    displayName: "\u0110\u1ea1n n\u1ed5 di\u1ec7n r\u1ed9ng nh\u1ecf khi ch\u1ea1m"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: T\u1ed5ng 130% ATK"
+    steps:
+    - module: 1
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.8
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 0.35
+        y: 0.35
+      forwardOffset: 0.6
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 3.5
+      travelDistance: 8.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 80.0
+      fixedDamage: -1.0
+      damageKind: 2
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 0
+      trigger: 2
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 1.2
+        y: 1.2
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 50.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_ZONE_SLOW_WEB"
+    displayName: "V\u00f9ng t\u01a1 l\u00e0m ch\u1eadm"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: S\u00e1t th\u01b0\u01a1ng l\u00fac m\u1edf t\u01a1 | L\u00e0m ch\u1eadm 40% khi \u0111\u1ee9ng trong v\u00f9ng"
+    steps:
+    - module: 0
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 2
+      size:
+        x: 1.5
+        y: 1.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.2
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 80.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+    - module: 3
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 1.0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 2
+      size:
+        x: 1.5
+        y: 1.5
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 3.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 1
+          duration: 1.0
+          strength: 0.4
+          statusId: "Slow"
+  - actionId: "ACT_AURA_SLOW_CONTACT"
+    displayName: "V\u00f9ng l\u00e0m ch\u1eadm b\u00e1m theo ch\u1ee7 (ch\u1ea1m l\u00e0 ch\u1eadm)"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: L\u00e0m ch\u1eadm 20%"
+    steps:
+    - module: 3
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0.5
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 1
+      size:
+        x: 0.6
+        y: 0.6
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 1
+      telegraph: 0
+      damagePercents:
+      - 0.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 1
+          duration: 0.5
+          strength: 0.2
+          statusId: "Slow"
+  - actionId: "ACT_BUFF_ATK_TIMED"
+    displayName: "Buff t\u0103ng s\u00e1t th\u01b0\u01a1ng theo th\u1eddi gian"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: ATK +20% trong 8s; \u0110i\u1ec1n s\u1ed1 hit trong Modules/Condition (Excel ch\u01b0a ch\u1ed1t s\u1ed1)."
+    steps:
+    - module: 13
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 1
+      clearBuffWhenCancelled: 0
+      settings:
+        condition:
+          kind: 6
+          requiredCount: 0
+          withinSeconds: 0.0
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        selfBuff:
+          duration: 8.0
+          modifiers:
+          - stat: 0
+            modifierType: 1
+            value: 0.2
+  - actionId: "ACT_BUFF_SPEED_PHASE"
+    displayName: "Buff t\u0103ng t\u1ed1c su\u1ed1t phase"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: T\u1ed1c \u0111\u1ed9 +30% \u0111\u1ebfn h\u1ebft phase (th\u1eddi l\u01b0\u1ee3ng 0 = v\u00f4 h\u1ea1n); G\u1ecdi RemoveActionBuffs khi k\u1ebft th\u00fac phase."
+    steps:
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        selfBuff:
+          duration: 0.0
+          modifiers:
+          - stat: 3
+            modifierType: 1
+            value: 0.3
+  - actionId: "ACT_BUFF_SPEED_CONDITIONAL"
+    displayName: "Buff t\u0103ng t\u1ed1c c\u00f3 \u0111i\u1ec1u ki\u1ec7n"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 1
+    condition:
+      kind: 3
+      threshold: 0.3
+    setupNotes: "Ngu\u1ed3n Excel: H\u1ebft \u0111i\u1ec1u ki\u1ec7n th\u00ec b\u1ecf buff | T\u1ed1c \u0111\u1ed9 ch\u1ea1y +50%"
+    steps:
+    - module: 13
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        condition:
+          kind: 3
+          threshold: 0.3
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 1
+      settings:
+        selfBuff:
+          duration: 0.0
+          modifiers:
+          - stat: 3
+            modifierType: 1
+            value: 0.5
+  - actionId: "ACT_BUFF_ATKSPEED_RAMP"
+    displayName: "T\u1ed1c \u0111\u1ed9 \u0111\u00e1nh t\u0103ng d\u1ea7n theo th\u1eddi gian"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: M\u1ed7i 10s t\u1ed1c \u0111\u1ed9 \u0111\u00e1nh +10%, t\u1ed1i \u0111a 3 l\u1ea7n"
+    steps:
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 10.0
+      repeatCount: 3
+      interval: 10.0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        selfBuff:
+          duration: 0.0
+          modifiers:
+          - stat: 6
+            modifierType: 1
+            value: 0.1
+  - actionId: "ACT_BUFF_DUAL_BLADE"
+    displayName: "Buff song \u0111ao"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: T\u1ed1c \u0111\u1ed9 \u0111\u00e1nh +25%, DEF \u221215%, 10s"
+    steps:
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        selfBuff:
+          duration: 10.0
+          modifiers:
+          - stat: 6
+            modifierType: 1
+            value: 0.25
+          - stat: 1
+            modifierType: 1
+            value: -0.15
+  - actionId: "ACT_BUFF_BORROW_POWER"
+    displayName: "M\u01b0\u1ee3n s\u1ee9c m\u1ea1nh V\u00f4 Di\u1ec7n"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: ATK +50%, t\u1ed1c \u0111\u1ed9 +30% trong 10s; c\u00e1i gi\u00e1: 30% l\u1ea7n n\u00e9 b\u1ecb l\u1ec7ch h\u01b0\u1edbng (\u0111\u1ec1 xu\u1ea5t); C\u00e1i gi\u00e1 n\u00e9 l\u1ec7ch h\u01b0\u1edbng c\u1ea7n debuff c\u1ea5u h\u00ecnh ri\u00eang, kh\u00f4ng t\u1ef1 b\u1ecba h\u01b0\u1edbng."
+    steps:
+    - module: 5
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        selfBuff:
+          duration: 10.0
+          modifiers:
+          - stat: 0
+            modifierType: 1
+            value: 0.5
+          - stat: 3
+            modifierType: 1
+            value: 0.3
+  - actionId: "ACT_DODGE_ROLL"
+    displayName: "L\u0103n n\u00e9"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Khung b\u1ea5t t\u1eed 0.05\u20130.3s; h\u1ed3i chi\u00eau 1s"
+    steps:
+    - module: 7
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.3
+      speed: 8.333333333333334
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        movement:
+          invincible: 1
+          invincibleStart: 0.05
+          invincibleEnd: 0.3
+  - actionId: "ACT_PARRY"
+    displayName: "\u0110\u1ee1 \u0111\u00f2n"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: \u0110\u1ee1 \u0111\u00fang th\u00ec d\u1eebng h\u00ecnh 0.1s; Hit-stop c\u1ea7n adapter h\u00ecnh \u1ea3nh, kh\u00f4ng t\u1ef1 \u0111\u1ed5i Time.timeScale to\u00e0n game."
+    steps:
+    - module: 9
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.05
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        defense:
+          mode: 0
+          duration: 0.25
+          fraction: 0.0
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+          counterActionId: ""
+  - actionId: "ACT_PARRY_COUNTER"
+    displayName: "\u0110\u1ee1 \u0111\u00f2n + ph\u1ea3n \u0111\u00f2n ho\u00e0n h\u1ea3o"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: \u0110\u1ee1 \u0111\u00fang th\u00ec d\u1eebng h\u00ecnh 0.1s r\u1ed3i g\u1ecdi b\u01b0\u1edbc d\u01b0\u1edbi | Ch\u1ec9 ch\u1ea1y khi \u0111\u1ee1 th\u00e0nh c\u00f4ng; Hit-stop c\u1ea7n adapter h\u00ecnh \u1ea3nh, kh\u00f4ng t\u1ef1 \u0111\u1ed5i Time.timeScale to\u00e0n game."
+    steps:
+    - module: 9
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.05
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        defense:
+          mode: 0
+          duration: 0.25
+          fraction: 0.0
+          consumeOnHit: 1
+          meleeOnly: 0
+          breakable: 0
+          counterActionId: ""
+    - module: 0
+      trigger: 3
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.1
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 1.5
+        y: 1.1
+      forwardOffset: 1.0
+      coneAngle: 180.0
+      lifetime: 0.15
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 200.0
+      fixedDamage: -1.0
+      damageKind: 1
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings: {}
+  - actionId: "ACT_IMMUNE_MELEE_CYCLE"
+    displayName: "Gi\u00e1p mi\u1ec5n nhi\u1ec5m c\u1eadn chi\u1ebfn theo chu k\u1ef3"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 ph\u00e1 \u0111\u01b0\u1ee3c b\u1eb1ng B\u0103ng \u0110\u1ea1n B\u1ea1c"
+    steps:
+    - module: 9
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 0
+      interval: 12.0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        defense:
+          mode: 1
+          duration: 5.0
+          fraction: 0.0
+          consumeOnHit: 0
+          meleeOnly: 1
+          breakable: 1
+          counterActionId: ""
+  - actionId: "ACT_RESIST_MELEE_50"
+    displayName: "Kh\u00e1ng 50% s\u00e1t th\u01b0\u01a1ng c\u1eadn chi\u1ebfn th\u01b0\u1eddng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: B\u1ecf qua n\u1ebfu v\u0169 kh\u00ed nung ho\u1eb7c \u0111\u1ea1n b\u1ea1c"
+    steps:
+    - module: 9
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        defense:
+          mode: 2
+          duration: 0.0
+          fraction: 0.5
+          consumeOnHit: 0
+          meleeOnly: 1
+          breakable: 0
+          counterActionId: ""
+  - actionId: "ACT_REFLECT_20"
+    displayName: "Ph\u1ea3n 20% s\u00e1t th\u01b0\u01a1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: D\u1ed9i ng\u01b0\u1ee3c 20% s\u00e1t th\u01b0\u01a1ng nh\u1eadn v\u00e0o ng\u01b0\u1eddi \u0111\u00e1nh"
+    steps:
+    - module: 13
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        condition:
+          kind: 7
+          requiredCount: 3
+          withinSeconds: 3.0
+    - module: 9
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        defense:
+          mode: 3
+          duration: 4.0
+          fraction: 0.2
+          consumeOnHit: 0
+          meleeOnly: 0
+          breakable: 0
+          counterActionId: ""
+  - actionId: "ACT_SUMMON_2_EVERY_20S"
+    displayName: "Tri\u1ec7u h\u1ed3i 2 con m\u1ed7i 20s"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: ; G\u00e1n prefab/th\u00f4ng s\u1ed1 t\u1ea1i context.Modules/Summon; ho\u1eb7c b\u1ecf Use Skill Module Settings \u0111\u1ec3 ch\u1ec9nh t\u1ea1i recipe. Drop/EXP, tan kh\u00f3i v\u00e0 b\u1ea3n th\u1ec3 bi\u1ebfn m\u1ea5t c\u1ea7n prefab/event."
+    steps:
+    - module: 6
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 0
+      interval: 20.0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        summon:
+          prefab: {fileID: 0}
+          count: 2
+          maximumAlive: 4
+          radius: 0.0
+          lifetime: 0.0
+          ownerHealthFraction: 0.0
+  - actionId: "ACT_SUMMON_ADDS_CONTINUOUS"
+    displayName: "Tri\u1ec7u h\u1ed3i tay sai li\u00ean t\u1ee5c"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Tay sai kh\u00f4ng r\u01a1i item, ch\u1ec9 cho EXP nh\u1ecf; G\u00e1n prefab/th\u00f4ng s\u1ed1 t\u1ea1i context.Modules/Summon; ho\u1eb7c b\u1ecf Use Skill Module Settings \u0111\u1ec3 ch\u1ec9nh t\u1ea1i recipe. Drop/EXP, tan kh\u00f3i v\u00e0 b\u1ea3n th\u1ec3 bi\u1ebfn m\u1ea5t c\u1ea7n prefab/event."
+    steps:
+    - module: 6
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 0
+      interval: 15.0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        summon:
+          prefab: {fileID: 0}
+          count: 1
+          maximumAlive: 6
+          radius: 0.0
+          lifetime: 0.0
+          ownerHealthFraction: 0.0
+  - actionId: "ACT_CLONE_SHADOW_2"
+    displayName: "Nh\u00e2n b\u1ea3n 2 b\u00f3ng y\u1ebfu"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: B\u1ecb \u0111\u00e1nh tr\u00fang th\u00ec tan th\u00e0nh kh\u00f3i; G\u00e1n prefab/th\u00f4ng s\u1ed1 t\u1ea1i context.Modules/Summon; ho\u1eb7c b\u1ecf Use Skill Module Settings \u0111\u1ec3 ch\u1ec9nh t\u1ea1i recipe. Drop/EXP, tan kh\u00f3i v\u00e0 b\u1ea3n th\u1ec3 bi\u1ebfn m\u1ea5t c\u1ea7n prefab/event."
+    steps:
+    - module: 6
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        summon:
+          prefab: {fileID: 0}
+          count: 2
+          maximumAlive: 2
+          radius: 0.0
+          lifetime: 0.0
+          ownerHealthFraction: 0.15
+  - actionId: "ACT_SPLIT_2"
+    displayName: "Ph\u00e2n th\u00e2n th\u00e0nh 2"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: B\u1ea3n th\u1ec3 g\u1ed1c bi\u1ebfn m\u1ea5t, hai b\u1ea3n sao h\u00e0nh \u0111\u1ed9ng \u0111\u1ed9c l\u1eadp; G\u00e1n prefab/th\u00f4ng s\u1ed1 t\u1ea1i context.Modules/Summon; ho\u1eb7c b\u1ecf Use Skill Module Settings \u0111\u1ec3 ch\u1ec9nh t\u1ea1i recipe. Drop/EXP, tan kh\u00f3i v\u00e0 b\u1ea3n th\u1ec3 bi\u1ebfn m\u1ea5t c\u1ea7n prefab/event."
+    steps:
+    - module: 6
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        summon:
+          prefab: {fileID: 0}
+          count: 2
+          maximumAlive: 2
+          radius: 0.0
+          lifetime: 0.0
+          ownerHealthFraction: 0.5
+  - actionId: "ACT_BLIND_8S"
+    displayName: "L\u00e0m t\u1ed1i t\u1ea7m nh\u00ecn 8s"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Th\u1eddi l\u01b0\u1ee3ng 8s; h\u00fat ngu\u1ed3n s\u00e1ng; G\u00e1n ScreenEffect tr\u00ean Target, n\u1ed1i overlay/shader/light b\u1eb1ng Inspector."
+    steps:
+    - module: 10
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        screen:
+          strength: 0.7
+          duration: 8.0
+          fadeSeconds: 0.5
+  - actionId: "ACT_BLIND_5S"
+    displayName: "L\u00e0m t\u1ed1i t\u1ea7m nh\u00ecn 5s"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Th\u1eddi l\u01b0\u1ee3ng 5s; G\u00e1n ScreenEffect tr\u00ean Target, n\u1ed1i overlay/shader/light b\u1eb1ng Inspector."
+    steps:
+    - module: 10
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.6
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        screen:
+          strength: 0.6
+          duration: 5.0
+          fadeSeconds: 0.5
+  - actionId: "ACT_QTE_POSSESS"
+    displayName: "\u0110\u1ed3ng h\u00f3a (QTE ch\u1ed1ng chi\u1ebfm x\u00e1c)"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Thua \u2192 v\u00e0o Session 13C; c\u00f3 c\u1edd \u00dd Ch\u00ed S\u1eaft \u0110\u00e1 th\u00ec \u0111\u01b0\u1ee3c mi\u1ec5n 1 l\u1ea7n; G\u00e1n ChallengeMeter tr\u00ean Target, Modules/Challenge v\u00e0 event k\u1ebft qu\u1ea3 truy\u1ec7n. Excel ch\u01b0a ch\u1ed1t t\u1ed1c \u0111\u1ed9 thanh/c\u1edd mi\u1ec5n nhi\u1ec5m."
+    steps:
+    - module: 11
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 1
+      clearBuffWhenCancelled: 0
+      settings:
+        challenge:
+          mode: 0
+          duration: 6.0
+          initialValue: 0.0
+          requiredValue: 1.0
+          drainPerSecond: 0.0
+          gainPerInput: 0.0
+          failureGraceSeconds: 3.0
+          immunityFlag: ""
+          consumeImmunity: 0
+  - actionId: "ACT_CURSE_TRANSFER"
+    displayName: "Chuy\u1ec3n nguy\u1ec1n (thanh kh\u00e1ng c\u1ef1)"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: D\u01b0\u1edbi 50% qu\u00e1 3s \u2192 g\u1ecdi b\u01b0\u1edbc d\u01b0\u1edbi | G\u1eafn tr\u1ea1ng th\u00e1i L\u1eddi Nguy\u1ec1n (c\u01a1 ch\u1ebf chi ti\u1ebft ch\u01b0a c\u00f3 trong GDD); G\u00e1n ChallengeMeter tr\u00ean Target, Modules/Challenge v\u00e0 event k\u1ebft qu\u1ea3 truy\u1ec7n. Excel ch\u01b0a ch\u1ed1t t\u1ed1c \u0111\u1ed9 thanh/c\u1edd mi\u1ec5n nhi\u1ec5m."
+    steps:
+    - module: 11
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 1
+      clearBuffWhenCancelled: 0
+      settings:
+        challenge:
+          mode: 1
+          duration: 0.0
+          initialValue: 1.0
+          requiredValue: 0.5
+          drainPerSecond: 0.0
+          gainPerInput: 0.0
+          failureGraceSeconds: 3.0
+          immunityFlag: ""
+          consumeImmunity: 0
+    - module: 4
+      trigger: 4
+      sourceStep: 0
+      sourceIteration: -1
+      delay: 0.0
+      repeatCount: 1
+      interval: 0
+      target: 1
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 1
+      clearBuffWhenCancelled: 0
+      settings:
+        status:
+          kind: 2
+          duration: 0.0
+          strength: 0.0
+          statusId: ""
+  - actionId: "ACT_REPLAY_LAST"
+    displayName: "Sao ch\u00e9p \u0111\u00f2n \u0111\u1ed1i ph\u01b0\u01a1ng"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 0
+    cancelOnMove: 0
+    cancelOnDamage: 0
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: ; Ch\u1ecdn ch\u1ebf \u0111\u1ed9 v\u00e0 ph\u1ea1m vi trong context.Modules/Replay."
+    steps:
+    - module: 12
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 0.5
+      repeatCount: 1
+      interval: 0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents:
+      - 100.0
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 1
+      clearBuffWhenCancelled: 0
+      settings:
+        replay:
+          selection: 0
+          range: 0.0
+          damageFraction: 1.0
+  - actionId: "ACT_HEAL_LT_CHANNEL"
+    displayName: "Gi\u1eef y\u00ean h\u1ed3i L\u00fd Tr\u00ed"
+    enabled: 1
+    lockMovement: 0
+    allowDeadCaster: 0
+    requiresHold: 1
+    cancelOnMove: 1
+    cancelOnDamage: 1
+    moveTolerance: 0.1
+    maintainCondition: 0
+    condition:
+      kind: 0
+    setupNotes: "Ngu\u1ed3n Excel: Ch\u1ec9 ch\u1ea1y khi gi\u1eef ph\u00edm"
+    steps:
+    - module: 8
+      trigger: 0
+      sourceStep: -1
+      sourceIteration: -1
+      delay: 1.0
+      repeatCount: 0
+      interval: 1.0
+      target: 0
+      requirePreviousHit: 0
+      minimumConsecutiveHits: 1
+      chance: 1.0
+      shape: 0
+      size:
+        x: 0.0
+        y: 0.0
+      forwardOffset: 0.0
+      coneAngle: 180.0
+      lifetime: 0.0
+      speed: 0.0
+      travelDistance: 0.0
+      canPierce: 0
+      followCaster: 0
+      telegraph: 0
+      damagePercents: []
+      fixedDamage: -1.0
+      damageKind: 0
+      armorPenetration: 0.0
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      knockback: 0.0
+      useSkillModuleSettings: 0
+      clearBuffWhenCancelled: 0
+      settings:
+        resource:
+          resource: 1
+          amountMode: 0
+          amount: 1.0
+          ticks: 1
+          interval: 1.0
+          cancelOnMove: 1
+          cancelOnDamage: 1
+          moveTolerance: 0.1
+          persist: 0

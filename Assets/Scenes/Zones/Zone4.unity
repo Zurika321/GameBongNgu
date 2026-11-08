@@ -1687,35 +1687,46 @@ Transform:
 --- !u!114 &676289731
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 676289729}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 676289729
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone4:\u0110\u1EA1i S\u1EA3nh Nghi L\u1EC5"
+  sessionId: Zone4:Đại Sảnh Nghi Lễ
   enemyIdPrefix: TOWNUNDEAD
-  enemyDisplayName: "Tay Sai V\xF4 Di\u1EC7n"
+  enemyDisplayName: Tay Sai Vô Diện
   spawnCount: 4
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 7664073485512630456, guid: 88f2fff007e477548820fd19168c0d65, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "V\u1EA3i V\u1EE5n"
-    amount: 1
-    dropChance: 0.5
-  - itemName: "\u0110\u1ED3ng Xu C\u0169"
-    amount: 1
-    dropChance: 0.3
+  enemyPrefab:
+    fileID: 7664073485512630456
+    guid: 88f2fff007e477548820fd19168c0d65
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 15
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 8abba0c79e614249a29372797a16cee7
+    type: 2
 --- !u!1 &726890282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,6 +2650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225c84b96d2eb1643a6a1be63fc27263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillActions
+  actionCatalog: {fileID: 11400000, guid: f5688becd0b34a79a3a9dd0e0847584b, type: 2}
   skillRegistrations:
   - skillName: BasicSlash
     skillSprites: []
@@ -2660,6 +2672,16 @@ MonoBehaviour:
     skillSprites: []
   - skillName: DashAttack2
     skillSprites: []
+  - skillName: ApplyStatus
+  - skillName: SelfBuff
+  - skillName: SummonEntity
+  - skillName: CasterMove
+  - skillName: ModifyResource
+  - skillName: DefenseWindow
+  - skillName: ScreenEffect
+  - skillName: ChallengeMeter
+  - skillName: ReplayAction
+  - skillName: ConditionGate
 --- !u!4 &995800049
 Transform:
   m_ObjectHideFlags: 0
@@ -3004,29 +3026,46 @@ Transform:
 --- !u!114 &1197410072
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197410070}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1197410070
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone4:\u0110\u1EA1i S\u1EA3nh Nghi L\u1EC5"
-  enemyIdPrefix: "BOSS_\u0110\u1EA0I S\u1EA2NH NGHI L\u1EC4"
-  enemyDisplayName: "V\xF4 Di\u1EC7n"
+  sessionId: Zone4:Đại Sảnh Nghi Lễ
+  enemyIdPrefix: BOSS_ĐẠI SẢNH NGHI LỄ
+  enemyDisplayName: Vô Diện
   spawnCount: 1
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops: []
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 200
   spawnWhenPlayerNearby: 1
   activationRadius: 7
-  requiredFlag: 
-  storyEventDirector: {fileID: 2082987942}
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 2082987942
   eventIdOnCleared: S13A_ConfrontationComplete
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 935e2e51250544ad81cbb76de543cadb
+    type: 2
 --- !u!1 &1265892771
 GameObject:
   m_ObjectHideFlags: 0

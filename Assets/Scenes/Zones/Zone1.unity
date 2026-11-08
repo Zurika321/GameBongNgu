@@ -152,6 +152,7 @@ Transform:
   - {fileID: 150364462}
   - {fileID: 1942192772}
   - {fileID: 845162658}
+  - {fileID: 962345148}
   - {fileID: 515623200}
   - {fileID: 425437835}
   - {fileID: 648022860}
@@ -1393,16 +1394,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 541762737326365193, guid: 866a13f341769814e96fe066bc871f6f, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "B\xF9a H\u1ED9 M\u1EC7nh R\xE1ch"
-    amount: 1
-    dropChance: 0.3
-  - itemName: "V\u1EA3i B\u0103ng B\xF3"
-    amount: 1
-    dropChance: 1
-  - itemName: "Nanh Ch\xF3 Ma"
-    amount: 1
-    dropChance: 0.2
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 40
   spawnWhenPlayerNearby: 1
   activationRadius: 5
@@ -2030,8 +2022,7 @@ MonoBehaviour:
       readableItemToOpen: 
       completeSessionId: 
       nextSessionId: 
-    conditions:
-    - rid: 2205578576905109803
+    conditions: []
     onTriggeredActions: []
     choices:
     - choiceId: 1.5
@@ -2345,12 +2336,7 @@ MonoBehaviour:
   itemChangeText: {fileID: 0}
   references:
     version: 2
-    RefIds:
-    - rid: 2205578576905109803
-      type: {class: HasItemStoryCondition, ns: , asm: Assembly-CSharp}
-      data:
-        itemName: 
-        minimumAmount: 1
+    RefIds: []
 --- !u!4 &113961079
 Transform:
   m_ObjectHideFlags: 0
@@ -2509,10 +2495,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 2951611596755342835, guid: cf98dfc3816949342bb80edbfce74f59, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "T\u01A1 Nh\u1EC7n \u0110\u1ED9c"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 30
   spawnWhenPlayerNearby: 0
   activationRadius: 5
@@ -2667,10 +2650,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 8222547389300622407, guid: 240368a3c5bbd684daf0315bd444b9fe, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "L\xF4ng Qu\u1EA1 D\u1ECB"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 35
   spawnWhenPlayerNearby: 1
   activationRadius: 6
@@ -3039,10 +3019,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 7664073485512630456, guid: 88f2fff007e477548820fd19168c0d65, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "V\u1EA3i V\u1EE5n"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 30
   spawnWhenPlayerNearby: 1
   activationRadius: 8
@@ -3998,12 +3975,9 @@ MonoBehaviour:
   enemyDisplayName: "Chu\u1ED9t C\u1ED1ng Bi\u1EBFn D\u1ECB"
   spawnCount: 3
   spawnRadius: 1.5
-  enemyPrefab: {fileID: 2227175360857484894, guid: 75346048ee573d049afaee2aeb8a6285, type: 3}
+  enemyPrefab: {fileID: 100000, guid: 20d8860d5bc047bfb7dc2e5935e6f769, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "V\u1EA3i R\xE1ch"
-    amount: 1
-    dropChance: 0.4
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 15
   spawnWhenPlayerNearby: 1
   activationRadius: 3
@@ -5791,6 +5765,83 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 5056, y: 3392}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &811256445
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 15093051}
+    m_Modifications:
+    - target: {fileID: 1000, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_Name
+      value: Spawner_Enemy_ChuotCongBienDi
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.3575287
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.86398
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: spawnCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: requiredFlag
+      value: SpawnerRat
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: eventIdOnCleared
+      value: Session1RatsCleared
+      objectReference: {fileID: 0}
+    - target: {fileID: 1002, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: storyEventDirector
+      value: 
+      objectReference: {fileID: 113961078}
+    - target: {fileID: 1002, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+      propertyPath: persistentSpawnerId
+      value: Zone1_b1cdca0bae1148d0b551a59883702c40
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
 --- !u!1 &834454388
 GameObject:
   m_ObjectHideFlags: 0
@@ -6957,6 +7008,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
+--- !u!4 &962345148 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1001, guid: de3d3910a647474694f5ca575f05b44d, type: 3}
+  m_PrefabInstance: {fileID: 811256445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &998782987
 GameObject:
   m_ObjectHideFlags: 0
@@ -7702,10 +7758,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 8222547389300622407, guid: 240368a3c5bbd684daf0315bd444b9fe, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "L\xF4ng Qu\u1EA1 D\u1ECB"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 35
   spawnWhenPlayerNearby: 1
   activationRadius: 8
@@ -13234,10 +13287,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 1816911878248931231, guid: b47b5d18781100648999fae63fe25372, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "C\xE1nh D\u01A1i M\xE1u"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 35
   spawnWhenPlayerNearby: 1
   activationRadius: 6
@@ -14045,10 +14095,7 @@ MonoBehaviour:
   spawnRadius: 1.5
   enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
   itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "M\u1EA3nh G\u01B0\u01A1ng N\u1EE9t"
-    amount: 1
-    dropChance: 1
+  enemyCombatConfig: {fileID: 0}
   experiencePerEnemy: 45
   spawnWhenPlayerNearby: 1
   activationRadius: 8

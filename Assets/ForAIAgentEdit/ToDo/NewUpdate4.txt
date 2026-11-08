@@ -1,0 +1,289 @@
+NEWUPDATE4 — BÁO CÁO TRIỂN KHAI VÀ PHẦN CÒN LẠI
+Ngày: 08/11/2026
+Mục tiêu: GroupBlock/biến thể trang phục-vũ khí cho Bone Animator Studio + Unity CharacterAnimation.
+
+NGUỒN ĐƯỢC CUNG CẤP TRONG LƯỢT NÀY (4 FILE ĐÍNH KÈM)
+- NewUpdate4.txt: bản yêu cầu gốc.
+- BoneAnimation_Unity_fixed(2).html: bản web hiện tại được cung cấp.
+- CharacterAnimation(5).cs: Unity khi chạy.
+- CharacterAnimationEditor(4).cs: Trình kiểm tra tùy chỉnh của Unity.
+
+FILE ĐẦU RA ĐÃ CHỈNH SỬA (KHÔNG GHI ĐÈ NGUỒN)
+1. BoneAnimation_Unity_GroupBlock_NewUpdate4.html
+2. CharacterAnimation_NewUpdate4.cs
+3. CharacterAnimationEditor_NewUpdate4.cs
+4. NewUpdate4_Updated.txt (báo cáo này)
+
+I. CÁC MỤC ĐÃ VIẾT VÀO MÃ NGUỒN
+
+[A1] Web: GroupBlock trong bảng phải
+- Thêm 2 tab Properties / GroupBlock, giữ Properties trước đó.
+- Tạo / sửa tên / xóa Group; tạo / sửa tên / xóa Variant.
+- Chọn Group từ dropdown, chọn Variant hoặc None từ dropdown; danh sách Block theo ID.
+- Kéo Block từ Skeleton thả vào Variant; có nút thêm Block đang chọn và xóa liên kết ID.
+- Thao tác xóa liên kết không xóa Block thật khỏi Skeleton.
+- Cho phép Weapon và Outfit hoạt động độc lập; None (chuỗi rỗng) chỉ ẩn Block gắn với Group đó.
+- Group được áp dụng làm lớp lọc cuối: block.visible + Block Keyframe + hướng + GroupBlock.
+- Đồng bộ hiển thị trên canvas, danh sách Skeleton và sprite sheet.
+- Tích hợp với cơ chế Undo snapshot hiện có.
+
+[A2] Một Bone có nhiều Block
+- Xóa logic cũ gây mất Block cùng Bone trong attachBlockToBone() và createBlockFromImage().
+- Không giới hạn một Bone chỉ có một component. ID riêng, transform riêng và ảnh riêng của Block được giữ.
+
+[A3] Lưu / mở project web và Unity JSON
+- Dự án web chứa trường model.groupBlocks; vẫn đọc được project cũ không có trường này.
+- Lưu theo schema:
+ groupBlocks: [
+ {tên: "Vũ khí", mặc địnhBiến thể: "Kiếm", biến thể: [
+ {tên: "Sword", blockIds: [101, 102]},
+ {tên: "Dagger", blockIds: [103]}
+ ]}
+ ]
+- defaultVariant = "" nghĩa là None.
+- Unity export vẫn dùng format BoneAnimatorUnity, schemaVersion 1; thêm trường groupBlocks tùy chọn.
+- Dữ liệu directions.blocks vẫn chứa TẤT CẢ Block (kể cả bộ đang ẩn); assets vẫn nhúng đủ ảnh dưới dạng dataUrl/Base64.
+- Block cùng boneId không bị gộp thành một instance.
+- Tên group/variant là dữ liệu, không hard-code tên Weapon/Outfit trong runtime.
+- Unity C# đọc JSON cũ không có groupBlocks mà không yêu cầu nâng schemaVersion.
+
+[A4] Tải ảnh / Sprite Sheet
+- Hộp Quản lý ảnh thêm lựa chọn tải một PNG, tải ảnh của variant hiện tại, hoặc tải tất cả variant một Group.
+- Khi tải theo Group, tạo một ZIP có các PNG tách thư mục theo Group, thứ tự Variant và tên ảnh.
+- Sprite Sheet thêm chọn bộ hiện tại hoặc tất cả Variant thuộc một Group.
+- Khi chọn tất cả Variant: xuất một ZIP chứa từng Sprite Sheet riêng, có thể thêm Manifest JSON.
+- Với nhiều Group: chỉ lặp các Variant của Group do người dùng chọn, các Group khác giữ lựa chọn hiện tại.
+ KHÔNG sinh mọi tổ hợp giữa Weapon x Outfit; tránh bùng nổ file.
+- Thay đổi biến thể tạm thời để render không sửa defaultVariant đang chỉnh trong editor.
+- ZIP được tạo bằng JavaScript thuần (STORE + CRC32), không thêm thư viện ngoài.
+
+[A5] Nhân vật Unity Hoạt hình / Trình chỉnh sửa
+- Bổ sung DTO UnityGroupBlockData/UnityGroupVariantData và field serialized groupSelections.
+- Validate Group và Variant trùng tên, ID Block không tồn tại, hoặc ID bị gán vào nhiều biến thể/group.
+- Thêm API công cộng:
+ bool SetGroupVariant(stringgroupName, string variantName)
+ string GetGroupVariant(string groupName)
+ void RefreshGroupVariantVisibility()
+- Runtime đổi SpriteRenderer.enabled sau khi xét Block Keyframe + hướng + GroupBlock.
+- Thay Variant không reset currentFrame, elapsed, animation, hướng hoặc skillId.
+- Tạo cache theo blockId để không quét toàn bộ Group mỗi frame.
+- Inspector tạo dropdown lấy từ JSON theo tên Group và tên Variant; có lựa chọn None.
+- Lưu tùy chọn bằng SerializedProperty, hỗ trợ Undo.RecordObject + EditorUtility.SetDirty.
+- Khi vào Play Mode, lựa chọn serialized được giữ và áp dụng trước khi dựng rig.
+- Không đổi AnimState, luồng PlayAnimationSkill/BeginSkillCast, SFX, registry hoặc SaveData.
+
+II. QUY TẮC CHỒNG CHÉO ĐÃ CHỌN
+- Một Block ID chỉ được gán vào MỘT Variant của MỘT Group duy nhất.
+- Nếu muốn phần thân/đồ dùng chung giữa nhiều Variant: để Block ngoài Group.
+- Mỗi Bone vẫn có thể gắn N Block, không giới hạn bởi Group.
+- Group khác độc lập; Block ngoài Group không bị Group ảnh hưởng.
+- Nếu JSON tự sửa khiến một ID xuất hiện ở nhiều Variant, Unity export/validator báo lỗi thay vì tự chọn ngẫu nhiên.
+- Các hướng có thể dùng chung ID để diễn tả cùng Block; một ID không có ở hướng hiện tại thì không render ở hướng đó.
+
+III. ĐÃ KIỂM TRA THỰC TẾ TRONG CHROMIUM HEADLESS
+- Cú pháp JavaScript: node --check: PASS.
+- Load trang HTML mới không có ngoại lệ: PASS.
+- Tạo Weapon/Sword/Dagger, gán từng Block, chọn Sword/Dagger/None: PASS.
+- Tạo thêm Outfit độc lập với Weapon: PASS.
+- Hoàn tác sau khi tạo Group: PASS.
+- Load project JSON không có groupBlocks: PASS.
+- Lưu/tải dự án web giữ groupBlocks và defaultVariant: PASS.
+- Một Bone gắn 3 Block, đồng bộ 4 hướng, Unity export có đủ 3 Block/hướng: PASS.
+- Unity export chứa cả 3 ảnh (gồm biến thể ẩn) và metadata nhóm: PASS.
+- unityValidateModel() với một rig mẫu, dữ liệu Group hợp lệ: PASS.
+- Tải raw PNG của 2 biến thể trong ZIP; kiểm tra ZIP bằng Python zipfile: PASS.
+- Sprite export chế độ tất cả Variant tạo ZIP chứa 2 PNG: PASS.
+- Lựa chọn editor không thay đổi sau export hàng loạt: PASS.
+
+LƯU Ý: Các kiểm tra trên là trình duyệt + payload JSON. KHÔNG phải Unity C# biên dịch hay Unity Play Mode.
+
+IV. CÁC MỤC CHƯA LÀM HOẶC CHƯA XÁC NHẬN
+
+[B1] Chưa nối tự động biến thể với SkillConfig / SkillContextVariant / SkillContextConfig / weaponId.
+Lý do: SkillConfig.cs, SkillSystemCore.cs và luồng chọn vũ khí/player không có trong file đính kèm.
+Không đổi skillId/actionId hoặc tự phát minh mapping.
+Sau khi có file, cần cấu hình mapping weaponId -> groupName + variantName, gọi SetGroupVariant đúng lúc thay vũ khí.
+
+[B2] Chưa dựng Scene View preview trong Edit Mode của Unity.
+Dropdown Inspector trong Edit Mode đã có serialize và Undo. Việc render SpriteRenderer mới được áp dụng tại runtime/Play Mode.
+Cần chỉnh/kiểm chứng nếu muốn preview sống khi Unity đang không chạy Play Mode, mà không lưu nhầm GameObject tạo tạm vào scene.
+
+[B3] Chưa chạy Unity compile, Inspector test trực tiếp, hay Play Mode test trên project thật.
+Không có dự án Unity, Unity Editor, RegistryIdType, VolumeManager, GameplayPause, assembly definitions hoặc môi trường build hoàn chỉnh.
+Phải kiểm thử 4 hướng, skill charge/cast/end, keyframe visibility, JSON cũ, chọn group khi skill đang chạy sau khi copy vào Unity.
+
+[B4] Chưa ghi trực tiếp vào đường dẫn máy người dùng:
+- C:\Users\NAM VO\OneDrive\1code văn bản\link2\link\BoneAnimationStudio\BoneAnimation_Unity.html
+- D:\UnitiProject\My project\Assets\Scripts\Animation\CharacterAnimation.cs
+- D:\UnitiProject\My project\Assets\Scripts\Editor\CharacterAnimationEditor.cs
+Chỉ sửa các bản đính kèm, trả file mới để người dùng thay thế có kiểm soát; không thể trực tiếp ghi vào ổ C:/D: trên máy người dùng.
+
+[B5] Chưa cập nhật AI_RULES.md, Assets/AI_QuyTac.md, CLAUDE.md, tiến trình và log của dự án.
+Lý do: các file này không được gửi và workspace trên máy người dùng không được gắn vào phiên làm việc.
+Không tự sửa tài nguyên ngoài phạm vi đính kèm.
+
+[B6] Chưa so sánh trên 2 Unity JSON dự án thực tế:
+- Tài sản/Tài nguyên/Hoạt hìnhJson/chuotcongbiendi.json
+- Tài sản/Tài nguyên/Hoạt hìnhJson/PlayerAnimation.json
+Lý do: hai file này không có trong đính kèm. Không ghi đè hay thay dữ liệu người dùng.
+
+[B7] Chưa kiểm chứng GUID/.meta, prefab/scene Inspector data gốc hay khả năng Undo với dữ liệu thực tế Unity.
+Chỉ thay nội dung .cs trên đường dẫn file cũ (không tạo .meta mới) khi đưa vào dự án; nhớ backup và kiểm tra thay đổi.
+
+V. CÁCH ĐƯA VÀO DỰ ÁN
+1. Backup ba file gốc HTML/runtime/editor và giữ nguyên các file .meta đang có.
+2. Dùng file nội dung BoneAnimation_Unity_GroupBlock_NewUpdate4.html thay bản HTML thực sự đang làm.
+3. Dùng nội dung CharacterAnimation_NewUpdate4.cs cho CharacterAnimation.cs.
+4. Dùng nội dung CharacterAnimationEditor_NewUpdate4.cs cho CharacterAnimationEditor.cs trong thư mục Editor.
+ Tên file C# đích phải trùng tên class chính; KHÔNG để tồn tại đồng thời 2 file cùng khai báo CharacterAnimation/CharacterAnimationEditor.
+5. Tải lại project web hoặc tạo GroupBlock (ví dụ Weapon / Sword, Dagger; Trang phục / Casual, Giáp).
+6. Chọn một Block ở Skeleton rồi gán vào Variant; block thân/tay giữ ngoài Weapon.
+7. Export Unity JSON giữ format/schemaVersion 1; gán TextAsset mới vào component trong Inspector, chọn variant dropdown.
+8. Để bỏ vũ khí nhưng giữ tay/thân: chọn None ở nhóm Weapon.
+
+Ví dụ runtime C#:
+ var animation = GetComponent<CharacterAnimation>();
+ Hoạt hình. SetGroupVariant("Vũ khí", "Kiếm");
+ Hoạt hình. SetGroupVariant("Trang phục", "Casual");
+ Hoạt hình. SetGroupVariant("Vũ khí", ""); None / tay không
+ Nếu nhóm/tên không tồn tại, phương thức trả false và cảnh báo, không crash.
+
+VI. CÁC MỤC NGOÀI PHẠM VI — GIỮ NGUYÊN
+- Không sửa NewUpdate3 (inventory/HUD).
+- Không sửa SkillConfig, scene, prefab, Excel, SaveData, LastEventData, choice/session ID.
+- Không reset hoặc commit các thay đổi chưa commit trong project của người dùng.
+
+VII. DANH SÁCH NGHIỆM THU CÒN PHẢI CHẠY TẠI UNITY
+[ ] Unity C# compile với các dependency thực tế.
+[ ] TextAsset Unity JSON cũ và mới hợp lệ trong Inspector.
+[ ] Preview trong Unity Edit Mode (B2, chưa triển khai).
+[ ] Đổi thả xuống Weapon Sword/Dagger/None, kiểm tra SpriteRenderer.
+[ ] Đổi hướng Down/Up/Left/Right khi đang dùng vũ khí.
+[ ] Đổi animation và PlayAnimationSkill/charge/cast/end khi thay vũ khí.
+[ ] Giữ lựa chọn Inspector qua reload scene, prefab, Undo.
+[ ] Tích hợp weaponId/SkillContextVariant khi được cung cấp B1.
+[ ] Kiểm tra trên chuotcongbiendi.json và PlayerAnimation.json thật (B6).
+
+PHẦN YÊU CẦU GỐC (LƯU ĐỂ ĐỐI CHIẾU)
+------------------------------------------------------------
+PROMPT TIẾP TỤC — GROUPBLOCK / BIẾN THỂ TRANG PHỤC, VŨ KHÍ — 08/11/2026
+
+TRẠNG THÁI
+- Người dùng yêu cầu CHỈ ghi prompt này vì sắp hết token; chưa triển khai tính năng.
+- Chỉ bắt đầu sửa web/C# khi người dùng quay lại yêu cầu làm NewUpdate4.
+- Không tự làm các mục NewUpdate3 (inventory/HUD) trong công việc này.
+- Giữ nguyên chưa commit theo lựa chọn đã có; không tự commit /reset các thay đổi hiện tại.
+
+MỤC TIÊU NGƯỜI DÙNG
+SkillConfig có một skillId nhưng còn context biến thể theo vũ khí. Muốn rig/animation JSON mang được các bộ block thay thế để đổi trang phục hoặc vũ khí mà vẫn dùng cùng nhân vật/skillId, không phải nhân bản skill/rig cho từng biến thể.
+Ví dụ: tạo rig R6, thêm xương/vũ khí thành R7. Một xương có thể gắn nhiều block; phải xuất và giữ được toàn bộ block/ảnh liên quan, không chỉ lấy một ảnh cho mỗi xương.
+
+FILE/PHẠM VI
+1. Web cần sửa đúng bản:
+ C:\Users\NAM VO\OneDrive\1code văn bản\link2\link\BoneAnimationStudio\BoneAnimation_Unity.html
+ Không nhầm với các bản BoneAnimation.html/BoneAnimation_Unity.html ở thư mục khác.
+2. Thống nhất:
+ D:\UnitiProject\Dự án của tôi\Assets\Scripts\Animation\CharacterAnimation.cs
+ D:\UnitiProject\My project\Assets\Scripts\Editor\CharacterAnimationEditor.cs
+ Các lược đồ lớp Unity JSON hiện có và code export/save/import của web: xác định từ mã thật trước khi sửa.
+3. Đọc khi cần nối biến thể: SkillConfig.cs, SkillSystemCore.cs (SkillContextVariant/SkillContextConfig), luồng chọn weaponId và gọi animation của player. Không đổi skillId chỉ để đổi hình vũ khí.
+4. JSON đang được người dùng xem:
+ Tài sản/Tài nguyên/Hoạt hìnhJson/chuotcongbiendi.json
+ Tài sản/Tài nguyên/Hoạt hìnhJson/PlayerAnimation.json
+ Xác minh tên file thực tế trên đĩa; không ghi đè các JSON người dùng đã làm để tạo dữ liệu thử.
+5. Người dùng đã chỉ định file web ngoài thư mục Unity ở trên: đó là phạm vi yêu cầu rõ ràng; không mở rộng sang tài nguyên ngoài hai workspace này.
+
+YÊU CẦU WEB — HAI TAB BÊN PHẢI
+- Trong bảng bên phải đang là Properties, thêm hai nút tab: GroupBlock và Properties.
+- Giữ nguyên chức năng Properties hiện tại. GroupBlock quản lý các nhóm block có thể thay thế nhau.
+- Cấu trúc ý tưởng của người dùng (tên field triển khai có thể theo quy ước code hiện có):
+ Nhóm {
+ tên: tên nhóm,
+ Danh sách: [
+ { name: tên lựa chọn/biến thể, listBlock: [các block được kéo thả từ Skeleton] }
+ ]
+ }
+- Có thao tác tạo/đổi tên/xóa nhóm và lựa chọn; gán/bỏ block khỏi listBlock bằng kéo thả block từ tab Skeleton. Xóa liên kết nhóm không có nghĩa xóa block gốc khỏi rig.
+- Gán theo ID block ổn định; không dùng tên ảnh làm khóa duy nhất vì nhiều block có thể dùng cùng ảnh.
+- Ở phía trên khu vực tạo/quản lý nhóm có dropdown theo tên group, cho chọn listBlock/biến thể đã đặt tên trong group đó.
+- Chọn một biến thể: block thuộc biến thể đó hiện, block thuộc các biến thể khác trong CÙNG group ẩn, giống thay trang phục/vũ khí.
+- Các nhóm độc lập (ví dụ Weapon và Outfit); đổi Weapon không tự làm mất Outfit hoặc block nền của nhân vật.
+- Block ngoài group vẫn hiện theo quy tắc hiện có.
+- Lưu lựa chọn mặc định để mở lại project/JSON đúng bộ đang chọn. Thành viên nhóm/danh sách, tên và lựa chọn phải tồn tại qua save/load/import của web; tích hợp undo/redo nếu editor hiện có hỗ trợ.
+- Không phá visibility keyframe/animation vốn có: group là một lớp lọc bổ sung; không sửa dữ liệu keyframe hoặc xóa ảnh để giả lập ẩn/hiện.
+- Quy định rõ trường hợp một block nằm trong nhiều list/group, tránh kết quả ẩn/hiện mâu thuẫn; kiểm tra kiến trúc thật và chọn quy tắc nhất quán, báo lại nếu cần chốt ý nghĩa.
+
+TẢI ẢNH
+- Khi bấm chức năng tải ảnh hiện có, cho chọn listBlock/biến thể trước khi tải, hoặc chọn tải toàn bộ.
+- Kiểm tra chức năng tải hiện tại là sprite/atlas/spritesheet/render ảnh để mở rộng đúng luồng đang dùng.
+- Tải lựa chọn chỉ render/xuất bộ block đã chọn theo group; tải toàn bộ phải có đủ các biến thể, tên file/ảnh đủ phân biệt, không ghi đè các biến thể cùng tên.
+- Với nhiều group, làm rõ bộ lựa chọn được xuất; không âm thầm tạo số tổ hợp khổng lồ hay xuất thiếu lựa chọn. Cách đóng gói phù hợp định dạng/chức năng tải hiện có, không tự cài thư viện ngoài.
+- Đổi lựa chọn chỉ để export không được làm mất trạng thái đang chỉnh sửa trong editor.
+
+XUẤT UNITY JSON
+- Nút tải Unity .json phải xuất đủ nhóm, tên lựa chọn, danh sách ID block trong từng lựa chọn, lựa chọn mặc định, cùng tất cả block/ảnh mà mọi lựa chọn tham chiếu.
+- Các block/ảnh đang ẩn do chưa chọn biến thể VẪN phải có trong JSON và kho assets/ảnh của JSON; không chỉ serialize phần đang thấy.
+- Giữ liên kết boneId -> N block: nếu một xương gắn hai block thì cả hai block cùng hình/transform cần thiết đều tồn tại khi export và import vào Unity.
+- Không gộp mất block chỉ vì chung boneId hoặc chung đường dẫn/tên ảnh. Có thể dùng lại tài nguyên ảnh nhưng không bỏ instance block hay transform riêng.
+- Xác minh schema assets/ảnh hiện có để tiếp tục cơ chế ảnh kèm JSON đang dùng; không bắt người dùng dựng lại ảnh của các biến thể bằng tay.
+- Giữ bone hierarchy, attachment, transform, sprite offset/scale, layer, hướng và animation keyframe hiện có. Hoạt động với các hướng nhân vật mà exporter đang hỗ trợ.
+- Bổ sung schema theo cách tương thích ngược: JSON cũ không có GroupBlock vẫn chạy/hiển thị như trước; không bắt buộc chuyển toàn bộ file cũ mới dùng được.
+
+UNITY — THANH TRA / HOẠT HÌNH NHÂN VẬT
+- CharacterAnimation đọc được schema GroupBlock và tất cả block/ảnh đã xuất, kể cả các biến thể mặc định chưa hiện.
+- Mỗi xương vẫn có thể có nhiều block gắn cùng lúc; group chỉ quyết định những block nào của các bộ thay thế được bật.
+- Trong Unity Editor/Inspector (custom CharacterAnimationEditor), tạo menu thả xuống cho nhóm/điểm gắn tương ứng. Nhãn nhóm và các lựa chọn lấy từ tên đã đặt trong web, không hard-code R6/R7/tên vũ khí.
+- Đây là dropdown trong EDITOR để chỉnh/test, không phải yêu cầu tạo UI dropdown trong game.
+- Lựa chọn trong Inspector phải được serialize/lưu được, preview đúng và có Undo; giữ lựa chọn qua đổi animation/đổi hướng/rebuild rig.
+- Có API public đổi biến thể bằng tên từ code. Ví dụ API có thể là:
+ bool SetGroupVariant(stringgroupName, string variantName)
+ Tên API cuối cùng có thể theo quy ước dự án; phải có ví dụ gọi dễ hiểu.
+- variantName là chuỗi rỗng "": không chọn bộ block nào trong group đó. Với group Weapon nghĩa là không cầm vũ khí; chỉ ẩn block của group Weapon, không ẩn tay, thân, xương hoặc các group khác.
+- API nhận tên không tồn tại phải trả kết quả/báo rõ, không crash, không âm thầm chọn bộ khác. Tránh dùng index Inspector làm định danh runtime.
+- Nếu cần hỗ trợ gọi chỉ bằng tên biến thể, quy định rõ cách xử lý tên trùng giữa các group; ưu tiên API có groupName để không đổi nhầm nhóm.
+- Việc đổi hình vũ khí/đồ phải áp dụng được trong lúc animation đang chạy mà không reset pose/frame/skillId vô cớ.
+- Tích hợp với vũ khí/SkillConfig theo dữ liệu hiện có nếu cần: một skillId vẫn dùng được các biến thể; không tự nhân bản skill hoặc đổi actionId để đổi trang phục. Không tự phát minh ánh xạ item/weaponId chưa có: để cấu hình hoặc nêu rõ phần cần nối.
+
+ĐỌC VÀ GIỮ NGUYÊN BỐI CẢNH DỰ ÁN
+- Đọc AI_RULES.md, Assets/AI_QuyTac.md, CLAUDE.md, tiến trình và các log gần nhất khi bắt đầu triển khai; đối chiếu mã thật.
+- CharacterAnimation hiện nhận TextAsset Unity Json Asset, giữ legacy JSON string cho dữ liệu cũ; giữ tương thích.
+- Controller gọi PlayAnimationSkill bằng skillId. Charge đã có effect trong JSON nhân vật; hiệu ứng cast/end nằm trong SkillConfig/context. GroupBlock không được làm sai luồng này.
+- Dự án có nhiều thay đổi chưa commit từ các lượt trước: giữ nguyên thay đổi của người dùng, không reset/khôi phục/ghi đè hàng loạt.
+- Nếu thêm field serialized cần giữ GUID/meta và dữ liệu Inspector; không tự đổi schema save, LastEventData, choice/session IDs.
+- Không sửa Excel, scene/prefab/gameplay khác chỉ để triển khai thả xuống/xuất.
+
+KIỂM TRA NGHIỆM THU KHI TRIỂN KHAI
+1. Một bone gắn hai block: export/import giữ đủ hai block, ảnh và transform riêng.
+2. Group Weapon có ít nhất hai lựa chọn được đặt tên: chuyển dropdown ở web và Unity chỉ hiện đúng bộ đã chọn.
+3. Chọn chuỗi rỗng/None: bỏ vũ khí nhưng thân/tay/Outfit giữ nguyên; API và Inspector cho cùng kết quả.
+4. Có hai group độc lập; đổi group này không đổi group kia.
+5. Tải ảnh bộ đã chọn và tải toàn bộ: đủ biến thể, không trùng file ghi đè, không làm mất lựa chọn đang chỉnh.
+6. Lưu/tải dự án web và Unity export/import vẫn giữ metadata nhóm/lựa chọn mặc định; kiểm tra cả ảnh của biến thể ẩn.
+7. Đổi hướng/đổi animation/thi triển skill/rebuild rig vẫn giữ biến thể đã chọn và keyframe visibility hoạt động đúng.
+8. Đọc JSON cũ không có group không lỗi hoặc mất ảnh; tên/ID block/ảnh trùng không khiến gộp mất dữ liệu.
+9. Unity C# biên dịch, menu thả xuống Editor không lỗi; phân biệt kiểm tra bằng mã với kiểm tra đã thực sự chạy trong trình duyệt/Unity Play Mode.
+10. Ghi lại schema, API và ví dụ dùng; cập nhật CLAUDE/tiến trình/log sau khi triển khai xong.
+
+YÊU CẦU CHO PHIÊN HIỆN TẠI: chỉ lưu prompt này. Chưa triển khai GroupBlock, chưa sửa BoneAnimation_Unity.html hoặc CharacterAnimation.cs. 
+
+KIEM TRA TAI PROJECT THUC TE - 08/11/2026 (bo sung sau bao cao tren)
+- Da doc NewUpdate4 va doi chieu: HTML hien tai va ca CharacterAnimation.cs/CharacterAnimationEditor.cs da co GroupBlock.
+- Da tao ban sao nguyen noi dung HTML hien tai cung thu muc: BoneAnimation_Unity_GroupBlock_NewUpdate4.html. Khong ap dung ban patch schema cu.
+- Schema dang dung: groupBlocks / name / defaultVariant / variants / blockIds; giu schemaVersion 1.
+- JavaScript cua HTML moi: node --check PASS.
+- C# runtime + Editor cua project thuc te: build Validation/SkillActions/Editor.csproj PASS.
+- Chua chay lai browser interaction tests, Unity Inspector/Play Mode; ket qua Chromium trong bao cao truoc la ket qua do nguoi dung cung cap.
+- B1 mapping weaponId va B2 Edit Mode live preview van chua thuc hien trong luot nay; khong sua C# hay du lieu gameplay.
+- Khong commit theo lua chon da co.
+
+
+## 08/11/2026 — Làm lại giao diện GroupBlock và sửa kéo thả
+
+- Bản web dùng tiếp: BoneAnimationStudio/BoneAnimation_Unity_GroupBlock_NewUpdate4.html; giữ BoneAnimation_Unity.html gốc.
+- Đầu tab hiển thị từng hàng: bên trái group-<tên group>, bên phải dropdown biến thể/None. Bỏ dropdown chọn group và dropdown biến thể trùng ở phần chỉnh sửa.
+- Phía dưới hiển thị từng group và từng biến thể thành khung riêng, có ô thả block và nút Thêm block đang chọn. Có thể thả vào bộ chưa được chọn/đang ẩn, kể cả khi preview là None.
+- Sửa nguyên nhân kéo thả: Skeleton effectAllowed=move nhưng ô nhận cũ yêu cầu dropEffect=copy. Bản mới thống nhất move, gửi thêm MIME application/x-bone-block, giữ text/plain fallback, dọn trạng thái khi dragend.
+- Kéo block sang bộ khác chuyển liên kết độc quyền sang bộ đó; không xóa block thật. Có Undo, báo trạng thái ngay trong tab, từ chối Bone/ảnh làm block.
+- Schema groupBlocks/defaultVariant/variants/blockIds giữ nguyên; không sửa Unity C#, scene, prefab hoặc JSON animation.
+- Kiểm tra: node --check và 18 kiểm tra Chrome headless đã qua, gồm native drag từ Skeleton vào hai ô nhận, None, group độc lập, chuyển liên kết/Undo, đổi tên, save/load và Unity payload giữ block ẩn. Không cài thêm thư viện.
+- Chưa commit theo lựa chọn của người dùng.

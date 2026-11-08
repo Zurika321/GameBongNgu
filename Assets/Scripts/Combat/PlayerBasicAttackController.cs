@@ -134,6 +134,8 @@ public class PlayerBasicAttackController : MonoBehaviour
     }
 
     /// <summary>Chọn lại đòn đánh thường theo vũ khí đang cầm. force = true bỏ qua kiểm tra "vũ khí không đổi".</summary>
+    public void RefreshEquippedWeapon() => RefreshForWeapon(true);
+
     private void RefreshForWeapon(bool force)
     {
         if (EnsureSkillConfig() == null) return;
@@ -299,22 +301,16 @@ public class PlayerBasicAttackController : MonoBehaviour
     {
         isCharging = true;
         bool completed = false;
-        string actionId = entry.actionId;
-        SkillContext chargeContext = BuildContext(entry, weaponId);
-        if (SkillActions.Instance != null) SkillActions.Instance.PlayChargeSfx(chargeContext);
-
-        SkillAnimationSet chargeSet = skillConfig.GetAnimationSet(entry.skillId, weaponId);
         yield return SkillAnimationPlayer.ChargeRoutine(
             ownerRoot,
             chargeTime,
-            chargeSet,
+            ResolveAttackAnimationName(entry, weaponId),
             () => facingProvider != null ? facingProvider.FacingDirection : Vector2.right,
             IsHeld,
             () => health != null && health.IsDead,
             result => completed = result);
 
         isCharging = false;
-        if (!completed && SkillActions.Instance != null) SkillActions.Instance.StopChargeSfx(actionId);
         if (completed) Fire(entry, weaponId);
     }
 
@@ -329,11 +325,21 @@ public class PlayerBasicAttackController : MonoBehaviour
             return;
         }
 
+        context.AnimationName = ResolveAttackAnimationName(entry, weaponId);
+        context.IsHeld = IsHeld;
         context.Caster = ownerRoot;
         context.CasterType = SkillCasterType.Player;
         context.Position = ownerRoot.transform.position;
         context.Direction = facingProvider != null ? facingProvider.FacingDirection : Vector2.right;
         SkillActions.Instance.Activate(entry.actionId, context);
+    }
+
+    private string ResolveAttackAnimationName(SkillConfigEntry entry, string weaponId)
+    {
+        string configured = skillConfig.GetContextConfig(entry.skillId, weaponId)?.animationName;
+        if (!string.IsNullOrWhiteSpace(configured)) return configured.Trim();
+        CharacterAnimation animation = ownerRoot != null ? ownerRoot.GetComponentInChildren<CharacterAnimation>() : null;
+        return animation != null ? animation.ResolveBasicAttackAnimationName(entry.skillId, configured) : entry.skillId;
     }
 
     private SkillContext BuildContext(SkillConfigEntry entry, string weaponId)
@@ -354,15 +360,14 @@ public class PlayerBasicAttackController : MonoBehaviour
             StunTime = config.stunTime,
             ChargeTime = config.chargeTime,
             EndTime = config.endTime,
-            ChargeSfx = config.chargeSfx,
-            CastSfx = config.castSfx,
-            HitSfx = config.hitSfx,
-            SfxVolume = config.sfxVolume,
-            CutChargeSfxToChargeTime = config.cutChargeSfxToChargeTime,
             CanPierce = config.canPierce,
             Debug = config.debug,
             DotConfig = config.dotConfig != null ? config.dotConfig : new DameDotConfig(),
-            AnimationSet = skillConfig.GetAnimationSet(entry.skillId, weaponId),
+            ActionDamageOverrides = config != null ? config.actionDamageOverrides : null,
+            BreaksGuard = config != null && config.breaksGuard,
+            BypassesMeleeResistance = config != null && config.bypassesMeleeResistance,
+            Modules = config.modules,
+            EffectAnimation = config.effectAnimation,
             SkillId = entry.skillId,
             ActionId = entry.actionId,
             WeaponId = weaponId
@@ -387,7 +392,7 @@ public class PlayerBasicAttackController : MonoBehaviour
     {
         if (skillConfig == null || string.IsNullOrWhiteSpace(skillId)) return 0f;
         SkillContextConfig config = skillConfig.GetContextConfig(skillId, currentWeaponId);
-        return config != null ? config.cooldown : 0f;
+        return (config != null ? config.cooldown : 0f) / Mathf.Max(0.01f, PlayerProgressionService.Instance != null ? PlayerProgressionService.Instance.ModifyStat(PlayerStatType.AttackSpeed, 1f) : 1f);
     }
 
     /// <summary>Số giây hồi chiêu còn lại của đòn đánh thường hiện tại (0 = sẵn sàng). Dùng cho UI.</summary>
@@ -469,7 +474,8 @@ public class PlayerBasicAttackController : MonoBehaviour
         if (!isCharging) return;
 
         isCharging = false;
-        if (SkillActions.Instance != null) SkillActions.Instance.StopChargeSfx(currentActionId);
+        StopAllCoroutines();
+        if (ownerRoot != null) ownerRoot.GetComponentInChildren<CharacterAnimation>()?.CancelSkillAnimation();
         if (playerController != null) playerController.LockMovement(false);
     }
 

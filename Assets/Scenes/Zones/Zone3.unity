@@ -1848,35 +1848,46 @@ Transform:
 --- !u!114 &656842982
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656842980}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 656842980
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:Ng\xF4i \u0110\u1EC1n C\u1ED5"
+  sessionId: Zone3:Ngôi Đền Cổ
   enemyIdPrefix: SHADOWSPIDER
-  enemyDisplayName: "R\u1EC5 C\xE2y Qu\u1EF7 \xC1m"
+  enemyDisplayName: Rễ Cây Quỷ Ám
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 2951611596755342835, guid: cf98dfc3816949342bb80edbfce74f59, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "R\u1EC5 C\xE2y \u0110\u1ED9c"
-    amount: 1
-    dropChance: 0.3
-  - itemName: "Nh\u1EF1a C\u1ED5 Th\u1EE5"
-    amount: 1
-    dropChance: 0.15
+  enemyPrefab:
+    fileID: 2951611596755342835
+    guid: cf98dfc3816949342bb80edbfce74f59
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 25
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: a3b2edbd52e54878966ad044f04b4a27
+    type: 2
 --- !u!1 &707337246
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,32 +2033,46 @@ Transform:
 --- !u!114 &865220174
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865220172}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 865220172
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:X\u01B0\u1EDFng R\xE8n S\u01B0\u1EDDn N\xFAi"
+  sessionId: Zone3:Xưởng Rèn Sườn Núi
   enemyIdPrefix: SHADOWSPIDER
-  enemyDisplayName: "Qu\u1EF7 L\xF9n L\xF2 R\xE8n"
+  enemyDisplayName: Quỷ Lùn Lò Rèn
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 2951611596755342835, guid: cf98dfc3816949342bb80edbfce74f59, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "Qu\u1EB7ng Qu\u1EF7"
-    amount: 1
-    dropChance: 0.2
+  enemyPrefab:
+    fileID: 2951611596755342835
+    guid: cf98dfc3816949342bb80edbfce74f59
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 25
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: f2206bb52e5146afbff9917b86554bc1
+    type: 2
 --- !u!1 &914815529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2260,32 +2285,46 @@ Transform:
 --- !u!114 &960393357
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 960393355}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 960393355
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:B\xECa R\u1EEBng Ch\xE1y"
+  sessionId: Zone3:Bìa Rừng Cháy
   enemyIdPrefix: GHOSTHOUND
-  enemyDisplayName: "Th\xFA Ch\xE1y R\u1EEBng"
+  enemyDisplayName: Thú Cháy Rừng
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 541762737326365193, guid: 866a13f341769814e96fe066bc871f6f, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "Da Ch\xE1y X\xE9m"
-    amount: 1
-    dropChance: 0.25
+  enemyPrefab:
+    fileID: 541762737326365193
+    guid: 866a13f341769814e96fe066bc871f6f
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 24
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 85eae9908f8441a39ce1b974e4eeedd0
+    type: 2
 --- !u!1 &973427296
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,35 +4198,46 @@ Transform:
 --- !u!114 &1718298182
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1718298180}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1718298180
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:Hang \u0110\u1ED9ng Ng\u1EA7m"
-  enemyIdPrefix: "BOSS_HANG \u0110\u1ED8NG NG\u1EA6M"
-  enemyDisplayName: "Ng\u01B0\u1EDDi G\xE1c Hang"
+  sessionId: Zone3:Hang Động Ngầm
+  enemyIdPrefix: BOSS_HANG ĐỘNG NGẦM
+  enemyDisplayName: Người Gác Hang
   spawnCount: 1
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "Ng\u1ECDc B\xF3ng T\u1ED1i"
-    amount: 1
-    dropChance: 0.4
-  - itemName: "B\u0103ng \u0110\u1EA1n B\u1EA1c"
-    amount: 1
-    dropChance: 0.25
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 200
   spawnWhenPlayerNearby: 1
   activationRadius: 7
-  requiredFlag: 
-  storyEventDirector: {fileID: 1766365739}
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 1766365739
   eventIdOnCleared: S9A_CaveWardenDefeated
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: f913b30f42144ba4a8eaea57faaae8bc
+    type: 2
 --- !u!1 &1759663753
 GameObject:
   m_ObjectHideFlags: 0
@@ -4609,35 +4659,46 @@ Transform:
 --- !u!114 &1819588534
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1819588532}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1819588532
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:Ng\xF4i \u0110\u1EC1n C\u1ED5"
-  enemyIdPrefix: "BOSS_NG\xD4I \u0110\u1EC0N C\u1ED4"
-  enemyDisplayName: "V\u1EC7 Binh \u0110\xE1 C\u1ED5"
+  sessionId: Zone3:Ngôi Đền Cổ
+  enemyIdPrefix: BOSS_NGÔI ĐỀN CỔ
+  enemyDisplayName: Vệ Binh Đá Cổ
   spawnCount: 1
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "\u0110\xE1 Nguy\u1EC1n C\u1ED5"
-    amount: 1
-    dropChance: 1
-  - itemName: "L\xF5i \u0110\xE1 C\u1ED5"
-    amount: 1
-    dropChance: 0.35
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 200
   spawnWhenPlayerNearby: 1
   activationRadius: 7
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 621c9f9b7b2d4dc79bae8880471e3dcb
+    type: 2
 --- !u!1 &1832630250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5870,32 +5931,46 @@ Transform:
 --- !u!114 &2057025501
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057025499}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 2057025499
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6481c0424572324f82ca0c988310a0d, type: 3}
-  m_Name: 
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
   m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
-  sessionId: "Zone3:Hang \u0110\u1ED9ng Ng\u1EA7m"
+  sessionId: Zone3:Hang Động Ngầm
   enemyIdPrefix: MIRRORSHADE
-  enemyDisplayName: "Tinh Th\u1EC3 Qu\u1EF7 \xC1m"
+  enemyDisplayName: Tinh Thể Quỷ Ám
   spawnCount: 2
   spawnRadius: 1.25
-  enemyPrefab: {fileID: 5063274558668836314, guid: 3f294be42c8b5b94abd672ed7a81b769, type: 3}
-  itemPickupPrefab: {fileID: 4109011863735664129, guid: 16314a09178c8004aac87bb8113999ff, type: 3}
-  drops:
-  - itemName: "M\u1EA3nh Tinh Th\u1EC3"
-    amount: 1
-    dropChance: 0.4
+  enemyPrefab:
+    fileID: 5063274558668836314
+    guid: 3f294be42c8b5b94abd672ed7a81b769
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
   experiencePerEnemy: 35
   spawnWhenPlayerNearby: 1
   activationRadius: 5
-  requiredFlag: 
-  storyEventDirector: {fileID: 0}
-  eventIdOnCleared: 
+  requiredFlag: null
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: null
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: 1c08c6efb9434e409edde7b6197dca4e
+    type: 2
 --- !u!1001 &2058648884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6003,6 +6078,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 225c84b96d2eb1643a6a1be63fc27263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillActions
+  actionCatalog: {fileID: 11400000, guid: f5688becd0b34a79a3a9dd0e0847584b, type: 2}
   skillRegistrations:
   - skillName: BasicSlash
     skillSprites: []
@@ -6024,6 +6100,16 @@ MonoBehaviour:
     skillSprites: []
   - skillName: DashAttack2
     skillSprites: []
+  - skillName: ApplyStatus
+  - skillName: SelfBuff
+  - skillName: SummonEntity
+  - skillName: CasterMove
+  - skillName: ModifyResource
+  - skillName: DefenseWindow
+  - skillName: ScreenEffect
+  - skillName: ChallengeMeter
+  - skillName: ReplayAction
+  - skillName: ConditionGate
 --- !u!4 &2069379300
 Transform:
   m_ObjectHideFlags: 0

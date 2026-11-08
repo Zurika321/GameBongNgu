@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
+using System.Linq;
+using UnityEngine.UI;
 using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -25,21 +27,14 @@ public class AdminEdit : MonoBehaviour
     [SerializeField] private KeyCode toggleKey = KeyCode.F1;
     [SerializeField] private float refreshInterval = 1f;
     [SerializeField, Range(0.8f, 2.5f)] private float guiScale = 1f;
-    [Tooltip("Mở menu thì đóng băng game (GameplayPause) và tạm tắt DemoPauseMenu để Esc/Tab không xung đột.")]
+    [Tooltip("Mở menu thì đóng băng game (GameplayPause) và chặn input menu khác để Esc/Tab không xung đột.")]
     [SerializeField] private bool freezeGameWhenOpen = true;
     [Tooltip("Kéo thêm GameObject bất kỳ vào đây để chỉnh nhanh (bật/tắt, sửa field).")]
     [SerializeField] private List<GameObject> extraObjects = new List<GameObject>();
 
-    [Tooltip("Danh sách skill đã đăng ký (khớp UnlockSkillsForLevel). Skill trong bảng Skill cũng tự được thêm.")]
-    [SerializeField] private string[] registeredSkills =
-    {
-        "Chém Cơ Bản", "Né Tránh Nhanh", "Đỡ Đòn", "Đòn Xuyên", "Combo 2 Đòn Liên Tiếp",
-        "Kháng Choáng Nhẹ", "Nộ Khí", "Ném Vũ Khí Phụ", "Cường Hóa Vũ Khí Cận Chiến",
-        "Kháng Hiệu Ứng Độc/Chảy Máu", "Đòn Chí Mạng Cận Chiến", "Phá Giáp Hoàn Toàn",
-        "Tập Trung Tinh Thần", "Phản Đòn Hoàn Hảo", "Bộc Phát Cận Chiến", "Tinh Thông Đạn Bạc",
-        "Ý Chí Sắt Đá", "Song Kiếm Hợp Bích", "Trực Giác Sinh Tồn", "Hoàn Thiện Bản Thân"
-    };
-
+    // Preserve old serialized overrides without using obsolete display names as save IDs.
+    [SerializeField, HideInInspector] private string[] registeredSkills = Array.Empty<string>();
+    public static bool AnyOpen { get; private set; }
     private const BindingFlags AllInstance = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
     private const string EventFlagPrefix = "StoryEventCompleted:";
 
@@ -50,6 +45,7 @@ public class AdminEdit : MonoBehaviour
     private float nextRefresh;
     private string status = "";
     private bool showPrivateFields;
+    private bool lastTextEdited;
 
     private GameObject player;
     private StoryEventDirector storyDirector;
@@ -60,13 +56,12 @@ public class AdminEdit : MonoBehaviour
 
     // bảng data thiết kế (cache, nạp lại bằng nút "Quét lại")
     private SessionTable sessionTable;
-    private ItemTable itemTable;
-    private SkillTable skillTable;
-    private LevelTable levelTable;
+    private GameIdRegistry idRegistry;
+    private readonly List<StoryEventDirector> storyDirectors = new List<StoryEventDirector>();
 
     // đóng băng game
     private bool ownsPause;
-    private readonly List<Behaviour> disabledMenus = new List<Behaviour>();
+    private readonly List<GraphicRaycaster> blockedRaycasters = new List<GraphicRaycaster>();
 
     private readonly Dictionary<string, string> buffers = new Dictionary<string, string>();
     private readonly Dictionary<string, bool> foldouts = new Dictionary<string, bool>();
@@ -93,38 +88,37 @@ public class AdminEdit : MonoBehaviour
         if (Time.unscaledTime >= nextRefresh) Refresh();
     }
 
-    private void OnDisable() { ReleaseFreeze(); }
+    private void OnDisable() { CloseMenu(); }
 
     private void OpenMenu()
     {
         visible = true;
+        AnyOpen = true;
+        buffers.Clear();
         Refresh();
+        BlockUIInput();
         if (freezeGameWhenOpen) AcquireFreeze();
+    }
+
+    private void BlockUIInput()
+    {
+        foreach (var raycaster in FindObjectsByType<GraphicRaycaster>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
+            if (raycaster != null && raycaster.enabled) { raycaster.enabled = false; blockedRaycasters.Add(raycaster); }
     }
 
     private void CloseMenu()
     {
         visible = false;
+        AnyOpen = false;
+        foreach (var raycaster in blockedRaycasters) if (raycaster != null) raycaster.enabled = true;
+        blockedRaycasters.Clear();
         ReleaseFreeze();
     }
 
-    /// <summary>
-    /// Chống xung đột Esc/Tab với DemoPauseMenu:
-    /// - Chỉ giữ pause khi game CHƯA bị pause (nếu menu pause đang mở sẵn thì không đụng vào).
-    /// - Tạm tắt component DemoPauseMenu => nó không đọc Esc/Tab, và không gọi Resume() làm hỏng pause của mình.
-    /// - Khi đóng: bật lại DemoPauseMenu rồi mới Resume().
-    /// Lưu ý: khi freeze, đừng bấm nút Menu trên UI (nút onClick vẫn chạy).
-    /// </summary>
+    // Preserve an existing inventory/dialogue pause; only release the pause acquired here.
     private void AcquireFreeze()
     {
         if (ownsPause || GameplayPause.IsPaused) return;
-
-        foreach (DemoPauseMenu menu in FindObjectsByType<DemoPauseMenu>(FindObjectsInactive.Exclude, FindObjectsSortMode.None))
-        {
-            if (menu == null || !menu.enabled) continue;
-            menu.enabled = false;
-            disabledMenus.Add(menu);
-        }
         GameplayPause.Pause();
         ownsPause = true;
     }
@@ -133,16 +127,13 @@ public class AdminEdit : MonoBehaviour
     {
         if (!ownsPause) return;
         ownsPause = false;
-
-        foreach (Behaviour menu in disabledMenus)
-            if (menu != null) menu.enabled = true;
-        disabledMenus.Clear();
         GameplayPause.Resume();
     }
 
     private void Refresh()
     {
         nextRefresh = Time.unscaledTime + Mathf.Max(0.2f, refreshInterval);
+        if (visible) BlockUIInput();
 
         if (player == null)
         {
@@ -157,8 +148,15 @@ public class AdminEdit : MonoBehaviour
         portals.AddRange(FindObjectsByType<FlaggedScenePortal>(FindObjectsInactive.Include, FindObjectsSortMode.None));
         spawners.Clear();
         spawners.AddRange(FindObjectsByType<ZoneEnemySpawner>(FindObjectsInactive.Include, FindObjectsSortMode.None));
-        if (storyDirector == null)
-            storyDirector = FindAnyObjectByType<StoryEventDirector>(FindObjectsInactive.Include);
+        storyDirectors.Clear();
+        storyDirectors.AddRange(FindObjectsByType<StoryEventDirector>(FindObjectsInactive.Include, FindObjectsSortMode.None)
+            .OrderBy(director => director.gameObject.scene.path).ThenBy(director => director.name));
+        if (storyDirector == null || !storyDirectors.Contains(storyDirector)) storyDirector = storyDirectors.FirstOrDefault();
+        if (idRegistry == null)
+        {
+            string guid = AssetDatabase.FindAssets("t:GameIdRegistry").FirstOrDefault();
+            if (!string.IsNullOrEmpty(guid)) idRegistry = AssetDatabase.LoadAssetAtPath<GameIdRegistry>(AssetDatabase.GUIDToAssetPath(guid));
+        }
 
         List<string> names = new List<string>();
         foreach (EditorBuildSettingsScene s in EditorBuildSettings.scenes)
@@ -168,9 +166,7 @@ public class AdminEdit : MonoBehaviour
         sceneNames = names.ToArray();
 
         if (sessionTable == null) sessionTable = DataManager.GetData<SessionTable>(Tables.Session);
-        if (itemTable == null) itemTable = DataManager.GetData<ItemTable>(Tables.Item);
-        if (skillTable == null) skillTable = DataManager.GetData<SkillTable>(Tables.Skill);
-        if (levelTable == null) levelTable = DataManager.GetData<LevelTable>(Tables.Level);
+
     }
 
     // ------------------------------------------------------------------ root GUI
@@ -179,14 +175,18 @@ public class AdminEdit : MonoBehaviour
         if (!visible) return;
 
         Matrix4x4 old = GUI.matrix;
-        GUI.matrix = Matrix4x4.Scale(new Vector3(guiScale, guiScale, 1f));
-
-        float h = Screen.height / guiScale - 20f;
-        float rightW = Mathf.Min(560f, Screen.width / guiScale - 290f);
-        DrawLeft(new Rect(10f, 10f, 250f, h));
-        DrawRight(new Rect(270f, 10f, rightW, h));
-
-        GUI.matrix = old;
+        float scale = Mathf.Clamp(guiScale, 0.8f, 2.5f);
+        GUI.matrix = Matrix4x4.Scale(new Vector3(scale, scale, 1f));
+        try
+        {
+            float width = Screen.width / scale;
+            float h = Mathf.Max(100f, Screen.height / scale - 20f);
+            float leftW = Mathf.Min(250f, Mathf.Max(100f, width * 0.32f));
+            float rightW = Mathf.Max(80f, Mathf.Min(700f, width - leftW - 30f));
+            DrawLeft(new Rect(10f, 10f, leftW, h));
+            DrawRight(new Rect(leftW + 20f, 10f, rightW, h));
+        }
+        finally { GUI.matrix = old; }
     }
 
     private void DrawLeft(Rect rect)
@@ -258,7 +258,7 @@ public class AdminEdit : MonoBehaviour
         GUILayout.EndScrollView();
         if (GUILayout.Button("Quét lại scene + bảng data"))
         {
-            sessionTable = null; itemTable = null; skillTable = null; levelTable = null;
+            sessionTable = null; idRegistry = null; ItemDefinition.ClearCache(); buffers.Clear();
             Refresh();
         }
         GUILayout.EndArea();
@@ -272,6 +272,7 @@ public class AdminEdit : MonoBehaviour
         rightScroll = GUILayout.BeginScrollView(rightScroll);
 
         PlayerProgressionService progress = PlayerProgressionService.Instance;
+        if (progress != null && progress.Data == null) progress = null;
         switch (tab)
         {
             case Tab.Player: DrawPlayerPanel(progress); break;
@@ -312,7 +313,7 @@ public class AdminEdit : MonoBehaviour
             {
                 SetLevel(progress, lv);
                 levelInput = d.level.ToString();
-                status = $"Level = {d.level} (set EXP, mở skill, full máu)";
+
             }
             GUILayout.EndHorizontal();
 
@@ -322,9 +323,9 @@ public class AdminEdit : MonoBehaviour
             d.rareAmmo = Mathf.Max(0, IntRow("Rare Ammo", "p.ammo", d.rareAmmo));
 
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("+100 EXP")) progress.AddExperience(100);
-            if (GUILayout.Button("+1000 EXP")) progress.AddExperience(1000);
-            if (GUILayout.Button("+10000 EXP")) progress.AddExperience(10000);
+            if (GUILayout.Button("+100 EXP")) AddExperience(progress, 100);
+            if (GUILayout.Button("+1000 EXP")) AddExperience(progress, 1000);
+            if (GUILayout.Button("+10000 EXP")) AddExperience(progress, 10000);
             GUILayout.EndHorizontal();
 
             GUILayout.Label($"ATK {progress.GetAttackPower()}   DEF {progress.GetDefensePower()}   MaxHP {progress.GetMaxHealth()}");
@@ -337,23 +338,17 @@ public class AdminEdit : MonoBehaviour
 
     private void SetLevel(PlayerProgressionService progress, int level)
     {
-        PlayerSaveData d = progress.Data;
-        d.level = Mathf.Clamp(level, 1, 20);
+        bool changed = progress.DebugSetLevel(level);
+        status = changed ? "Đã áp cấp/EXP/skill theo LvConfig và hồi đầy máu." : "LvConfig không có cấp được chọn.";
+        buffers.Remove("p.lv");
+    }
 
-        LevelData ld = levelTable != null ? levelTable.levels.Find(l => l != null && l.lv == d.level) : null;
-        if (ld != null) d.exp = ld.expRequired;
-
-        // UnlockSkillsForLevel là private => gọi bằng reflection với đúng số tham số
-        MethodInfo unlock = typeof(PlayerProgressionService).GetMethod("UnlockSkillsForLevel", AllInstance);
-        if (unlock != null)
-        {
-            for (int l = 1; l <= d.level; l++)
-                unlock.Invoke(progress, new object[] { l, true });
-        }
-
-        HealthController hc = player != null ? player.GetComponent<HealthController>() : null;
-        if (hc != null) hc.ConfigureHealth(progress.GetMaxHealth(), progress.GetMaxHealth());
-        progress.Save();
+    private void AddExperience(PlayerProgressionService progress, int amount)
+    {
+        progress.AddExperience(amount);
+        levelInput = progress.Data.level.ToString();
+        buffers.Clear();
+        GUI.FocusControl(null);
     }
 
     // ------------------------------------------------------------------ GENERIC TARGET (player / enemy / extra)
@@ -437,6 +432,7 @@ public class AdminEdit : MonoBehaviour
     {
         if (f.IsStatic || f.IsInitOnly || f.IsLiteral || f.IsNotSerialized) return false;
         if (f.Name.Contains("<")) return false;
+        if (!showPrivateFields && f.IsDefined(typeof(HideInInspector), true)) return false;
         if (!showPrivateFields && !f.IsPublic && !f.IsDefined(typeof(SerializeField), true)) return false;
         Type t = f.FieldType;
         return t == typeof(float) || t == typeof(int) || t == typeof(bool) || t == typeof(string)
@@ -461,19 +457,19 @@ public class AdminEdit : MonoBehaviour
         {
             string cur = FormatFloat((float)v);
             string e = EditText(key, cur);
-            if (e != cur && TryParseFloat(e, out float r)) f.SetValue(c, r);
+            if (lastTextEdited && TryParseFloat(e, out float r)) f.SetValue(c, r);
         }
         else if (t == typeof(int))
         {
             string cur = ((int)v).ToString();
             string e = EditText(key, cur);
-            if (e != cur && int.TryParse(e, out int r)) f.SetValue(c, r);
+            if (lastTextEdited && int.TryParse(e, out int r)) f.SetValue(c, r);
         }
         else if (t == typeof(string))
         {
             string cur = (string)v ?? "";
-            string e = EditText(key, cur);
-            if (e != cur) f.SetValue(c, e);
+            if (cur.Length > 512) GUILayout.Label("(" + cur.Length + " ký tự — chỉnh dữ liệu dài trong Inspector)");
+            else { string e = EditText(key, cur); if (lastTextEdited) f.SetValue(c, e); }
         }
         else if (t == typeof(Vector2))
         {
@@ -508,7 +504,7 @@ public class AdminEdit : MonoBehaviour
     {
         string cur = FormatFloat(value);
         string e = EditText(key, cur);
-        if (e != cur && TryParseFloat(e, out float r)) { value = r; return true; }
+        if (lastTextEdited && TryParseFloat(e, out float r)) { value = r; return true; }
         return false;
     }
 
@@ -786,6 +782,7 @@ public class AdminEdit : MonoBehaviour
         {
             progress.EndStoryEventBatch();
         }
+        progress.Save();
     }
 
     // ------------------------------------------------------------------ INVENTORY
@@ -802,7 +799,7 @@ public class AdminEdit : MonoBehaviour
         amountInput = EditText("inv.amount", amountInput);
         if (GUILayout.Button("Thêm", GUILayout.Width(55)) && int.TryParse(amountInput, out int amount))
         {
-            bool ok = progress.AddItem(itemInput.Trim(), amount);
+            bool ok = ItemDefinition.Find(itemInput.Trim()) != null && amount > 0 && progress.AddItem(itemInput.Trim(), amount);
             status = ok ? $"+{amount} {itemInput.Trim()}" : "Không thêm được (đầy túi / tên sai).";
         }
         GUILayout.EndHorizontal();
@@ -812,16 +809,14 @@ public class AdminEdit : MonoBehaviour
         itemFilter = EditText("inv.filter", itemFilter);
         GUILayout.EndHorizontal();
 
-        if (itemTable != null && !string.IsNullOrEmpty(itemFilter))
+        int shown = 0;
+        GUILayout.Label("ItemDefinition hiện tại (tối đa 20 kết quả; nhập bộ lọc để tìm thêm).");
+        foreach (ItemDefinition item in ItemDefinition.GetAll())
         {
-            int shown = 0;
-            foreach (ItemData it in itemTable.items)
-            {
-                if (it == null || string.IsNullOrEmpty(it.name)) continue;
-                if (it.name.IndexOf(itemFilter, StringComparison.OrdinalIgnoreCase) < 0) continue;
-                if (GUILayout.Button($"{it.name}  ({it.type})")) itemInput = it.name;
-                if (++shown >= 20) break;
-            }
+            if (item == null || string.IsNullOrWhiteSpace(item.itemName)) continue;
+            if (!string.IsNullOrEmpty(itemFilter) && item.itemName.IndexOf(itemFilter, StringComparison.OrdinalIgnoreCase) < 0) continue;
+            if (GUILayout.Button(item.itemName + " (" + item.category + ")")) { itemInput = item.itemName; buffers.Remove("inv.item"); GUI.FocusControl(null); }
+            if (++shown >= 20) break;
         }
 
         GUILayout.Space(8);
@@ -831,6 +826,9 @@ public class AdminEdit : MonoBehaviour
             if (entry == null) continue;
             GUILayout.BeginHorizontal();
             GUILayout.Label($"[{entry.slotIndex}] {entry.itemName} x{entry.amount}");
+            ItemDefinition definition = ItemDefinition.Find(entry.itemName);
+            if (definition != null && definition.IsEquippable && GUILayout.Button(d.equippedItemName == entry.itemName ? "Gỡ" : "Trang bị", GUILayout.Width(65)))
+                progress.ToggleEquipAtSlot(entry.slotIndex);
             if (GUILayout.Button("+1", GUILayout.Width(35))) progress.AddItem(entry.itemName, 1);
             if (GUILayout.Button("-1", GUILayout.Width(35))) progress.RemoveItem(entry.itemName, 1);
             if (GUILayout.Button("Xoá", GUILayout.Width(45))) progress.RemoveItem(entry.itemName, entry.amount);
@@ -841,93 +839,82 @@ public class AdminEdit : MonoBehaviour
     // ------------------------------------------------------------------ SKILLS
     private void DrawSkillsPanel(PlayerProgressionService progress)
     {
-        Header("SKILLS");
-        if (progress == null) { GUILayout.Label("PlayerProgressionService chưa có."); return; }
-
-        List<string> unlocked = progress.Data.unlockedSkills;
-        List<string> names = new List<string>(registeredSkills ?? Array.Empty<string>());
-        if (skillTable != null)
-        {
-            foreach (SkillData sk in skillTable.skills)
-                if (sk != null && !string.IsNullOrWhiteSpace(sk.name) && !names.Contains(sk.name)) names.Add(sk.name);
-        }
-        foreach (string s in unlocked)
-            if (!names.Contains(s)) names.Add(s);
-
+        Header("SKILLS — SkillConfig hiện tại");
+        if (progress?.Data == null) { GUILayout.Label("PlayerProgressionService chưa có dữ liệu."); return; }
         GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Mở tất cả"))
-        {
-            foreach (string s in names) if (!unlocked.Contains(s)) unlocked.Add(s);
-            progress.Save();
-        }
-        if (GUILayout.Button("Xoá tất cả"))
-        {
-            unlocked.Clear();
-            progress.Save();
-        }
+        if (GUILayout.Button("Mở tất cả")) { progress.DebugSetAllSkillsUnlocked(true); status = "Đã mở skill theo skillId và đồng bộ controller/passive."; }
+        if (GUILayout.Button("Khoá tất cả")) { progress.DebugSetAllSkillsUnlocked(false); status = "Đã khoá skill, gỡ loadout và passive."; }
         GUILayout.EndHorizontal();
-
-        foreach (string skill in names)
+        foreach (var entry in progress.SkillConfigAsset.Skills)
         {
-            bool has = unlocked.Contains(skill);
-            bool now = GUILayout.Toggle(has, skill);
-            if (now == has) continue;
-
-            if (now) unlocked.Add(skill); else unlocked.Remove(skill);
-            progress.Save();
-            status = (now ? "Thêm skill: " : "Xoá skill: ") + skill;
+            if (entry == null || string.IsNullOrWhiteSpace(entry.skillId)) continue;
+            bool has = progress.HasUnlockedSkill(entry.skillId);
+            GUILayout.BeginHorizontal();
+            bool now = GUILayout.Toggle(has, entry.name + " [" + entry.skillId + "] — " + entry.type);
+            if (now != has) { progress.DebugSetSkillUnlocked(entry.skillId, now); status = (now ? "Mở: " : "Khoá: ") + entry.skillId; }
+            if (has && progress.IsInventorySkill(entry.skillId) && GUILayout.Button(progress.GetEquippedSkillIndex(entry.skillId) >= 0 ? "Gỡ" : "Trang bị", GUILayout.Width(70)))
+            {
+                if (progress.GetEquippedSkillIndex(entry.skillId) >= 0) progress.UnequipSkill(entry.skillId);
+                else { bool ok = progress.EquipSkill(entry.skillId); status = ok ? "Đã trang bị " + entry.skillId : progress.GetEquipBlockReason(entry.skillId); }
+            }
+            GUILayout.EndHorizontal();
+            if (entry.needsInspectorSetup) GUILayout.Label("Cần cấu hình: " + entry.setupNotes);
         }
-        GUILayout.Label("Lưu ý: khi load game, skill theo level sẽ được mở lại tự động.");
+        GUILayout.Label("Khoá skill sẽ gỡ khỏi loadout. Khi load save, skill theo cấp có thể được mở lại.");
     }
 
     // ------------------------------------------------------------------ STORY EVENTS
     private void DrawEventsPanel(PlayerProgressionService progress)
     {
-        Header("STORY EVENTS");
-        if (storyDirector == null) { GUILayout.Label("Không tìm thấy StoryEventDirector."); return; }
-
+        Header("STORY EVENTS — scene / director");
+        foreach (var director in storyDirectors)
+            if (director != null && SelectButton(director.gameObject.scene.name + " / " + director.name, storyDirector == director)) storyDirector = director;
+        if (storyDirector == null) { GUILayout.Label("Không tìm thấy StoryEventDirector trong các scene đang load."); return; }
         GUILayout.BeginHorizontal();
         GUILayout.Label("Event ID", GUILayout.Width(80));
         eventInput = EditText("ev.input", eventInput);
-        if (GUILayout.Button("Chạy", GUILayout.Width(60)) && !string.IsNullOrWhiteSpace(eventInput))
-            RunEvent(eventInput.Trim());
+        if (GUILayout.Button("Chạy", GUILayout.Width(60)) && !string.IsNullOrWhiteSpace(eventInput)) RunEvent(eventInput.Trim());
         GUILayout.EndHorizontal();
-
-        FieldInfo f = typeof(StoryEventDirector).GetField("events", AllInstance);
-        StoryEventDefinition[] defs = f != null ? f.GetValue(storyDirector) as StoryEventDefinition[] : null;
-        if (defs == null) return;
-
-        GUILayout.Label($"<b>Đã cấu hình ({defs.Length})</b>", RichLabel());
-        foreach (StoryEventDefinition def in defs)
+        var definitions = storyDirector.EventDefinitions;
+        GUILayout.Label("Đã cấu hình: " + definitions.Count);
+        foreach (StoryEventDefinition definition in definitions)
         {
-            if (def == null || string.IsNullOrWhiteSpace(def.eventId)) continue;
-            bool done = storyDirector.IsEventCompleted(def.eventId);
-
+            if (definition == null || string.IsNullOrWhiteSpace(definition.eventId)) continue;
+            bool done = storyDirector.IsEventCompleted(definition.eventId);
             GUILayout.BeginHorizontal();
-            GUILayout.Label((done ? "✔ " : "• ") + def.eventId);
-            if (GUILayout.Button("Chạy", GUILayout.Width(55))) RunEvent(def.eventId);
-            if (GUILayout.Button("Reset", GUILayout.Width(55))) ResetEvent(def.eventId, progress);
+            GUILayout.Label((done ? "✔ " : "• ") + definition.eventId);
+            if (GUILayout.Button("Chạy", GUILayout.Width(55))) RunEvent(definition.eventId);
+            if (GUILayout.Button("Reset", GUILayout.Width(55))) ResetEvent(definition.eventId, progress);
             GUILayout.EndHorizontal();
+        }
+        if (idRegistry != null)
+        {
+            var kind = idRegistry.GetEventKindForScene(storyDirector.gameObject.scene.path);
+            foreach (string id in idRegistry.GetList(kind))
+                if (!definitions.Any(definition => definition != null && definition.eventId == id))
+                    GUILayout.Label("Registry: " + id + " (không nằm trong director đang chọn)");
         }
     }
 
     private void RunEvent(string eventId)
     {
-        bool ok = storyDirector.TriggerEvent(eventId);
-        status = $"TriggerEvent('{eventId}') = {ok}";
+        if (storyDirector == null) return;
+        StoryEventDirector owner = storyDirector;
+        if (!owner.EventDefinitions.Any(entry => entry != null && entry.eventId == eventId))
+        {
+            var matches = storyDirectors.Where(director => director != null && director.gameObject.scene == storyDirector.gameObject.scene
+                && director.EventDefinitions.Any(entry => entry != null && entry.eventId == eventId)).ToArray();
+            if (matches.Length != 1) { status = "Event ID chưa cấu hình hoặc có nhiều nơi nhận: " + eventId + ". Chọn đúng director / đồng bộ trong Edit Mode."; return; }
+            owner = matches[0];
+        }
+        bool ok = owner.TriggerEvent(eventId);
+        status = owner.gameObject.scene.name + "/" + owner.name + ": " + eventId + " = " + ok;
     }
 
     private void ResetEvent(string eventId, PlayerProgressionService progress)
     {
-        if (progress == null) return;
-        progress.Data.completedStoryEvents?.RemoveAll(id => id == eventId);
-        progress.RemoveFlag(EventFlagPrefix + eventId);
-
-        FieldInfo f = typeof(StoryEventDirector).GetField("completedEvents", AllInstance);
-        if (f != null && f.GetValue(storyDirector) is HashSet<string> set) set.Remove(eventId);
-
-        progress.Save();
-        status = $"Reset event '{eventId}'.";
+        bool ok = storyDirector != null && storyDirector.ResetEventForDebug(eventId);
+        status = ok ? "Đã reset event " + eventId : "Chưa reset: đóng hội thoại đang chạy trước.";
     }
 
     // ------------------------------------------------------------------ helpers
@@ -966,7 +953,9 @@ public class AdminEdit : MonoBehaviour
         GUI.SetNextControlName(key);
         bool focused = GUI.GetNameOfFocusedControl() == key;
         string shown = focused && buffers.TryGetValue(key, out string b) ? b : current;
+        EditorGUI.BeginChangeCheck();
         string edited = GUILayout.TextField(shown, GUILayout.MinWidth(70));
+        lastTextEdited = EditorGUI.EndChangeCheck();
         if (focused) buffers[key] = edited; else buffers.Remove(key);
         return edited;
     }
@@ -977,7 +966,7 @@ public class AdminEdit : MonoBehaviour
         GUILayout.Label(label, GUILayout.Width(110));
         string e = EditText(key, value.ToString());
         GUILayout.EndHorizontal();
-        return int.TryParse(e, out int r) ? r : value;
+        return lastTextEdited && int.TryParse(e, out int r) ? r : value;
     }
 
     private float FloatRow(string label, string key, float value)
@@ -986,14 +975,14 @@ public class AdminEdit : MonoBehaviour
         GUILayout.Label(label, GUILayout.Width(110));
         string e = EditText(key, FormatFloat(value));
         GUILayout.EndHorizontal();
-        return TryParseFloat(e, out float r) ? r : value;
+        return lastTextEdited && TryParseFloat(e, out float r) ? r : value;
     }
 
     private static string FormatFloat(float v) => v.ToString("0.###", CultureInfo.InvariantCulture);
 
     private static bool TryParseFloat(string s, out float result)
     {
-        return float.TryParse(s.Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out result);
+        return float.TryParse(s.Replace(',', '.'), NumberStyles.Float, CultureInfo.InvariantCulture, out result) && !float.IsNaN(result) && !float.IsInfinity(result);
     }
 
     private static string ReadString(object target, string fieldName)

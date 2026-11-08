@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  serializedVersion: 6
+  m_Component:
+  - component:
+      fileID: 1001
+  - component:
+      fileID: 1002
+  m_Layer: 0
+  m_Name: Spawner_Enemy_ReCayQuyAm
+  m_TagString: Untagged
+  m_Icon:
+    fileID: 0
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1000
+  serializedVersion: 2
+  m_LocalRotation:
+    x: 0
+    y: 0
+    z: 0
+    w: 1
+  m_LocalPosition:
+    x: 0
+    y: 0
+    z: 0
+  m_LocalScale:
+    x: 1
+    y: 1
+    z: 1
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father:
+    fileID: 0
+  m_LocalEulerAnglesHint:
+    x: 0
+    y: 0
+    z: 0
+--- !u!114 &1002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 1000
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script:
+    fileID: 11500000
+    guid: b6481c0424572324f82ca0c988310a0d
+    type: 3
+  m_Name: null
+  m_EditorClassIdentifier: Assembly-CSharp::ZoneEnemySpawner
+  sessionId: Zone 3 - Session 8A
+  enemyIdPrefix: Enemy_ReCayQuyAm
+  enemyDisplayName: Rễ Cây Quỷ Ám
+  spawnCount: 1
+  spawnRadius: 1.25
+  enemyPrefab:
+    fileID: 100000
+    guid: 7dec663f78f34031a7410142503ec1cb
+    type: 3
+  itemPickupPrefab:
+    fileID: 4109011863735664129
+    guid: 16314a09178c8004aac87bb8113999ff
+    type: 3
+  experiencePerEnemy: 25
+  spawnWhenPlayerNearby: 1
+  activationRadius: 5
+  requiredFlag: ''
+  storyEventDirector:
+    fileID: 0
+  eventIdOnCleared: ''
+  enemyCombatConfig:
+    fileID: 11400000
+    guid: a3b2edbd52e54878966ad044f04b4a27
+    type: 2
+  persistentSpawnerId: ''

@@ -19,7 +19,10 @@ public enum PlayerStatType
     MaxHealth,
     MoveSpeed,
     CriticalChance,
-    CriticalDamage
+    CriticalDamage,
+    AttackSpeed,
+    StunResistance,
+    DotResistance
 }
 
 public enum StatModifierType
@@ -40,6 +43,8 @@ public enum PassiveTriggerType
 [Serializable]
 public class SkillContextConfig
 {
+    [Tooltip("Tên animation JSON/Inspector. Trống = dùng skillId; đánh thường có thể dùng Attack mặc định.")]
+    public string animationName;
     [Header("Thông số đánh")]
     public Vector2 skillSize = new Vector2(1.5f, 1f);
     [Min(0f)] public float range = 1f;
@@ -63,15 +68,22 @@ public class SkillContextConfig
     public DameDotConfig dotConfig = new DameDotConfig();
 
     [Header("Âm thanh theo skill / biến thể")]
-    public AudioClip chargeSfx;
-    public AudioClip castSfx;
-    public AudioClip hitSfx;
-    [Range(0f, 1f)] public float sfxVolume = 1f;
+    [HideInInspector] public AudioClip chargeSfx;
+    [HideInInspector] public AudioClip castSfx;
+    [HideInInspector] public AudioClip hitSfx;
+    [HideInInspector, Range(0f, 1f)] public float sfxVolume = 1f;
     [Tooltip("Nếu true và chargeTime > 0, âm charge sẽ tự cắt ngắn xuống còn bằng thời gian charge. Dùng cho charge clip dài hơn thời gian chờ.")]
-    public bool cutChargeSfxToChargeTime;
+    [HideInInspector] public bool cutChargeSfxToChargeTime;
 
-    [Header("Animation")]
-    public SkillAnimationSet animationSet = new SkillAnimationSet();
+    [Header("Catalog action overrides")]
+    public List<SkillActionDamageOverride> actionDamageOverrides = new List<SkillActionDamageOverride>();
+    public bool breaksGuard;
+    public bool bypassesMeleeResistance;
+    public SkillModuleConfig modules = new SkillModuleConfig();
+    public SkillEffectAnimation effectAnimation = new SkillEffectAnimation();
+
+    [Header("Animation (legacy)")]
+    [HideInInspector] public SkillAnimationSet animationSet = new SkillAnimationSet();
 }
 
 [Serializable]
@@ -190,99 +202,6 @@ public class SkillWeaponRequirement
 }
 
 /// <summary>
-/// Bộ lưu modifier mặc định, gắn trên Player. PlayerProgressionService tự tìm (hoặc tự thêm nếu thiếu) component này
-/// và gọi GetFinalValue trong GetAttackPower / GetDefensePower / GetMaxHealth / ModifyStat.
-/// Công thức: (base + tổng Flat) * (1 + tổng AddPercent) * tích Multiply.
-/// </summary>
-public class RuntimeStatModifierStore : MonoBehaviour, IStatModifierReceiver
-{
-    [Serializable]
-    private class RuntimeModifier
-    {
-        public string sourceId;
-        public PlayerStatType stat;
-        public StatModifierType type;
-        public float value;
-    }
-
-    [SerializeField] private List<RuntimeModifier> modifiers = new List<RuntimeModifier>();
-
-    /// <summary>Phát ra mỗi khi danh sách modifier thay đổi (thêm hoặc gỡ).</summary>
-    public event Action Changed;
-
-    public void AddModifier(string sourceId, PlayerStatType stat, StatModifierType modifierType, float value)
-    {
-        if (string.IsNullOrWhiteSpace(sourceId))
-        {
-            Debug.LogWarning("[RuntimeStatModifierStore] sourceId không được để trống.", this);
-            return;
-        }
-
-        modifiers.RemoveAll(m => m != null && m.sourceId == sourceId
-            && m.stat == stat && m.type == modifierType);
-        modifiers.Add(new RuntimeModifier
-        {
-            sourceId = sourceId,
-            stat = stat,
-            type = modifierType,
-            value = value
-        });
-        Changed?.Invoke();
-    }
-
-    public void RemoveModifiers(string sourceId)
-    {
-        if (string.IsNullOrWhiteSpace(sourceId)) return;
-        int removed = modifiers.RemoveAll(m => m == null || m.sourceId == sourceId);
-        if (removed > 0) Changed?.Invoke();
-    }
-
-    public float GetFinalValue(PlayerStatType stat, float baseValue)
-    {
-        float flat = 0f;
-        float addPercent = 0f;
-        float multiplier = 1f;
-
-        foreach (RuntimeModifier modifier in modifiers)
-        {
-            if (modifier == null || modifier.stat != stat) continue;
-            switch (modifier.type)
-            {
-                case StatModifierType.Flat:
-                    flat += modifier.value;
-                    break;
-                case StatModifierType.AddPercent:
-                    addPercent += modifier.value;
-                    break;
-                case StatModifierType.Multiply:
-                    multiplier *= modifier.value;
-                    break;
-            }
-        }
-
-        return (baseValue + flat) * (1f + addPercent) * multiplier;
-    }
-
-    /// <summary>Mô tả các modifier đang có (dùng cho log debug).</summary>
-    public string Describe()
-    {
-        if (modifiers.Count == 0) return "(không có modifier)";
-        System.Text.StringBuilder builder = new System.Text.StringBuilder();
-        foreach (RuntimeModifier modifier in modifiers)
-        {
-            if (modifier == null) continue;
-            builder.AppendLine(modifier.sourceId + ": " + modifier.stat + " " + modifier.type + " " + modifier.value);
-        }
-        return builder.ToString();
-    }
-
-    private void OnDestroy()
-    {
-        modifiers.Clear();
-    }
-}
-
-/// <summary>
 /// Các event chiến đấu mà passive có thể lắng nghe.
 /// Damage/combat script cần gọi RaiseHitLanded/RaiseKill/RaiseDamageTaken (hoặc ReportHit) tại đúng thời điểm.
 /// </summary>
@@ -303,6 +222,7 @@ public static class SkillCombatEvents
 
     public static void RaiseHitLanded(GameObject attacker, GameObject target, SkillContext context)
     {
+        ConditionGate.RecordHit(attacker);
         HitLanded?.Invoke(attacker, target, context);
     }
 
@@ -313,6 +233,7 @@ public static class SkillCombatEvents
 
     public static void RaiseDamageTaken(GameObject receiver, float amount)
     {
+        ConditionGate.RecordDamage(receiver);
         DamageTaken?.Invoke(receiver, amount);
     }
 
@@ -325,5 +246,72 @@ public static class SkillCombatEvents
         if (context == null || context.Caster == null || target == null) return;
         RaiseHitLanded(context.Caster, target, context);
         if (targetDied) RaiseKill(context.Caster, target);
+    }
+}
+
+
+[System.Serializable]
+public sealed class SkillEffectAnimation
+{
+    [Tooltip("Cast/flight frames. Four-direction layout: Down, Up, Left, Right.")]
+    public Sprite[] castFrames;
+    public Sprite[] endFrames;
+    public bool fourDirections;
+    [Min(0.001f)] public float frameInterval = 0.06f;
+
+    public Sprite[] GetCast(Vector2 direction) => Select(castFrames, direction);
+    public Sprite[] GetEnd(Vector2 direction) => Select(endFrames, direction);
+    private Sprite[] Select(Sprite[] frames, Vector2 direction)
+        => fourDirections ? SkillAnimationPlayer.GetDirectionalFrames(frames, direction) : frames ?? System.Array.Empty<Sprite>();
+}
+
+public static class SkillEffectPlayer
+{
+    public static void Attach(GameObject target, SkillContext context)
+    {
+        if (target == null || context?.EffectAnimation == null || SkillActions.Instance == null) return;
+        SkillActions.Instance.StartCoroutine(Animate(target, context));
+    }
+
+    private static System.Collections.IEnumerator Animate(GameObject target, SkillContext context)
+    {
+        SkillEffectAnimation effect = context.EffectAnimation;
+        Sprite[] cast = effect.GetCast(context.Direction);
+        Sprite[] end = effect.GetEnd(context.Direction);
+        if (cast.Length == 0 && end.Length == 0) yield break;
+        Transform existing = target.transform.Find("Visual");
+        GameObject visual = existing != null ? existing.gameObject : new GameObject("SkillEffect");
+        if (existing == null) visual.transform.SetParent(target.transform, false);
+        SpriteRenderer renderer = visual.GetComponent<SpriteRenderer>();
+        if (renderer == null) renderer = visual.AddComponent<SpriteRenderer>();
+        SpriteRenderer owner = context.Caster != null ? context.Caster.GetComponentInChildren<SpriteRenderer>() : null;
+        if (owner != null) { renderer.sortingLayerID = owner.sortingLayerID; renderer.sortingOrder = owner.sortingOrder + 1; }
+        Vector3 position = target.transform.position;
+        Quaternion rotation = target.transform.rotation;
+        float elapsed = 0f;
+        float interval = Mathf.Max(0.001f, effect.frameInterval);
+        while (target != null)
+        {
+            position = target.transform.position;
+            rotation = target.transform.rotation;
+            if (renderer != null && cast.Length > 0) renderer.sprite = cast[Mathf.FloorToInt(elapsed / interval) % cast.Length];
+            if (!GameplayPause.IsPaused) elapsed += Time.deltaTime;
+            yield return null;
+        }
+        if (end.Length == 0) yield break;
+        GameObject ending = new GameObject("SkillEndEffect");
+        ending.transform.SetPositionAndRotation(position, rotation);
+        SpriteRenderer endRenderer = ending.AddComponent<SpriteRenderer>();
+        if (owner != null) { endRenderer.sortingLayerID = owner.sortingLayerID; endRenderer.sortingOrder = owner.sortingOrder + 1; }
+        // Ensure cleanup even if the coroutine host is removed while the effect is playing.
+        UnityEngine.Object.Destroy(ending, end.Length * interval + 1f);
+        elapsed = 0f;
+        while (ending != null && elapsed < end.Length * interval)
+        {
+            endRenderer.sprite = end[Mathf.Min(end.Length - 1, Mathf.FloorToInt(elapsed / interval))];
+            if (!GameplayPause.IsPaused) elapsed += Time.deltaTime;
+            yield return null;
+        }
+        if (ending != null) UnityEngine.Object.Destroy(ending);
     }
 }

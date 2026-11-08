@@ -1,0 +1,128 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script:
+    fileID: 11500000
+    guid: 3d50080d75604a64813ccb6280b99526
+    type: 3
+  m_Name: Boss_NguoiGacHang
+  m_EditorClassIdentifier: ''
+  actorId: Boss_NguoiGacHang
+  displayName: Người Gác Hang
+  boss: 1
+  maxHealth: 380.0
+  attack: 0
+  needsHealth: 0
+  needsAttack: 1
+  invincible: 0
+  setupNotes: 'Phase 1: ''Phân Thân'' — tách thành 2 bản sao HP thấp hơn (mỗi bản
+    50% HP gốc). Phase 2: ''Hú Gọi Bóng Tối'' — giảm tầm nhìn người chơi 5 giây, dễ
+    bị đánh lén nếu không né kịp.
+
+    Cần gán CharacterAnimation/Unity Json Asset và ảnh skill cast/end. Chưa có art
+    enemy/boss đã xác nhận trong dự án.
+
+    Excel thiếu ATK: gán Attack trước khi test chiêu gây damage.'
+  phases:
+  - phase: 2
+    healthBelow: 0
+    manualOnly: 1
+    requiredProgressFlag: ''
+    notes: Excel chưa nêu ngưỡng chuyển phase. Gọi EnemyPhaseController.SetPhase(2)
+      hoặc cấu hình ngưỡng rồi tắt Manual Only.
+  skills:
+  - skillId: Boss_NguoiGacHang_MongHangDanhThuong
+    skillName: ACT_MELEE_1
+    trigger: 0
+    phases: []
+    minimumDistance: 0
+    initialDelay: 0
+    priority: 1
+    oncePerCombat: 0
+    requiresAttack: 1
+    needsInspectorSetup: 0
+    setupNotes: ''
+    castCondition:
+      kind: 0
+    castLockSeconds: 0.44999999999999996
+    cooldown: 0
+    shape: 1
+    detectionSize:
+      x: 1.5
+      y: 1.5
+    detectionOffset:
+      x: 0
+      y: 0
+    detectTag: HitBoxPlayer
+    damage: 0
+  - skillId: Boss_NguoiGacHang_PhanThanP1
+    skillName: ACT_SPLIT_2
+    trigger: 2
+    phases:
+    - 1
+    minimumDistance: 0
+    initialDelay: 0
+    priority: 1
+    oncePerCombat: 0
+    requiresAttack: 0
+    needsInspectorSetup: 0
+    setupNotes: ''
+    castCondition:
+      kind: 0
+    castLockSeconds: 0
+    cooldown: 0
+    shape: 1
+    detectionSize:
+      x: 2
+      y: 2
+    detectionOffset:
+      x: 0
+      y: 0
+    detectTag: HitBoxPlayer
+    damage: 0
+  - skillId: Boss_NguoiGacHang_HuGoiBongToiP2
+    skillName: ACT_BLIND_5S
+    trigger: 0
+    phases:
+    - 2
+    minimumDistance: 0
+    initialDelay: 0
+    priority: 1
+    oncePerCombat: 0
+    requiresAttack: 0
+    needsInspectorSetup: 0
+    setupNotes: ''
+    castCondition:
+      kind: 0
+    castLockSeconds: 0.62
+    cooldown: 0
+    shape: 1
+    detectionSize:
+      x: 2
+      y: 2
+    detectionOffset:
+      x: 0
+      y: 0
+    detectTag: HitBoxPlayer
+    damage: 0
+  drops:
+  - itemName: Ngọc Bóng Tối
+    amount: 1
+    dropChance: 0.4
+    onlyIfMissing: 0
+  - itemName: Băng Đạn Bạc
+    amount: 1
+    dropChance: 0.25
+    onlyIfMissing: 0

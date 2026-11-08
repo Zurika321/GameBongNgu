@@ -947,7 +947,6 @@ GameObject:
   - component: {fileID: 115020591}
   - component: {fileID: 115020590}
   - component: {fileID: 115020589}
-  - component: {fileID: 115020595}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1003,57 +1002,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a2465db2bcf2e4fbcd844c37fc815a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterAnimation
-  spriteRenderer: {fileID: 115020592}
-  clips:
-  - state: 0
-    downFrames:
-    - {fileID: 4035959289877228764, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-    upFrames:
-    - {fileID: -982904232830982447, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-    rightFrames:
-    - {fileID: -5409570386352685021, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-    leftFrames:
-    - {fileID: -350908408369970039, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-    downFrameDurations:
-    - 1
-    upFrameDurations:
-    - 1
-    rightFrameDurations:
-    - 1
-    leftFrameDurations:
-    - 1
-    frameRate: 1
-    loop: 1
-  - state: 1
-    downFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    upFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    rightFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    leftFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    downFrameDurations: []
-    upFrameDurations: []
-    rightFrameDurations: []
-    leftFrameDurations: []
-    frameRate: 1
-    loop: 1
-  - state: 5
-    downFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    upFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    rightFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    leftFrames:
-    - {fileID: 21300000, guid: 56c5c379aa6977b4fb95ff753cb323e0, type: 3}
-    downFrameDurations: []
-    upFrameDurations: []
-    rightFrameDurations: []
-    leftFrameDurations: []
-    frameRate: 1
-    loop: 0
+  animationNameBindings: []
+  weaponGroupName: 
+  weaponVariantBindings: []
+  unityJsonAsset: {fileID: 4900000, guid: d78464c36a0b3184cac767009344b560, type: 3}
+  legacyUnityJson: 
+  pixelsPerUnitOverride: 0
+  useUnscaledTime: 0
+  audioBindings:
+  - animationName: Default
+    isCombat: 0
+    castStartFrame: 5
+    castEndFrame: 10
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  - animationName: Idle
+    isCombat: 0
+    castStartFrame: 5
+    castEndFrame: 10
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  - animationName: Run
+    isCombat: 0
+    castStartFrame: 5
+    castEndFrame: 10
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  - animationName: Attack
+    isCombat: 1
+    castStartFrame: 3
+    castEndFrame: 7
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  - animationName: Hurt
+    isCombat: 0
+    castStartFrame: 2
+    castEndFrame: 5
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  - animationName: Die
+    isCombat: 0
+    castStartFrame: 6
+    castEndFrame: 13
+    sfxId: 
+    chargeSfxId: 
+    castSfxId: 
+    endSfxId: 
+  groupSelections:
+  - groupName: Weapon
+    variantName: "Dao G\u0103m G\u1EC9"
+  editorJsonValid: 1
+  editorValidationMessage: "JSON h\u1EE3p l\u1EC7 \xB7 schema 1 \xB7 \u0111\u1EE7
+    4 h\u01B0\u1EDBng \xB7 6 animation."
+  logAnimationWarnings: 1
 --- !u!114 &115020591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,103 +1222,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!82 &115020595
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 115020587}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &124309381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2789,7 +2703,9 @@ MonoBehaviour:
   dialogueRoot: {fileID: 2083928327}
   portraitImage: {fileID: 204040711}
   playerPortraitFrames:
-  - {fileID: 4723107735738678597, guid: e6c15b83b7ad48e4c918a6c68912e096, type: 3}
+  - {fileID: 3780990582597678535, guid: a57253590595b9943896ee6e05cfc47c, type: 3}
+  - {fileID: 3209430485184202403, guid: a57253590595b9943896ee6e05cfc47c, type: 3}
+  - {fileID: 8250855567560349058, guid: a57253590595b9943896ee6e05cfc47c, type: 3}
   playerName: "Kh\u1EA3i"
   playerSpeakerId: player
   playerPortraitFrameRate: 1
@@ -2834,6 +2750,7 @@ MonoBehaviour:
   mapTarget: {fileID: 0}
   mapCameraScale: 3
   mapEnabled: 1
+  playerStatusHUD: {fileID: 0}
 --- !u!114 &365656877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4079,6 +3996,12 @@ MonoBehaviour:
   skillKeyInput: {fileID: 2039772060}
   moveSkillPopupToSlot: 1
   skillPopupOffset: {x: 0, y: 0}
+  skillPopupIcon: {fileID: 0}
+  skillPopupTitle: {fileID: 0}
+  skillPopupDescription: {fileID: 0}
+  closeSkillPopupButton: {fileID: 0}
+  playerStatusButton: {fileID: 0}
+  playerStatusHUD: {fileID: 0}
   dragGhostSize: {x: 56, y: 56}
   slotFrameSprite: {fileID: 0}
   slotFrameType: 1
@@ -5372,45 +5295,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillActions
   skillRegistrations:
   - skillName: BasicSlash
-    skillSprites: []
   - skillName: DodgeRoll
-    skillSprites: []
   - skillName: RatBleedBite
-    skillSprites: []
   - skillName: HoundRush
-    skillSprites: []
   - skillName: SpiderPoisonBite
-    skillSprites: []
   - skillName: ArcAttack
-    skillSprites: []
   - skillName: NormalAttack
-    skillSprites: []
   - skillName: FlyAttack
-    skillSprites:
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
   - skillName: Fireball
-    skillSprites:
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
   - skillName: DashAttack2
-    skillSprites:
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
-    - {fileID: 21300000, guid: f85857ed9ef3c964d9c603a5b64dc5a1, type: 3}
+  actionCatalog: {fileID: 11400000, guid: f5688becd0b34a79a3a9dd0e0847584b, type: 2}
 --- !u!4 &905247634
 Transform:
   m_ObjectHideFlags: 0
@@ -8530,23 +8424,6 @@ MonoBehaviour:
     stunTime: 0
     chargeTime: 1
     endTime: 1
-    animationSet:
-      chargeDown:
-      - {fileID: 4035959289877228764, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-      - {fileID: 1553940418269799609, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-      chargeUp: []
-      chargeLeft: []
-      chargeRight: []
-      attackDown:
-      - {fileID: -7008412969330441016, guid: 97f9787f79dd6044e8d0b419d5466285, type: 3}
-      attackUp: []
-      attackLeft: []
-      attackRight: []
-      endDown:
-      - {fileID: 1553940418269799609, guid: 2ad0b72e9a5957846a0c57ecf53b26d3, type: 3}
-      endUp: []
-      endLeft: []
-      endRight: []
     debug: 1
     canPierce: 0
     dotConfig:
@@ -8572,19 +8449,6 @@ MonoBehaviour:
     stunTime: 0
     chargeTime: 0
     endTime: 0.15
-    animationSet:
-      chargeDown: []
-      chargeUp: []
-      chargeLeft: []
-      chargeRight: []
-      attackDown: []
-      attackUp: []
-      attackLeft: []
-      attackRight: []
-      endDown: []
-      endUp: []
-      endLeft: []
-      endRight: []
     debug: 1
     canPierce: 0
     dotConfig:

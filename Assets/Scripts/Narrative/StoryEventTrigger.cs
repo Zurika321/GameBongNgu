@@ -4,7 +4,7 @@ using UnityEngine;
 public class StoryEventTrigger : MonoBehaviour
 {
     [SerializeField] private StoryEventDirector director;
-    [SerializeField] private string eventId;
+    [RegistryId(RegistryIdType.Event.Scene), SerializeField] private string eventId;
     [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag;
 
     private bool triggered;

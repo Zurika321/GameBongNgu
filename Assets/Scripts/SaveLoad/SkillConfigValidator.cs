@@ -98,6 +98,11 @@ public static class SkillConfigValidator
 
     private static void ValidateByType(SkillConfigEntry entry, string label, List<string> registeredActions, List<SkillIssue> issues)
     {
+        if (entry.needsInspectorSetup)
+        {
+            issues.Add(new SkillIssue(SkillIssueLevel.Warning, "Skill '" + label + "' đang chờ cấu hình/adapter: " + entry.setupNotes));
+            return;
+        }
         bool needsAction = false;
         switch (entry.type)
         {

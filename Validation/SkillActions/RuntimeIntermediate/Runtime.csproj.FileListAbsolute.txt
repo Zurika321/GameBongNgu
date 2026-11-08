@@ -1,0 +1,9 @@
+D:\UnitiProject\My project\Validation\SkillActions\Bin\Assembly-CSharp.deps.json
+D:\UnitiProject\My project\Validation\SkillActions\Bin\Assembly-CSharp.dll
+D:\UnitiProject\My project\Validation\SkillActions\Bin\Assembly-CSharp.pdb
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Runtime.csproj.AssemblyReference.cache
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Runtime.GeneratedMSBuildEditorConfig.editorconfig
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Runtime.csproj.CoreCompileInputs.cache
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Runtime.sourcelink.json
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Assembly-CSharp.dll
+D:\UnitiProject\My project\Validation\SkillActions\RuntimeIntermediate\Assembly-CSharp.pdb

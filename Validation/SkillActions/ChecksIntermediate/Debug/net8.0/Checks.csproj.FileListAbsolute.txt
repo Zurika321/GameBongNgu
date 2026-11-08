@@ -1,0 +1,15 @@
+D:\UnitiProject\My project\Validation\SkillActions\ChecksBin\net8.0\Checks.exe
+D:\UnitiProject\My project\Validation\SkillActions\ChecksBin\net8.0\Checks.deps.json
+D:\UnitiProject\My project\Validation\SkillActions\ChecksBin\net8.0\Checks.runtimeconfig.json
+D:\UnitiProject\My project\Validation\SkillActions\ChecksBin\net8.0\Checks.dll
+D:\UnitiProject\My project\Validation\SkillActions\ChecksBin\net8.0\Checks.pdb
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.GeneratedMSBuildEditorConfig.editorconfig
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.AssemblyInfoInputs.cache
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.AssemblyInfo.cs
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.csproj.CoreCompileInputs.cache
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.sourcelink.json
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.dll
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\refint\Checks.dll
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.pdb
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\Checks.genruntimeconfig.cache
+D:\UnitiProject\My project\Validation\SkillActions\ChecksIntermediate\Debug\net8.0\ref\Checks.dll

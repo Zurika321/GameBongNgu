@@ -1,0 +1,297 @@
+[
+  {
+    "actorId": "Enemy_ChuotCongBienDi",
+    "name": "Chuột Cống Biến Dị",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ChuotCongBienDi.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ChuotCongBienDi.prefab",
+    "skills": [
+      "Enemy_ChuotCongBienDi_CanChayMau"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_ChoSanMa",
+    "name": "Chó Săn Ma",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ChoSanMa.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ChoSanMa.prefab",
+    "skills": [
+      "Enemy_ChoSanMa_DanhHoiMuiMau",
+      "Enemy_ChoSanMa_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_NhenBongToi",
+    "name": "Nhện Bóng Tối",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_NhenBongToi.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_NhenBongToi.prefab",
+    "skills": [
+      "Enemy_NhenBongToi_CanDocDanhThuong",
+      "Enemy_NhenBongToi_ManToGiamSkill1",
+      "Enemy_NhenBongToi_PhunDichDocSkill2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_QuaDenDiDang",
+    "name": "Quạ Đen Dị Dạng",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_QuaDenDiDang.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_QuaDenDiDang.prefab",
+    "skills": [
+      "Enemy_QuaDenDiDang_BayDanChoang1s"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_BongGuong",
+    "name": "Bóng Gương",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_BongGuong.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_BongGuong.prefab",
+    "skills": [
+      "Enemy_BongGuong_SaoChepDonCanChienCuoi"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_DoiMau",
+    "name": "Dơi Máu",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_DoiMau.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_DoiMau.prefab",
+    "skills": [
+      "Enemy_DoiMau_HutMauKhiCan"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_XacSongThiDan",
+    "name": "Xác Sống Thị Dân",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_XacSongThiDan.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_XacSongThiDan.prefab",
+    "skills": [
+      "Enemy_XacSongThiDan_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_QuaXacThoi",
+    "name": "Quạ Xác Thối",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_QuaXacThoi.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_QuaXacThoi.prefab",
+    "skills": [
+      "Enemy_QuaXacThoi_DocTichDon"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_BongDemRinhRap",
+    "name": "Bóng Đêm Rình Rập",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_BongDemRinhRap.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_BongDemRinhRap.prefab",
+    "skills": [
+      "Enemy_BongDemRinhRap_TangHinhDanhNgam"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_SoiSuongDonDoc",
+    "name": "Sói Sương Đơn Độc",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_SoiSuongDonDoc.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_SoiSuongDonDoc.prefab",
+    "skills": [
+      "Enemy_SoiSuongDonDoc_TachMucTieu"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_ReCayQuyAm",
+    "name": "Rễ Cây Quỷ Ám",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ReCayQuyAm.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ReCayQuyAm.prefab",
+    "skills": [
+      "Enemy_ReCayQuyAm_GaiDocDienRong",
+      "Enemy_ReCayQuyAm_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_ThuChayRung",
+    "name": "Thú Cháy Rừng",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ThuChayRung.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ThuChayRung.prefab",
+    "skills": [
+      "Enemy_ThuChayRung_TocDoDanhTangDan",
+      "Enemy_ThuChayRung_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_TinhTheQuyAm",
+    "name": "Tinh Thể Quỷ Ám",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_TinhTheQuyAm.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_TinhTheQuyAm.prefab",
+    "skills": [
+      "Enemy_TinhTheQuyAm_TuNoKhiBiCanChienHa"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_QuyLunLoRen",
+    "name": "Quỷ Lùn Lò Rèn",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_QuyLunLoRen.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_QuyLunLoRen.prefab",
+    "skills": [
+      "Enemy_QuyLunLoRen_Khang50CanChienThuong",
+      "Enemy_QuyLunLoRen_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_TaySaiVoDien",
+    "name": "Tay Sai Vô Diện",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_TaySaiVoDien.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_TaySaiVoDien.prefab",
+    "skills": [
+      "Enemy_TaySaiVoDien_DanhThuong"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_HonMaNanNhanCu",
+    "name": "Hồn Ma Nạn Nhân Cũ",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_HonMaNanNhanCu.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_HonMaNanNhanCu.prefab",
+    "skills": [
+      "Enemy_HonMaNanNhanCu_ChamGiamToc"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_ThuGuTim",
+    "name": "Thú Gù Tím",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ThuGuTim.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ThuGuTim.prefab",
+    "skills": [
+      "Enemy_ThuGuTim_VuotCheoDanhThuong",
+      "Enemy_ThuGuTim_DapDatXungKichSkill1",
+      "Enemy_ThuGuTim_CauDocXanhSkill2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Enemy_ThuGiapTinhThe",
+    "name": "Thú Giáp Tinh Thể",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Enemy_ThuGiapTinhThe.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Enemy_ThuGiapTinhThe.prefab",
+    "skills": [
+      "Enemy_ThuGiapTinhThe_ChemTinhTheDanhThuong",
+      "Enemy_ThuGiapTinhThe_TuongHuyetGiapSkill1",
+      "Enemy_ThuGiapTinhThe_CauTinhHonSkill2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_BongGuongThuLinh",
+    "name": "Bóng Gương Thủ Lĩnh",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_BongGuongThuLinh.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_BongGuongThuLinh.prefab",
+    "skills": [
+      "Boss_BongGuongThuLinh_VuotGuongDanhThuong",
+      "Boss_BongGuongThuLinh_PhanDonGuong",
+      "Boss_BongGuongThuLinh_SaoChepCombo"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_DanSoiSuongMu",
+    "name": "Đàn Sói Sương Mù",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_DanSoiSuongMu.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_DanSoiSuongMu.prefab",
+    "skills": [
+      "Boss_DanSoiSuongMu_CanSuongDanhThuong",
+      "Boss_DanSoiSuongMu_TruGoiBayP1",
+      "Boss_DanSoiSuongMu_CanXeLienHoanP2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_VeBinhDaCo",
+    "name": "Vệ Binh Đá Cổ",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_VeBinhDaCo.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_VeBinhDaCo.prefab",
+    "skills": [
+      "Boss_VeBinhDaCo_DamDaDanhThuong",
+      "Boss_VeBinhDaCo_NenDatP1",
+      "Boss_VeBinhDaCo_GiapDaP2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_NguoiGacHang",
+    "name": "Người Gác Hang",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_NguoiGacHang.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_NguoiGacHang.prefab",
+    "skills": [
+      "Boss_NguoiGacHang_MongHangDanhThuong",
+      "Boss_NguoiGacHang_PhanThanP1",
+      "Boss_NguoiGacHang_HuGoiBongToiP2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_VoDien",
+    "name": "VÔ DIỆN",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_VoDien.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_VoDien.prefab",
+    "skills": [
+      "Boss_VoDien_VuotBongToiDanhThuong",
+      "Boss_VoDien_NuotAnhSangP1",
+      "Boss_VoDien_PhanNoP2",
+      "Boss_VoDien_NhanBanBongP2",
+      "Boss_VoDien_DongHoaP3",
+      "Boss_VoDien_TrieuHoiTaySai"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Boss_ThayHao",
+    "name": "Thầy Hạo",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Boss_ThayHao.asset",
+    "prefab": "Assets\\Prefabs\\Bosses\\Boss_ThayHao.prefab",
+    "skills": [
+      "Boss_ThayHao_GayBuaDanhThuong",
+      "Boss_ThayHao_ChuyenNguyenP1",
+      "Boss_ThayHao_KyUcVayMuonP2"
+    ],
+    "summon": false
+  },
+  {
+    "actorId": "Summon_DanSoiSuongMu",
+    "name": "Sói con",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Summon_DanSoiSuongMu.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Summons\\Summon_DanSoiSuongMu.prefab",
+    "skills": [
+      "Summon_DanSoiSuongMu_DanhThuong"
+    ],
+    "summon": true
+  },
+  {
+    "actorId": "Summon_NguoiGacHang",
+    "name": "Bản sao Người Gác Hang",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Summon_NguoiGacHang.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Summons\\Summon_NguoiGacHang.prefab",
+    "skills": [
+      "Summon_NguoiGacHang_DanhThuong"
+    ],
+    "summon": true
+  },
+  {
+    "actorId": "Summon_VoDien",
+    "name": "Bản sao Vô Diện",
+    "profile": "Assets\\Resources\\EnemyCombatConfigs\\Summon_VoDien.asset",
+    "prefab": "Assets\\Prefabs\\Enemies\\Summons\\Summon_VoDien.prefab",
+    "skills": [
+      "Summon_VoDien_DanhThuong"
+    ],
+    "summon": true
+  }
+]

@@ -6,7 +6,7 @@ public class StoryLootChest : MonoBehaviour
     [RegistryId(RegistryIdType.Flag), SerializeField] private string requiredFlag = "AtticStairsOpen";
     [RegistryId(RegistryIdType.Flag), SerializeField] private string openedFlag = "AtticChestOpened";
     [SerializeField] private StoryEventDirector storyEvents;
-    [SerializeField] private string onOpenedEventId = "DiaryFound";
+    [RegistryId(RegistryIdType.Event.Scene), SerializeField] private string onOpenedEventId = "DiaryFound";
     [SerializeField, Min(0.1f)] private float interactionRange = 2f;
 
     private Transform player;

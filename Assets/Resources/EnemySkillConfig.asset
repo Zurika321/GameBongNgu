@@ -1,0 +1,2790 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script:
+    fileID: 11500000
+    guid: 56366ea2ebb8bd04a8acd7f6d3f03fac
+    type: 3
+  m_Name: EnemySkillConfig
+  m_EditorClassIdentifier: Assembly-CSharp::SkillConfig
+  skills:
+  - skillId: Enemy_ThuGuTim_VuotCheoDanhThuong
+    name: Thú Gù Tím / Vuốt Chéo (đánh thường)
+    actionId: ACT_MELEE_2
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.3
+        y: 1.0
+      range: 0.9
+      speed: 0.0
+      duration: 0.12
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 60 / 60; Hitbox nhát 1 ở F4, nhát 2 ở F5
+    unlockCondition: 'Enemy: Thú Gù Tím'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuGuTim_DapDatXungKichSkill1
+    name: Thú Gù Tím / Dập Đất Xung Kích (Skill 1)
+    actionId: ACT_AOE_CIRCLE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.5
+        y: 1.5
+      range: 0.0
+      speed: 0.0
+      duration: 0.2
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 8
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 150; Hitbox bật ở F8-F9
+    unlockCondition: 'Enemy: Thú Gù Tím'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuGuTim_CauDocXanhSkill2
+    name: Thú Gù Tím / Cầu Độc Xanh (Skill 2)
+    actionId: ACT_PROJ_POISON
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0.3
+        y: 0.3
+      range: 0.6
+      speed: 5.0
+      duration: 0.0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 10
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '120 + độc 10/nhịp; '
+    unlockCondition: 'Enemy: Thú Gù Tím'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_NhenBongToi_CanDocDanhThuong
+    name: Nhện Bóng Tối / Cắn Độc (đánh thường)
+    actionId: ACT_MELEE_1_POISON
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '100 + độc 5/nhịp; '
+    unlockCondition: 'Enemy: Nhện Bóng Tối'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_NhenBongToi_ManToGiamSkill1
+    name: Nhện Bóng Tối / Màn Tơ Giam (Skill 1)
+    actionId: ACT_ZONE_SLOW_WEB
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.5
+        y: 1.5
+      range: 0.0
+      speed: 0.0
+      duration: 0.2
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 9
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '80 (làm chậm 40%); '
+    unlockCondition: 'Enemy: Nhện Bóng Tối'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_NhenBongToi_PhunDichDocSkill2
+    name: Nhện Bóng Tối / Phun Dịch Độc (Skill 2)
+    actionId: ACT_PROJ_POISON
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0.3
+        y: 0.3
+      range: 0.6
+      speed: 5.0
+      duration: 0.0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 10
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 120 + độc 10/nhịp; Dùng chung ActionID với Cầu Độc Xanh
+    unlockCondition: 'Enemy: Nhện Bóng Tối'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuGiapTinhThe_ChemTinhTheDanhThuong
+    name: Thú Giáp Tinh Thể / Chém Tinh Thể (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.8
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Thú Giáp Tinh Thể'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuGiapTinhThe_TuongHuyetGiapSkill1
+    name: Thú Giáp Tinh Thể / Tường Huyết Giáp (Skill 1)
+    actionId: ACT_CONE_SWEEP_STUN
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 2.0
+        y: 2.0
+      range: 0.0
+      speed: 0.0
+      duration: 0.3
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 9
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '160 + choáng 0.8s; '
+    unlockCondition: 'Enemy: Thú Giáp Tinh Thể'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuGiapTinhThe_CauTinhHonSkill2
+    name: Thú Giáp Tinh Thể / Cầu Tinh Hồn (Skill 2)
+    actionId: ACT_PROJ_EXPLOSIVE
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0.35
+        y: 0.35
+      range: 0.6
+      speed: 3.5
+      duration: 0.0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 12
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '80 + 50 (nổ); '
+    unlockCondition: 'Enemy: Thú Giáp Tinh Thể'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ChuotCongBienDi_CanChayMau
+    name: Chuột Cống Biến Dị / Cắn chảy máu
+    actionId: ACT_MELEE_1_BLEED
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '100 + chảy máu 5/nhịp; '
+    unlockCondition: 'Enemy: Chuột Cống Biến Dị'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ChoSanMa_DanhHoiMuiMau
+    name: Chó Săn Ma / Đánh hơi mùi máu
+    actionId: ACT_BUFF_SPEED_CONDITIONAL
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: —; Đòn cắn thường dùng ACT_MELEE_1 (không có trong GDD)
+    unlockCondition: 'Enemy: Chó Săn Ma'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_QuaDenDiDang_BayDanChoang1s
+    name: Quạ Đen Dị Dạng / Bay đàn, choáng 1s
+    actionId: ACT_MELEE_1_STUN
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 100 + choáng 1.0s; Việc bay thành đàn là AI, không thuộc action
+    unlockCondition: 'Enemy: Quạ Đen Dị Dạng'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_BongGuong_SaoChepDonCanChienCuoi
+    name: Bóng Gương / Sao chép đòn cận chiến cuối
+    actionId: ACT_REPLAY_LAST
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        replay:
+          selection: 0
+          range: 10
+          damageFraction: 1
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 'Theo bản gốc; '
+    unlockCondition: 'Enemy: Bóng Gương'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_DoiMau_HutMauKhiCan
+    name: Dơi Máu / Hút máu khi cắn
+    actionId: ACT_MELEE_1_LIFESTEAL
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '100 + hồi 50% sát thương; '
+    unlockCondition: 'Enemy: Dơi Máu'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_QuaXacThoi_DocTichDon
+    name: Quạ Xác Thối / Độc tích dồn
+    actionId: ACT_MELEE_1_POISON
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '100 + độc 5/nhịp; XUNG ĐỘT: quy tắc DOT hiện tại là làm mới chứ không cộng dồn; muốn "tích dồn" cần thêm tham số bậc độc (xem ghi chú)'
+    unlockCondition: 'Enemy: Quạ Xác Thối'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_BongDemRinhRap_TangHinhDanhNgam
+    name: Bóng Đêm Rình Rập / Tàng hình, đánh ngầm
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 100; Tàng hình là AI/trạng thái; đòn đánh dùng ACT_MELEE_1 không có vùng báo hiệu
+    unlockCondition: 'Enemy: Bóng Đêm Rình Rập'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_SoiSuongDonDoc_TachMucTieu
+    name: Sói Sương Đơn Độc / Tách mục tiêu
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: 100; Việc tách mục tiêu là AI
+    unlockCondition: 'Enemy: Sói Sương Đơn Độc'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ReCayQuyAm_GaiDocDienRong
+    name: Rễ Cây Quỷ Ám / Gai độc diện rộng
+    actionId: ACT_POISON_THORNS
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 2.0
+        y: 2.0
+      range: 0.0
+      speed: 0.0
+      duration: 0.2
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '80 / 80 + độc 5/nhịp; '
+    unlockCondition: 'Enemy: Rễ Cây Quỷ Ám'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuChayRung_TocDoDanhTangDan
+    name: Thú Cháy Rừng / Tốc độ đánh tăng dần
+    actionId: ACT_BUFF_ATKSPEED_RAMP
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Thú Cháy Rừng'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_TinhTheQuyAm_TuNoKhiBiCanChienHa
+    name: Tinh Thể Quỷ Ám / Tự nổ khi bị cận chiến hạ
+    actionId: ACT_SELF_EXPLODE
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 2.5
+        y: 2.5
+      range: 0.0
+      speed: 0.0
+      duration: 0.2
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: Cố định 20 (đề xuất); ATK = 0 nên cần chế độ sát thương cố định ở S01
+    unlockCondition: 'Enemy: Tinh Thể Quỷ Ám'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_QuyLunLoRen_Khang50CanChienThuong
+    name: Quỷ Lùn Lò Rèn / Kháng 50% cận chiến thường
+    actionId: ACT_RESIST_MELEE_50
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Quỷ Lùn Lò Rèn'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_HonMaNanNhanCu_ChamGiamToc
+    name: Hồn Ma Nạn Nhân Cũ / Chạm giảm tốc
+    actionId: ACT_AURA_SLOW_CONTACT
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: '0 (làm chậm 20%); '
+    unlockCondition: 'Enemy: Hồn Ma Nạn Nhân Cũ'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_BongGuongThuLinh_VuotGuongDanhThuong
+    name: Bóng Gương Thủ Lĩnh / Vuốt Gương (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Bóng Gương Thủ Lĩnh'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_BongGuongThuLinh_PhanDonGuong
+    name: Bóng Gương Thủ Lĩnh / Phản Đòn Gương
+    actionId: ACT_REFLECT_20
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Bóng Gương Thủ Lĩnh'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_BongGuongThuLinh_SaoChepCombo
+    name: Bóng Gương Thủ Lĩnh / Sao Chép Combo
+    actionId: ACT_REPLAY_LAST
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        replay:
+          selection: 1
+          range: 10
+          damageFraction: 1
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: Theo bản gốc (trần); Chế độ "combo mạnh nhất trong session"
+    unlockCondition: 'Enemy: Bóng Gương Thủ Lĩnh'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_DanSoiSuongMu_CanSuongDanhThuong
+    name: Đàn Sói Sương Mù / Cắn Sương (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Đàn Sói Sương Mù'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_DanSoiSuongMu_TruGoiBayP1
+    name: Đàn Sói Sương Mù / Tru Gọi Bầy (P1)
+    actionId: ACT_SUMMON_2_EVERY_20S
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        summon:
+          prefab:
+            fileID: 100000
+            guid: e244b6611ee84da6928340d18340f44d
+            type: 3
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Đàn Sói Sương Mù'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_DanSoiSuongMu_CanXeLienHoanP2
+    name: Đàn Sói Sương Mù / Cắn Xé Liên Hoàn (P2)
+    actionId: ACT_MELEE_3
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.3
+        y: 1.0
+      range: 0.9
+      speed: 0.0
+      duration: 0.0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides:
+      - stepIndex: 0
+        damagePercents:
+        - 70
+        - 70
+        - 70
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: 70 / 70 / 70; Điều kiện "người chơi sát tường" đặt ở AI/skill bằng S14
+    unlockCondition: 'Enemy: Đàn Sói Sương Mù'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VeBinhDaCo_DamDaDanhThuong
+    name: Vệ Binh Đá Cổ / Đấm Đá (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 2
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Vệ Binh Đá Cổ'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VeBinhDaCo_NenDatP1
+    name: Vệ Binh Đá Cổ / Nện Đất (P1)
+    actionId: ACT_AOE_CIRCLE_1_STUN
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 2.5
+        y: 2.5
+      range: 0.0
+      speed: 0.0
+      duration: 0.2
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100 + choáng 1.5s; '
+    unlockCondition: 'Enemy: Vệ Binh Đá Cổ'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VeBinhDaCo_GiapDaP2
+    name: Vệ Binh Đá Cổ / Giáp Đá (P2)
+    actionId: ACT_IMMUNE_MELEE_CYCLE
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: —; Phá bằng Băng Đạn Bạc
+    unlockCondition: 'Enemy: Vệ Binh Đá Cổ'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_NguoiGacHang_MongHangDanhThuong
+    name: Người Gác Hang / Móng Hang (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Người Gác Hang'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_NguoiGacHang_PhanThanP1
+    name: Người Gác Hang / Phân Thân (P1)
+    actionId: ACT_SPLIT_2
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        summon:
+          prefab:
+            fileID: 100000
+            guid: b98bf42503374ef18035766bd1a646ef
+            type: 3
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Người Gác Hang'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_NguoiGacHang_HuGoiBongToiP2
+    name: Người Gác Hang / Hú Gọi Bóng Tối (P2)
+    actionId: ACT_BLIND_5S
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: Người Gác Hang'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_VuotBongToiDanhThuong
+    name: VÔ DIỆN / Vuốt Bóng Tối (đánh thường)
+    actionId: ACT_MELEE_3
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.3
+        y: 1.0
+      range: 0.9
+      speed: 0.0
+      duration: 0.0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '60 / 60 / 60; '
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_NuotAnhSangP1
+    name: VÔ DIỆN / Nuốt Ánh Sáng (P1)
+    actionId: ACT_BLIND_8S
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_PhanNoP2
+    name: VÔ DIỆN / Phẫn Nộ (P2)
+    actionId: ACT_BUFF_SPEED_PHASE
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_NhanBanBongP2
+    name: VÔ DIỆN / Nhân Bản Bóng (P2)
+    actionId: ACT_CLONE_SHADOW_2
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        summon:
+          prefab:
+            fileID: 100000
+            guid: 3a9d0eb6e1a44fb0afff1e4313066929
+            type: 3
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '—; '
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_DongHoaP3
+    name: VÔ DIỆN / Đồng Hóa (P3)
+    actionId: ACT_QTE_POSSESS
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        challenge:
+          mode: 0
+          duration: 6.0
+          initialValue: 0.0
+          requiredValue: 1.0
+          drainPerSecond: 0.0
+          gainPerInput: 0.0
+          failureGraceSeconds: 3.0
+          immunityFlag: ''
+          consumeImmunity: 1
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: —; Kết quả thua dẫn Session 13C
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_ThayHao_GayBuaDanhThuong
+    name: Thầy Hạo / Gậy Bùa (đánh thường)
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 1.5
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: '100; '
+    unlockCondition: 'Enemy: Thầy Hạo'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_ThayHao_ChuyenNguyenP1
+    name: Thầy Hạo / Chuyển Nguyền (P1)
+    actionId: ACT_CURSE_TRANSFER
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        challenge:
+          mode: 1
+          duration: 0.0
+          initialValue: 1.0
+          requiredValue: 0.5
+          drainPerSecond: 0.0
+          gainPerInput: 0.0
+          failureGraceSeconds: 3.0
+          immunityFlag: ''
+          consumeImmunity: 0
+        status:
+          kind: 2
+          duration: 0.0
+          strength: 0.0
+          statusId: ''
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: —; Cơ chế Lời Nguyền chi tiết GDD chưa nêu
+    unlockCondition: 'Enemy: Thầy Hạo'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_ThayHao_KyUcVayMuonP2
+    name: Thầy Hạo / Ký Ức Vay Mượn (P2)
+    actionId: ACT_REPLAY_LAST
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        replay:
+          selection: 2
+          range: 10
+          damageFraction: 1
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: Theo bản gốc (trần); Chế độ "ngẫu nhiên 1 skill mạnh của Khải ở Session 12"
+    unlockCondition: 'Enemy: Thầy Hạo'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+      Lịch sử replay phải được chốt từ Session 12; chưa có nguồn snapshot xuyên scene.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ChoSanMa_DanhThuong
+    name: Chó Săn Ma / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Chó Săn Ma'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_XacSongThiDan_DanhThuong
+    name: Xác Sống Thị Dân / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Xác Sống Thị Dân'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ReCayQuyAm_DanhThuong
+    name: Rễ Cây Quỷ Ám / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Rễ Cây Quỷ Ám'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_ThuChayRung_DanhThuong
+    name: Thú Cháy Rừng / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Thú Cháy Rừng'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_QuyLunLoRen_DanhThuong
+    name: Quỷ Lùn Lò Rèn / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Quỷ Lùn Lò Rèn'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Enemy_TaySaiVoDien_DanhThuong
+    name: Tay Sai Vô Diện / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Tay Sai Vô Diện'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Boss_VoDien_TrieuHoiTaySai
+    name: VÔ DIỆN / Triệu hồi tay sai
+    actionId: ACT_SUMMON_ADDS_CONTINUOUS
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 0
+        y: 0
+      range: 0
+      speed: 0
+      duration: 0
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules:
+        summon:
+          prefab:
+            fileID: 100000
+            guid: 0f94d5955be54219aade5b754298c824
+            type: 3
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Boss
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: VÔ DIỆN'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Summon_DanSoiSuongMu_DanhThuong
+    name: Sói con / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Sói con'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Summon_NguoiGacHang_DanhThuong
+    name: Bản sao Người Gác Hang / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Bản sao Người Gác Hang'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  - skillId: Summon_VoDien_DanhThuong
+    name: Bản sao Vô Diện / Đánh thường
+    actionId: ACT_MELEE_1
+    type: 1
+    legacyContextMigrated: 1
+    defaultContext:
+      skillSize:
+        x: 1.2
+        y: 0.9
+      range: 0.9
+      speed: 0.0
+      duration: 0.15
+      stunTime: 0
+      damageMultiplier: 1
+      cooldown: 0
+      chargeTime: 0
+      endTime: 0
+      canPierce: 0
+      debug: 1
+      dotConfig:
+        activationType: 0
+      modules: {}
+      actionDamageOverrides: []
+      breaksGuard: 0
+      bypassesMeleeResistance: 0
+      effectAnimation:
+        castFrames: []
+        endFrames: []
+        fourDirections: 0
+        frameInterval: 0.06
+    weaponVariants: []
+    buffConfig:
+      duration: 0
+      modifiers: []
+    passiveConfig:
+      trigger: 0
+      chance: 1
+      duration: 0
+      modifiers: []
+    weaponRequirement:
+      acceptedTypes: []
+      acceptedWeaponIds: []
+    icon:
+      fileID: 0
+    weaponId: ''
+    branch: Enemy
+    tier: ''
+    effect: ''
+    unlockCondition: 'Enemy: Bản sao Vô Diện'
+    requires: ''
+    setupNotes: Nguồn Map Skill-Action. Trường thời gian/tầm còn thiếu giữ cooldown 0 hoặc lấy geometry từ catalog; chỉnh Inspector theo animation thực.
+    needsInspectorSetup: 0
+  animationVariants: []

@@ -3,13 +3,20 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_CorrespondingSourceObject:
+    fileID: 0
+  m_PrefabInstance:
+    fileID: 0
+  m_PrefabAsset:
+    fileID: 0
+  m_GameObject:
+    fileID: 0
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e51e1bafd3e4944a74ebc9a17aade95, type: 3}
+  m_Script:
+    fileID: 11500000
+    guid: 6e51e1bafd3e4944a74ebc9a17aade95
+    type: 3
   m_Name: GameIdRegistry
   m_EditorClassIdentifier: Assembly-CSharp::GameIdRegistry
   flags:
@@ -93,47 +100,49 @@ MonoBehaviour:
   - Session14Complete
   - Session15BComplete
   itemIds:
-  - "B\u0103ng \u0110\u1EA1n B\u1EA1c"
-  - "B\u0103ng \u0110\u1EA1n C\u0169"
-  - "B\u0103ng \u0110\u1EA1n \u0110\u1ED3ng"
-  - "B\xF9a H\u1ED9 M\u1EC7nh R\xE1ch"
-  - "B\xF9a H\u1ED3i M\xE1u"
-  - "B\xF9a Kh\xF3a Qu\u1EF7"
-  - "C\xE1nh D\u01A1i"
-  - "C\xE1nh D\u01A1i M\xE1u"
-  - "Da Ch\xE1y X\xE9m"
-  - "\u0110\xE1 Nguy\u1EC1n C\u1ED5"
-  - "Da S\xF3i \u0110\u1EA7u \u0110\xE0n"
-  - "Da S\xF3i S\u01B0\u01A1ng"
-  - "Dao G\u0103m G\u1EC9"
-  - "D\u1EA5u \u1EA4n H\u1EE3p \u0110\u1ED3ng"
-  - "\u0110\u1ED3ng Xu C\u0169"
-  - "Ki\u1EBFm Kh\u1EAFc Qu\u1EF7"
-  - "L\xF5i \u0110\xE1 C\u1ED5"
-  - "L\xF5i V\xF2ng L\u1EB7p"
-  - "L\xF4ng Qu\u1EA1 D\u1ECB"
-  - "L\xF4ng Th\u1ED1i"
-  - "M\u1EA3nh G\u01B0\u01A1ng N\u1EE9t"
-  - "M\u1EA3nh G\u01B0\u01A1ng V\u1EE1"
-  - "M\u1EA3nh Tinh Th\u1EC3"
-  - "M\xE1u \u0110\xF3ng B\u0103ng"
-  - "M\xE1u T\u1EF1 Nguy\u1EC7n"
-  - "M\xF3ng Vu\u1ED1t Qu\u1EF7"
-  - "Nanh Ch\xF3 Ma"
-  - "Ng\u1ECDc B\xF3ng T\u1ED1i"
-  - "Nh\u1EADt K\xFD N\u1EA1n Nh\xE2n"
-  - "Nh\u1EADt K\xFD T\u1ED9i \xC1c"
-  - "Nh\u1EF1a C\u1ED5 Th\u1EE5"
-  - "Qu\u1EB7ng Qu\u1EF7"
-  - "R\u1EC5 C\xE2y \u0110\u1ED9c"
-  - "R\xECu C\u1EA7m Tay"
-  - "Th\u1EA3o D\u01B0\u1EE3c An Th\u1EA7n"
-  - "T\u01A1 Nh\u1EC7n \u0110\u1ED9c"
-  - "Tr\xE2m C\xE0i K\u1EF7 V\u1EADt"
-  - "V\u1EA3i B\u0103ng B\xF3"
-  - "V\u1EA3i R\xE1ch"
-  - "V\u1EA3i V\u1EE5n"
-  - "X\xEDch S\u1EAFt Gia C\u1ED1"
+  - Băng Đạn Bạc
+  - Băng Đạn Cũ
+  - Băng Đạn Đồng
+  - Bùa Hộ Mệnh Rách
+  - Bùa Hồi Máu
+  - Bùa Khóa Quỷ
+  - Cánh Dơi
+  - Cánh Dơi Máu
+  - Da Cháy Xém
+  - Đá Nguyền Cổ
+  - Da Sói Đầu Đàn
+  - Da Sói Sương
+  - Dao Găm Gỉ
+  - Dấu Ấn Hợp Đồng
+  - Đồng Xu Cũ
+  - Kiếm Khắc Quỷ
+  - Lõi Đá Cổ
+  - Lõi Vòng Lặp
+  - Lông Quạ Dị
+  - Lông Thối
+  - Mảnh Gương Nứt
+  - Mảnh Gương Vỡ
+  - Mảnh Tinh Thể
+  - Máu Đóng Băng
+  - Máu Tự Nguyện
+  - Móng Vuốt Quỷ
+  - Nanh Chó Ma
+  - Ngọc Bóng Tối
+  - Nhật Ký Nạn Nhân
+  - Nhật Ký Tội Ác
+  - Nhựa Cổ Thụ
+  - Quặng Quỷ
+  - Rễ Cây Độc
+  - Rìu Cầm Tay
+  - Thảo Dược An Thần
+  - Tơ Nhện Độc
+  - Trâm Cài Kỷ Vật
+  - Vải Băng Bó
+  - Vải Rách
+  - Vải Vụn
+  - Xích Sắt Gia Cố
+  - Mảnh Gương Hoàn Hảo
+  - Tinh Chất Bóng Tối
   sessionIds:
   - 1
   - 1.5
@@ -162,25 +171,7 @@ MonoBehaviour:
   - 15B
   skillIds:
   - BasicSlash
-  - "Ch\xE9m c\u01A1 b\u1EA3n"
-  - "Combo 2 \u0111\xF2n"
-  - "\u0110\xF2n xuy\xEAn gi\xE1p"
-  - "Ph\u1EA3n \u0111\xF2n ho\xE0n h\u1EA3o"
-  - "B\u1ED9c ph\xE1t 5 \u0111\xF2n"
-  - "Song \u0111ao h\u1EE3p b\xEDch"
   - DodgeRoll
-  - "N\xE9 tr\xE1nh nhanh"
-  - "\u0110\u1EE1 \u0111\xF2n (parry)"
-  - "Kh\xE1ng cho\xE1ng"
-  - "Kh\xE1ng \u0111\u1ED9c/m\xE1u"
-  - "T\u0129nh t\xE2m"
-  - "\xDD ch\xED s\u1EAFt \u0111\xE1"
-  - "N\u1ED9 kh\xED"
-  - "N\xE9m v\u0169 kh\xED ph\u1EE5"
-  - "S\u1EE9c m\u1EA1nh vay m\u01B0\u1EE3n"
-  - "M\xF3ng vu\u1ED1t qu\u1EF7"
-  - "\u0110\u1ED3ng h\xF3a ng\u01B0\u1EE3c"
-  - "C\u1ED9ng sinh"
   - RatBleedBite
   - HoundRush
   - SpiderPoisonBite
@@ -189,12 +180,104 @@ MonoBehaviour:
   - FlyAttack
   - Fireball
   - DashAttack2
-  - "N\xE9 Tr\xE1nh Nhanh"
+  - ApplyStatus
+  - SelfBuff
+  - SummonEntity
+  - CasterMove
+  - ModifyResource
+  - DefenseWindow
+  - ScreenEffect
+  - ChallengeMeter
+  - ReplayAction
+  - ConditionGate
+  - ACT_MELEE_1
+  - ACT_MELEE_2
+  - ACT_MELEE_3
+  - ACT_MELEE_5_STUN_FINISH
+  - ACT_MELEE_1_STUN
+  - ACT_MELEE_1_POISON
+  - ACT_MELEE_1_BLEED
+  - ACT_MELEE_1_LIFESTEAL
+  - ACT_MELEE_1_SELFCOST
+  - ACT_THRUST_PIERCE
+  - ACT_AOE_CIRCLE_1
+  - ACT_AOE_CIRCLE_1_STUN
+  - ACT_AOE_PULSE_3X
+  - ACT_CONE_SWEEP_STUN
+  - ACT_SELF_EXPLODE
+  - ACT_POISON_THORNS
+  - ACT_PROJ_1
+  - ACT_PROJ_POISON
+  - ACT_PROJ_EXPLOSIVE
+  - ACT_ZONE_SLOW_WEB
+  - ACT_AURA_SLOW_CONTACT
+  - ACT_BUFF_ATK_TIMED
+  - ACT_BUFF_SPEED_PHASE
+  - ACT_BUFF_SPEED_CONDITIONAL
+  - ACT_BUFF_ATKSPEED_RAMP
+  - ACT_BUFF_DUAL_BLADE
+  - ACT_BUFF_BORROW_POWER
+  - ACT_DODGE_ROLL
+  - ACT_PARRY
+  - ACT_PARRY_COUNTER
+  - ACT_IMMUNE_MELEE_CYCLE
+  - ACT_RESIST_MELEE_50
+  - ACT_REFLECT_20
+  - ACT_SUMMON_2_EVERY_20S
+  - ACT_SUMMON_ADDS_CONTINUOUS
+  - ACT_CLONE_SHADOW_2
+  - ACT_SPLIT_2
+  - ACT_BLIND_8S
+  - ACT_BLIND_5S
+  - ACT_QTE_POSSESS
+  - ACT_CURSE_TRANSFER
+  - ACT_REPLAY_LAST
+  - ACT_HEAL_LT_CHANNEL
   weaponIds:
-  - "Dao G\u0103m G\u1EC9"
-  - "R\xECu C\u1EA7m Tay"
+  - Dao Găm Gỉ
+  - Rìu Cầm Tay
   musicIds:
   - menu
   sfxIds:
   - footstep
   - hit
+  zone1Events:
+    scenePath: Assets/Scenes/Zones/Zone1.unity
+    eventIds:
+    - VillageHoundCleared
+    - S1_GuongThiThau
+    - Session1SpawerRat
+    - Session1RatsCleared
+    - CorpseDecision
+    - DiaryFound
+    - AtticSpidersCleared
+    - ShrineCrowsCleared
+    - DreamShadesCleared
+    - WarehouseBatsCleared
+    - PlazaUndeadCleared
+    - PlazaCrowsCleared
+    - CuaKhoa
+    - equipDen
+    - TinhDayTrongMau
+    - CuaKhoadieutra
+    directorObjectName: Story Event Settings
+  zone2Events:
+    scenePath: Assets/Scenes/Zones/Zone2.unity
+    eventIds:
+    - S5_BossDefeated
+    directorObjectName: ''
+  zone3Events:
+    scenePath: Assets/Scenes/Zones/Zone3.unity
+    eventIds:
+    - S9A_CaveWardenDefeated
+    directorObjectName: ''
+  zone4Events:
+    scenePath: Assets/Scenes/Zones/Zone4.unity
+    eventIds:
+    - S13A_ConfrontationComplete
+    directorObjectName: ''
+  zone5Events:
+    scenePath: Assets/Scenes/Zones/Zone5.unity
+    eventIds:
+    - S15A_HaoSecretDefeated
+    directorObjectName: ''

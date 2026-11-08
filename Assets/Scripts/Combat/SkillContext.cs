@@ -19,9 +19,21 @@ public class SkillContext
 {
     [Header("Người cast")]
     public GameObject Caster;
+    public GameObject Target;
+    [System.NonSerialized] public System.Func<bool> IsHeld;
+    [System.NonSerialized] public System.Action<GameObject> OnDefenseCallback;
+    [System.NonSerialized] public System.Action<bool> OnChallengeCompleted;
+    public SkillDamageKind DamageKind;
+    [Range(0f, 1f)] public float ArmorPenetration;
+    public System.Collections.Generic.List<SkillActionDamageOverride> ActionDamageOverrides;
+    public bool BreaksGuard;
+    public bool BypassesMeleeResistance;
+    [System.NonSerialized] public float DamageDealt;
+    public SkillModuleConfig Modules;
     public SkillCasterType CasterType;
 
     [Header("Nhận diện skill (PlayerSkillController / GetSkillContext tự điền)")]
+    public string AnimationName; // Optional visual name; does not replace gameplay/save SkillId.
     public string SkillId;          // ID duy nhất của skill trong SkillConfig, ví dụ BasicAttack_Dagger
     public string ActionId;         // ID class thực thi trong SkillActions, ví dụ NormalAttack
     public string WeaponId;         // vũ khí đang cầm lúc cast ("Punch" = tay không)
@@ -42,21 +54,14 @@ public class SkillContext
     [Header("Tuỳ chọn nâng cao")]
     public string OverrideTargetTag; // để trống thì tự suy ra theo CasterType, set tay nếu muốn ép tag khác
 
-    [Header("Âm thanh theo skill / context")]
-    public AudioClip ChargeSfx;
-    public AudioClip CastSfx;
-    public AudioClip HitSfx;
-    [Range(0f, 1f)] public float SfxVolume = 1f;
-    [Tooltip("Nếu true và chargeTime nhỏ hơn thời lượng clip, cắt clip còn đúng bằng thời gian charge.")]
-    public bool CutChargeSfxToChargeTime;
-
     [Header("Debug")]
     public bool Debug;         // true = skill hiện hitbox debug (LineRenderer) trực tiếp trong Game
 
     [Header("Animation của Player/Enemy (3 pha)")]
     [Min(0f)] public float ChargeTime;   // pha 1: tích chiêu, 0 = ra skill ngay
     [Min(0f)] public float EndTime;      // pha 3: thời gian animation kết thúc
-    public SkillAnimationSet AnimationSet;
+    [HideInInspector] public SkillAnimationSet AnimationSet;
+    public SkillEffectAnimation EffectAnimation;
 
     [Header("Sprite animation theo hướng")]
     public Sprite[] downFrames;
@@ -78,6 +83,18 @@ public class SkillContext
     /// Tag mục tiêu mà hitbox của skill này sẽ kiểm tra va chạm.
     /// Player đánh -> tìm "HitBoxEnemy". Enemy đánh -> tìm "HitBoxPlayer".
     /// </summary>
+    public SkillContext CopyFor(GameObject caster)
+    {
+        SkillContext copy = (SkillContext)MemberwiseClone();
+        copy.Caster = caster;
+        copy.Position = caster != null ? (Vector2)caster.transform.position : Position;
+        copy.OnHitCallback = null;
+        copy.OnDefenseCallback = null;
+        copy.OnChallengeCompleted = null;
+        copy.DamageDealt = 0f;
+        return copy;
+    }
+
     public string ResolveTargetTag()
     {
         if (!string.IsNullOrEmpty(OverrideTargetTag))

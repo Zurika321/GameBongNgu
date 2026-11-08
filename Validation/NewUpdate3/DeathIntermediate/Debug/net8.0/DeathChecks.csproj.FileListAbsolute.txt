@@ -1,0 +1,15 @@
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathBin\net8.0\DeathChecks.exe
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathBin\net8.0\DeathChecks.deps.json
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathBin\net8.0\DeathChecks.runtimeconfig.json
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathBin\net8.0\DeathChecks.dll
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathBin\net8.0\DeathChecks.pdb
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.GeneratedMSBuildEditorConfig.editorconfig
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.AssemblyInfoInputs.cache
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.AssemblyInfo.cs
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.csproj.CoreCompileInputs.cache
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.sourcelink.json
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.dll
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\refint\DeathChecks.dll
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.pdb
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\DeathChecks.genruntimeconfig.cache
+D:\UnitiProject\My project\Validation\NewUpdate3\DeathIntermediate\Debug\net8.0\ref\DeathChecks.dll

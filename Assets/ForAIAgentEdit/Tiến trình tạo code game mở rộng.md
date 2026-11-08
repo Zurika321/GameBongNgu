@@ -123,3 +123,92 @@ GDD/cốt truyện mô tả 15 session và nhiều nhánh/kết thúc. Có asset
 - Quy ước: Assets/AI_QuyTac.md, Assets/ForAIAgentEdit/CLAUDE.md.
 - Hướng dẫn Story Event hiện tại: Assets/StoryEventDirector_Guide.md.
 - Cốt truyện: Assets/cot-truyen-bong-ngu.md.
+
+## Cập nhật 08/11/2026 — catalog Skill Action
+
+- Hoàn tất khai báo/đăng ký 43 ACT_* và 66 bước theo Excel vào SkillActionCatalog.asset; giữ actionId cũ và dữ liệu save/truyện.
+- SkillActions thực thi recipe qua module SkillBase; hỗ trợ combo dừng khi hụt, damage/on-hit DOT/status/hút máu, đạn nổ, aura/slow, buff, triệu hồi, dash, phòng thủ, screen/QTE/replay và channel có điều kiện hủy.
+- Thêm bridge event chết/phase/input, hỗ trợ cone, typed damage/guard/armor penetration và override %damage theo skill/context.
+- Đã gán catalog vào 4 scene có SkillActions và thêm ID registry. Không xóa scene object, không sửa workbook, không commit theo lựa chọn của người dùng.
+- Kiểm tra: compile runtime + Editor qua Validation/SkillActions; 24 kiểm tra catalog/timing/data đã qua. Chưa chạy Unity Play Mode/physics/UI.
+- Chưa hoàn tất nội dung playable cho mọi skill: cần prefab/AI triệu hồi, receiver UI/QTE, event cốt truyện và các chi tiết chưa đủ dữ liệu trong Excel (hit-stop, lệch hướng né, drop/EXP clone, bản thể biến mất...). Các yêu cầu đó được ghi ở setupNotes của recipe.
+
+
+## Cập nhật level và prefab enemy/boss (08/11/2026)
+
+- Lv Config.asset đã nhập 20 cấp theo He Thong Level, skillId có trong SkillConfig. SkillConfig chứa27 skill player; EnemySkillConfig chứa52 skill riêng của enemy/boss/summon. BasicSlash và dữ liệu đã gán được giữ.
+- Combat/EnemyCombatConfig.cs + Resources/EnemyCombatConfigs: dữ liệu HP/ATK, slot/trigger/phase/range/priority; chưa có số liệu để Inspector. EnemySkillController giữ cast/context/cooldown/save; EnemySkillScheduler chọn chiêu; EnemyPhaseController quản lý HP/manual/event phase.
+- Prefabs/Enemies:18 quái; Prefabs/Bosses:6 boss; Enemies/Summons:3 mẫu triệu hồi không tự nhân bản. Gán sẵn component, hurtbox/ZoneSee/refs; chưa gán art/Unity JSON. Chưa đưa vào scene/spawner.
+- RuntimeStatModifierStore tách thành file riêng để gắn prefab; index stat cũ giữ nguyên, thêm StunResistance/DotResistance. DOT/Status đi qua đường nhận kháng. Buff/giáp/action được hủy khi kết thúc combat/phase; summon nhận target/ATK từ chủ.
+- Editor/EnemyCombatConfigEditor hiển thị trường thiếu. SkillConfigEntry.needsInspectorSetup/setupNotes ghi những cơ chế chưa đủ tham số/adapter; controller không thực thi các mục này. Các mục chỉ đăng ký chưa đồng nghĩa mọi gameplay GDD hoàn tất.
+- Hướng dẫn đầy đủ, giới hạn và các trường cần gán: doc/2026-11-08_level-skill-prefab-enemy-boss.md. Không sửa workbook, không commit.
+
+
+## Ghi yêu cầu GroupBlock (08/11/2026)
+
+- ToDo/NewUpdate4.txt: prompt triển khai sau cho GroupBlock trong BoneAnimation_Unity.html, export ảnh/Unity JSON đủ biến thể và dropdown Inspector/API CharacterAnimation. Chỉ ghi yêu cầu, chưa sửa web/C#; chờ người dùng tiếp tục khi có token.
+
+
+## GroupBlock - xac minh ban nguoi dung cap nhat (08/11/2026)
+
+- NewUpdate4 da duoc nguoi dung thay bang bao cao trien khai. HTML va hai file CharacterAnimation runtime/Editor hien co GroupBlock, schema groupBlocks/defaultVariant/variants.
+- Tao HTML rieng cung thu muc web: BoneAnimation_Unity_GroupBlock_NewUpdate4.html, sao nguyen ban hien tai; giu ban goc.
+- JavaScript syntax va C# runtime/Editor build da qua. Chua kiem tra truc tiep Unity Play Mode/Inspector trong luot nay. Mapping weaponId va live Edit Mode preview con lai.
+
+
+## 08/11/2026 — Làm lại giao diện GroupBlock và sửa kéo thả
+
+- Bản web dùng tiếp: BoneAnimationStudio/BoneAnimation_Unity_GroupBlock_NewUpdate4.html; giữ BoneAnimation_Unity.html gốc.
+- Đầu tab hiển thị từng hàng: bên trái group-<tên group>, bên phải dropdown biến thể/None. Bỏ dropdown chọn group và dropdown biến thể trùng ở phần chỉnh sửa.
+- Phía dưới hiển thị từng group và từng biến thể thành khung riêng, có ô thả block và nút Thêm block đang chọn. Có thể thả vào bộ chưa được chọn/đang ẩn, kể cả khi preview là None.
+- Sửa nguyên nhân kéo thả: Skeleton effectAllowed=move nhưng ô nhận cũ yêu cầu dropEffect=copy. Bản mới thống nhất move, gửi thêm MIME application/x-bone-block, giữ text/plain fallback, dọn trạng thái khi dragend.
+- Kéo block sang bộ khác chuyển liên kết độc quyền sang bộ đó; không xóa block thật. Có Undo, báo trạng thái ngay trong tab, từ chối Bone/ảnh làm block.
+- Schema groupBlocks/defaultVariant/variants/blockIds giữ nguyên; không sửa Unity C#, scene, prefab hoặc JSON animation.
+- Kiểm tra: node --check và 18 kiểm tra Chrome headless đã qua, gồm native drag từ Skeleton vào hai ô nhận, None, group độc lập, chuyển liên kết/Undo, đổi tên, save/load và Unity payload giữ block ẩn. Không cài thêm thư viện.
+- Chưa commit theo lựa chọn của người dùng.
+
+
+## 08/11/2026 — Tên animation skill và vũ khí inventory
+
+- Animation/CharacterAnimation.Bindings.cs: alias tên custom animation lưu trên component, khóa AnimState/Default/Death; Inspector sửa tên với Undo/prefab override. JSON/SFX nguồn giữ nguyên.
+- SkillContextConfig.animationName / SkillContext.AnimationName tách tên hình ảnh khỏi skillId. Basic attack dùng Attack khi JSON không có tên skill riêng; charge/cast/wait dùng cùng tên.
+- PlayerProgressionService.Skills nối equip/unequip, mất đồ và load/đổi scene tới API GroupBlock và refresh đòn đánh thường. Tự nhận group theo tên biến thể ItemDefinition, có Weapon Group/Weapon Variant Bindings trong Inspector; gỡ đồ chọn None, không ảnh hưởng nhóm khác.
+- Kiểm tra: runtime/Editor compile; 37 kiểm tra animation binding/equipment và 36 kiểm tra enemy bằng production source với Unity API doubles. Chưa chạy Unity Play Mode.
+- Chi tiết và hướng dẫn: doc/2026-11-08_animation-skill-name-inventory-weapon.md. Không commit theo lựa chọn của người dùng.
+
+
+## 08/11/2026 — Ảnh xem trước cho Block trong web
+
+- BoneAnimationStudio/BoneAnimation_Unity.html: Properties hiện ảnh cho 4 hướng và nhãn fallback; Block Keyframe hiện ảnh đang chọn và lưới thumbnail bấm chọn, gồm quay về ảnh gốc.
+- Giữ dropdown/luồng thư viện và schema JSON. node --check + 12 kiểm tra Chrome headless đã qua. Ctrl+F5 để nhận giao diện mới.
+- Chi tiết: doc/2026-11-08_web-block-image-preview.md. Không commit.
+
+
+## 08/11/2026 — Hoàn tất triển khai 7 mục NewUpdate3
+
+- Inventory icon fallback + tên, card skill với close/key/unequip; CoreCombatDemo có nút THÔNG SỐ và PlayerStatusHUD đặt sẵn. HUD đọc đủ chỉ số runtime và LvConfig, không tự dựng object.
+- EnemyCombatConfig chứa bảng loot nhập 22 quái/boss Excel; spawner scene nhận config; 20 ItemDefinition thiếu và Registry IDs được bổ sung. Prefabs/Spawer có 22 prefab dùng lại enemy/config/pickup hiện có, count mặc định 1 do Excel chưa chốt encounter. EXP cũ giữ mức thực tế, chỉnh được qua Inspector.
+- CharacterAnimation loop thường phát lại SFX. NewUpdate3.txt đã ghi trạng thái từng mục, trường chưa có dữ liệu và hướng dẫn test.
+- Build runtime/Editor, 26 logic checks + 1762 asset/reference assertions; chưa Play Mode. Chi tiết: doc/2026-11-08_newupdate3-loi-vat.md. Chưa commit.
+
+
+## 08/11/2026 — Event Registry theo Zone
+
+- RegistryIdType có constant Event.Zone1…Zone5 và Event.Scene; RegistryIdKind giữ index cũ, thêm loại event. GameIdRegistry.Events.cs lưu 5 nhóm scene/ID/director nhận sync.
+- GameIdRegistryEditor có nút đọc ID và thêm event rỗng theo zone; giữ event cũ/không nhân đôi, hỗ trợ Undo trên scene đang mở và save/close scene mở additive. Zone1 có 2 director, mặc định nhận tại Story Event Settings và xét ID ở cả hai.
+- Trigger/rương/spawner/definition dùng dropdown Event.Scene; prefab chưa có scene phân nhánh 5 zone. Asset Registry đã nhập 20 ID đang dùng, không sửa ID caller hoặc scene gameplay.
+- Build runtime/Editor + 27 checks với API doubles; chưa thao tác tool trong Unity thật. Hướng dẫn: doc/2026-11-08_event-registry-theo-zone.md. Chưa commit.
+
+
+## 08/11/2026 — Sửa Die phát lại
+
+- CharacterAnimation.Play giữ frame cuối của Die/Death đã hoàn tất khi controller tiếp tục yêu cầu cùng state, trừ restart=true. JSON Die.loop=false được giữ nguyên; player/enemy dùng chung được sửa.
+- Build runtime/Editor và 9 regression checks với API doubles đã qua; chưa Play Mode. Chi tiết: doc/2026-11-08_fix-die-animation-replay.md. Chưa commit.
+
+
+## 08/11/2026 — Cập nhật lệnh AdminEdit
+
+- AdminEdit dùng SkillConfig/ItemDefinition/LvConfig hiện tại; menu F1 giữ nguyên. PlayerProgressionService.Debug.cs là API Editor-only để level/unlock/lock đồng bộ controller/passive, loadout và save.
+- Events chọn mọi director theo scene, dùng getter/reset API thay reflection private; Reset chặn khi có hội thoại. Inventory equip đi qua service/GroupBlock.
+- Numeric fields chỉ ghi khi edit, tránh buffer cũ đè +EXP/HP. Pause/UI được trả đúng trạng thái trước mở, DemoPauseMenu chặn input khi Admin đang mở.
+- Build runtime/Editor + 26 API-double checks đã qua; chưa click thử trong Unity. Chi tiết doc/2026-11-08_adminedit-cap-nhat-lenh.md. Không sửa scene/save thật, không commit.

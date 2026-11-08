@@ -38,7 +38,7 @@ public partial class PlayerProgressionService : MonoBehaviour
     [Tooltip("Asset SkillConfig chứa định nghĩa skill (skillId, actionId, context theo vũ khí). Nếu null thì tự load từ Resources/SkillConfig.")]
     [SerializeField] private SkillConfig skillConfig;
 
-    [Tooltip("Tự thêm RuntimeStatModifierStore, PlayerBuffController, PlayerPassiveSkillController lên Player nếu còn thiếu.")]
+    [Tooltip("Tự thêm RuntimeStatModifierStore, SelfBuff, PlayerPassiveSkillController lên Player nếu còn thiếu.")]
     [SerializeField] private bool autoAttachSkillComponents = true;
 
     [Tooltip("Khi Play (Editor / Development build): kiểm tra SkillConfig, LvConfig, SkillActions và in lỗi cấu hình ra Console.")]
@@ -947,6 +947,7 @@ public partial class PlayerProgressionService : MonoBehaviour
             return lvConfig;
 
         lvConfig = Resources.Load<LvConfig>("LvConfig");
+        if (lvConfig == null) lvConfig = Resources.Load<LvConfig>("Lv Config");
         if (lvConfig == null)
         {
             lvConfig = ScriptableObject.CreateInstance<LvConfig>();

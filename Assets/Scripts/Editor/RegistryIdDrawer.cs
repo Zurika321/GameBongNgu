@@ -36,8 +36,26 @@ public sealed class RegistryIdDrawer : PropertyDrawer
         EditorGUI.LabelField(position, label.text, "RegistryId chỉ hỗ trợ string hoặc string[].");
     }
 
-    private static RegistryIdType RegistryIdTypeFor(PropertyAttribute propertyAttribute)
+    private static RegistryIdKind RegistryIdTypeFor(PropertyAttribute propertyAttribute)
         => ((RegistryIdAttribute)propertyAttribute).IdType;
+
+    private static RegistryIdKind ResolveEventKind(RegistryIdKind type, GameIdRegistry registry, SerializedProperty property)
+    {
+        if (type != RegistryIdType.Event.Scene || registry == null) return type;
+        if (property.serializedObject.targetObject is Component component)
+        {
+            RegistryIdKind resolved = registry.GetEventKindForScene(component.gameObject.scene.path);
+            if (resolved != RegistryIdType.Event.Scene) return resolved;
+            // Shared/Core objects can explicitly reference a director in a zone scene.
+            foreach (string field in new[] { "director", "storyEvents", "storyEventDirector" })
+            {
+                var reference = property.serializedObject.FindProperty(field);
+                if (reference?.objectReferenceValue is StoryEventDirector director)
+                    return registry.GetEventKindForScene(director.gameObject.scene.path);
+            }
+        }
+        return type;
+    }
 
     private static bool IsStringArray(SerializedProperty property)
     {
@@ -56,7 +74,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
         return cachedRegistry;
     }
 
-    private static void DrawString(Rect position, SerializedProperty property, GUIContent label, RegistryIdType type)
+    private static void DrawString(Rect position, SerializedProperty property, GUIContent label, RegistryIdKind type)
     {
         GameIdRegistry registry = GetRegistry();
         if (registry == null)
@@ -65,6 +83,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
             return;
         }
 
+        type = ResolveEventKind(type, registry, property);
         List<string> values = registry.GetList(type);
         string current = property.stringValue;
         bool missing = !string.IsNullOrWhiteSpace(current) && !values.Contains(current);
@@ -74,7 +93,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
         EditorGUI.EndProperty();
     }
 
-    private static void DrawStringArray(Rect position, SerializedProperty property, GUIContent label, RegistryIdType type)
+    private static void DrawStringArray(Rect position, SerializedProperty property, GUIContent label, RegistryIdKind type)
     {
         EditorGUI.BeginProperty(position, label, property);
         Rect header = new Rect(position.x, position.y, position.width, LineHeight);
@@ -84,6 +103,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
         if (property.isExpanded)
         {
             GameIdRegistry registry = GetRegistry();
+            type = ResolveEventKind(type, registry, property);
             List<string> values = registry != null ? registry.GetList(type) : null;
             float y = position.y + LineHeight + Spacing;
             for (int i = 0; i < property.arraySize; i++)
@@ -126,7 +146,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
     }
 
     private static void DrawSelector(Rect fieldRect, string current, bool missing, List<string> values,
-        GameIdRegistry registry, SerializedProperty property, int arrayIndex, RegistryIdType type)
+        GameIdRegistry registry, SerializedProperty property, int arrayIndex, RegistryIdKind type)
     {
         Rect selectRect = new Rect(fieldRect.x, fieldRect.y, Mathf.Max(30f, fieldRect.width - 25f), fieldRect.height);
         Rect pingRect = new Rect(fieldRect.xMax - 22f, fieldRect.y, 22f, fieldRect.height);
@@ -137,7 +157,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
             ? $"-- Chọn {type} --"
             : missing ? $"⚠ [Không có trong Registry] {current}" : current;
         if (EditorGUI.DropdownButton(selectRect, new GUIContent(text), FocusType.Keyboard))
-            ShowDropdown(selectRect, values, property, arrayIndex);
+            ShowDropdown(selectRect, values, property, arrayIndex, type == RegistryIdType.Event.Scene ? registry : null);
         GUI.backgroundColor = oldColor;
 
         if (GUI.Button(pingRect, new GUIContent("⚙", "Mở GameIdRegistry")))
@@ -148,7 +168,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
     }
 
 
-    private static void ShowDropdown(Rect anchor, List<string> values, SerializedProperty property, int arrayIndex)
+    private static void ShowDropdown(Rect anchor, List<string> values, SerializedProperty property, int arrayIndex, GameIdRegistry eventRegistry)
     {
         SerializedObject serializedObject = property.serializedObject;
         string propertyPath = property.propertyPath;
@@ -160,7 +180,7 @@ public sealed class RegistryIdDrawer : PropertyDrawer
             if (arrayIndex >= 0) target.GetArrayElementAtIndex(arrayIndex).stringValue = selected;
             else target.stringValue = selected;
             serializedObject.ApplyModifiedProperties();
-        });
+        }, eventRegistry);
         dropdown.Show(anchor);
     }
 
@@ -168,12 +188,14 @@ public sealed class RegistryIdDrawer : PropertyDrawer
     {
         private readonly List<string> values;
         private readonly System.Action<string> onSelected;
+        private readonly GameIdRegistry eventRegistry;
 
-        public SearchableIdDropdown(AdvancedDropdownState state, List<string> values, System.Action<string> onSelected)
+        public SearchableIdDropdown(AdvancedDropdownState state, List<string> values, System.Action<string> onSelected, GameIdRegistry eventRegistry)
             : base(state)
         {
             this.values = values ?? new List<string>();
             this.onSelected = onSelected;
+            this.eventRegistry = eventRegistry;
             minimumSize = new Vector2(280f, 320f);
         }
 
@@ -181,7 +203,17 @@ public sealed class RegistryIdDrawer : PropertyDrawer
         {
             var root = new AdvancedDropdownItem("Tìm kiếm & chọn ID");
             root.AddChild(new IdItem("(Trống / bỏ chọn)", string.Empty));
-            foreach (string value in values)
+            if (eventRegistry != null)
+            {
+                for (int zone = 1; zone <= 5; zone++)
+                {
+                    var branch = new AdvancedDropdownItem("Zone " + zone);
+                    foreach (string value in eventRegistry.GetList((RegistryIdKind)((int)RegistryIdKind.EventZone1 + zone - 1)))
+                        if (!string.IsNullOrWhiteSpace(value)) branch.AddChild(new IdItem(value, value));
+                    root.AddChild(branch);
+                }
+            }
+            else foreach (string value in values)
                 if (!string.IsNullOrWhiteSpace(value)) root.AddChild(new IdItem(value, value));
             return root;
         }

@@ -1,0 +1,3599 @@
+[
+  {
+    "actionId": "ACT_MELEE_1",
+    "displayName": "Đòn cận chiến 1 nhát",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: ",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_2",
+    "displayName": "Đòn cận chiến 2 nhát liên tiếp",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Khớp 2 nhát V rồi X",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 2,
+        "interval": 0.25,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.3,
+          "y": 1.0
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.12,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          60.0,
+          60.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_3",
+    "displayName": "Đòn cận chiến 3 nhát liên tiếp",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Combo 3 đòn, nhát sau rộng hơn nhát trước",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 3,
+        "interval": 0.3,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.3,
+          "y": 1.0
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          60.0,
+          60.0,
+          60.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_5_STUN_FINISH",
+    "displayName": "Combo 5 đòn, nhát cuối gây choáng",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Hụt 1 nhát thì ngắt cả chuỗi | Choáng 0.5s",
+    "steps": [
+      {
+        "module": 13,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "condition": {
+            "kind": 0
+          }
+        }
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.2,
+        "repeatCount": 5,
+        "interval": 0.2,
+        "target": 1,
+        "requirePreviousHit": true,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.3,
+          "y": 1.0
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.1,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          40.0,
+          40.0,
+          40.0,
+          40.0,
+          60.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 4,
+        "trigger": 1,
+        "sourceStep": 1,
+        "sourceIteration": 4,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 0,
+            "duration": 0.5,
+            "strength": 0.0,
+            "statusId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_1_STUN",
+    "displayName": "Đòn cận chiến 1 nhát + choáng ngắn",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Choáng 1.0s nếu trúng liên tiếp",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 4,
+        "trigger": 1,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 2,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 0,
+            "duration": 1.0,
+            "strength": 0.0,
+            "statusId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_1_POISON",
+    "displayName": "Đòn cận chiến 1 nhát + độc",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Độc 3s, nhịp 1s, xác suất 30%",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 2,
+        "trigger": 1,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 0.3,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          5.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {},
+        "dot": {
+          "activationType": 1,
+          "dotDuration": 3.0,
+          "tickInterval": 1.0,
+          "damagePerTick": 0.0,
+          "zoneShape": 0,
+          "zoneSize": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "zoneLifetime": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_1_BLEED",
+    "displayName": "Đòn cận chiến 1 nhát + chảy máu",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chảy máu 3s, nhịp 1s",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 2,
+        "trigger": 1,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          5.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {},
+        "dot": {
+          "activationType": 1,
+          "dotDuration": 3.0,
+          "tickInterval": 1.0,
+          "damagePerTick": 0.0,
+          "zoneShape": 0,
+          "zoneSize": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "zoneLifetime": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_1_LIFESTEAL",
+    "displayName": "Đòn cận chiến 1 nhát + hút máu",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Hồi HP bằng 50% sát thương gây ra (HP chủ skill)",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 8,
+        "trigger": 1,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "resource": {
+            "resource": 0,
+            "amountMode": 2,
+            "amount": 0.5,
+            "ticks": 1,
+            "interval": 0.0,
+            "persist": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_MELEE_1_SELFCOST",
+    "displayName": "Đòn cận chiến 1 nhát + tự chịu sát thương",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chủ skill mất 5% máu tối đa mỗi đòn",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.2,
+          "y": 0.9
+        },
+        "forwardOffset": 0.9,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          250.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 8,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.3,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "resource": {
+            "resource": 0,
+            "amountMode": 1,
+            "amount": -0.05,
+            "ticks": 1,
+            "interval": 0.0,
+            "persist": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_THRUST_PIERCE",
+    "displayName": "Đâm xuyên giáp",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Xuyên giáp 30% (bật cờ phá khiên khi dùng cho Phá Giáp Hoàn Toàn); Bật BreaksGuard theo từng skill/vũ khí phá khiên.",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.25,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.8,
+          "y": 0.5
+        },
+        "forwardOffset": 1.1,
+        "coneAngle": 180.0,
+        "lifetime": 0.12,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          130.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.3,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_AOE_CIRCLE_1",
+    "displayName": "Dập đất 1 lần quanh chủ skill",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ báo hiệu, không sát thương | Đẩy lùi 1 ô",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 1.5,
+          "y": 1.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.5,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": true,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 1.5,
+          "y": 1.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          150.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 1.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_AOE_CIRCLE_1_STUN",
+    "displayName": "Dập đất 1 lần + choáng",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ báo hiệu | Choáng 1.5s",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.5,
+          "y": 2.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.6,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": true,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.5,
+          "y": 2.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 4,
+        "trigger": 1,
+        "sourceStep": 1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 0,
+            "duration": 1.5,
+            "strength": 0.0,
+            "statusId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_AOE_PULSE_3X",
+    "displayName": "Dậm đất 3 lần tạo sóng xung quanh (mẫu theo yêu cầu)",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Cách nhau 1.0s cố định; %ATK từng lần chỉnh được",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 3,
+        "interval": 1.0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.0,
+          "y": 2.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          80.0,
+          80.0,
+          120.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_CONE_SWEEP_STUN",
+    "displayName": "Quét hình nón phía trước + choáng",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ báo hiệu | Choáng 0.8s",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 2,
+        "size": {
+          "x": 2.0,
+          "y": 2.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.5,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": true,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 2,
+        "size": {
+          "x": 2.0,
+          "y": 2.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.3,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          160.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 4,
+        "trigger": 1,
+        "sourceStep": 1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 0,
+            "duration": 0.8,
+            "strength": 0.0,
+            "statusId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_SELF_EXPLODE",
+    "displayName": "Tự nổ khi bị cận chiến hạ gục",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": true,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Bị hạ bằng tầm xa thì không nổ | ATK gốc = 0 nên dùng chế độ sát thương cố định thay cho %ATK; báo hiệu: chớp sáng 0.4s; Gọi từ event chết, yêu cầu LastDamageKind=Melee.",
+    "steps": [
+      {
+        "module": 13,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "condition": {
+            "kind": 8
+          }
+        }
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.4,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.5,
+          "y": 2.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          20.0
+        ],
+        "fixedDamage": 20.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_POISON_THORNS",
+    "displayName": "Gai độc trồi từ đất",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ báo hiệu | Độc 3s",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.0,
+          "y": 2.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.6,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": true,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 2,
+        "interval": 0.5,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 2.0,
+          "y": 2.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          80.0,
+          80.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 2,
+        "trigger": 1,
+        "sourceStep": 1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          5.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {},
+        "dot": {
+          "activationType": 1,
+          "dotDuration": 3.0,
+          "tickInterval": 1.0,
+          "damagePerTick": 0.0,
+          "zoneShape": 0,
+          "zoneSize": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "zoneLifetime": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_PROJ_1",
+    "displayName": "Đạn bay thẳng 1 viên",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Dùng cho ném vũ khí phụ và đạn tầm xa",
+    "steps": [
+      {
+        "module": 1,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.4,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 0.2,
+          "y": 0.2
+        },
+        "forwardOffset": 0.6,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 6.0,
+        "travelDistance": 8.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 2,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_PROJ_POISON",
+    "displayName": "Đạn độc bay thẳng",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Độc 5s, nhịp 1s; trúng lại thì làm mới",
+    "steps": [
+      {
+        "module": 1,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.8,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 0.3,
+          "y": 0.3
+        },
+        "forwardOffset": 0.6,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 5.0,
+        "travelDistance": 8.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          120.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 2,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 2,
+        "trigger": 1,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 2,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          10.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {},
+        "dot": {
+          "activationType": 1,
+          "dotDuration": 5.0,
+          "tickInterval": 1.0,
+          "damagePerTick": 0.0,
+          "zoneShape": 0,
+          "zoneSize": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "zoneLifetime": 0.0
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_PROJ_EXPLOSIVE",
+    "displayName": "Đạn nổ diện rộng nhỏ khi chạm",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Tổng 130% ATK",
+    "steps": [
+      {
+        "module": 1,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.8,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 0.35,
+          "y": 0.35
+        },
+        "forwardOffset": 0.6,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 3.5,
+        "travelDistance": 8.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          80.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 2,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 0,
+        "trigger": 2,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 1.2,
+          "y": 1.2
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          50.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_ZONE_SLOW_WEB",
+    "displayName": "Vùng tơ làm chậm",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Sát thương lúc mở tơ | Làm chậm 40% khi đứng trong vùng",
+    "steps": [
+      {
+        "module": 0,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 2,
+        "size": {
+          "x": 1.5,
+          "y": 1.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.2,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          80.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      },
+      {
+        "module": 3,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 1.0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 2,
+        "size": {
+          "x": 1.5,
+          "y": 1.5
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 3.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 1,
+            "duration": 1.0,
+            "strength": 0.4,
+            "statusId": "Slow"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_AURA_SLOW_CONTACT",
+    "displayName": "Vùng làm chậm bám theo chủ (chạm là chậm)",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Làm chậm 20%",
+    "steps": [
+      {
+        "module": 3,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0.5,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 1,
+        "size": {
+          "x": 0.6,
+          "y": 0.6
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": true,
+        "telegraph": false,
+        "damagePercents": [
+          0.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 1,
+            "duration": 0.5,
+            "strength": 0.2,
+            "statusId": "Slow"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_ATK_TIMED",
+    "displayName": "Buff tăng sát thương theo thời gian",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: ATK +20% trong 8s; Điền số hit trong Modules/Condition (Excel chưa chốt số).",
+    "steps": [
+      {
+        "module": 13,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": true,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "condition": {
+            "kind": 6,
+            "requiredCount": 0,
+            "withinSeconds": 0.0
+          }
+        }
+      },
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "selfBuff": {
+            "duration": 8.0,
+            "modifiers": [
+              {
+                "stat": 0,
+                "modifierType": 1,
+                "value": 0.2
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_SPEED_PHASE",
+    "displayName": "Buff tăng tốc suốt phase",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Tốc độ +30% đến hết phase (thời lượng 0 = vô hạn); Gọi RemoveActionBuffs khi kết thúc phase.",
+    "steps": [
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "selfBuff": {
+            "duration": 0.0,
+            "modifiers": [
+              {
+                "stat": 3,
+                "modifierType": 1,
+                "value": 0.3
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_SPEED_CONDITIONAL",
+    "displayName": "Buff tăng tốc có điều kiện",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": true,
+    "condition": {
+      "kind": 3,
+      "threshold": 0.3
+    },
+    "setupNotes": "Nguồn Excel: Hết điều kiện thì bỏ buff | Tốc độ chạy +50%",
+    "steps": [
+      {
+        "module": 13,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "condition": {
+            "kind": 3,
+            "threshold": 0.3
+          }
+        }
+      },
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": true,
+        "settings": {
+          "selfBuff": {
+            "duration": 0.0,
+            "modifiers": [
+              {
+                "stat": 3,
+                "modifierType": 1,
+                "value": 0.5
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_ATKSPEED_RAMP",
+    "displayName": "Tốc độ đánh tăng dần theo thời gian",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Mỗi 10s tốc độ đánh +10%, tối đa 3 lần",
+    "steps": [
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 10.0,
+        "repeatCount": 3,
+        "interval": 10.0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "selfBuff": {
+            "duration": 0.0,
+            "modifiers": [
+              {
+                "stat": 6,
+                "modifierType": 1,
+                "value": 0.1
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_DUAL_BLADE",
+    "displayName": "Buff song đao",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Tốc độ đánh +25%, DEF −15%, 10s",
+    "steps": [
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "selfBuff": {
+            "duration": 10.0,
+            "modifiers": [
+              {
+                "stat": 6,
+                "modifierType": 1,
+                "value": 0.25
+              },
+              {
+                "stat": 1,
+                "modifierType": 1,
+                "value": -0.15
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BUFF_BORROW_POWER",
+    "displayName": "Mượn sức mạnh Vô Diện",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: ATK +50%, tốc độ +30% trong 10s; cái giá: 30% lần né bị lệch hướng (đề xuất); Cái giá né lệch hướng cần debuff cấu hình riêng, không tự bịa hướng.",
+    "steps": [
+      {
+        "module": 5,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "selfBuff": {
+            "duration": 10.0,
+            "modifiers": [
+              {
+                "stat": 0,
+                "modifierType": 1,
+                "value": 0.5
+              },
+              {
+                "stat": 3,
+                "modifierType": 1,
+                "value": 0.3
+              }
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_DODGE_ROLL",
+    "displayName": "Lăn né",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Khung bất tử 0.05–0.3s; hồi chiêu 1s",
+    "steps": [
+      {
+        "module": 7,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.3,
+        "speed": 8.333333333333334,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "movement": {
+            "invincible": true,
+            "invincibleStart": 0.05,
+            "invincibleEnd": 0.3
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_PARRY",
+    "displayName": "Đỡ đòn",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Đỡ đúng thì dừng hình 0.1s; Hit-stop cần adapter hình ảnh, không tự đổi Time.timeScale toàn game.",
+    "steps": [
+      {
+        "module": 9,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.05,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "defense": {
+            "mode": 0,
+            "duration": 0.25,
+            "fraction": 0.0,
+            "consumeOnHit": true,
+            "meleeOnly": false,
+            "breakable": false,
+            "counterActionId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_PARRY_COUNTER",
+    "displayName": "Đỡ đòn + phản đòn hoàn hảo",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Đỡ đúng thì dừng hình 0.1s rồi gọi bước dưới | Chỉ chạy khi đỡ thành công; Hit-stop cần adapter hình ảnh, không tự đổi Time.timeScale toàn game.",
+    "steps": [
+      {
+        "module": 9,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.05,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "defense": {
+            "mode": 0,
+            "duration": 0.25,
+            "fraction": 0.0,
+            "consumeOnHit": true,
+            "meleeOnly": false,
+            "breakable": false,
+            "counterActionId": ""
+          }
+        }
+      },
+      {
+        "module": 0,
+        "trigger": 3,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.1,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 1.5,
+          "y": 1.1
+        },
+        "forwardOffset": 1.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.15,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          200.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 1,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {}
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_IMMUNE_MELEE_CYCLE",
+    "displayName": "Giáp miễn nhiễm cận chiến theo chu kỳ",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ phá được bằng Băng Đạn Bạc",
+    "steps": [
+      {
+        "module": 9,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 0,
+        "interval": 12.0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "defense": {
+            "mode": 1,
+            "duration": 5.0,
+            "fraction": 0.0,
+            "consumeOnHit": false,
+            "meleeOnly": true,
+            "breakable": true,
+            "counterActionId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_RESIST_MELEE_50",
+    "displayName": "Kháng 50% sát thương cận chiến thường",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Bỏ qua nếu vũ khí nung hoặc đạn bạc",
+    "steps": [
+      {
+        "module": 9,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "defense": {
+            "mode": 2,
+            "duration": 0.0,
+            "fraction": 0.5,
+            "consumeOnHit": false,
+            "meleeOnly": true,
+            "breakable": false,
+            "counterActionId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_REFLECT_20",
+    "displayName": "Phản 20% sát thương",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Dội ngược 20% sát thương nhận vào người đánh",
+    "steps": [
+      {
+        "module": 13,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "condition": {
+            "kind": 7,
+            "requiredCount": 3,
+            "withinSeconds": 3.0
+          }
+        }
+      },
+      {
+        "module": 9,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "defense": {
+            "mode": 3,
+            "duration": 4.0,
+            "fraction": 0.2,
+            "consumeOnHit": false,
+            "meleeOnly": false,
+            "breakable": false,
+            "counterActionId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_SUMMON_2_EVERY_20S",
+    "displayName": "Triệu hồi 2 con mỗi 20s",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: ; Gán prefab/thông số tại context.Modules/Summon; hoặc bỏ Use Skill Module Settings để chỉnh tại recipe. Drop/EXP, tan khói và bản thể biến mất cần prefab/event.",
+    "steps": [
+      {
+        "module": 6,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 0,
+        "interval": 20.0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "summon": {
+            "prefab": {
+              "fileID": 0
+            },
+            "count": 2,
+            "maximumAlive": 4,
+            "radius": 0.0,
+            "lifetime": 0.0,
+            "ownerHealthFraction": 0.0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_SUMMON_ADDS_CONTINUOUS",
+    "displayName": "Triệu hồi tay sai liên tục",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Tay sai không rơi item, chỉ cho EXP nhỏ; Gán prefab/thông số tại context.Modules/Summon; hoặc bỏ Use Skill Module Settings để chỉnh tại recipe. Drop/EXP, tan khói và bản thể biến mất cần prefab/event.",
+    "steps": [
+      {
+        "module": 6,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 0,
+        "interval": 15.0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "summon": {
+            "prefab": {
+              "fileID": 0
+            },
+            "count": 1,
+            "maximumAlive": 6,
+            "radius": 0.0,
+            "lifetime": 0.0,
+            "ownerHealthFraction": 0.0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_CLONE_SHADOW_2",
+    "displayName": "Nhân bản 2 bóng yếu",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Bị đánh trúng thì tan thành khói; Gán prefab/thông số tại context.Modules/Summon; hoặc bỏ Use Skill Module Settings để chỉnh tại recipe. Drop/EXP, tan khói và bản thể biến mất cần prefab/event.",
+    "steps": [
+      {
+        "module": 6,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "summon": {
+            "prefab": {
+              "fileID": 0
+            },
+            "count": 2,
+            "maximumAlive": 2,
+            "radius": 0.0,
+            "lifetime": 0.0,
+            "ownerHealthFraction": 0.15
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_SPLIT_2",
+    "displayName": "Phân thân thành 2",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Bản thể gốc biến mất, hai bản sao hành động độc lập; Gán prefab/thông số tại context.Modules/Summon; hoặc bỏ Use Skill Module Settings để chỉnh tại recipe. Drop/EXP, tan khói và bản thể biến mất cần prefab/event.",
+    "steps": [
+      {
+        "module": 6,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "summon": {
+            "prefab": {
+              "fileID": 0
+            },
+            "count": 2,
+            "maximumAlive": 2,
+            "radius": 0.0,
+            "lifetime": 0.0,
+            "ownerHealthFraction": 0.5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BLIND_8S",
+    "displayName": "Làm tối tầm nhìn 8s",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Thời lượng 8s; hút nguồn sáng; Gán ScreenEffect trên Target, nối overlay/shader/light bằng Inspector.",
+    "steps": [
+      {
+        "module": 10,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "screen": {
+            "strength": 0.7,
+            "duration": 8.0,
+            "fadeSeconds": 0.5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_BLIND_5S",
+    "displayName": "Làm tối tầm nhìn 5s",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Thời lượng 5s; Gán ScreenEffect trên Target, nối overlay/shader/light bằng Inspector.",
+    "steps": [
+      {
+        "module": 10,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.6,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "screen": {
+            "strength": 0.6,
+            "duration": 5.0,
+            "fadeSeconds": 0.5
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_QTE_POSSESS",
+    "displayName": "Đồng hóa (QTE chống chiếm xác)",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Thua → vào Session 13C; có cờ Ý Chí Sắt Đá thì được miễn 1 lần; Gán ChallengeMeter trên Target, Modules/Challenge và event kết quả truyện. Excel chưa chốt tốc độ thanh/cờ miễn nhiễm.",
+    "steps": [
+      {
+        "module": 11,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": true,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "challenge": {
+            "mode": 0,
+            "duration": 6.0,
+            "initialValue": 0.0,
+            "requiredValue": 1.0,
+            "drainPerSecond": 0.0,
+            "gainPerInput": 0.0,
+            "failureGraceSeconds": 3.0,
+            "immunityFlag": "",
+            "consumeImmunity": false
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_CURSE_TRANSFER",
+    "displayName": "Chuyển nguyền (thanh kháng cự)",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Dưới 50% quá 3s → gọi bước dưới | Gắn trạng thái Lời Nguyền (cơ chế chi tiết chưa có trong GDD); Gán ChallengeMeter trên Target, Modules/Challenge và event kết quả truyện. Excel chưa chốt tốc độ thanh/cờ miễn nhiễm.",
+    "steps": [
+      {
+        "module": 11,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": true,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "challenge": {
+            "mode": 1,
+            "duration": 0.0,
+            "initialValue": 1.0,
+            "requiredValue": 0.5,
+            "drainPerSecond": 0.0,
+            "gainPerInput": 0.0,
+            "failureGraceSeconds": 3.0,
+            "immunityFlag": "",
+            "consumeImmunity": false
+          }
+        }
+      },
+      {
+        "module": 4,
+        "trigger": 4,
+        "sourceStep": 0,
+        "sourceIteration": -1,
+        "delay": 0.0,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 1,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": true,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "status": {
+            "kind": 2,
+            "duration": 0.0,
+            "strength": 0.0,
+            "statusId": ""
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_REPLAY_LAST",
+    "displayName": "Sao chép đòn đối phương",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": false,
+    "cancelOnMove": false,
+    "cancelOnDamage": false,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: ; Chọn chế độ và phạm vi trong context.Modules/Replay.",
+    "steps": [
+      {
+        "module": 12,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 0.5,
+        "repeatCount": 1,
+        "interval": 0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [
+          100.0
+        ],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": true,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "replay": {
+            "selection": 0,
+            "range": 0.0,
+            "damageFraction": 1.0
+          }
+        }
+      }
+    ]
+  },
+  {
+    "actionId": "ACT_HEAL_LT_CHANNEL",
+    "displayName": "Giữ yên hồi Lý Trí",
+    "enabled": true,
+    "lockMovement": false,
+    "allowDeadCaster": false,
+    "requiresHold": true,
+    "cancelOnMove": true,
+    "cancelOnDamage": true,
+    "moveTolerance": 0.1,
+    "maintainCondition": false,
+    "condition": {
+      "kind": 0
+    },
+    "setupNotes": "Nguồn Excel: Chỉ chạy khi giữ phím",
+    "steps": [
+      {
+        "module": 8,
+        "trigger": 0,
+        "sourceStep": -1,
+        "sourceIteration": -1,
+        "delay": 1.0,
+        "repeatCount": 0,
+        "interval": 1.0,
+        "target": 0,
+        "requirePreviousHit": false,
+        "minimumConsecutiveHits": 1,
+        "chance": 1.0,
+        "shape": 0,
+        "size": {
+          "x": 0.0,
+          "y": 0.0
+        },
+        "forwardOffset": 0.0,
+        "coneAngle": 180.0,
+        "lifetime": 0.0,
+        "speed": 0.0,
+        "travelDistance": 0.0,
+        "canPierce": false,
+        "followCaster": false,
+        "telegraph": false,
+        "damagePercents": [],
+        "fixedDamage": -1.0,
+        "damageKind": 0,
+        "armorPenetration": 0.0,
+        "breaksGuard": false,
+        "bypassesMeleeResistance": false,
+        "knockback": 0.0,
+        "useSkillModuleSettings": false,
+        "clearBuffWhenCancelled": false,
+        "settings": {
+          "resource": {
+            "resource": 1,
+            "amountMode": 0,
+            "amount": 1.0,
+            "ticks": 1,
+            "interval": 1.0,
+            "cancelOnMove": true,
+            "cancelOnDamage": true,
+            "moveTolerance": 0.1,
+            "persist": false
+          }
+        }
+      }
+    ]
+  }
+]

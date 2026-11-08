@@ -63,7 +63,7 @@ public class InventorySlotView : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (background != null) background.color = inventory != null ? inventory.GetSlotColor(hasItem, isSelected) : Color.white;
     }
 
-    /// <summary>Có ảnh (icon) thì hiện ảnh; chưa có ảnh thì hiện tên skill như cũ.</summary>
+    /// <summary>Hiện icon kèm tên; vẫn phân biệt được skill khi đang dùng ảnh chung.</summary>
     public void SetSkill(string label, string badge, bool hasSkill, bool isSelected, Sprite icon = null)
     {
         CaptureCountStyle();
@@ -71,9 +71,9 @@ public class InventorySlotView : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (iconImage != null) { iconImage.enabled = showIcon; iconImage.sprite = showIcon ? icon : null; }
         if (countText != null && countRect != null)
         {
-            countRect.anchorMin = Vector2.zero; countRect.anchorMax = Vector2.one;
-            countRect.offsetMin = new Vector2(4f, 20f); countRect.offsetMax = new Vector2(-4f, -4f);
-            countText.text = showIcon ? string.Empty : (label ?? string.Empty);
+            countRect.anchorMin = Vector2.zero; countRect.anchorMax = new Vector2(1f, showIcon ? 0.32f : 1f);
+            countRect.offsetMin = new Vector2(4f, 14f); countRect.offsetMax = new Vector2(-4f, -2f);
+            countText.text = label ?? string.Empty;
             countText.fontSize = 11;
             countText.alignment = TextAnchor.MiddleCenter;
             countText.horizontalOverflow = HorizontalWrapMode.Wrap;

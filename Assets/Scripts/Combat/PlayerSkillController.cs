@@ -23,11 +23,11 @@ public class PlayerSkillSlot
 {
     [Header("Định danh skill")]
     [FormerlySerializedAs("skillName")]
-    [RegistryId(RegistryIdType.Skill)]
     [Tooltip("ID riêng của skill, ví dụ BasicAttack_Dagger. Không phải tên class.")]
     public string skillId;
 
     [Tooltip("ID class trong SkillActions, ví dụ NormalAttack. Nhiều skillId được dùng chung actionId.")]
+    [RegistryId(RegistryIdType.Skill)]
     public string actionId;
 
     [Tooltip("skillId (hoặc tên hiển thị) phải được mở khóa mới dùng được. Để trống nếu không cần kiểm tra unlock.")]
@@ -54,7 +54,6 @@ public class PlayerSkillSlot
     [Min(0f)] public float stunTime;
     [Min(0f)] public float chargeTime;
     [Min(0f)] public float endTime = 0.15f;
-    public SkillAnimationSet animationSet = new SkillAnimationSet();
     public bool debug = true;
     public bool canPierce;
     public DameDotConfig dotConfig = new DameDotConfig();
@@ -259,7 +258,6 @@ public class PlayerSkillController : MonoBehaviour
             stunTime = source.stunTime,
             chargeTime = source.chargeTime,
             endTime = source.endTime,
-            animationSet = source.animationSet,
             debug = source.debug,
             canPierce = source.canPierce,
             dotConfig = source.dotConfig,
@@ -278,7 +276,6 @@ public class PlayerSkillController : MonoBehaviour
         target.stunTime = source.stunTime;
         target.chargeTime = source.chargeTime;
         target.endTime = source.endTime;
-        target.animationSet = source.animationSet;
         target.debug = source.debug;
         target.canPierce = source.canPierce;
         target.dotConfig = source.dotConfig;
@@ -470,26 +467,18 @@ public class PlayerSkillController : MonoBehaviour
     {
         slot.isCharging = true;
         bool completed = false;
-        string actionId = ResolveActionId(slot);
-        SkillContext chargeContext = BuildChargeContext(slot, actionId);
-        if (SkillActions.Instance != null) SkillActions.Instance.PlayChargeSfx(chargeContext);
-
-        SkillAnimationSet chargeSet = skillConfig != null
-            ? skillConfig.GetAnimationSet(slot.skillId, GetCurrentWeaponName())
-            : slot.animationSet;
-        if (chargeSet == null) chargeSet = slot.animationSet;
-
+        SkillContextConfig config = skillConfig != null ? skillConfig.GetContextConfig(slot.skillId, GetCurrentWeaponName()) : null;
+        string animationName = !string.IsNullOrWhiteSpace(config?.animationName) ? config.animationName.Trim() : slot.skillId;
         yield return SkillAnimationPlayer.ChargeRoutine(
             ownerRoot,
             chargeTime,
-            chargeSet,
+            animationName,
             () => facingProvider != null ? facingProvider.FacingDirection : Vector2.right,
             () => IsSlotHeld(slot),
             () => health != null && health.IsDead,
             result => completed = result);
 
         slot.isCharging = false;
-        if (!completed && SkillActions.Instance != null) SkillActions.Instance.StopChargeSfx(actionId);
         if (completed) FireSlot(slot);
     }
 
@@ -507,18 +496,34 @@ public class PlayerSkillController : MonoBehaviour
 
     private void FireSlot(PlayerSkillSlot slot)
     {
+        SkillConfigEntry configured = skillConfig != null ? skillConfig.FindEntry(slot.skillId) : null;
+        if (configured != null && configured.needsInspectorSetup)
+        {
+            Debug.LogWarning("[PlayerSkillController] " + slot.skillId + ": " + configured.setupNotes, this);
+            return;
+        }
         MarkUsed(slot);
         Vector2 direction = facingProvider != null ? facingProvider.FacingDirection : Vector2.right;
         string weaponName = GetCurrentWeaponName();
         SkillConfigEntry entry = skillConfig != null ? skillConfig.GetEntryById(slot.skillId) : null;
 
+        SkillContextConfig animationConfig = skillConfig != null ? skillConfig.GetContextConfig(slot.skillId, weaponName) : null;
+        string animationName = !string.IsNullOrWhiteSpace(animationConfig?.animationName) ? animationConfig.animationName.Trim() : slot.skillId;
+        CharacterAnimation animation = ownerRoot.GetComponentInChildren<CharacterAnimation>();
+        if (animation != null)
+        {
+            animation.SetFacing(direction);
+            if (!animation.IsPlayingSkill(animationName)) animation.PlayAnimationSkill(animationName);
+            animation.BeginSkillCast();
+        }
+
         // BuffAction áp dụng modifier theo duration; không cần class thực thi riêng nếu chỉ là buff chỉ số.
         if (entry != null && entry.type == SkillType.BuffAction)
         {
-            PlayerBuffController buffController = ownerRoot.GetComponentInChildren<PlayerBuffController>(true);
+            SelfBuff buffController = ownerRoot.GetComponentInChildren<SelfBuff>(true);
             if (buffController == null)
             {
-                Debug.LogWarning($"[PlayerSkillController] Skill '{slot.skillId}' cần PlayerBuffController trên Player.", this);
+                Debug.LogWarning($"[PlayerSkillController] Skill '{slot.skillId}' cần SelfBuff trên Player.", this);
                 return;
             }
             if (!buffController.ApplyBuff(slot.skillId, entry.buffConfig))
@@ -542,6 +547,7 @@ public class PlayerSkillController : MonoBehaviour
 
         SkillContext context = new SkillContext
         {
+            IsHeld = () => IsSlotHeld(slot),
             Caster = ownerRoot,
             CasterType = SkillCasterType.Player,
             Position = ownerRoot.transform.position,
@@ -555,16 +561,14 @@ public class PlayerSkillController : MonoBehaviour
             Debug = config != null ? config.debug : slot.debug,
             ChargeTime = config != null ? config.chargeTime : slot.chargeTime,
             EndTime = config != null ? config.endTime : slot.endTime,
-            ChargeSfx = config != null ? config.chargeSfx : null,
-            CastSfx = config != null ? config.castSfx : null,
-            HitSfx = config != null ? config.hitSfx : null,
-            SfxVolume = config != null ? config.sfxVolume : 1f,
-            CutChargeSfxToChargeTime = config != null ? config.cutChargeSfxToChargeTime : false,
-            AnimationSet = skillConfig != null
-                ? skillConfig.GetAnimationSet(slot.skillId, weaponName)
-                : (config != null ? config.animationSet : slot.animationSet),
+            ActionDamageOverrides = config != null ? config.actionDamageOverrides : null,
+            BreaksGuard = config != null && config.breaksGuard,
+            BypassesMeleeResistance = config != null && config.bypassesMeleeResistance,
+            Modules = config != null ? config.modules : null,
+            EffectAnimation = config != null ? config.effectAnimation : null,
             CanPierce = config != null ? config.canPierce : slot.canPierce,
             DotConfig = config != null ? config.dotConfig : slot.dotConfig,
+            AnimationName = config?.animationName,
             SkillId = slot.skillId,
             ActionId = actionId,
             WeaponId = weaponName
@@ -573,40 +577,6 @@ public class PlayerSkillController : MonoBehaviour
         SkillActions.Instance.Activate(actionId, context);
     }
 
-    private SkillContext BuildChargeContext(PlayerSkillSlot slot, string actionId)
-    {
-        string weaponName = GetCurrentWeaponName();
-        SkillContext context = PlayerProgressionService.Instance != null
-            ? PlayerProgressionService.Instance.GetSkillContext(slot.skillId, weaponName)
-            : null;
-        if (context == null)
-        {
-            SkillContextConfig config = skillConfig != null ? skillConfig.GetContextConfig(slot.skillId, weaponName) : null;
-            if (config == null) return null;
-            context = new SkillContext
-            {
-                ChargeSfx = config.chargeSfx,
-                CastSfx = config.castSfx,
-                HitSfx = config.hitSfx,
-                SfxVolume = config.sfxVolume,
-                CutChargeSfxToChargeTime = config.cutChargeSfxToChargeTime,
-                ChargeTime = config.chargeTime,
-                EndTime = config.endTime,
-                Debug = config.debug,
-                CanPierce = config.canPierce,
-                SkillId = slot.skillId,
-                ActionId = actionId,
-                WeaponId = weaponName
-            };
-        }
-        context.Caster = ownerRoot;
-        context.CasterType = SkillCasterType.Player;
-        context.Position = ownerRoot != null ? ownerRoot.transform.position : Vector2.zero;
-        context.ActionId = actionId;
-        context.SkillId = slot.skillId;
-        context.WeaponId = weaponName;
-        return context;
-    }
 
     private string ResolveActionId(PlayerSkillSlot slot)
     {
@@ -728,9 +698,13 @@ public class PlayerSkillController : MonoBehaviour
             if (slot == null || !slot.isCharging) continue;
             slot.isCharging = false;
             wasCharging = true;
-            if (SkillActions.Instance != null) SkillActions.Instance.StopChargeSfx(ResolveActionId(slot));
         }
-        if (wasCharging && playerController != null) playerController.LockMovement(false);
+        if (wasCharging)
+        {
+            StopAllCoroutines();
+            if (ownerRoot != null) ownerRoot.GetComponentInChildren<CharacterAnimation>()?.CancelSkillAnimation();
+            if (playerController != null) playerController.LockMovement(false);
+        }
     }
 
 #if ENABLE_INPUT_SYSTEM
